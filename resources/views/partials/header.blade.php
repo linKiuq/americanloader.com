@@ -1,0 +1,389 @@
+@php
+    $currentRoute = Route::currentRouteName();
+    $cartCount = array_sum(session('cart.items', []));
+    $shopActive = $currentRoute === 'equipment';
+    $shopCategories = [
+        'Forklift' => 'Forklifts',
+        'Mini Excavators' => 'Mini Excavators',
+        'Skid Steer Loader' => 'Skid Steer Loaders',
+        'Mini Road Roller' => 'Road Rollers',
+        'Wheel Loaders' => 'Wheel Loaders',
+    ];
+@endphp
+
+<style>
+    /* Main navigation: restrained spacing and a strong, consistent brand field. */
+    .site-navbar {
+        --nav-blue: #173f91;
+        --nav-blue-hover: #2457bd;
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: var(--nav-blue);
+        box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+        font-family: Arial, "Helvetica Neue", sans-serif;
+    }
+
+    .site-navbar__inner {
+        max-width: 1280px;
+        min-height: 82px;
+        margin: 0 auto;
+        padding: 0 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2.25rem;
+    }
+
+    .site-navbar__brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        flex-shrink: 0;
+        color: #fff;
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: 0.045em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .site-navbar__logo {
+        width: 42px;
+        height: 42px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid rgba(255, 255, 255, 0.7);
+        border-radius: 50%;
+    }
+
+    .primary-menu,
+    .equipment-dropdown,
+    .attachments-dropdown {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .primary-menu {
+        height: 82px;
+        display: flex;
+        align-items: stretch;
+        gap: clamp(1.5rem, 3vw, 2.75rem);
+    }
+
+    .primary-menu__item {
+        position: relative;
+        display: flex;
+        align-items: stretch;
+    }
+
+    .primary-menu__link {
+        position: relative;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0 0.1rem;
+        color: #fff;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        text-transform: uppercase;
+    }
+
+    .primary-menu__link::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 4px;
+        background: #fff;
+        opacity: 0;
+        transform: scaleX(0.45);
+        transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .primary-menu__item:hover .primary-menu__link::after,
+    .primary-menu__item:focus-within .primary-menu__link::after,
+    .primary-menu__link.is-active::after {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+
+    .primary-menu__chevron {
+        width: 11px;
+        height: 7px;
+        margin-top: 1px;
+        flex-shrink: 0;
+    }
+
+    /* Hover label is kept above the dropdown padding so both can appear together. */
+    .equipment-tooltip {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        z-index: 2;
+        padding: 0.45rem 0.65rem;
+        color: #fff;
+        background: #3d4148;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        opacity: 0;
+        pointer-events: none;
+        transform: translate(-50%, -4px);
+        transition: opacity 150ms ease, transform 150ms ease;
+    }
+
+    .primary-menu__item--dropdown:hover .equipment-tooltip,
+    .primary-menu__item--dropdown:focus-within .equipment-tooltip {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    /* Dropdown menu: square white panel with roomy links and a lifted shadow. */
+    .equipment-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: min(390px, calc(100vw - 2rem));
+        padding: 2rem 2.35rem 1.5rem;
+        visibility: hidden;
+        opacity: 0;
+        background: #fff;
+        border-radius: 0;
+        box-shadow: 0 18px 38px rgba(15, 23, 42, 0.17), 0 5px 12px rgba(15, 23, 42, 0.08);
+        transform: translateY(8px);
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    }
+
+    .primary-menu__item--dropdown:hover .equipment-dropdown,
+    .primary-menu__item--dropdown:focus-within .equipment-dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .equipment-dropdown__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .equipment-dropdown__link {
+        display: block;
+        padding: 1rem 0;
+        color: #171b23;
+        font-size: 0.96rem;
+        font-weight: 500;
+        letter-spacing: 0.045em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 160ms ease;
+    }
+
+    .equipment-dropdown__link:hover,
+    .equipment-dropdown__link:focus-visible {
+        color: var(--nav-blue-hover);
+        outline: none;
+    }
+
+    /* Attachment links use a smaller matching panel without changing the Shop menu. */
+    .attachments-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 300px;
+        padding: 1.25rem 1.75rem;
+        visibility: hidden;
+        opacity: 0;
+        background: #fff;
+        border-radius: 0;
+        box-shadow: 0 18px 38px rgba(15, 23, 42, 0.17), 0 5px 12px rgba(15, 23, 42, 0.08);
+        transform: translateY(8px);
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    }
+
+    .primary-menu__item--attachments:hover .attachments-dropdown,
+    .primary-menu__item--attachments:focus-within .attachments-dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .attachments-dropdown__link {
+        display: block;
+        padding: 1rem 0;
+        color: #171b23;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.045em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 160ms ease;
+    }
+
+    .attachments-dropdown__link:hover,
+    .attachments-dropdown__link:focus-visible {
+        color: var(--nav-blue-hover);
+        outline: none;
+    }
+
+    .site-navbar__actions {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        flex-shrink: 0;
+    }
+
+    .site-navbar__cart,
+    .site-navbar__quote {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        min-height: 44px;
+        padding: 0 1rem;
+        color: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.09em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: background-color 160ms ease;
+    }
+
+    .site-navbar__cart:hover,
+    .site-navbar__quote:hover {
+        background: rgba(255, 255, 255, 0.12);
+    }
+
+    .site-navbar__count {
+        min-width: 1.35rem;
+        padding: 0.2rem 0.35rem;
+        color: var(--nav-blue);
+        background: #fff;
+        text-align: center;
+    }
+
+    .site-navbar__quote {
+        background: #fff;
+        color: var(--nav-blue);
+    }
+
+    .site-navbar__quote:hover {
+        background: #eef4ff;
+    }
+
+    @media (max-width: 1020px) {
+        .site-navbar__brand span,
+        .site-navbar__quote {
+            display: none;
+        }
+    }
+
+    @media (max-width: 760px) {
+        .site-navbar__inner {
+            min-height: 70px;
+            padding: 0 1rem;
+            gap: 1rem;
+        }
+
+        .primary-menu {
+            height: 70px;
+            gap: 1rem;
+        }
+
+        .primary-menu__link {
+            font-size: 0.7rem;
+            letter-spacing: 0.05em;
+        }
+
+        .primary-menu__item:not(.primary-menu__item--dropdown):last-child,
+        .site-navbar__cart-label {
+            display: none;
+        }
+
+        .site-navbar__cart {
+            padding: 0 0.65rem;
+        }
+
+        .equipment-dropdown {
+            left: 0;
+            padding-right: 1.15rem;
+            padding-left: 1.15rem;
+        }
+    }
+</style>
+
+<nav class="site-navbar" aria-label="Main navigation">
+    <div class="site-navbar__inner">
+        <a href="{{ route('welcome') }}" class="site-navbar__brand" aria-label="Skoop Loaders home">
+            <span class="site-navbar__logo" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                    <path d="M2 12 8 6l6 6-6 6-6-6Z" fill="currentColor" />
+                    <path d="m10 12 6-6 6 6-6 6-6-6Z" fill="currentColor" opacity=".55" />
+                </svg>
+            </span>
+            <span>Skoop Loaders</span>
+        </a>
+
+        <ul class="primary-menu">
+            <li class="primary-menu__item">
+                <a href="{{ route('welcome') }}" class="primary-menu__link {{ $currentRoute === 'welcome' ? 'is-active' : '' }}" @if($currentRoute === 'welcome') aria-current="page" @endif>Home</a>
+            </li>
+            <li class="primary-menu__item primary-menu__item--dropdown">
+                <a href="{{ route('equipment') }}" class="primary-menu__link {{ $shopActive ? 'is-active' : '' }}" @if($shopActive) aria-current="page" @endif>
+                    Shop
+                    <svg class="primary-menu__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                        <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <span class="equipment-tooltip" aria-hidden="true">Shop</span>
+                <div class="equipment-dropdown">
+                    <ul class="equipment-dropdown__list" aria-label="Equipment categories">
+                        @foreach ($shopCategories as $label => $category)
+                            <li>
+                                <a href="{{ route('equipment', ['category' => $category]) }}#catalog" class="equipment-dropdown__link">
+                                    {{ $label }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </li>
+            <li class="primary-menu__item primary-menu__item--attachments">
+                <a href="{{ route('attachments.index') }}" class="primary-menu__link {{ str_starts_with($currentRoute, 'attachments.') ? 'is-active' : '' }}" @if(str_starts_with($currentRoute, 'attachments.')) aria-current="page" @endif>
+                    Attachments
+                    <svg class="primary-menu__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                        <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <ul class="attachments-dropdown" aria-label="Attachment categories">
+                    <li><a href="{{ route('attachments.mini-excavator') }}" class="attachments-dropdown__link">Mini Excavator Attachments</a></li>
+                    <li><a href="{{ route('attachments.skid-steer') }}" class="attachments-dropdown__link">Skid Steer Attachments</a></li>
+                </ul>
+            </li>
+            <li class="primary-menu__item">
+                <a href="{{ route('blog.index') }}#topics" class="primary-menu__link">Topics</a>
+            </li>
+            <li class="primary-menu__item">
+                <a href="{{ route('about') }}" class="primary-menu__link {{ $currentRoute === 'about' ? 'is-active' : '' }}" @if($currentRoute === 'about') aria-current="page" @endif>About Us</a>
+            </li>
+            <li class="primary-menu__item">
+                <a href="{{ route('contact') }}" class="primary-menu__link {{ $currentRoute === 'contact' ? 'is-active' : '' }}" @if($currentRoute === 'contact') aria-current="page" @endif>Contact</a>
+            </li>
+        </ul>
+
+        <div class="site-navbar__actions">
+            <a href="{{ route('cart') }}" class="site-navbar__cart">
+                <span class="site-navbar__cart-label">Cart</span>
+                <span class="site-navbar__count">{{ $cartCount }}</span>
+            </a>
+            <a href="{{ route('contact') }}" class="site-navbar__quote">Get Quote</a>
+        </div>
+    </div>
+</nav>
