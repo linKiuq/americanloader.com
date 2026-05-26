@@ -95,7 +95,7 @@
                 <div class="flex flex-col sm:flex-row items-stretch gap-4">
                     <div class="relative min-w-full sm:min-w-[300px]">
                         <i class="fas fa-search absolute left-4 top-3.5 text-gray-500 text-sm"></i>
-                        <input type="search" id="search-box" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-blue-500 transition">
+                        <input type="search" id="search-box" value="{{ request('search') }}" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-blue-500 transition">
                     </div>
                     <div class="relative">
                         <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-blue-500 transition appearance-none cursor-pointer pr-10">

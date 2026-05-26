@@ -77,6 +77,11 @@
 
     @include('partials.header')
 
+    @php
+        $originalHeroImage = 'https://palegoldenrod-stork-751299.hostingersite.com/wp-content/uploads/2026/05/hero1wheel-loader-scaled.webp';
+        $heroFallbackImage = 'https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg';
+    @endphp
+
     <section class="relative pt-32 pb-16 lg:pt-48 lg:pb-24 overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
@@ -91,17 +96,15 @@
                         Compact, heavy-duty wheel loaders for farming, construction, and tight-space material handling. Explore our premium lineup of diesel, gas, and electric high-capacity articulator frameworks.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="/equipment" class="bg-skoopBlue hover:bg-blue-700 text-white px-8 py-4 rounded font-black uppercase tracking-wider transition shadow-lg shadow-blue-500/30 text-center text-sm">
+                        <a href="/product/new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa" class="bg-skoopBlue hover:bg-blue-700 text-white px-8 py-4 rounded font-black uppercase tracking-wider transition shadow-lg shadow-blue-500/30 text-center text-sm">
                             Shop Loaders
                         </a>
-                        <a href="#attachments" class="border border-gray-300 hover:border-skoopBlue text-gray-950 hover:text-skoopBlue px-8 py-4 rounded font-black uppercase tracking-wider transition text-center text-sm">
-                            View Attachments
-                        </a>
+
                     </div>
                 </div>
                 <div class="lg:col-span-6">
                     <div class="relative rounded-2xl p-2 border border-blue-500/10 bg-white/40 shadow-2xl shadow-blue-500/5">
-                        <img src="https://palegoldenrod-stork-751299.hostingersite.com/wp-content/uploads/2026/05/hero1wheel-loader-scaled.webp" alt="Typhon Skoop Loader" class="w-full object-cover rounded-xl border border-gray-200 relative z-10">
+                        <img src="{{ $originalHeroImage }}" onerror="this.onerror=null; this.src='{{ $heroFallbackImage }}';" alt="Typhon Skoop Loader" class="w-full object-cover rounded-xl border border-gray-200 relative z-10">
                     </div>
                 </div>
             </div>
@@ -130,7 +133,7 @@
                         <p class="text-sm text-gray-600 mb-6">Kubota D1105 engine, 25 hp, 1 ton load capacity, built for tight site loading and reliable material handling.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$16,999</span>
-                            <a href="/product/new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -146,7 +149,7 @@
                         <p class="text-sm text-gray-600 mb-6">EPA B&S engine wheel loader engineered for agile site work, fast loading, and reliable performance.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$10,798</span>
-                            <a href="/product/typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -162,7 +165,7 @@
                         <p class="text-sm text-gray-600 mb-6">Heavy-duty 4WD backhoe loader for tough digging, loading, and yard-moving jobs.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$37,080</span>
-                            <a href="/product/brand-new-typhon-terror-4wd-backhoe-loader-usa" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'brand-new-typhon-terror-4wd-backhoe-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -200,9 +203,9 @@
 
 
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8001" data-title="Wheel Loader" data-img="https://palegoldenrod-stork-751299.hostingersite.com/wp-content/uploads/2026/05/hero1wheel-loader-scaled.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8001" data-title="Wheel Loader" data-img="{{ $originalHeroImage }}" data-fallback-img="{{ $heroFallbackImage }}">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
-                    <img src="https://palegoldenrod-stork-751299.hostingersite.com/wp-content/uploads/2026/05/hero1wheel-loader-scaled.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="{{ $originalHeroImage }}" onerror="this.onerror=null; this.src='{{ $heroFallbackImage }}';" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -666,7 +669,12 @@
                     const sku = this.getAttribute('data-sku');
                     const title = this.getAttribute('data-title');
                     const img = this.getAttribute('data-img');
+                    const fallbackImg = this.getAttribute('data-fallback-img');
 
+                    modalImg.onerror = fallbackImg ? () => {
+                        modalImg.onerror = null;
+                        modalImg.src = fallbackImg;
+                    } : null;
                     modalImg.src = img;
                     modalTitle.innerText = title;
                     modalSku.innerText = sku;

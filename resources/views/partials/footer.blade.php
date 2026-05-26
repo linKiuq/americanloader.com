@@ -18,7 +18,7 @@
                     <li><a href="{{ route('equipment') }}" class="text-gray-600 hover:text-blue-600 transition">Equipment</a></li>
                     <li><a href="{{ route('attachments.index') }}" class="text-gray-600 hover:text-blue-600 transition">Attachments</a></li>
                     <li><a href="{{ route('cart') }}" class="text-gray-600 hover:text-blue-600 transition">Cart</a></li>
-                    <li><a href="{{ route('about') }}" class="text-gray-600 hover:text-blue-600 transition">About Us</a></li>
+                    <li><a href="{{ route('about') }}" class="text-gray-600 hover:text-blue-600 transition">About</a></li>
                     <li><a href="{{ route('contact') }}" class="text-gray-600 hover:text-blue-600 transition">Contact</a></li>
                 </ul>
             </div>

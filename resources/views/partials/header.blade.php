@@ -6,6 +6,7 @@
         'Forklift' => 'Forklifts',
         'Mini Excavators' => 'Mini Excavators',
         'Skid Steer Loader' => 'Skid Steer Loaders',
+        'Scissor Lifts' => 'Scissor Lifts',
         'Mini Road Roller' => 'Road Rollers',
         'Wheel Loaders' => 'Wheel Loaders',
     ];
@@ -239,8 +240,7 @@
         flex-shrink: 0;
     }
 
-    .site-navbar__cart,
-    .site-navbar__quote {
+    .site-navbar__cart {
         display: inline-flex;
         align-items: center;
         gap: 0.5rem;
@@ -256,8 +256,7 @@
         transition: background-color 160ms ease;
     }
 
-    .site-navbar__cart:hover,
-    .site-navbar__quote:hover {
+    .site-navbar__cart:hover {
         background: rgba(255, 255, 255, 0.12);
     }
 
@@ -269,19 +268,64 @@
         text-align: center;
     }
 
-    .site-navbar__quote {
-        background: #fff;
-        color: var(--nav-blue);
+    .site-navbar__search-form {
+        position: relative;
+        display: flex;
+        width: clamp(190px, 20vw, 265px);
+        height: 44px;
     }
 
-    .site-navbar__quote:hover {
-        background: #eef4ff;
+    .site-navbar__search-input {
+        flex: 1;
+        min-width: 0;
+        padding: 0 2.65rem 0 0.9rem;
+        color: #111827;
+        background: #fff;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        font-size: 0.82rem;
+    }
+
+    .site-navbar__search-input:focus {
+        border-color: var(--nav-blue-hover);
+        outline: none;
+        box-shadow: 0 0 0 2px rgba(36, 87, 189, 0.13);
+    }
+
+    .site-navbar__search-icon {
+        position: absolute;
+        top: 50%;
+        right: 0.85rem;
+        width: 17px;
+        height: 17px;
+        color: var(--nav-blue);
+        transform: translateY(-50%);
+        pointer-events: none;
+    }
+
+    .site-navbar__search-submit {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 44px;
+        height: 44px;
+        color: transparent;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+    }
+
+    .site-navbar__search-submit:focus-visible {
+        outline: 2px solid var(--nav-blue-hover);
+        outline-offset: -2px;
     }
 
     @media (max-width: 1020px) {
-        .site-navbar__brand span,
-        .site-navbar__quote {
+        .site-navbar__brand span {
             display: none;
+        }
+
+        .site-navbar__search-form {
+            width: 170px;
         }
     }
 
@@ -315,6 +359,15 @@
             left: 0;
             padding-right: 1.15rem;
             padding-left: 1.15rem;
+        }
+
+        .site-navbar__search-form {
+            width: 128px;
+        }
+
+        .site-navbar__search-input {
+            padding-left: 0.65rem;
+            font-size: 0.72rem;
         }
     }
 </style>
@@ -371,7 +424,7 @@
                 <a href="{{ route('blog.index') }}#topics" class="primary-menu__link">Topics</a>
             </li>
             <li class="primary-menu__item">
-                <a href="{{ route('about') }}" class="primary-menu__link {{ $currentRoute === 'about' ? 'is-active' : '' }}" @if($currentRoute === 'about') aria-current="page" @endif>About Us</a>
+                <a href="{{ route('about') }}" class="primary-menu__link {{ $currentRoute === 'about' ? 'is-active' : '' }}" @if($currentRoute === 'about') aria-current="page" @endif>About</a>
             </li>
             <li class="primary-menu__item">
                 <a href="{{ route('contact') }}" class="primary-menu__link {{ $currentRoute === 'contact' ? 'is-active' : '' }}" @if($currentRoute === 'contact') aria-current="page" @endif>Contact</a>
@@ -383,7 +436,14 @@
                 <span class="site-navbar__cart-label">Cart</span>
                 <span class="site-navbar__count">{{ $cartCount }}</span>
             </a>
-            <a href="{{ route('contact') }}" class="site-navbar__quote">Get Quote</a>
+            <form action="{{ route('equipment') }}#catalog" method="GET" class="site-navbar__search-form" role="search">
+                <label for="navbar-search" class="sr-only">Search products</label>
+                <input id="navbar-search" name="search" type="search" value="{{ request('search') }}" placeholder="Search products" class="site-navbar__search-input">
+                <button type="submit" class="site-navbar__search-submit" aria-label="Search products">Search</button>
+                <svg class="site-navbar__search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="m21 21-4.4-4.4m2-5.1a7.1 7.1 0 1 1-14.2 0 7.1 7.1 0 0 1 14.2 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </form>
         </div>
     </div>
 </nav>

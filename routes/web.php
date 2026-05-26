@@ -51,7 +51,7 @@ Route::delete('/store/cart', [CartController::class, 'clear'])->name('cart.clear
 Route::get('/store/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
 Route::post('/store/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
-// About Us Page
+// About Page
 Route::get('/about', function () {
     return view('about');
 })->name('about');
