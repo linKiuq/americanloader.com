@@ -31,6 +31,9 @@
                         </a>
                     @endif
                     <div class="flex flex-1 flex-col p-6">
+                        @if ($post->category)
+                            <p class="mb-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-700">{{ $post->category->name }}</p>
+                        @endif
                         <p class="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-yellow-600">{{ $post->published_at->format('M j, Y') }}</p>
                         <h2 class="text-xl font-black leading-snug">
                             <a href="{{ route('blog.show', $post->slug) }}" class="transition hover:text-yellow-600">{{ $post->title }}</a>

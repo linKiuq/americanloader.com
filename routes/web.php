@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\PasswordController as AdminPasswordController;
+use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\AttachmentController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
@@ -80,6 +82,8 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('blog', AdminBlogPostController::class)
         ->parameters(['blog' => 'post'])
         ->except(['show']);
+    Route::resource('categories', AdminCategoryController::class)->except(['show']);
+    Route::resource('tags', AdminTagController::class)->except(['show']);
 });
 
 Route::get('/topics', function () {

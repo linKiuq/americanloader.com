@@ -23,6 +23,28 @@
             <label for="excerpt" class="mb-2 block text-sm font-bold">Excerpt</label>
             <textarea id="excerpt" name="excerpt" rows="3" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">{{ old('excerpt', $post->excerpt) }}</textarea>
         </div>
+        <div class="grid gap-5 sm:grid-cols-2">
+            <div>
+                <label for="category_id" class="mb-2 block text-sm font-bold">Category</label>
+                <select id="category_id" name="category_id" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                    <option value="">No category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}" @selected((int) old('category_id', $post->category_id) === $category->id)>{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                <a href="{{ route('admin.categories.create') }}" class="mt-2 inline-block text-xs font-bold text-yellow-600 hover:text-yellow-700">Add a category</a>
+            </div>
+            <div>
+                <label for="tags" class="mb-2 block text-sm font-bold">Tags</label>
+                @php($selectedTags = collect(old('tags', $post->exists ? $post->tags->pluck('id')->all() : []))->map(fn ($id) => (int) $id)->all())
+                <select id="tags" name="tags[]" multiple class="h-32 w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                    @foreach ($tags as $tag)
+                        <option value="{{ $tag->id }}" @selected(in_array($tag->id, $selectedTags, true))>{{ $tag->name }}</option>
+                    @endforeach
+                </select>
+                <a href="{{ route('admin.tags.create') }}" class="mt-2 inline-block text-xs font-bold text-yellow-600 hover:text-yellow-700">Add tags</a>
+            </div>
+        </div>
         <div>
             <label for="content" class="mb-2 block text-sm font-bold">Article Content</label>
             <textarea id="content" name="content" rows="16" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">{{ old('content', $post->content) }}</textarea>

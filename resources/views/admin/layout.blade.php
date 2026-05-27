@@ -18,6 +18,11 @@
                 <span>Blog Admin</span>
             </a>
             <div class="flex items-center gap-5 text-sm">
+                @auth
+                    <a href="{{ route('admin.blog.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Posts</a>
+                    <a href="{{ route('admin.categories.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Categories</a>
+                    <a href="{{ route('admin.tags.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Tags</a>
+                @endauth
                 <a href="{{ route('blog.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">View Blog</a>
                 @auth
                     <a href="{{ route('admin.password.edit') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Password</a>

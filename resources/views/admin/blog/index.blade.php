@@ -27,13 +27,17 @@
                         <td class="px-6 py-5">
                             <p class="font-bold text-slate-950">{{ $post->title }}</p>
                             <p class="mt-1 text-xs text-slate-500">/blog/{{ $post->slug }}</p>
+                            <p class="mt-2 text-xs font-semibold uppercase tracking-wide text-yellow-700">{{ $post->category?->name ?? 'Uncategorized' }}</p>
                         </td>
                         <td class="px-6 py-5">
                             <span class="rounded-full px-3 py-1 text-xs font-bold {{ $post->is_published ? 'bg-green-100 text-green-700' : 'bg-slate-100 text-slate-600' }}">
                                 {{ $post->is_published ? 'Published' : 'Draft' }}
                             </span>
                         </td>
-                        <td class="hidden px-6 py-5 text-slate-500 md:table-cell">{{ $post->published_at?->format('M j, Y') ?? '-' }}</td>
+                        <td class="hidden px-6 py-5 text-slate-500 md:table-cell">
+                            <p>{{ $post->published_at?->format('M j, Y') ?? '-' }}</p>
+                            <p class="mt-1 text-xs">{{ $post->author?->name ?? 'Imported content' }}</p>
+                        </td>
                         <td class="px-6 py-5">
                             <div class="flex justify-end gap-3">
                                 @if ($post->is_published)

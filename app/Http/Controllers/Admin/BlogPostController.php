@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogPost;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -14,31 +16,45 @@ class BlogPostController extends Controller
 {
     public function index(): View
     {
-        $posts = BlogPost::latest('updated_at')->paginate(15);
+        $posts = BlogPost::with(['author', 'category'])->latest('updated_at')->paginate(15);
 
         return view('admin.blog.index', compact('posts'));
     }
 
     public function create(): View
     {
-        return view('admin.blog.create', ['post' => new BlogPost]);
+        return view('admin.blog.create', [
+            'post' => new BlogPost,
+            'categories' => Category::orderBy('name')->get(),
+            'tags' => Tag::orderBy('name')->get(),
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
     {
-        $post = BlogPost::create($this->validatedAttributes($request));
+        $attributes = $this->validatedAttributes($request);
+        $attributes['user_id'] = $request->user()->id;
+        $post = BlogPost::create($attributes);
+        $post->tags()->sync($request->input('tags', []));
 
         return to_route('admin.blog.edit', $post)->with('success', 'Blog post created.');
     }
 
     public function edit(BlogPost $post): View
     {
-        return view('admin.blog.edit', compact('post'));
+        $post->load('tags');
+
+        return view('admin.blog.edit', [
+            'post' => $post,
+            'categories' => Category::orderBy('name')->get(),
+            'tags' => Tag::orderBy('name')->get(),
+        ]);
     }
 
     public function update(Request $request, BlogPost $post): RedirectResponse
     {
         $post->update($this->validatedAttributes($request, $post));
+        $post->tags()->sync($request->input('tags', []));
 
         return to_route('admin.blog.edit', $post)->with('success', 'Blog post updated.');
     }
@@ -61,8 +77,12 @@ class BlogPostController extends Controller
             'excerpt' => ['required', 'string', 'max:500'],
             'content' => ['required', 'string', 'max:50000'],
             'image_url' => ['nullable', 'url', 'max:2048'],
+            'category_id' => ['nullable', 'integer', 'exists:categories,id'],
+            'tags' => ['nullable', 'array'],
+            'tags.*' => ['integer', 'exists:tags,id'],
         ]);
 
+        unset($attributes['tags']);
         $attributes['is_published'] = $request->boolean('is_published');
         $attributes['published_at'] = $attributes['is_published']
             ? ($post?->published_at ?? now())

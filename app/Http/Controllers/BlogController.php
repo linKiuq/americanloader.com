@@ -10,6 +10,7 @@ class BlogController extends Controller
     public function index(): View
     {
         $posts = BlogPost::published()
+            ->with('category')
             ->latest('published_at')
             ->paginate(9);
 
@@ -19,6 +20,7 @@ class BlogController extends Controller
     public function show(string $slug): View
     {
         $post = BlogPost::published()
+            ->with(['author', 'category', 'tags'])
             ->where('slug', $slug)
             ->firstOrFail();
 

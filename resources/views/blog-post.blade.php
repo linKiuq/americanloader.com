@@ -16,9 +16,19 @@
     <main class="flex-grow">
         <article class="mx-auto max-w-4xl px-6 py-12">
             <a href="{{ route('blog.index') }}" class="text-sm font-bold uppercase tracking-wider text-yellow-600 transition hover:text-yellow-700">&larr; Back to Blog</a>
-            <p class="mt-10 text-xs font-black uppercase tracking-[0.3em] text-yellow-600">{{ $post->published_at->format('F j, Y') }}</p>
+            @if ($post->category)
+                <p class="mt-10 text-xs font-black uppercase tracking-[0.3em] text-yellow-700">{{ $post->category->name }}</p>
+            @endif
+            <p class="{{ $post->category ? 'mt-3' : 'mt-10' }} text-xs font-black uppercase tracking-[0.3em] text-yellow-600">{{ $post->published_at->format('F j, Y') }}</p>
             <h1 class="mt-4 text-4xl font-black leading-tight md:text-5xl" style="font-family: 'Montserrat', sans-serif;">{{ $post->title }}</h1>
             <p class="mt-5 text-lg leading-8 text-slate-600">{{ $post->excerpt }}</p>
+            @if ($post->tags->isNotEmpty())
+                <div class="mt-5 flex flex-wrap gap-2">
+                    @foreach ($post->tags as $tag)
+                        <span class="rounded-full bg-yellow-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-yellow-800">{{ $tag->name }}</span>
+                    @endforeach
+                </div>
+            @endif
 
             @if ($post->image_url)
                 <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="mt-10 h-[420px] w-full rounded-2xl object-cover">

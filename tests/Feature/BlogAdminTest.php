@@ -3,6 +3,8 @@
 namespace Tests\Feature;
 
 use App\Models\BlogPost;
+use App\Models\Category;
+use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
@@ -118,5 +120,48 @@ class BlogAdminTest extends TestCase
             'email' => $admin->email,
             'password' => 'new-secure-password',
         ])->assertRedirect(route('admin.blog.index'));
+    }
+
+    public function test_admin_can_manage_taxonomy_and_assign_it_to_a_post(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+
+        $this->actingAs($admin)
+            ->post(route('admin.categories.store'), ['name' => 'Maintenance', 'slug' => ''])
+            ->assertRedirect(route('admin.categories.index'));
+        $this->actingAs($admin)
+            ->post(route('admin.tags.store'), ['name' => 'Hydraulics', 'slug' => ''])
+            ->assertRedirect(route('admin.tags.index'));
+
+        $category = Category::where('slug', 'maintenance')->firstOrFail();
+        $tag = Tag::where('slug', 'hydraulics')->firstOrFail();
+
+        $this->actingAs($admin)
+            ->post(route('admin.blog.store'), [
+                'title' => 'Hydraulic Inspection Guide',
+                'excerpt' => 'Maintenance guidance for hydraulic systems.',
+                'content' => 'Inspect hoses and couplings before operation.',
+                'category_id' => $category->id,
+                'tags' => [$tag->id],
+                'is_published' => '1',
+            ])
+            ->assertRedirect();
+
+        $post = BlogPost::where('slug', 'hydraulic-inspection-guide')->firstOrFail();
+
+        $this->assertSame($admin->id, $post->user_id);
+        $this->assertSame($category->id, $post->category_id);
+        $this->assertTrue($post->tags->contains($tag));
+
+        $this->get(route('blog.show', $post->slug))
+            ->assertOk()
+            ->assertSee('Maintenance')
+            ->assertSee('Hydraulics');
+
+        $this->actingAs($admin)
+            ->delete(route('admin.categories.destroy', $category))
+            ->assertRedirect(route('admin.categories.index'));
+
+        $this->assertDatabaseHas('blog_posts', ['id' => $post->id, 'category_id' => null]);
     }
 }
