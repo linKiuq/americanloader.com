@@ -14,7 +14,7 @@
     <header class="border-b border-yellow-400/15 bg-slate-950 text-white">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
             <a href="{{ route('admin.blog.index') }}" class="flex items-center gap-3 font-black uppercase tracking-wider">
-                <img src="{{ asset('logo.png') }}?v=2" alt="" class="h-11 w-11 object-contain">
+                <img src="{{ asset('power-loader-logo.png') }}" alt="" class="h-11 w-11 object-contain">
                 <span>Blog Admin</span>
             </a>
             <div class="flex items-center gap-5 text-sm">

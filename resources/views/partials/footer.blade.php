@@ -3,7 +3,7 @@
         <div class="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div>
                 <div class="flex items-center gap-2 mb-4">
-                    <img src="{{ asset('logo.png') }}?v=2" alt="Skid Steer Loader" class="h-16 w-16 object-contain">
+                    <img src="{{ asset('power-loader-logo.png') }}" alt="Power Loader" class="h-16 w-16 object-contain">
                     <span class="text-gray-950 font-black text-lg uppercase tracking-tight">Skoop <span class="text-blue-600">Loaders</span></span>
                 </div>
                 <p class="text-gray-600 text-sm leading-relaxed">
