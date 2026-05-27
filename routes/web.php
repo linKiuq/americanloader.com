@@ -1,6 +1,10 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
+use App\Http\Controllers\Admin\PasswordController as AdminPasswordController;
 use App\Http\Controllers\AttachmentController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
@@ -61,13 +65,22 @@ Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 
 // Blog index and posts
-Route::get('/blog', function () {
-    return view('blog');
-})->name('blog.index');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
-Route::get('/blog/{slug}', function (string $slug) {
-    return view('blog-post', ['slug' => $slug]);
-})->name('blog.show');
+// Blog administration
+Route::middleware('guest')->group(function (): void {
+    Route::get('/admin/login', [AdminAuthController::class, 'create'])->name('admin.login');
+    Route::post('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
+});
+Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function (): void {
+    Route::post('/logout', [AdminAuthController::class, 'destroy'])->name('logout');
+    Route::get('/password', [AdminPasswordController::class, 'edit'])->name('password.edit');
+    Route::put('/password', [AdminPasswordController::class, 'update'])->name('password.update');
+    Route::resource('blog', AdminBlogPostController::class)
+        ->parameters(['blog' => 'post'])
+        ->except(['show']);
+});
 
 Route::get('/topics', function () {
     return view('topics.index');

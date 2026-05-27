@@ -4,66 +4,49 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Blog - Typhon Machinery</title>
+    <title>Blog - Skoop Loaders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background: #fff; color: #111827; }
-    </style>
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen bg-white text-slate-950 antialiased">
     @include('partials.header')
 
-    <header class="py-16 bg-gradient-to-r from-white to-gray-50 border-b border-gray-200">
-        <div class="max-w-7xl mx-auto px-4 text-center">
-            <h1 style="font-family: 'Archivo Black', sans-serif;" class="text-4xl md:text-5xl font-black uppercase">Explore Our Blog</h1>
-            <p class="mt-4 text-gray-600 max-w-2xl mx-auto">News, updates, and machine walkthroughs from Typhon Machinery.</p>
+    <header class="border-b border-yellow-400/15 bg-slate-950 py-16 text-white">
+        <div class="mx-auto max-w-7xl px-6 text-center">
+            <p class="mb-4 text-xs font-black uppercase tracking-[0.35em] text-yellow-400">Equipment Journal</p>
+            <h1 class="text-4xl font-black uppercase md:text-5xl" style="font-family: 'Montserrat', sans-serif;">Explore Our Blog</h1>
+            <p class="mx-auto mt-4 max-w-2xl text-slate-300">News, equipment insights, and machine walkthroughs from Skoop Loaders.</p>
         </div>
     </header>
 
-    <main id="topics" class="flex-grow py-12">
-        <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-6">
-            <article class="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
-                <a href="{{ route('blog.show', 'wheel-loader-demo') }}" class="block h-48 bg-gray-100 overflow-hidden">
-                    <img src="https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg" alt="Wheel Loader Demo" class="w-full h-full object-cover">
-                </a>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg"><a href="{{ route('blog.show', 'wheel-loader-demo') }}" class="hover:text-blue-600">Telescopic Wheel Loader — Field Demo</a></h3>
-                    <p class="text-sm text-gray-600 mt-2">See how the new Telescopic Wheel Loader performs on-site with Kubota power and extra reach.</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs text-gray-500">May 12, 2026</span>
-                        <a href="{{ route('blog.show', 'wheel-loader-demo') }}" class="text-sm font-black bg-skoopBlue text-white px-3 py-2 rounded">Read</a>
+    <main id="topics" class="py-14">
+        <div class="mx-auto grid max-w-7xl grid-cols-1 gap-7 px-6 md:grid-cols-2 lg:grid-cols-3">
+            @forelse ($posts as $post)
+                <article class="flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
+                    @if ($post->image_url)
+                        <a href="{{ route('blog.show', $post->slug) }}" class="block h-52 overflow-hidden bg-slate-100">
+                            <img src="{{ $post->image_url }}" alt="{{ $post->title }}" class="h-full w-full object-cover transition duration-500 hover:scale-105">
+                        </a>
+                    @endif
+                    <div class="flex flex-1 flex-col p-6">
+                        <p class="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-yellow-600">{{ $post->published_at->format('M j, Y') }}</p>
+                        <h2 class="text-xl font-black leading-snug">
+                            <a href="{{ route('blog.show', $post->slug) }}" class="transition hover:text-yellow-600">{{ $post->title }}</a>
+                        </h2>
+                        <p class="mt-3 flex-1 text-sm leading-7 text-slate-600">{{ $post->excerpt }}</p>
+                        <a href="{{ route('blog.show', $post->slug) }}" class="mt-6 inline-flex self-start rounded bg-yellow-400 px-5 py-3 text-xs font-black uppercase tracking-wider text-slate-950 transition hover:bg-yellow-500">Read article</a>
                     </div>
-                </div>
-            </article>
-
-            <article class="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
-                <a href="{{ route('blog.show', 'thunder-vi-review') }}" class="block h-48 bg-gray-100 overflow-hidden">
-                    <img src="https://machinery.online/wp-content/uploads/2025/03/TYPHON-Thunder-VI-23hp-EPA-BS-Engine-Wheel-Loader-scaled-1.webp" alt="Thunder VI" class="w-full h-full object-cover">
-                </a>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg"><a href="{{ route('blog.show', 'thunder-vi-review') }}" class="hover:text-blue-600">TYPHON Thunder VI — Compact Review</a></h3>
-                    <p class="text-sm text-gray-600 mt-2">An operator-focused review of the Thunder VI and why crews choose it for tight-site work.</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs text-gray-500">Apr 8, 2026</span>
-                        <a href="{{ route('blog.show', 'thunder-vi-review') }}" class="text-sm font-black bg-skoopBlue text-white px-3 py-2 rounded">Read</a>
-                    </div>
-                </div>
-            </article>
-
-            <article class="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
-                <a href="{{ route('blog.show', 'typhon-terror-usecase') }}" class="block h-48 bg-gray-100 overflow-hidden">
-                    <img src="https://machinery.online/wp-content/uploads/2025/03/Brand-New-TYPHON-TERROR-4WD-Backhoe-Loader-USA.webp" alt="TYPHON TERROR" class="w-full h-full object-cover">
-                </a>
-                <div class="p-6">
-                    <h3 class="font-bold text-lg"><a href="{{ route('blog.show', 'typhon-terror-usecase') }}" class="hover:text-blue-600">TYPHON TERROR Use Cases</a></h3>
-                    <p class="text-sm text-gray-600 mt-2">How the TERROR 4WD handles heavy-duty yard work, digging, and loading across industries.</p>
-                    <div class="mt-4 flex items-center justify-between">
-                        <span class="text-xs text-gray-500">Mar 18, 2026</span>
-                        <a href="{{ route('blog.show', 'typhon-terror-usecase') }}" class="text-sm font-black bg-skoopBlue text-white px-3 py-2 rounded">Read</a>
-                    </div>
-                </div>
-            </article>
+                </article>
+            @empty
+                <p class="col-span-full rounded-xl border border-slate-200 bg-slate-50 p-8 text-center text-slate-600">No published articles are available yet.</p>
+            @endforelse
         </div>
+
+        @if ($posts->hasPages())
+            <div class="mx-auto mt-12 max-w-7xl px-6">{{ $posts->links() }}</div>
+        @endif
     </main>
 
     @include('partials.footer')
