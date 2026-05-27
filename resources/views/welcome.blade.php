@@ -844,16 +844,7 @@
 
      <section id="why-choose" class="py-24 bg-white border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
-                <div class="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-[0_45px_120px_rgba(15,23,42,0.08)] bg-slate-950">
-                    <img src="https://electricforklift.org/wp-content/uploads/2026/05/ChatGPT-Image-May-27-2026-02_31_46-PM.png" alt="TYPHON SKOOP compact loader" class="w-full h-[520px] object-cover brightness-[0.92]">
-                    <div class="absolute bottom-6 left-6 rounded-[1.5rem] bg-gradient-to-r from-skoopBlue to-sky-500/90 p-5 shadow-2xl text-white max-w-xs">
-                        <p class="text-[0.75rem] font-semibold uppercase tracking-[0.35em] text-slate-100/80">Kubota diesel engine</p>
-                        <p class="mt-2 text-4xl font-black tracking-tight leading-none">25HP</p>
-                    </div>
-                </div>
-
-                <div class="space-y-8">
+            <div class="mx-auto max-w-5xl space-y-8">
                     <div>
                         <span class="inline-flex items-center gap-2 rounded-full bg-skoopBlue/10 px-4 py-2 text-skoopBlue text-xs font-black uppercase tracking-[0.35em]">Equipment Features</span>
                         <h2 style="font-family: 'Archivo Black', sans-serif;" class="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-950 leading-tight">Why choose the TYPHON SKOOP for compact loader work?</h2>
@@ -881,7 +872,6 @@
                             <p class="mt-3 text-sm leading-6 text-slate-600">Achieve a 2,825mm dump height and tight reach for loading trucks, bins, and stacking material in narrow spaces.</p>
                         </div>
                     </div>
-                </div>
             </div>
         </div>
     </section>

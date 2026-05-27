@@ -149,6 +149,16 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('bg-yellow-400 w-8', escape: false);
     }
 
+    public function test_home_why_choose_section_does_not_render_image_panel(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('id="why-choose"', escape: false)
+            ->assertSee('Why choose the TYPHON SKOOP for compact loader work?')
+            ->assertDontSee('ChatGPT-Image-May-27-2026-02_31_46-PM.png', escape: false)
+            ->assertDontSee('Kubota diesel engine');
+    }
+
     public function test_topics_navigation_index_is_available(): void
     {
         $this->get(route('topics.index'))
