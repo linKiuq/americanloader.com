@@ -2,6 +2,7 @@
     $currentRoute = Route::currentRouteName();
     $cartCount = array_sum(session('cart.items', []));
     $shopActive = $currentRoute === 'equipment';
+    $topicsActive = $currentRoute === 'topics.index' || str_starts_with($currentRoute, 'topics.');
     $shopCategories = [
         'Forklift' => 'Forklifts',
         'Mini Excavators' => 'Mini Excavators',
@@ -50,13 +51,19 @@
     }
 
     .site-navbar__logo {
-        width: 42px;
-        height: 42px;
+        width: 60px;
+        height: 60px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        border: 2px solid rgba(255, 255, 255, 0.7);
-        border-radius: 50%;
+        flex-shrink: 0;
+        overflow: hidden;
+    }
+
+    .site-navbar__logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
     }
 
     .primary-menu,
@@ -233,6 +240,46 @@
         outline: none;
     }
 
+    .topics-dropdown {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        min-width: 300px;
+        padding: 1.25rem 1.75rem;
+        visibility: hidden;
+        opacity: 0;
+        background: #fff;
+        border-radius: 0;
+        box-shadow: 0 18px 38px rgba(15, 23, 42, 0.17), 0 5px 12px rgba(15, 23, 42, 0.08);
+        transform: translateY(8px);
+        transition: opacity 180ms ease, transform 180ms ease, visibility 180ms ease;
+    }
+
+    .primary-menu__item--topics:hover .topics-dropdown,
+    .primary-menu__item--topics:focus-within .topics-dropdown {
+        visibility: visible;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .topics-dropdown__link {
+        display: block;
+        padding: 1rem 0;
+        color: #171b23;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.045em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 160ms ease;
+    }
+
+    .topics-dropdown__link:hover,
+    .topics-dropdown__link:focus-visible {
+        color: var(--nav-blue-hover);
+        outline: none;
+    }
+
     .site-navbar__actions {
         display: flex;
         align-items: center;
@@ -376,10 +423,7 @@
     <div class="site-navbar__inner">
         <a href="{{ route('welcome') }}" class="site-navbar__brand" aria-label="Skoop Loaders home">
             <span class="site-navbar__logo" aria-hidden="true">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                    <path d="M2 12 8 6l6 6-6 6-6-6Z" fill="currentColor" />
-                    <path d="m10 12 6-6 6 6-6 6-6-6Z" fill="currentColor" opacity=".55" />
-                </svg>
+                <img src="{{ asset('logo.png') }}" alt="">
             </span>
             <span>Skoop Loaders</span>
         </a>
@@ -420,8 +464,20 @@
                     <li><a href="{{ route('attachments.skid-steer') }}" class="attachments-dropdown__link">Skid Steer Attachments</a></li>
                 </ul>
             </li>
-            <li class="primary-menu__item">
-                <a href="{{ route('blog.index') }}#topics" class="primary-menu__link">Topics</a>
+            <li class="primary-menu__item primary-menu__item--topics">
+                <a href="{{ route('topics.index') }}" class="primary-menu__link {{ $topicsActive ? 'is-active' : '' }}" @if($topicsActive) aria-current="page" @endif>
+                    Topics
+                    <svg class="primary-menu__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                        <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
+                    </svg>
+                </a>
+                <ul class="topics-dropdown" aria-label="Topics categories">
+                    <li><a href="{{ route('blog.index') }}" class="topics-dropdown__link">Blog</a></li>
+                    <li><a href="{{ route('topics.show', 'buy-guides') }}" class="topics-dropdown__link">Buy Guides</a></li>
+                    <li><a href="{{ route('topics.show', 'features') }}" class="topics-dropdown__link">Features</a></li>
+                    <li><a href="{{ route('topics.show', 'workspace') }}" class="topics-dropdown__link">Workspace</a></li>
+                    <li><a href="{{ route('topics.show', 'safety') }}" class="topics-dropdown__link">Safety</a></li>
+                </ul>
             </li>
             <li class="primary-menu__item">
                 <a href="{{ route('about') }}" class="primary-menu__link {{ $currentRoute === 'about' ? 'is-active' : '' }}" @if($currentRoute === 'about') aria-current="page" @endif>About</a>

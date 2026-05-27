@@ -78,6 +78,7 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
+            ->assertSee('src="'.asset('logo.png').'"', escape: false)
             ->assertSee('role="search"', escape: false)
             ->assertSee('action="'.route('equipment').'#catalog"', escape: false)
             ->assertSee('name="search"', escape: false)

@@ -68,3 +68,43 @@ Route::get('/blog', function () {
 Route::get('/blog/{slug}', function (string $slug) {
     return view('blog-post', ['slug' => $slug]);
 })->name('blog.show');
+
+Route::get('/topics', function () {
+    return view('topics');
+})->name('topics.index');
+
+Route::get('/topics/{topic}', function (string $topic) {
+    if ($topic === 'buy-guides') {
+        return view('topics.buy-guides');
+    }
+
+    if ($topic === 'features') {
+        return view('topics.features');
+    }
+
+    if ($topic === 'workspace') {
+        return view('topics.workspace');
+    }
+
+    if ($topic === 'safety') {
+        return view('topics.safety');
+    }
+
+    $topics = [
+        'safety' => [
+            'title' => 'Safety',
+            'description' => 'Practical safety guidance for operators, crews, and maintenance teams.',
+            'highlights' => [
+                'Follow pre-start inspection best practices.',
+                'Use attachments safely and securely.',
+                'Keep the worksite clear and communication strong.',
+            ],
+        ],
+    ];
+
+    if (! array_key_exists($topic, $topics)) {
+        abort(404);
+    }
+
+    return view('topics.detail', array_merge(['topic' => $topic], $topics[$topic]));
+})->name('topics.show');
