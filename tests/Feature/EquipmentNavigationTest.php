@@ -104,6 +104,16 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('swapFeatureContext', escape: false);
     }
 
+    public function test_home_includes_wheel_loader_solutions_section_with_real_links(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('id="wheel-loader-solutions"', escape: false)
+            ->assertSee('Built for Serious Work')
+            ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee(route('contact'), escape: false);
+    }
+
     public function test_topics_navigation_index_is_available(): void
     {
         $this->get(route('topics.index'))

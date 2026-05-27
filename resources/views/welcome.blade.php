@@ -450,6 +450,86 @@
         </div>
     </section>
 
+    <section id="wheel-loader-solutions" class="overflow-hidden border-b border-orange-500/10 bg-slate-950 py-20 text-white lg:py-28">
+        <div class="mx-auto max-w-7xl px-6 lg:px-12">
+            <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+                <div class="relative flex flex-col justify-center lg:col-span-5">
+                    <div class="aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-2xl lg:h-[620px]">
+                        <img
+                            src="https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg"
+                            alt="TYPHON wheel loader machine"
+                            class="h-full w-full object-cover transition duration-700 hover:scale-105"
+                        >
+                    </div>
+                    <div class="absolute -bottom-6 left-4 w-[205px] rounded-3xl border border-orange-300/30 bg-orange-500 p-6 text-slate-950 shadow-2xl sm:-right-6 sm:left-auto sm:w-[245px] sm:p-8">
+                        <h3 class="text-4xl font-black sm:text-5xl">15+</h3>
+                        <p class="mt-2 text-sm font-bold leading-snug sm:text-base">
+                            Years of Heavy Equipment Experience
+                        </p>
+                    </div>
+                </div>
+
+                <div class="mt-10 flex flex-col justify-center lg:col-span-7 lg:mt-0">
+                    <div class="mb-4 inline-flex items-center gap-3">
+                        <span class="h-[3px] w-12 bg-orange-500"></span>
+                        <p class="text-xs font-bold uppercase tracking-[4px] text-orange-400 sm:text-sm">
+                            Wheel Loader Solutions
+                        </p>
+                    </div>
+
+                    <h2 class="mb-6 text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl" style="font-family: 'Montserrat', sans-serif;">
+                        Powerful Wheel Loaders <br>
+                        <span class="text-orange-400">Built for Serious Work</span>
+                    </h2>
+
+                    <p class="mb-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
+                        Our wheel loaders are engineered for strength, durability, and productivity across construction, agriculture, mining, and industrial jobsites. Designed for operator control and dependable output, these machines stay productive in demanding conditions.
+                    </p>
+
+                    <div class="mb-10 grid gap-4 sm:grid-cols-2 sm:gap-5">
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">+</div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-bold text-white">High Performance</h3>
+                                <p class="text-sm leading-relaxed text-slate-400">Built to handle demanding workloads with powerful lifting capacity.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">01</div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-bold text-white">Reliable Technology</h3>
+                                <p class="text-sm leading-relaxed text-slate-400">Advanced engineering supports efficiency and long-term durability.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">HD</div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-bold text-white">Heavy Duty Design</h3>
+                                <p class="text-sm leading-relaxed text-slate-400">Tough construction built for harsh, continuous operations.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">04</div>
+                            <div>
+                                <h3 class="mb-1 text-lg font-bold text-white">Multiple Applications</h3>
+                                <p class="text-sm leading-relaxed text-slate-400">Suitable for construction, farming, and material handling.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col gap-4 sm:flex-row">
+                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="rounded-lg bg-orange-500 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white shadow-lg transition hover:bg-orange-600 sm:py-5">
+                            Explore Wheel Loaders
+                        </a>
+                        <a href="{{ route('contact') }}" class="rounded-lg border border-white/40 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:border-orange-400 hover:text-orange-300 sm:py-5">
+                            Contact Our Team
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
 
     <section class="py-24 bg-slate-50 border-t border-b border-gray-200">
