@@ -846,7 +846,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] items-center">
                 <div class="relative rounded-[2rem] overflow-hidden border border-slate-200 shadow-[0_45px_120px_rgba(15,23,42,0.08)] bg-slate-950">
-                    <img src="https://wheelloader.org/wp-content/uploads/2026/03/0801-1.png" alt="TYPHON SKOOP compact loader" class="w-full h-[520px] object-cover brightness-[0.92]">
+                    <img src="https://electricforklift.org/wp-content/uploads/2026/05/ChatGPT-Image-May-27-2026-02_31_46-PM.png" alt="TYPHON SKOOP compact loader" class="w-full h-[520px] object-cover brightness-[0.92]">
                     <div class="absolute bottom-6 left-6 rounded-[1.5rem] bg-gradient-to-r from-skoopBlue to-sky-500/90 p-5 shadow-2xl text-white max-w-xs">
                         <p class="text-[0.75rem] font-semibold uppercase tracking-[0.35em] text-slate-100/80">Kubota diesel engine</p>
                         <p class="mt-2 text-4xl font-black tracking-tight leading-none">25HP</p>
