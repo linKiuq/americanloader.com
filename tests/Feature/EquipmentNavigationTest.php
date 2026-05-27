@@ -114,6 +114,17 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee(route('contact'), escape: false);
     }
 
+    public function test_home_attachments_showcase_uses_compact_industrial_styling(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('id="attachments" class="py-16 lg:py-20 bg-slate-950', escape: false)
+            ->assertSee('max-width: 940px', escape: false)
+            ->assertSee('height: 510px', escape: false)
+            ->assertSee('text-orange-400 font-black text-xs uppercase tracking-widest')
+            ->assertSee('bg-orange-500 w-8', escape: false);
+    }
+
     public function test_topics_navigation_index_is_available(): void
     {
         $this->get(route('topics.index'))

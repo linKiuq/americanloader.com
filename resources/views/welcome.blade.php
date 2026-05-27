@@ -25,10 +25,10 @@
         /* --- SINGLE MASSIVE HIGHLIGHT ROTATOR CONTROLS --- */
         .skp-showcase-container {
             width: 100%;
-            max-w: 1140px;
+            max-width: 940px;
             margin: 0 auto;
             position: relative;
-            height: 680px; /* Enhanced vertical frame visibility */
+            height: 510px;
         }
 
         .skp-feature-card {
@@ -48,6 +48,57 @@
             visibility: visible;
             transform: scale(1) translateY(0);
             z-index: 10;
+        }
+
+        #attachments {
+            background: #0b101a;
+        }
+
+        #attachments .skp-feature-card {
+            background: #0f172a !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            border-radius: 1rem;
+            box-shadow: 0 26px 60px rgba(0, 0, 0, 0.35);
+        }
+
+        #attachments .skp-feature-card > div:first-child {
+            background: #111827 !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+            border-left-color: #e67e22 !important;
+            border-left-width: 4px;
+            overflow: hidden;
+        }
+
+        #attachments .skp-feature-card > div:first-child img {
+            filter: brightness(0.88);
+        }
+
+        #attachments .skp-feature-card > div:last-child {
+            background: rgba(15, 23, 42, 0.96) !important;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem !important;
+        }
+
+        #attachments .skp-feature-card > div:last-child div:first-child span {
+            color: #f28b37 !important;
+            font-size: 0.65rem;
+        }
+
+        #attachments .skp-feature-card > div:last-child h3 {
+            color: #ffffff !important;
+            font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+        }
+
+        #attachments .skp-feature-card > div:last-child > div:last-child > span:first-child {
+            color: #94a3b8 !important;
+            font-size: 0.65rem;
+        }
+
+        #attachments .skp-feature-card > div:last-child > div:last-child > span:last-child {
+            background: #e67e22 !important;
+            border-color: rgba(255, 255, 255, 0.16) !important;
+            font-size: 0.65rem;
+            padding: 0.55rem 0.9rem !important;
         }
 
         /* --- POPUP MODAL ARCHITECTURE --- */
@@ -341,6 +392,12 @@
             .secondary-cards-grid { grid-template-columns: 1fr; }
             .stats-footer-bar { flex-wrap: wrap; gap: 20px; }
             .stat-node { width: 45%; }
+            .skp-showcase-container { height: 400px; }
+            #attachments .skp-feature-card > div:last-child {
+                align-items: flex-start;
+                flex-direction: column;
+                padding: 1rem !important;
+            }
         }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -594,14 +651,14 @@
 
 
 
-    <section id="attachments" class="py-24 bg-white border-t border-b border-gray-200">
-        <div class="flex flex-col items-center justify-center mb-16 px-4 text-center">
-            <span class="text-skoopBlue font-black text-xs uppercase tracking-widest mb-2">// CORE ECOSYSTEM CONFIGURATOR</span>
-            <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-4xl md:text-6xl uppercase tracking-tight">System Attachments</h2>
-            <div class="w-32 h-1.5 bg-skoopBlue rounded mt-4"></div>
+    <section id="attachments" class="py-16 lg:py-20 bg-slate-950 border-t border-b border-white/10 text-white">
+        <div class="flex flex-col items-center justify-center mb-10 px-4 text-center">
+            <span class="text-orange-400 font-black text-xs uppercase tracking-widest mb-2">// CORE ECOSYSTEM CONFIGURATOR</span>
+            <h2 style="font-family: 'Montserrat', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">System Attachments</h2>
+            <div class="w-24 h-1 bg-orange-500 rounded mt-4"></div>
         </div>
 
-        <div class="skp-showcase-container max-w-6xl px-6">
+        <div class="skp-showcase-container px-6">
 
             <div class="skp-feature-card active-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8017" data-title="Ditching Machine" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Ditching_Machine_please_202604280920.webp">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
@@ -784,7 +841,7 @@
 
         </div>
 
-        <div class="flex justify-center gap-3 mt-10" id="rotation-dots"></div>
+        <div class="flex justify-center gap-3 mt-7" id="rotation-dots"></div>
     </section>
 
      <section id="why-choose" class="py-24 bg-white border-b border-gray-200">
@@ -1012,14 +1069,14 @@
     @include('partials.footer')
 
     <div id="skp-modal" class="skp-modal-overlay">
-        <div class="bg-gray-50 border-2 border-skoopBlue rounded-2xl w-[90%] max-w-[750px] shadow-2xl overflow-hidden relative transform translate-y-8 scale-95 transition-all duration-300" id="skp-modal-content">
-            <span class="absolute top-3 right-6 text-gray-950 text-4xl font-black cursor-pointer hover:text-skoopBlue transition z-10" id="skp-close-btn">&times;</span>
-            <div class="bg-white p-6 flex items-center justify-center border-b-4 border-gray-200 h-[450px]">
+        <div class="bg-slate-950 border-2 border-orange-500 rounded-2xl w-[90%] max-w-[750px] shadow-2xl overflow-hidden relative transform translate-y-8 scale-95 transition-all duration-300" id="skp-modal-content">
+            <span class="absolute top-3 right-6 text-white text-4xl font-black cursor-pointer hover:text-orange-400 transition z-10" id="skp-close-btn">&times;</span>
+            <div class="bg-slate-900 p-6 flex items-center justify-center border-b border-white/10 h-[420px]">
                 <img id="skp-modal-img" src="" alt="Blueprint Technical High Res View" class="w-full h-full object-contain">
             </div>
-            <div class="p-8 text-center bg-gray-50">
-                <span id="skp-modal-sku" class="block text-sm font-black text-skoopBlue tracking-widest uppercase mb-1"></span>
-                <h3 id="skp-modal-title" class="text-2xl font-black uppercase text-gray-950 tracking-tight"></h3>
+            <div class="p-6 text-center bg-slate-950">
+                <span id="skp-modal-sku" class="block text-sm font-black text-orange-400 tracking-widest uppercase mb-1"></span>
+                <h3 id="skp-modal-title" class="text-2xl font-black uppercase text-white tracking-tight"></h3>
             </div>
         </div>
     </div>
@@ -1036,7 +1093,7 @@
             // Generate Nav dots precisely for all 10 hardware nodes
             cards.forEach((_, index) => {
                 const dot = document.createElement('button');
-                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-skoopBlue w-8' : 'bg-gray-300'}`;
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-orange-500 w-8' : 'bg-slate-600'}`;
                 dot.setAttribute('aria-label', `Go to attachment slide ${index + 1}`);
                 dot.addEventListener('click', () => {
                     goToSlide(index);
@@ -1049,14 +1106,14 @@
 
             function goToSlide(index) {
                 cards[currentIndex].classList.remove('active-card');
-                dots[currentIndex].classList.remove('bg-skoopBlue', 'w-8');
-                dots[currentIndex].classList.add('bg-gray-300');
+                dots[currentIndex].classList.remove('bg-orange-500', 'w-8');
+                dots[currentIndex].classList.add('bg-slate-600');
 
                 currentIndex = index;
 
                 cards[currentIndex].classList.add('active-card');
-                dots[currentIndex].classList.remove('bg-gray-300');
-                dots[currentIndex].classList.add('bg-skoopBlue', 'w-8');
+                dots[currentIndex].classList.remove('bg-slate-600');
+                dots[currentIndex].classList.add('bg-orange-500', 'w-8');
             }
 
             function startTimer() {
