@@ -70,7 +70,7 @@ Route::get('/blog/{slug}', function (string $slug) {
 })->name('blog.show');
 
 Route::get('/topics', function () {
-    return view('topics');
+    return view('topics.index');
 })->name('topics.index');
 
 Route::get('/topics/{topic}', function (string $topic) {

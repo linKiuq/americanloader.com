@@ -100,4 +100,13 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee("this.src='".$fallbackImage."'", escape: false)
             ->assertSee('data-fallback-img="'.$fallbackImage.'"', escape: false);
     }
+
+    public function test_topics_navigation_index_is_available(): void
+    {
+        $this->get(route('topics.index'))
+            ->assertOk()
+            ->assertSee('Topics')
+            ->assertSee(route('topics.show', 'buy-guides'), escape: false)
+            ->assertSee(route('topics.show', 'safety'), escape: false);
+    }
 }
