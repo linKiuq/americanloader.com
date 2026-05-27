@@ -355,7 +355,7 @@
         /* --- Footer Statistics Bar Panel --- */
         .stats-footer-bar {
             display: flex;
-            gap: 50px;
+            gap: clamp(2rem, 8vw, 6rem);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 30px;
             margin-top: 40px;
@@ -370,17 +370,18 @@
 
         .stat-number {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 900;
+            font-size: clamp(1rem, 1.6vw, 1.2rem);
+            font-weight: 800;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
             color: #ffffff !important;
         }
 
         .stat-label {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
             color: #e2e8f0 !important;
-            margin-top: 2px;
+            margin-top: 6px;
         }
 
         @media (max-width: 1024px) {
@@ -490,56 +491,16 @@
 
         <div class="stats-footer-bar">
             <div class="stat-node">
-                <div class="stat-number">500+</div>
-                <div class="stat-label">Products Active</div>
+                <div class="stat-number">Shipping Sitewide</div>
+                <div class="stat-label">Free US shipping</div>
             </div>
             <div class="stat-node">
-                <div class="stat-number">12K+</div>
-                <div class="stat-label">Customers Served</div>
+                <div class="stat-number">Return Policy</div>
+                <div class="stat-label">30 Days return &amp; Exchange</div>
             </div>
             <div class="stat-node">
-                <div class="stat-number">4.9★</div>
-                <div class="stat-label">Rating Index</div>
-            </div>
-            <div class="stat-node">
-                <div class="stat-number">10yr</div>
-                <div class="stat-label">In Business Ops</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="service-assurances" class="border-y border-yellow-400/15 bg-slate-950 text-white">
-        <div class="mx-auto grid max-w-7xl gap-6 px-6 py-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:px-12">
-            <div class="flex items-center gap-4">
-                <i data-lucide="truck" class="h-11 w-11 shrink-0 text-yellow-400"></i>
-                <div>
-                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">Shipping Sitewide</h2>
-                    <p class="mt-1 text-sm text-slate-400">Free US shipping</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <i data-lucide="package-open" class="h-11 w-11 shrink-0 text-yellow-400"></i>
-                <div>
-                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">Return Policy</h2>
-                    <p class="mt-1 text-sm text-slate-400">30 Days return &amp; Exchange</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <i data-lucide="shield-check" class="h-11 w-11 shrink-0 text-yellow-400"></i>
-                <div>
-                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">1 Year Warranty</h2>
-                    <p class="mt-1 text-sm text-slate-400">On all equipment purchases</p>
-                </div>
-            </div>
-
-            <div class="flex items-center gap-4">
-                <i data-lucide="headset" class="h-11 w-11 shrink-0 text-yellow-400"></i>
-                <div>
-                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">24/7 Support</h2>
-                    <p class="mt-1 text-sm text-slate-400">Get Online Support 24/7</p>
-                </div>
+                <div class="stat-number">1 Year Warranty</div>
+                <div class="stat-label">On all equipment purchases</div>
             </div>
         </div>
     </section>

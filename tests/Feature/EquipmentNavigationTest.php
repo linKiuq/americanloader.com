@@ -120,19 +120,21 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee(route('contact'), escape: false);
     }
 
-    public function test_home_includes_service_assurances_strip(): void
+    public function test_home_replaces_hero_statistics_with_service_assurances(): void
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('id="service-assurances"', escape: false)
             ->assertSee('Shipping Sitewide')
             ->assertSee('Free US shipping')
             ->assertSee('Return Policy')
             ->assertSee('30 Days return &amp; Exchange', escape: false)
             ->assertSee('1 Year Warranty')
             ->assertSee('On all equipment purchases')
-            ->assertSee('24/7 Support')
-            ->assertSee('Get Online Support 24/7');
+            ->assertDontSee('id="service-assurances"', escape: false)
+            ->assertDontSee('Products Active')
+            ->assertDontSee('Customers Served')
+            ->assertDontSee('Rating Index')
+            ->assertDontSee('In Business Ops');
     }
 
     public function test_home_attachments_showcase_uses_compact_industrial_styling(): void
