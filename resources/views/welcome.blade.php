@@ -508,6 +508,42 @@
         </div>
     </section>
 
+    <section id="service-assurances" class="border-y border-yellow-400/15 bg-slate-950 text-white">
+        <div class="mx-auto grid max-w-7xl gap-6 px-6 py-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8 lg:px-12">
+            <div class="flex items-center gap-4">
+                <i data-lucide="truck" class="h-11 w-11 shrink-0 text-yellow-400"></i>
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">Shipping Sitewide</h2>
+                    <p class="mt-1 text-sm text-slate-400">Free US shipping</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <i data-lucide="package-open" class="h-11 w-11 shrink-0 text-yellow-400"></i>
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">Return Policy</h2>
+                    <p class="mt-1 text-sm text-slate-400">30 Days return &amp; Exchange</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <i data-lucide="shield-check" class="h-11 w-11 shrink-0 text-yellow-400"></i>
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">1 Year Warranty</h2>
+                    <p class="mt-1 text-sm text-slate-400">On all equipment purchases</p>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <i data-lucide="headset" class="h-11 w-11 shrink-0 text-yellow-400"></i>
+                <div>
+                    <h2 class="text-sm font-black uppercase tracking-wide text-white sm:text-base">24/7 Support</h2>
+                    <p class="mt-1 text-sm text-slate-400">Get Online Support 24/7</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="wheel-loader-solutions" class="overflow-hidden border-b border-yellow-400/10 bg-slate-950 py-20 text-white lg:py-28">
         <div class="mx-auto max-w-7xl px-6 lg:px-12">
             <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
