@@ -64,7 +64,7 @@
         #attachments .skp-feature-card > div:first-child {
             background: #111827 !important;
             border-color: rgba(255, 255, 255, 0.1) !important;
-            border-left-color: #e67e22 !important;
+            border-left-color: #facc15 !important;
             border-left-width: 4px;
             overflow: hidden;
         }
@@ -80,7 +80,7 @@
         }
 
         #attachments .skp-feature-card > div:last-child div:first-child span {
-            color: #f28b37 !important;
+            color: #fde047 !important;
             font-size: 0.65rem;
         }
 
@@ -95,7 +95,8 @@
         }
 
         #attachments .skp-feature-card > div:last-child > div:last-child > span:last-child {
-            background: #e67e22 !important;
+            background: #facc15 !important;
+            color: #0b101a !important;
             border-color: rgba(255, 255, 255, 0.16) !important;
             font-size: 0.65rem;
             padding: 0.55rem 0.9rem !important;
@@ -159,9 +160,9 @@
         .tag-pill {
             display: inline-flex;
             align-items: center;
-            background: rgba(230, 126, 34, 0.2);
-            color: #e67e22;
-            border: 1px solid rgba(230, 126, 34, 0.3);
+            background: rgba(250, 204, 21, 0.14);
+            color: #facc15;
+            border: 1px solid rgba(250, 204, 21, 0.34);
             padding: 6px 14px;
             font-family: 'Montserrat', sans-serif;
             font-size: 0.75rem;
@@ -184,7 +185,7 @@
         }
 
         .hero-title span {
-            color: #e67e22 !important;
+            color: #facc15 !important;
         }
 
         .hero-sub-description {
@@ -201,7 +202,7 @@
             width: 4px;
         }
         .hero-sub-description::-webkit-scrollbar-thumb {
-            background: #e67e22;
+            background: #facc15;
             border-radius: 4px;
         }
 
@@ -211,9 +212,9 @@
             flex-wrap: wrap;
         }
 
-        .btn-orange {
-            background-color: #e67e22;
-            color: #ffffff !important;
+        .btn-yellow {
+            background-color: #facc15;
+            color: #0b101a !important;
             font-family: 'Montserrat', sans-serif;
             font-weight: 800;
             font-size: 0.85rem;
@@ -227,8 +228,8 @@
             text-decoration: none;
         }
 
-        .btn-orange:hover {
-            background-color: #d35400;
+        .btn-yellow:hover {
+            background-color: #eab308;
         }
 
         .btn-outline {
@@ -262,7 +263,7 @@
 
         .main-hero-card {
             background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(230, 126, 34, 0.4);
+            border: 1px solid rgba(250, 204, 21, 0.42);
             border-radius: 6px;
             padding: 25px;
             backdrop-filter: blur(12px);
@@ -270,7 +271,7 @@
         }
 
         .main-hero-card-tag {
-            color: #e67e22;
+            color: #facc15;
             font-size: 0.75rem;
             font-weight: 700;
             text-transform: uppercase;
@@ -324,12 +325,12 @@
         }
 
         .spec-selection-button.active-feature {
-            background: rgba(230, 126, 34, 0.15);
-            border-color: #e67e22;
+            background: rgba(250, 204, 21, 0.14);
+            border-color: #facc15;
         }
 
         .spec-btn-icon {
-            color: #e67e22;
+            color: #facc15;
             font-size: 1.3rem;
             margin-bottom: 12px;
             font-weight: bold;
@@ -422,17 +423,17 @@
                 </div>
 
                 <div class="button-group">
-                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="btn-orange" id="primary-action-btn">Shop Skoop Loader</a>
+                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="btn-yellow" id="primary-action-btn">Shop Skoop Loader</a>
                     <a href="#specs" class="btn-outline">View All Specs</a>
                 </div>
             </div>
 
             <div class="right-interactive-menu">
                 <div class="main-hero-card">
-                    <div class="main-hero-card-tag">🔥 Active Selected Feature</div>
+                    <div class="main-hero-card-tag">// Active Selected Feature</div>
                     <div class="main-hero-card-title" id="card-feature-title">Engine Power and Torque</div>
                     <div class="main-hero-card-sub" id="card-feature-sub">$17,848.95 Base Value — Torque Rise Parameters</div>
-                    <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="btn-orange" style="display: inline-block; padding: 10px 20px; font-size: 0.75rem;" id="secondary-action-btn">Configure Asset &rarr;</a>
+                    <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="btn-yellow" style="display: inline-block; padding: 10px 20px; font-size: 0.75rem;" id="secondary-action-btn">Configure Asset &rarr;</a>
                 </div>
 
                 <div class="secondary-cards-grid">
@@ -507,7 +508,7 @@
         </div>
     </section>
 
-    <section id="wheel-loader-solutions" class="overflow-hidden border-b border-orange-500/10 bg-slate-950 py-20 text-white lg:py-28">
+    <section id="wheel-loader-solutions" class="overflow-hidden border-b border-yellow-400/10 bg-slate-950 py-20 text-white lg:py-28">
         <div class="mx-auto max-w-7xl px-6 lg:px-12">
             <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
                 <div class="relative flex flex-col justify-center lg:col-span-5">
@@ -518,7 +519,7 @@
                             class="h-full w-full object-cover transition duration-700 hover:scale-105"
                         >
                     </div>
-                    <div class="absolute -bottom-6 left-4 w-[205px] rounded-3xl border border-orange-300/30 bg-orange-500 p-6 text-slate-950 shadow-2xl sm:-right-6 sm:left-auto sm:w-[245px] sm:p-8">
+                    <div class="absolute -bottom-6 left-4 w-[205px] rounded-3xl border border-yellow-200/30 bg-yellow-400 p-6 text-slate-950 shadow-2xl sm:-right-6 sm:left-auto sm:w-[245px] sm:p-8">
                         <h3 class="text-4xl font-black sm:text-5xl">15+</h3>
                         <p class="mt-2 text-sm font-bold leading-snug sm:text-base">
                             Years of Heavy Equipment Experience
@@ -528,15 +529,15 @@
 
                 <div class="mt-10 flex flex-col justify-center lg:col-span-7 lg:mt-0">
                     <div class="mb-4 inline-flex items-center gap-3">
-                        <span class="h-[3px] w-12 bg-orange-500"></span>
-                        <p class="text-xs font-bold uppercase tracking-[4px] text-orange-400 sm:text-sm">
+                        <span class="h-[3px] w-12 bg-yellow-400"></span>
+                        <p class="text-xs font-bold uppercase tracking-[4px] text-yellow-400 sm:text-sm">
                             Wheel Loader Solutions
                         </p>
                     </div>
 
                     <h2 class="mb-6 text-4xl font-black leading-tight text-white lg:text-5xl xl:text-6xl" style="font-family: 'Montserrat', sans-serif;">
                         Powerful Wheel Loaders <br>
-                        <span class="text-orange-400">Built for Serious Work</span>
+                        <span class="text-yellow-400">Built for Serious Work</span>
                     </h2>
 
                     <p class="mb-8 max-w-2xl text-base leading-relaxed text-slate-300 sm:text-lg">
@@ -544,29 +545,29 @@
                     </p>
 
                     <div class="mb-10 grid gap-4 sm:grid-cols-2 sm:gap-5">
-                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
-                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">+</div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-yellow-400/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-xl font-bold text-slate-950">+</div>
                             <div>
                                 <h3 class="mb-1 text-lg font-bold text-white">High Performance</h3>
                                 <p class="text-sm leading-relaxed text-slate-400">Built to handle demanding workloads with powerful lifting capacity.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
-                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">01</div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-yellow-400/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-xl font-bold text-slate-950">01</div>
                             <div>
                                 <h3 class="mb-1 text-lg font-bold text-white">Reliable Technology</h3>
                                 <p class="text-sm leading-relaxed text-slate-400">Advanced engineering supports efficiency and long-term durability.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
-                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">HD</div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-yellow-400/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-xl font-bold text-slate-950">HD</div>
                             <div>
                                 <h3 class="mb-1 text-lg font-bold text-white">Heavy Duty Design</h3>
                                 <p class="text-sm leading-relaxed text-slate-400">Tough construction built for harsh, continuous operations.</p>
                             </div>
                         </div>
-                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-orange-500/40 hover:bg-white/[0.07]">
-                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-orange-500 text-xl font-bold text-slate-950">04</div>
+                        <div class="flex items-start gap-4 rounded-2xl border border-white/10 bg-white/[0.04] p-4 transition hover:border-yellow-400/40 hover:bg-white/[0.07]">
+                            <div class="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-yellow-400 text-xl font-bold text-slate-950">04</div>
                             <div>
                                 <h3 class="mb-1 text-lg font-bold text-white">Multiple Applications</h3>
                                 <p class="text-sm leading-relaxed text-slate-400">Suitable for construction, farming, and material handling.</p>
@@ -575,10 +576,10 @@
                     </div>
 
                     <div class="flex flex-col gap-4 sm:flex-row">
-                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="rounded-lg bg-orange-500 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white shadow-lg transition hover:bg-orange-600 sm:py-5">
+                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="rounded-lg bg-yellow-400 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-slate-950 shadow-lg transition hover:bg-yellow-500 sm:py-5">
                             Explore Wheel Loaders
                         </a>
-                        <a href="{{ route('contact') }}" class="rounded-lg border border-white/40 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:border-orange-400 hover:text-orange-300 sm:py-5">
+                        <a href="{{ route('contact') }}" class="rounded-lg border border-white/40 px-8 py-4 text-center text-sm font-bold uppercase tracking-wider text-white transition hover:border-yellow-400 hover:text-yellow-300 sm:py-5">
                             Contact Our Team
                         </a>
                     </div>
@@ -653,9 +654,9 @@
 
     <section id="attachments" class="py-16 lg:py-20 bg-slate-950 border-t border-b border-white/10 text-white">
         <div class="flex flex-col items-center justify-center mb-10 px-4 text-center">
-            <span class="text-orange-400 font-black text-xs uppercase tracking-widest mb-2">// CORE ECOSYSTEM CONFIGURATOR</span>
+            <span class="text-yellow-400 font-black text-xs uppercase tracking-widest mb-2">// CORE ECOSYSTEM CONFIGURATOR</span>
             <h2 style="font-family: 'Montserrat', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight text-white">System Attachments</h2>
-            <div class="w-24 h-1 bg-orange-500 rounded mt-4"></div>
+            <div class="w-24 h-1 bg-yellow-400 rounded mt-4"></div>
         </div>
 
         <div class="skp-showcase-container px-6">
@@ -1069,13 +1070,13 @@
     @include('partials.footer')
 
     <div id="skp-modal" class="skp-modal-overlay">
-        <div class="bg-slate-950 border-2 border-orange-500 rounded-2xl w-[90%] max-w-[750px] shadow-2xl overflow-hidden relative transform translate-y-8 scale-95 transition-all duration-300" id="skp-modal-content">
-            <span class="absolute top-3 right-6 text-white text-4xl font-black cursor-pointer hover:text-orange-400 transition z-10" id="skp-close-btn">&times;</span>
+        <div class="bg-slate-950 border-2 border-yellow-400 rounded-2xl w-[90%] max-w-[750px] shadow-2xl overflow-hidden relative transform translate-y-8 scale-95 transition-all duration-300" id="skp-modal-content">
+            <span class="absolute top-3 right-6 text-white text-4xl font-black cursor-pointer hover:text-yellow-400 transition z-10" id="skp-close-btn">&times;</span>
             <div class="bg-slate-900 p-6 flex items-center justify-center border-b border-white/10 h-[420px]">
                 <img id="skp-modal-img" src="" alt="Blueprint Technical High Res View" class="w-full h-full object-contain">
             </div>
             <div class="p-6 text-center bg-slate-950">
-                <span id="skp-modal-sku" class="block text-sm font-black text-orange-400 tracking-widest uppercase mb-1"></span>
+                <span id="skp-modal-sku" class="block text-sm font-black text-yellow-400 tracking-widest uppercase mb-1"></span>
                 <h3 id="skp-modal-title" class="text-2xl font-black uppercase text-white tracking-tight"></h3>
             </div>
         </div>
@@ -1093,7 +1094,7 @@
             // Generate Nav dots precisely for all 10 hardware nodes
             cards.forEach((_, index) => {
                 const dot = document.createElement('button');
-                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-orange-500 w-8' : 'bg-slate-600'}`;
+                dot.className = `w-3 h-3 rounded-full transition-all duration-300 ${index === 0 ? 'bg-yellow-400 w-8' : 'bg-slate-600'}`;
                 dot.setAttribute('aria-label', `Go to attachment slide ${index + 1}`);
                 dot.addEventListener('click', () => {
                     goToSlide(index);
@@ -1106,14 +1107,14 @@
 
             function goToSlide(index) {
                 cards[currentIndex].classList.remove('active-card');
-                dots[currentIndex].classList.remove('bg-orange-500', 'w-8');
+                dots[currentIndex].classList.remove('bg-yellow-400', 'w-8');
                 dots[currentIndex].classList.add('bg-slate-600');
 
                 currentIndex = index;
 
                 cards[currentIndex].classList.add('active-card');
                 dots[currentIndex].classList.remove('bg-slate-600');
-                dots[currentIndex].classList.add('bg-orange-500', 'w-8');
+                dots[currentIndex].classList.add('bg-yellow-400', 'w-8');
             }
 
             function startTimer() {

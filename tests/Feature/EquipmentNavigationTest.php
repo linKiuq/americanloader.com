@@ -84,6 +84,8 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('role="search"', escape: false)
             ->assertSee('action="'.route('equipment').'#catalog"', escape: false)
             ->assertSee('name="search"', escape: false)
+            ->assertSee('--nav-bg: #0b101a', escape: false)
+            ->assertSee('--nav-yellow: #facc15', escape: false)
             ->assertDontSee('Get Quote');
 
         $this->get(route('equipment', ['search' => 'scissor lift']))
@@ -101,6 +103,10 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('Engine Power and Torque')
             ->assertSee('https://minexcavators.com/wp-content/uploads/2026/05/image.webp', escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee('background-color: #facc15', escape: false)
+            ->assertDontSee('#e67e22', escape: false)
+            ->assertDontSee('orange-', escape: false)
+            ->assertDontSee('🔥', escape: false)
             ->assertSee('swapFeatureContext', escape: false);
     }
 
@@ -121,8 +127,8 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('id="attachments" class="py-16 lg:py-20 bg-slate-950', escape: false)
             ->assertSee('max-width: 940px', escape: false)
             ->assertSee('height: 510px', escape: false)
-            ->assertSee('text-orange-400 font-black text-xs uppercase tracking-widest')
-            ->assertSee('bg-orange-500 w-8', escape: false);
+            ->assertSee('text-yellow-400 font-black text-xs uppercase tracking-widest')
+            ->assertSee('bg-yellow-400 w-8', escape: false);
     }
 
     public function test_topics_navigation_index_is_available(): void
