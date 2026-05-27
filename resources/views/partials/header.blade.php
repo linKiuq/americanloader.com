@@ -447,7 +447,7 @@
     <div class="site-navbar__inner">
         <a href="{{ route('welcome') }}" class="site-navbar__brand" aria-label="Skoop Loaders home">
             <span class="site-navbar__logo" aria-hidden="true">
-                <img src="{{ asset('logo.png') }}" alt="">
+                <img src="{{ asset('logo.png') }}?v=2" alt="">
             </span>
             <span>Skoop Loaders</span>
         </a>
