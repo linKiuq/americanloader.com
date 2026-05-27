@@ -7,7 +7,7 @@
     <title>TYPHON SKOOP | Heavy Machinery Ecosystem</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
@@ -71,6 +71,277 @@
             display: flex;
             opacity: 1;
         }
+
+        /* --- Global Reset & Variables --- */
+        .industrial-hero-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            background: linear-gradient(rgba(11, 16, 26, 0.85), rgba(11, 16, 26, 0.85)),
+                        url('https://minexcavators.com/wp-content/uploads/2026/05/image.webp') no-repeat center center !important;
+            background-size: cover !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 80px 6%;
+            box-sizing: border-box;
+        }
+
+        /* --- Global Grid Workspace Framework --- */
+        .hero-main-layout {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 50px;
+            align-items: center;
+            margin-top: auto;
+            margin-bottom: auto;
+            width: 100%;
+            max-width: 1440px;
+        }
+
+        /* --- Left Column Content Side Styles --- */
+        .left-content-panel {
+            max-width: 680px;
+            text-align: left;
+        }
+
+        .tag-pill {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(230, 126, 34, 0.2);
+            color: #e67e22;
+            border: 1px solid rgba(230, 126, 34, 0.3);
+            padding: 6px 14px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 25px;
+            border-radius: 3px;
+        }
+
+        .hero-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-weight: 900;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: -1.5px;
+            margin-bottom: 25px;
+            color: #ffffff !important;
+        }
+
+        .hero-title span {
+            color: #e67e22 !important;
+        }
+
+        .hero-sub-description {
+            font-size: 1.05rem;
+            line-height: 1.6;
+            color: #ffffff !important;
+            margin-bottom: 35px;
+            max-height: 180px;
+            overflow-y: auto;
+            padding-right: 15px;
+        }
+
+        .hero-sub-description::-webkit-scrollbar {
+            width: 4px;
+        }
+        .hero-sub-description::-webkit-scrollbar-thumb {
+            background: #e67e22;
+            border-radius: 4px;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .btn-orange {
+            background-color: #e67e22;
+            color: #ffffff !important;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-orange:hover {
+            background-color: #d35400;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #ffffff !important;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 18px 36px;
+            border: 1.5px solid rgba(255, 255, 255, 0.4);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+            text-decoration: none;
+        }
+
+        .btn-outline:hover {
+            border-color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* --- Right Column Interactive Menu Grid --- */
+        .right-interactive-menu {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            width: 100%;
+        }
+
+        .main-hero-card {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(230, 126, 34, 0.4);
+            border-radius: 6px;
+            padding: 25px;
+            backdrop-filter: blur(12px);
+            position: relative;
+        }
+
+        .main-hero-card-tag {
+            color: #e67e22;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .main-hero-card-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+            color: #ffffff !important;
+        }
+
+        .main-hero-card-sub {
+            font-size: 0.85rem;
+            color: #e2e8f0 !important;
+            margin-bottom: 15px;
+        }
+
+        /* Core Dynamic Secondary Grid layout from template */
+        .secondary-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .spec-selection-button {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            padding: 20px;
+            text-align: left;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 120px;
+        }
+
+        .spec-selection-button:hover {
+            background: rgba(255, 255, 255, 0.12);
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .spec-selection-button.active-feature {
+            background: rgba(230, 126, 34, 0.15);
+            border-color: #e67e22;
+        }
+
+        .spec-btn-icon {
+            color: #e67e22;
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: bold;
+        }
+
+        .spec-btn-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            line-height: 1.2;
+            color: #ffffff !important;
+        }
+
+        .spec-btn-sub {
+            font-size: 0.75rem;
+            color: #e2e8f0 !important;
+            margin-top: 4px;
+        }
+
+        /* --- Footer Statistics Bar Panel --- */
+        .stats-footer-bar {
+            display: flex;
+            gap: 50px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 30px;
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1440px;
+        }
+
+        .stat-node {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: #ffffff !important;
+        }
+
+        .stat-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #e2e8f0 !important;
+            margin-top: 2px;
+        }
+
+        @media (max-width: 1024px) {
+            .hero-main-layout { grid-template-columns: 1fr; gap: 40px; }
+            .left-content-panel { max-width: 100%; }
+            .stats-footer-bar { gap: 30px; justify-content: space-between; }
+        }
+
+        @media (max-width: 600px) {
+            .secondary-cards-grid { grid-template-columns: 1fr; }
+            .stats-footer-bar { flex-wrap: wrap; gap: 20px; }
+            .stat-node { width: 45%; }
+        }
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
@@ -83,31 +354,98 @@
         $heroFallbackImage = 'https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg';
     @endphp
 
-    <section class="relative pt-32 pb-16 lg:pt-48 lg:pb-24 overflow-hidden bg-gradient-to-b from-white via-gray-50 to-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="lg:grid lg:grid-cols-12 lg:gap-16 items-center">
-                <div class="lg:col-span-6 text-center lg:text-left mb-12 lg:mb-0">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded text-skoopBlue text-xs font-black uppercase tracking-widest mb-6">
-                        // Heavy Duty Forward Moving Power
-                    </div>
-                    <h1 style="font-family: 'Archivo Black', sans-serif;" class="text-5xl lg:text-7xl font-black tracking-tight uppercase leading-none mb-6">
-                        Built to <span class="text-skoopBlue">Lift More</span>
-                    </h1>
-                    <p class="mt-4 text-xl text-gray-600 mb-8 max-w-2xl mx-auto lg:mx-0 font-medium">
-                        Compact, heavy-duty wheel loaders for farming, construction, and tight-space material handling. Explore our premium lineup of diesel, gas, and electric high-capacity articulator frameworks.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                        <a href="/product/new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa" class="bg-skoopBlue hover:bg-blue-700 text-white px-8 py-4 rounded font-black uppercase tracking-wider transition shadow-lg shadow-blue-500/30 text-center text-sm">
-                            Shop Loaders
-                        </a>
+    <section class="industrial-hero-section">
+        <div class="hero-main-layout">
+            <div class="left-content-panel">
+                <div class="tag-pill">Professional Grade Equipment</div>
+                <h1 class="hero-title" id="main-title-view">Power Your <span>Next Project</span> With Confidence</h1>
 
+                <div class="hero-sub-description" id="main-desc-view">
+                    Choosing a wheel loader based on size or brand alone leaves money on the table. The machines that consistently deliver on the job share a set of core performance features that determine how much material they move, how efficiently they operate, and how well they hold up under real working conditions. Understanding these specs helps you move beyond the brochure and make a decision grounded in actual jobsite output.
+                </div>
+
+                <div class="button-group">
+                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="btn-orange" id="primary-action-btn">Shop Skoop Loader</a>
+                    <a href="#specs" class="btn-outline">View All Specs</a>
+                </div>
+            </div>
+
+            <div class="right-interactive-menu">
+                <div class="main-hero-card">
+                    <div class="main-hero-card-tag">🔥 Active Selected Feature</div>
+                    <div class="main-hero-card-title" id="card-feature-title">Engine Power and Torque</div>
+                    <div class="main-hero-card-sub" id="card-feature-sub">$17,848.95 Base Value — Torque Rise Parameters</div>
+                    <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="btn-orange" style="display: inline-block; padding: 10px 20px; font-size: 0.75rem;" id="secondary-action-btn">Configure Asset &rarr;</a>
+                </div>
+
+                <div class="secondary-cards-grid">
+                    <div class="spec-selection-button active-feature" onclick="swapFeatureContext(0, this)">
+                        <div class="spec-btn-icon">⚙️</div>
+                        <div>
+                            <div class="spec-btn-title">Engine Power</div>
+                            <div class="spec-btn-sub">Torque Rise Spec</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-selection-button" onclick="swapFeatureContext(1, this)">
+                        <div class="spec-btn-icon">💥</div>
+                        <div>
+                            <div class="spec-btn-title">Breakout Force</div>
+                            <div class="spec-btn-sub">Cylinder Crowding</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-selection-button" onclick="swapFeatureContext(2, this)">
+                        <div class="spec-btn-icon">🏋️</div>
+                        <div>
+                            <div class="spec-btn-title">Lift Capacity</div>
+                            <div class="spec-btn-sub">Rated Load Tipping</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-selection-button" onclick="swapFeatureContext(3, this)">
+                        <div class="spec-btn-icon">🪣</div>
+                        <div>
+                            <div class="spec-btn-title">Bucket Fill</div>
+                            <div class="spec-btn-sub">Volumetric Metrics</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-selection-button" onclick="swapFeatureContext(4, this)">
+                        <div class="spec-btn-icon">💧</div>
+                        <div>
+                            <div class="spec-btn-title">Hydraulic Flow</div>
+                            <div class="spec-btn-sub">Load Sensing Pump</div>
+                        </div>
+                    </div>
+
+                    <div class="spec-selection-button" onclick="swapFeatureContext(5, this)">
+                        <div class="spec-btn-icon">⏱️</div>
+                        <div>
+                            <div class="spec-btn-title">Cycle Times</div>
+                            <div class="spec-btn-sub">Raise & Dump Speeds</div>
+                        </div>
                     </div>
                 </div>
-                <div class="lg:col-span-6">
-                    <div class="relative rounded-2xl p-2 border border-blue-500/10 bg-white/40 shadow-2xl shadow-blue-500/5">
-                        <img src="{{ $originalHeroImage }}" onerror="this.onerror=null; this.src='{{ $heroFallbackImage }}';" alt="Typhon Skoop Loader" class="w-full object-cover rounded-xl border border-gray-200 relative z-10">
-                    </div>
-                </div>
+            </div>
+        </div>
+
+        <div class="stats-footer-bar">
+            <div class="stat-node">
+                <div class="stat-number">500+</div>
+                <div class="stat-label">Products Active</div>
+            </div>
+            <div class="stat-node">
+                <div class="stat-number">12K+</div>
+                <div class="stat-label">Customers Served</div>
+            </div>
+            <div class="stat-node">
+                <div class="stat-number">4.9★</div>
+                <div class="stat-label">Rating Index</div>
+            </div>
+            <div class="stat-node">
+                <div class="stat-number">10yr</div>
+                <div class="stat-label">In Business Ops</div>
             </div>
         </div>
     </section>
@@ -700,6 +1038,62 @@
                 if (e.target === modal) closeModal();
             });
         });
+    </script>
+
+    <script>
+        const operationalSpecs = [
+            {
+                title: "Engine Power and Torque",
+                sub: "Torque Rise Parameters",
+                price: "$17,848.95 Base Value",
+                desc: "Engine horsepower sets the ceiling for what a wheel loader can do, but torque is what actually gets material moving. High torque at low engine speeds gives the loader the pulling force needed to penetrate dense material, push into heavy piles, and maintain momentum without bogging down the drivetrain. A well-matched engine delivers strong torque across a broad RPM range rather than only at peak RPM. This means the machine responds immediately when the operator drives into a pile instead of requiring the engine to rev before producing useful force. When comparing engine performance, pay attention to: Peak torque and the RPM range where it is available; Torque rise — how much torque increases as load rises and engine speed drops; Engine response time under sudden load changes. An engine with strong torque rise maintains productivity during demanding cycles, while a less capable engine forces operators to slow down or take smaller bites of material."
+            },
+            {
+                title: "Breakout Force Execution",
+                sub: "Hydraulic Cylinder Push",
+                price: "Premium Rigging Included",
+                desc: "Breakout force is the measure of how powerfully the bucket can penetrate and lift material from a static position. It directly determines how aggressively the machine can attack a stockpile, dig into compacted material, or strip a surface. Higher breakout force means shorter dig cycles, less wheel spin, and better material fill on each pass. In practical terms, it is the difference between a loader that attacks a pile decisively and one that struggles to fill the bucket cleanly. Two numbers define breakout performance: Bucket breakout force (The force generated by the bucket tilt cylinders when crowding the bucket) and Lift arm breakout force (The force produced by the lift cylinders when raising the boom). Both matter. A machine with strong bucket breakout but weak lift performance will fill the bucket efficiently but struggle to carry heavy loads at height — a real limitation when loading tall haul trucks."
+            },
+            {
+                title: "Lift Capacity & Rated Payload",
+                sub: "Tipping Safety Margin",
+                price: "1-Ton Stability Standard",
+                desc: "Lift capacity defines how much weight the loader can safely pick up and carry. The rated operating capacity (ROC) is typically set at 50 percent of the tipping load, providing a working margin that keeps the machine stable during normal operation. Running a loader at or beyond its ROC continuously stresses the frame, axles, and tires and degrades long-term reliability. Matching the machine's lift capacity to your typical loaded bucket weight keeps performance consistent and protects the drivetrain. For operations where the loader frequently works at height — feeding elevated hoppers or loading high-sided trucks — evaluate the machine's lift capacity at full height, not just at ground level. Capacity ratings often drop as the boom extends to maximum height."
+            },
+            {
+                title: "Bucket Capacity & Fill Performance",
+                sub: "Volumetric Yield Metrics",
+                price: "Custom Duty Material Fit",
+                desc: "Rated bucket capacity gives you the volumetric baseline, but actual productivity depends on how consistently the machine fills that bucket in real material. Fill factor — the percentage of rated capacity actually achieved in working conditions — varies significantly by material type and bucket design. A well-designed bucket for your specific material improves fill performance without overloading the machine. For example: Rock and shot material requires a heavy-duty, low-profile bucket with reinforced cutting edges; Loose aggregate and sand benefits from a high-capacity general-purpose bucket; Silage and light bulk materials may call for a high-tip bucket with extended capacity. Evaluate bucket options carefully alongside the machine. The right bucket matched to your material can meaningfully improve material moved per hour without increasing machine size or fuel consumption."
+            },
+            {
+                title: "Hydraulic Flow Performance",
+                sub: "Load Sensing Variable Valve",
+                price: "Responsive Pilot Pressure",
+                desc: "The hydraulic system is the foundation of a wheel loader's work capability. It powers the lift arms, controls bucket movement, and drives attachments. Hydraulic performance directly determines how fast and responsive the machine feels during a full work cycle. Key hydraulic specifications include: Maximum hydraulic flow rate (Higher flow means faster, more responsive movement and supports more demanding attachments); System pressure (Higher operating pressure enables greater breakout and lift force); Load-sensing hydraulics. These systems adjust flow based on actual demand rather than running at constant pressure, reducing energy waste and improving fuel efficiency. A load-sensing hydraulic system is a significant performance advantage. It allows the loader to dedicate full hydraulic energy to the active function rather than dissipating unused pressure as heat, which improves both response and efficiency across the work cycle."
+            },
+            {
+                title: "Cycle Times & Quick Response",
+                sub: "Continuous Load & Carry",
+                price: "High-Speed Loop Configuration",
+                desc: "Cycle time — the time it takes to complete one full load, carry, dump, and return sequence — is one of the clearest measures of productive output. Faster cycle times mean more material moved per hour, which translates directly to higher project efficiency and lower cost per ton. The hydraulic system, transmission response, and machine articulation all affect cycle time. A machine with fast hydraulic response raises and dumps the bucket quickly. A transmission that shifts smoothly without hesitation minimizes time lost between load and carry phases. When evaluating cycle times, consider: Raise time (How quickly the boom lifts from ground level to full dump height); Dump time (How fast the bucket tilts to release material); Return time (How quickly the boom lowers and the bucket rolls back to dig position). Shaving seconds off each cycle adds up significantly over an eight-hour shift, especially in high-production loading environments."
+            }
+        ];
+
+        function swapFeatureContext(specIdx, targetCard) {
+            document.querySelectorAll('.spec-selection-button').forEach(btn => {
+                btn.classList.remove('active-feature');
+            });
+            targetCard.classList.add('active-feature');
+
+            const currentItem = operationalSpecs[specIdx];
+            document.getElementById('main-title-view').innerHTML = `OPTIMIZED <span>${currentItem.title.toUpperCase()}</span> PROFILE`;
+            document.getElementById('main-desc-view').innerHTML = currentItem.desc;
+            document.getElementById('card-feature-title').innerText = currentItem.title;
+            document.getElementById('card-feature-sub').innerText = currentItem.price + " — " + currentItem.sub;
+            document.getElementById('primary-action-btn').innerText = "Shop " + currentItem.title;
+            document.getElementById('secondary-action-btn').innerText = "Configure " + currentItem.title + " →";
+        }
     </script>
 </body>
 </html>

@@ -91,16 +91,17 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('value="scissor lift"', escape: false);
     }
 
-    public function test_home_hero_prefers_the_original_image_with_a_working_fallback(): void
+    public function test_home_hero_renders_the_interactive_wheel_loader_configurator(): void
     {
-        $originalImage = 'https://palegoldenrod-stork-751299.hostingersite.com/wp-content/uploads/2026/05/hero1wheel-loader-scaled.webp';
-        $fallbackImage = 'https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg';
-
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('src="'.$originalImage.'"', escape: false)
-            ->assertSee("this.src='".$fallbackImage."'", escape: false)
-            ->assertSee('data-fallback-img="'.$fallbackImage.'"', escape: false);
+            ->assertSee('industrial-hero-section')
+            ->assertSee('Power Your')
+            ->assertSee('Next Project')
+            ->assertSee('Engine Power and Torque')
+            ->assertSee('https://minexcavators.com/wp-content/uploads/2026/05/image.webp', escape: false)
+            ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee('swapFeatureContext', escape: false);
     }
 
     public function test_topics_navigation_index_is_available(): void
