@@ -116,6 +116,7 @@ class EquipmentNavigationTest extends TestCase
             ->assertOk()
             ->assertSee('id="wheel-loader-solutions"', escape: false)
             ->assertSee('Built for Serious Work')
+            ->assertSee('https://electricforklift.org/wp-content/uploads/2026/05/ChatGPT-Image-May-27-2026-02_03_58-PM.png', escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
             ->assertSee(route('contact'), escape: false);
     }

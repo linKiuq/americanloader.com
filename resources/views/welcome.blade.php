@@ -433,7 +433,7 @@
                 <div class="main-hero-card">
                     <div class="main-hero-card-tag">// Active Selected Feature</div>
                     <div class="main-hero-card-title" id="card-feature-title">Engine Power and Torque</div>
-                    <div class="main-hero-card-sub" id="card-feature-sub">$17,848.95 Base Value — Torque Rise Parameters</div>
+                    <div class="main-hero-card-sub" id="card-feature-sub">$16,999.00 Base Value — Torque Rise Parameters</div>
                     <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="btn-yellow" style="display: inline-block; padding: 10px 20px; font-size: 0.75rem;" id="secondary-action-btn">Configure Asset &rarr;</a>
                 </div>
 
@@ -511,7 +511,7 @@
                 <div class="relative flex flex-col justify-center lg:col-span-5">
                     <div class="aspect-[4/5] w-full overflow-hidden rounded-3xl border border-white/10 bg-slate-900 shadow-2xl lg:h-[620px]">
                         <img
-                            src="https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg"
+                            src="https://electricforklift.org/wp-content/uploads/2026/05/ChatGPT-Image-May-27-2026-02_03_58-PM.png"
                             alt="TYPHON wheel loader machine"
                             class="h-full w-full object-cover transition duration-700 hover:scale-105"
                         >
