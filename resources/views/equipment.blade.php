@@ -21,20 +21,20 @@
             border-bottom: 1px solid rgba(148, 163, 184, 0.35);
         }
         .hero-bg {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 58%, #eef6ff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 58%, #fffbeb 100%);
         }
         .btn-primary {
-            background: #2563eb;
+            background: #facc15;
             transition: all 0.2s ease;
         }
         .btn-primary:hover {
-            background: #1d4ed8;
-            box-shadow: 0 0 18px rgba(59, 130, 246, 0.35);
+            background: #eab308;
+            box-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
         }
         .tab-btn.active {
-            border-color: #3b82f6;
-            color: #1d4ed8;
-            background-color: rgba(59, 130, 246, 0.12);
+            border-color: #facc15;
+            color: #eab308;
+            background-color: rgba(250, 204, 21, 0.12);
         }
         .product-card {
             min-height: 360px;
@@ -62,7 +62,7 @@
     <section class="hero-bg py-14 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-end">
             <div>
-                <p class="text-blue-400 text-sm font-bold uppercase tracking-[0.25em] mb-3">Equipment Catalog</p>
+                <p class="text-yellow-400 text-sm font-bold uppercase tracking-[0.25em] mb-3">Equipment Catalog</p>
                 <h1 class="text-4xl sm:text-5xl font-black text-gray-950 mb-4">Shop Typhon machinery and attachments</h1>
                 <p class="text-lg text-gray-600 max-w-3xl">Browse <span id="hero-product-description-count">products</span>, add the equipment you need, and submit everything together in one streamlined checkout.</p>
             </div>
@@ -96,10 +96,10 @@
                 <div class="flex flex-col sm:flex-row items-stretch gap-4">
                     <div class="relative min-w-full sm:min-w-[300px]">
                         <i class="fas fa-search absolute left-4 top-3.5 text-gray-500 text-sm"></i>
-                        <input type="search" id="search-box" value="{{ request('search') }}" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-blue-500 transition">
+                        <input type="search" id="search-box" value="{{ request('search') }}" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-yellow-500 transition">
                     </div>
                     <div class="relative">
-                        <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-blue-500 transition appearance-none cursor-pointer pr-10">
+                        <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-yellow-500 transition appearance-none cursor-pointer pr-10">
                             <option value="default">Default Sort</option>
                             <option value="price-low">Price: Low to High</option>
                             <option value="price-high">Price: High to Low</option>
@@ -121,9 +121,9 @@
             </div>
 
             <div class="flex justify-center items-center gap-4 mt-12 pt-6 border-t border-gray-200" id="pagination-bar">
-                <button id="btn-prev" class="px-4 py-2 bg-white border border-gray-300 hover:border-blue-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Prev</button>
-                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Page <span id="current-page-num" class="text-blue-500">1</span> of <span id="total-pages-num">1</span></span>
-                <button id="btn-next" class="px-4 py-2 bg-white border border-gray-300 hover:border-blue-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Next</button>
+                <button id="btn-prev" class="px-4 py-2 bg-white border border-gray-300 hover:border-yellow-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Prev</button>
+                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Page <span id="current-page-num" class="text-yellow-500">1</span> of <span id="total-pages-num">1</span></span>
+                <button id="btn-next" class="px-4 py-2 bg-white border border-gray-300 hover:border-yellow-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Next</button>
             </div>
         </div>
     </section>
@@ -131,15 +131,15 @@
     <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-200">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-shipping-fast text-blue-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Fast Shipping</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-shipping-fast text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Fast Shipping</h3></div>
                 <p class="text-gray-600 text-sm">Reliable delivery support for machinery, attachments, and parts.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-headset text-blue-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Expert Support</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-headset text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Expert Support</h3></div>
                 <p class="text-gray-600 text-sm">Our team can help buyers select the correct equipment configuration.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-shield-alt text-blue-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Warranty Protected</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-shield-alt text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Warranty Protected</h3></div>
                 <p class="text-gray-600 text-sm">Equipment options include service and warranty coverage.</p>
             </div>
         </div>
@@ -319,22 +319,22 @@
 
             const itemsToRender = filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
             gridContainer.innerHTML = itemsToRender.map(product => `
-                <article class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-blue-500/60 hover:shadow-md transition duration-300 flex flex-col h-full group cursor-pointer focus-within:border-blue-500" data-product-url="${escapeHtml(productDetailUrl(product))}" tabindex="0" role="link" aria-label="Open ${escapeHtml(product.name)}">
+                <article class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-md transition duration-300 flex flex-col h-full group cursor-pointer focus-within:border-yellow-500" data-product-url="${escapeHtml(productDetailUrl(product))}" tabindex="0" role="link" aria-label="Open ${escapeHtml(product.name)}">
                     <div class="w-full h-52 bg-gray-50 p-4 flex items-center justify-center relative overflow-hidden flex-shrink-0">
                         ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition duration-500 rounded">` : '<i class="fas fa-truck-monster text-gray-300 text-5xl"></i>'}
-                        <span class="absolute top-3 left-3 bg-white/95 border border-gray-200 text-[10px] font-black text-blue-600 px-2 py-0.5 rounded tracking-wider uppercase shadow-sm">${escapeHtml(product.category)}</span>
+                        <span class="absolute top-3 left-3 bg-white/95 border border-gray-200 text-[10px] font-black text-yellow-600 px-2 py-0.5 rounded tracking-wider uppercase shadow-sm">${escapeHtml(product.category)}</span>
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-gray-950 font-bold text-sm line-clamp-2 uppercase tracking-tight mb-2 min-h-10 group-hover:text-blue-600 transition">${escapeHtml(product.name)}</h3>
+                        <h3 class="text-gray-950 font-bold text-sm line-clamp-2 uppercase tracking-tight mb-2 min-h-10 group-hover:text-yellow-600 transition">${escapeHtml(product.name)}</h3>
                         <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col gap-3">
                             <span class="text-gray-950 text-base font-black tracking-tight">${product.price ? currencyFormatter.format(product.price) : 'Quote'}</span>
                             <div class="flex gap-2">
                                 <form method="POST" action="{{ route('cart.items.store') }}" class="flex-1">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="slug" value="${escapeHtml(product.slug)}">
-                                    <button type="submit" class="w-full border border-gray-300 hover:border-blue-500 text-gray-950 text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Add</button>
+                                    <button type="submit" class="w-full border border-gray-300 hover:border-yellow-500 text-gray-950 text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Add</button>
                                 </form>
-                                <a href="${escapeHtml(productCheckoutUrl(product))}" class="flex-1 bg-blue-600 hover:bg-blue-700 text-center text-white text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Buy Now</a>
+                                <a href="${escapeHtml(productCheckoutUrl(product))}" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-center text-white text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Buy Now</a>
                             </div>
                         </div>
                     </div>

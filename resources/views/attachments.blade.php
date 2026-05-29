@@ -1,5 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+@php
+    $attachmentSections = [
+        [
+            'type' => 'Mini Excavator',
+            'title' => 'X2 Attachments',
+            'badge' => 'X2',
+            'description' => 'Browse high-performance machinery and professional attachment solutions in the X2 Attachments collection.',
+            'url' => route('attachments.x2'),
+        ],
+        [
+            'type' => 'Mini Excavator',
+            'title' => 'XXV Attachments',
+            'badge' => 'XXV',
+            'description' => 'Professional attachment solutions built for Terror XXV mini excavator jobs.',
+            'url' => route('attachments.xxv'),
+        ],
+        [
+            'type' => 'Mini Excavator',
+            'title' => '2 Ton and Below Attachments',
+            'badge' => '2T',
+            'description' => 'Maneuverable attachments for compact excavation, landscaping, trenching, and site cleanup.',
+            'url' => route('attachments.mini-excavators-2-tons-and-below'),
+        ],
+        [
+            'type' => 'Mini Excavator',
+            'title' => 'Mini Excavator Attachments',
+            'badge' => 'ME',
+            'description' => 'Browse all buckets, breakers, augers, grapples, couplers, and mini excavator packages.',
+            'url' => route('attachments.mini-excavator'),
+        ],
+        [
+            'type' => 'Skid Steer Loader',
+            'title' => 'Compact Series 501-507 Attachments',
+            'badge' => '501',
+            'description' => 'Compact skid steer attachment solutions for tight jobsites and material handling.',
+            'url' => route('attachments.skid-steer.series', ['series' => 'compact-series']),
+        ],
+        [
+            'type' => 'Skid Steer Loader',
+            'title' => 'Standard Series (X1300-509) Attachments',
+            'badge' => 'X13',
+            'description' => 'Standard series attachments for STOMP X1300 and STOMP 509 skid steer loader workflows.',
+            'url' => route('attachments.skid-steer.series', ['series' => 'standard-series']),
+        ],
+    ];
+@endphp
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,44 +59,24 @@
     <main class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-sm font-semibold uppercase tracking-[0.3em] text-blue-600">Attachments</p>
+                <p class="text-sm font-semibold uppercase tracking-[0.3em] text-yellow-600">Attachments</p>
                 <h1 class="mt-4 text-4xl sm:text-5xl font-black text-gray-950">Premium attachments for every loader and excavator</h1>
                 <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Explore category pages for mini excavator attachments, skid steer tools, and specialized worksite equipment built to enhance productivity.</p>
             </div>
 
-            <div class="grid gap-8 xl:grid-cols-3">
-                <a href="{{ route('attachments.mini-excavators-2-5-tons') }}" class="group block rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-blue-600 text-xs uppercase tracking-[0.28em] font-black mb-3">Mini Excavator</p>
-                            <h2 class="text-2xl font-black text-gray-950">2.5 Tons</h2>
+            <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+                @foreach ($attachmentSections as $section)
+                    <a href="{{ $section['url'] }}" class="group block border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-lg">
+                        <div class="flex items-start justify-between gap-4">
+                            <div>
+                                <p class="text-yellow-600 text-xs uppercase tracking-[0.28em] font-black mb-3">{{ $section['type'] }}</p>
+                                <h2 class="text-2xl font-black text-gray-950">{{ $section['title'] }}</h2>
+                            </div>
+                            <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center bg-yellow-50 text-sm font-black text-yellow-700">{{ $section['badge'] }}</div>
                         </div>
-                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-blue-50 text-blue-600">2.5T</div>
-                    </div>
-                    <p class="mt-5 text-gray-600">Heavy-duty buckets, breakers, and tilt rotators designed for 2.5 ton mini excavators.</p>
-                </a>
-
-                <a href="{{ route('attachments.mini-excavators-2-tons-and-below') }}" class="group block rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-blue-600 text-xs uppercase tracking-[0.28em] font-black mb-3">Mini Excavator</p>
-                            <h2 class="text-2xl font-black text-gray-950">2 Tons & Below</h2>
-                        </div>
-                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-blue-50 text-blue-600">2T</div>
-                    </div>
-                    <p class="mt-5 text-gray-600">Lightweight landscaping and trenching attachments built for compact maneuverability.</p>
-                </a>
-
-                <a href="{{ route('attachments.skid-steer') }}" class="group block rounded-3xl border border-gray-200 bg-white p-8 shadow-sm transition hover:-translate-y-1 hover:shadow-lg">
-                    <div class="flex items-center justify-between gap-4">
-                        <div>
-                            <p class="text-blue-600 text-xs uppercase tracking-[0.28em] font-black mb-3">Skid Steer</p>
-                            <h2 class="text-2xl font-black text-gray-950">Attachments</h2>
-                        </div>
-                        <div class="inline-flex h-12 w-12 items-center justify-center rounded-3xl bg-blue-50 text-blue-600">SS</div>
-                    </div>
-                    <p class="mt-5 text-gray-600">Browse compact and standard skid steer series for landscaping, loading, and site preparation.</p>
-                </a>
+                        <p class="mt-5 text-gray-600">{{ $section['description'] }}</p>
+                    </a>
+                @endforeach
             </div>
         </div>
     </main>

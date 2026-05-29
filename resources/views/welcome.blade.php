@@ -14,7 +14,7 @@
             theme: {
                 extend: {
                     colors: {
-                        skoopBlue: '#2563eb',
+                        skoopYellow: '#facc15',
                         skoopDark: '#0f172a',
                     }
                 }
@@ -404,7 +404,7 @@
     </style>
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-white text-gray-950 font-sans antialiased selection:bg-blue-600 selection:text-white">
+<body class="bg-white text-gray-950 font-sans antialiased selection:bg-yellow-600 selection:text-white">
 
     @include('partials.header')
 
@@ -590,7 +590,7 @@
     <section class="py-24 bg-slate-50 border-t border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="text-skoopBlue font-black text-xs uppercase tracking-widest mb-2 block">// EXPLORE OUR FLEET</span>
+                <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-2 block">// EXPLORE OUR FLEET</span>
                 <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-4xl md:text-5xl uppercase tracking-tight">Featured Wheel Loader Models</h2>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Shop the top loader machines from our equipment catalog, including the new Telescopic Wheel Loader, Thunder VI, and TYPHON TERROR Backhoe Loader.</p>
             </div>
@@ -599,7 +599,7 @@
                 <article class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
                     <div class="relative overflow-hidden h-72 bg-gray-100">
                         <img src="https://machinery.online/wp-content/uploads/2026/02/TYPHON-Wheel-Loader-with-Kubota-D1105-engine8-1.jpg" alt="New TYPHON Telescopic Wheel Loader" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-skoopBlue text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
+                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
                     </div>
                     <div class="p-6">
                         <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Equipment</p>
@@ -607,7 +607,7 @@
                         <p class="text-sm text-gray-600 mb-6">Kubota D1105 engine, 25 hp, 1 ton load capacity, built for tight site loading and reliable material handling.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$16,999</span>
-                            <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -615,7 +615,7 @@
                 <article class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
                     <div class="relative overflow-hidden h-72 bg-gray-100">
                         <img src="https://machinery.online/wp-content/uploads/2025/03/TYPHON-Thunder-VI-23hp-EPA-BS-Engine-Wheel-Loader-scaled-1.webp" alt="TYPHON Thunder VI Wheel Loader" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-skoopBlue text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
+                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
                     </div>
                     <div class="p-6">
                         <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Equipment</p>
@@ -623,7 +623,7 @@
                         <p class="text-sm text-gray-600 mb-6">EPA B&S engine wheel loader engineered for agile site work, fast loading, and reliable performance.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$10,798</span>
-                            <a href="{{ route('product.show', 'typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -631,7 +631,7 @@
                 <article class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
                     <div class="relative overflow-hidden h-72 bg-gray-100">
                         <img src="https://machinery.online/wp-content/uploads/2025/03/Brand-New-TYPHON-TERROR-4WD-Backhoe-Loader-USA.webp" alt="Brand New TYPHON TERROR 4WD Backhoe Loader" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-skoopBlue text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
+                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
                     </div>
                     <div class="p-6">
                         <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Equipment</p>
@@ -639,7 +639,7 @@
                         <p class="text-sm text-gray-600 mb-6">Heavy-duty 4WD backhoe loader for tough digging, loading, and yard-moving jobs.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-gray-950 text-lg font-black">$37,080</span>
-                            <a href="{{ route('product.show', 'brand-new-typhon-terror-4wd-backhoe-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopBlue hover:bg-blue-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'brand-new-typhon-terror-4wd-backhoe-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
@@ -659,17 +659,17 @@
         <div class="skp-showcase-container px-6">
 
             <div class="skp-feature-card active-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8017" data-title="Ditching Machine" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Ditching_Machine_please_202604280920.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Ditching_Machine_please_202604280920.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-01</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-01</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Ditching Machine</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8017</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
@@ -678,161 +678,161 @@
 
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8001" data-title="Wheel Loader" data-img="{{ $originalHeroImage }}" data-fallback-img="{{ $heroFallbackImage }}">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="{{ $originalHeroImage }}" onerror="this.onerror=null; this.src='{{ $heroFallbackImage }}';" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-00</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-00</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Wheel Loader</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8001</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8012" data-title="Enclosed Sweeper" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-1.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-1.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-02</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-02</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Enclosed Sweeper</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8012</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8006" data-title="4-in-1 Bucket" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-2.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-2.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-03</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-03</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">4-in-1 Bucket</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8006</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8005" data-title="Hydraulic Fork" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280903.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280903.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-04</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-04</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Hydraulic Fork</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8005</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8008" data-title="Grass Grapple" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/dense-type_Grass_Grapple_202604280911.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/dense-type_Grass_Grapple_202604280911.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-05</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-05</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Grass Grapple</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8008</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8009" data-title="Drilling Rig" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Rotary_Drilling_Rig_202604280917.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Rotary_Drilling_Rig_202604280917.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-06</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-06</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Drilling Rig</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8009</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8007" data-title="Log Grapple" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280906.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280906.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-07</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-07</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Log Grapple</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8007</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8023" data-title="Lawn Mower" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Lawn_Mower_please_202604280922.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Lawn_Mower_please_202604280922.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-08</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-08</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Lawn Mower</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8023</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8026" data-title="Reclamation Tool" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Reclamation_Machine_please_202604280925.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Reclamation_Machine_please_202604280925.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-09</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-09</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Reclamation Tool</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8026</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
 
             <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8013" data-title="Hydraulic Breaker" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Hydraulic_Breaker_please_202604280927.webp">
-                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopBlue relative">
+                <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
                     <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Hydraulic_Breaker_please_202604280927.webp" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
-                        <span class="block text-xs font-black text-skoopBlue tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-10</span>
+                        <span class="block text-xs font-black text-skoopYellow tracking-widest uppercase mb-1">// SYSTEM BLUEPRINT MODULE: SEC-10</span>
                         <h3 class="font-black uppercase tracking-tight text-gray-950 text-3xl">Hydraulic Breaker</h3>
                     </div>
                     <div class="text-right flex flex-col items-end gap-2">
                         <span class="text-xs font-bold text-gray-500 tracking-widest">REGISTRY // TYPH-8013</span>
-                        <span class="bg-skoopBlue text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-blue-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
+                        <span class="bg-skoopYellow text-white font-black text-xs px-5 py-2.5 rounded-md tracking-widest uppercase flex items-center gap-2 border border-yellow-400/20">Analyze Hardware <i data-lucide="scan-eye" class="w-4 h-4"></i></span>
                     </div>
                 </div>
             </div>
@@ -846,7 +846,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-5xl space-y-8">
                     <div>
-                        <span class="inline-flex items-center gap-2 rounded-full bg-skoopBlue/10 px-4 py-2 text-skoopBlue text-xs font-black uppercase tracking-[0.35em]">Equipment Features</span>
+                        <span class="inline-flex items-center gap-2 rounded-full bg-skoopYellow/10 px-4 py-2 text-skoopYellow text-xs font-black uppercase tracking-[0.35em]">Equipment Features</span>
                         <h2 style="font-family: 'Archivo Black', sans-serif;" class="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-950 leading-tight">Why choose the TYPHON SKOOP for compact loader work?</h2>
                         <p class="mt-5 text-gray-600 max-w-2xl text-base leading-8">Designed for busy sites where space is tight, the TYPHON SKOOP pairs a compact chassis with rugged lift capacity, quick attachment changeover, and reliable diesel power for tough loading jobs.</p>
                     </div>
@@ -882,23 +882,23 @@
                 <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-5xl font-extrabold uppercase tracking-tight">The Power Inside</h2>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                    <i data-lucide="arrow-up-to-line" class="text-skoopBlue w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
+                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                    <i data-lucide="arrow-up-to-line" class="text-skoopYellow w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
                     <h3 class="text-xl font-bold uppercase mb-2">Telescopic Lift Power</h3>
                     <p class="text-gray-600">2,825mm max dump height for clearing high truck beds easily.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                    <i data-lucide="zap" class="text-skoopBlue w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
+                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                    <i data-lucide="zap" class="text-skoopYellow w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
                     <h3 class="text-xl font-bold uppercase mb-2">Kubota Diesel Engines</h3>
                     <p class="text-gray-600">Reliable water-cooled D1105 engines built for heavy industrial endurance.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                    <i data-lucide="weight" class="text-skoopBlue w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
+                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                    <i data-lucide="weight" class="text-skoopYellow w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
                     <h3 class="text-xl font-bold uppercase mb-2">Heavy-Duty Stability</h3>
                     <p class="text-gray-600">Up to 4,600 lbs machine weight distribution preventing standard tipping risks.</p>
                 </div>
-                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                    <i data-lucide="mountain-snow" class="text-skoopBlue w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
+                <div class="bg-white p-8 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                    <i data-lucide="mountain-snow" class="text-skoopYellow w-10 h-10 mb-6 group-hover:scale-110 transition"></i>
                     <h3 class="text-xl font-bold uppercase mb-2">Max Gradeability</h3>
                     <p class="text-gray-600">30% steep incline capability for navigating tough, loose, uneven hillside terrain.</p>
                 </div>
@@ -910,16 +910,16 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
                 <div class="lg:col-span-5">
-                    <span class="text-skoopBlue font-black text-xs uppercase tracking-widest mb-3 block">// KUBOTA D1105 RELIABILITY CORE</span>
+                    <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-3 block">// KUBOTA D1105 RELIABILITY CORE</span>
                     <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-tight mb-6">
                         How the Kubota D1105 Engine Makes the TYPHON SKOOP Reliable for Daily Work
                     </h2>
                     <p class="text-lg text-gray-600 font-medium mb-8">
                         Daily loader work needs steady torque, predictable cooling, and serviceable parts. The Kubota D1105 gives the SKOOP a proven diesel platform built for long shifts, repeat starts, and practical upkeep.
                     </p>
-                    <div class="bg-gray-50 border-l-8 border-skoopBlue p-6 rounded-r-xl">
+                    <div class="bg-gray-50 border-l-8 border-skoopYellow p-6 rounded-r-xl">
                         <div class="flex items-start gap-4">
-                            <i data-lucide="message-square-text" class="text-skoopBlue w-8 h-8 flex-shrink-0"></i>
+                            <i data-lucide="message-square-text" class="text-skoopYellow w-8 h-8 flex-shrink-0"></i>
                             <p class="text-gray-700 font-semibold">
                                 Community discussions often mention Kubota engines for their long-term serviceability and parts availability.
                             </p>
@@ -928,29 +928,29 @@
                 </div>
 
                 <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                        <i data-lucide="fuel" class="text-skoopBlue w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
+                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                        <i data-lucide="fuel" class="text-skoopYellow w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
                         <h3 class="text-lg font-black uppercase mb-2">Fuel Efficiency</h3>
                         <p class="text-gray-600">The compact three-cylinder diesel layout is tuned for practical jobsite fuel use, helping crews keep operating costs controlled through long workdays.</p>
                     </div>
-                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                        <i data-lucide="shield-check" class="text-skoopBlue w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
+                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                        <i data-lucide="shield-check" class="text-skoopYellow w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
                         <h3 class="text-lg font-black uppercase mb-2">Durability</h3>
                         <p class="text-gray-600">Kubota's industrial diesel design supports steady low-speed torque and dependable operation under repeated loading, lifting, and travel cycles.</p>
                     </div>
-                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                        <i data-lucide="wrench" class="text-skoopBlue w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
+                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                        <i data-lucide="wrench" class="text-skoopYellow w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
                         <h3 class="text-lg font-black uppercase mb-2">Easy Maintenance</h3>
                         <p class="text-gray-600">Straightforward service access and widely understood Kubota maintenance routines make routine checks, fluid service, and parts replacement simpler.</p>
                     </div>
-                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopBlue transition duration-300 group">
-                        <i data-lucide="badge-check" class="text-skoopBlue w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
+                    <div class="bg-white p-7 rounded-xl border border-gray-200 hover:border-skoopYellow transition duration-300 group">
+                        <i data-lucide="badge-check" class="text-skoopYellow w-9 h-9 mb-5 group-hover:scale-110 transition"></i>
                         <h3 class="text-lg font-black uppercase mb-2">Trusted Kubota Performance</h3>
                         <p class="text-gray-600">Kubota engines have a strong reputation across compact equipment, giving operators confidence in parts support and familiar service standards.</p>
                     </div>
                     <div class="sm:col-span-2 bg-skoopDark p-7 rounded-xl border border-slate-700 shadow-xl">
                         <div class="flex flex-col sm:flex-row sm:items-start gap-5">
-                            <i data-lucide="droplets" class="text-blue-300 w-10 h-10 flex-shrink-0"></i>
+                            <i data-lucide="droplets" class="text-yellow-300 w-10 h-10 flex-shrink-0"></i>
                             <div>
                                 <h3 class="text-xl font-black uppercase mb-2 text-white">Water-Cooled Diesel Advantages</h3>
                                 <p class="text-slate-300">Water cooling helps stabilize operating temperature during stop-and-go loader work, supporting consistent power delivery when the SKOOP is moving material, climbing grades, or running attachments.</p>
@@ -965,7 +965,7 @@
     <section id="videos" class="py-20 bg-white border-t border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
-                <span class="text-skoopBlue font-black text-xs uppercase tracking-widest mb-2 block">// VIDEO SHOWCASE</span>
+                <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-2 block">// VIDEO SHOWCASE</span>
                 <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-4xl uppercase tracking-tight">Watch Product Walkarounds</h2>
                 <p class="mt-3 text-gray-600 max-w-2xl mx-auto">Two short demos highlighting the Telescopic Wheel Loader and compact loader performance.</p>
             </div>
@@ -997,7 +997,7 @@
     <section id="feedback" class="py-20 bg-white border-t border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
-                <span class="text-skoopBlue font-black text-xs uppercase tracking-widest mb-2 block">// CUSTOMER FEEDBACK</span>
+                <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-2 block">// CUSTOMER FEEDBACK</span>
                 <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-4xl uppercase tracking-tight">What Our Customers Say</h2>
                 <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Real feedback from customers using our loaders and attachments in the field.</p>
             </div>

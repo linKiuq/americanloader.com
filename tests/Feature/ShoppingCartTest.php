@@ -49,6 +49,18 @@ class ShoppingCartTest extends TestCase
             ->assertSee('>1</span>', false);
     }
 
+    public function test_adding_the_same_product_twice_keeps_one_cart_line_with_quantity_two(): void
+    {
+        $this->post(route('cart.items.store'), ['slug' => self::FORKLIFT])->assertRedirect();
+        $this->post(route('cart.items.store'), ['slug' => self::FORKLIFT])->assertRedirect();
+
+        $this->assertSame([self::FORKLIFT => 2], session('cart.items'));
+
+        $this->get(route('cart'))
+            ->assertOk()
+            ->assertSee('value="2"', false);
+    }
+
     public function test_cart_quantities_can_be_changed_and_items_removed_or_cleared(): void
     {
         $this->withSession(['cart.items' => [

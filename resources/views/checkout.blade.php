@@ -44,7 +44,7 @@
                         <div class="flex justify-between"><dt>Shipping</dt><dd>Free</dd></div>
                         <div class="flex justify-between text-2xl font-black"><dt>TOTAL</dt><dd>${{ number_format($subtotal, 2) }}</dd></div>
                     </dl>
-                    <a href="{{ route('cart') }}" class="mt-7 inline-flex text-base font-semibold text-blue-700 hover:text-blue-800"><i class="fas fa-arrow-left mr-3 mt-1"></i>Return to cart</a>
+                    <a href="{{ route('cart') }}" class="mt-7 inline-flex text-base font-semibold text-yellow-700 hover:text-yellow-800"><i class="fas fa-arrow-left mr-3 mt-1"></i>Return to cart</a>
                 </aside>
 
                 <section class="max-w-3xl">
@@ -54,7 +54,7 @@
                     <form method="POST" action="{{ route('checkout.store') }}" class="mt-8">
                         @csrf
                         @if ($paymentPreference === 'link' || $paymentPreference === 'paypal')
-                            <div class="mb-6 rounded border border-blue-100 bg-blue-50 px-5 py-4 text-sm text-blue-800">
+                            <div class="mb-6 rounded border border-yellow-100 bg-yellow-50 px-5 py-4 text-sm text-yellow-800">
                                 {{ $paymentPreference === 'link' ? 'Link' : 'PayPal' }} selected. Complete your delivery details to continue with order processing.
                             </div>
                         @endif
@@ -64,7 +64,7 @@
 
                         <label class="block">
                             <span class="sr-only">Your email address</span>
-                            <input type="email" name="email" value="{{ old('email', $email) }}" required placeholder="Your email address" class="h-16 w-full rounded border {{ $errors->has('email') ? 'border-red-400' : 'border-blue-400' }} px-4 text-lg focus:border-blue-600 focus:outline-none">
+                            <input type="email" name="email" value="{{ old('email', $email) }}" required placeholder="Your email address" class="h-16 w-full rounded border {{ $errors->has('email') ? 'border-red-400' : 'border-yellow-400' }} px-4 text-lg focus:border-yellow-600 focus:outline-none">
                             @error('email')<span class="mt-1 block text-xs text-red-600">{{ $message }}</span>@enderror
                         </label>
                         <label class="mt-5 flex items-center gap-3 text-lg">
@@ -77,13 +77,13 @@
                             @foreach (['name' => 'Full name', 'phone' => 'Phone number', 'company' => 'Company (optional)', 'address' => 'Delivery address', 'city' => 'City', 'state' => 'State', 'zip' => 'ZIP code'] as $field => $label)
                                 <label class="{{ $field === 'address' ? 'sm:col-span-2' : '' }}">
                                     <span class="mb-2 block text-sm font-semibold text-gray-700">{{ $label }}</span>
-                                    <input type="text" name="{{ $field }}" value="{{ old($field) }}" {{ $field === 'company' ? '' : 'required' }} class="h-13 w-full rounded border {{ $errors->has($field) ? 'border-red-400' : 'border-gray-300' }} px-4 py-3 text-base focus:border-blue-500 focus:outline-none">
+                                    <input type="text" name="{{ $field }}" value="{{ old($field) }}" {{ $field === 'company' ? '' : 'required' }} class="h-13 w-full rounded border {{ $errors->has($field) ? 'border-red-400' : 'border-gray-300' }} px-4 py-3 text-base focus:border-yellow-500 focus:outline-none">
                                     @error($field)<span class="mt-1 block text-xs text-red-600">{{ $message }}</span>@enderror
                                 </label>
                             @endforeach
                             <label class="sm:col-span-2">
                                 <span class="mb-2 block text-sm font-semibold text-gray-700">Order notes (optional)</span>
-                                <textarea name="notes" rows="3" class="w-full rounded border border-gray-300 px-4 py-3 text-base focus:border-blue-500 focus:outline-none">{{ old('notes') }}</textarea>
+                                <textarea name="notes" rows="3" class="w-full rounded border border-gray-300 px-4 py-3 text-base focus:border-yellow-500 focus:outline-none">{{ old('notes') }}</textarea>
                             </label>
                         </div>
 

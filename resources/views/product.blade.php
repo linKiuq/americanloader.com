@@ -17,7 +17,7 @@
                 <div class="mb-7 rounded-2xl border border-green-200 bg-green-50 px-5 py-4 text-sm font-semibold text-green-800">{{ session('success') }}</div>
             @endif
             <div class="mb-8">
-                <a href="{{ route('equipment') }}" class="text-sm font-bold text-blue-600 transition hover:text-blue-700"><i class="fas fa-arrow-left mr-2"></i>Back to Equipment</a>
+                <a href="{{ route('equipment') }}" class="text-sm font-bold text-yellow-600 transition hover:text-yellow-700"><i class="fas fa-arrow-left mr-2"></i>Back to Equipment</a>
             </div>
             <div class="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.25fr_0.95fr]">
                 <section>
@@ -32,7 +32,7 @@
                     @if (count($images) > 1)
                         <div class="mt-4 grid grid-cols-4 gap-3">
                             @foreach ($images as $image)
-                                <button type="button" class="gallery-thumb rounded-3xl border {{ $loop->first ? 'border-blue-500' : 'border-gray-200' }} bg-white p-2 transition" data-image="{{ $image }}">
+                                <button type="button" class="gallery-thumb rounded-3xl border {{ $loop->first ? 'border-yellow-500' : 'border-gray-200' }} bg-white p-2 transition" data-image="{{ $image }}">
                                     <img src="{{ $image }}" alt="{{ $product['name'] }} image {{ $loop->iteration }}" class="h-20 w-full rounded-xl object-contain">
                                 </button>
                             @endforeach
@@ -40,7 +40,7 @@
                     @endif
                 </section>
                 <section>
-                    <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-blue-600">{{ $product['category'] ?? 'Product' }}</p>
+                    <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-yellow-600">{{ $product['category'] ?? 'Product' }}</p>
                     <h1 class="text-4xl font-black leading-tight">{{ $product['name'] }}</h1>
                     <p class="mt-4 text-3xl font-black">${{ number_format((float) ($product['price'] ?? 0), 2) }}</p>
                     <div class="mt-8 space-y-6 text-gray-600">
@@ -65,8 +65,8 @@
                             <input type="hidden" name="slug" value="{{ $product['slug'] }}">
                             <button type="submit" class="inline-flex w-full items-center justify-center rounded-2xl border border-gray-950 bg-gray-950 px-7 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:bg-gray-800">Add to Cart</button>
                         </form>
-                        <a href="{{ $product['checkoutUrl'] ?? route('store') }}" class="inline-flex items-center justify-center rounded-2xl bg-blue-600 px-7 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:bg-blue-700">Buy Now</a>
-                        <a href="{{ route('cart') }}" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 bg-white px-7 py-4 text-sm font-black uppercase tracking-wider text-gray-950 transition hover:border-blue-500">View Cart</a>
+                        <a href="{{ $product['checkoutUrl'] ?? route('store') }}" class="inline-flex items-center justify-center rounded-2xl bg-yellow-600 px-7 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:bg-yellow-700">Buy Now</a>
+                        <a href="{{ route('cart') }}" class="inline-flex items-center justify-center rounded-2xl border border-gray-300 bg-white px-7 py-4 text-sm font-black uppercase tracking-wider text-gray-950 transition hover:border-yellow-500">View Cart</a>
                     </div>
                 </section>
             </div>
@@ -75,21 +75,21 @@
                 <section class="mt-16">
                     <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
                         <div>
-                            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-blue-600">Related Equipment</p>
+                            <p class="text-sm font-semibold uppercase tracking-[0.28em] text-yellow-600">Related Equipment</p>
                             <h2 class="mt-3 text-3xl font-black">You may also like</h2>
                         </div>
-                        <a href="{{ route('equipment') }}" class="text-sm font-bold text-blue-600 hover:text-blue-800">Browse all equipment</a>
+                        <a href="{{ route('equipment') }}" class="text-sm font-bold text-yellow-600 hover:text-yellow-800">Browse all equipment</a>
                     </div>
                     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
                         @foreach ($relatedProducts as $related)
-                            <article class="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-blue-500 hover:shadow-lg">
+                            <article class="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-yellow-500 hover:shadow-lg">
                                 <a href="{{ route('product.show', $related['slug']) }}" class="block overflow-hidden rounded-2xl bg-gray-50">
                                     <img src="{{ $related['image'] ?? '' }}" alt="{{ $related['name'] }}" class="h-48 w-full object-contain">
                                 </a>
-                                <a href="{{ route('product.show', $related['slug']) }}" class="mt-5 block text-lg font-bold hover:text-blue-600">{{ $related['name'] }}</a>
+                                <a href="{{ route('product.show', $related['slug']) }}" class="mt-5 block text-lg font-bold hover:text-yellow-600">{{ $related['name'] }}</a>
                                 <div class="mt-5 flex items-center justify-between">
                                     <span class="font-black">${{ number_format((float) ($related['price'] ?? 0), 2) }}</span>
-                                    <a href="{{ route('product.show', $related['slug']) }}" class="text-sm font-semibold text-blue-600">View</a>
+                                    <a href="{{ route('product.show', $related['slug']) }}" class="text-sm font-semibold text-yellow-600">View</a>
                                 </div>
                             </article>
                         @endforeach
@@ -105,8 +105,8 @@
         document.querySelectorAll('.gallery-thumb').forEach(button => {
             button.addEventListener('click', () => {
                 document.getElementById('main-product-image').src = button.dataset.image;
-                document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('border-blue-500'));
-                button.classList.add('border-blue-500');
+                document.querySelectorAll('.gallery-thumb').forEach(thumb => thumb.classList.remove('border-yellow-500'));
+                button.classList.add('border-yellow-500');
             });
         });
     </script>

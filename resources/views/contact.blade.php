@@ -21,22 +21,22 @@
             border-bottom: 1px solid rgba(148, 163, 184, 0.35);
         }
         .hero-bg {
-            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 58%, #eef6ff 100%);
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 58%, #fffbeb 100%);
         }
         .btn-primary {
-            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+            background: linear-gradient(135deg, #facc15 0%, #facc15 100%);
             transition: all 0.3s ease;
         }
         .btn-primary:hover {
-            background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.4);
+            background: linear-gradient(135deg, #facc15 0%, #eab308 100%);
+            box-shadow: 0 0 20px rgba(250, 204, 21, 0.4);
             transform: scale(1.05);
         }
         .footer-accent {
-            border-top: 2px solid rgba(59, 130, 246, 0.3);
+            border-top: 2px solid rgba(250, 204, 21, 0.3);
         }
-        .blue-accent {
-            color: #3b82f6;
+        .yellow-accent {
+            color: #facc15;
         }
         .form-input {
             background-color: #ffffff;
@@ -46,8 +46,8 @@
         }
         .form-input:focus {
             outline: none;
-            border-color: rgba(59, 130, 246, 0.7);
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.2);
+            border-color: rgba(250, 204, 21, 0.7);
+            box-shadow: 0 0 15px rgba(250, 204, 21, 0.2);
         }
         .contact-card {
             background: #ffffff;
@@ -72,7 +72,7 @@
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-12">
                 <!-- Contact Form -->
                 <div class="lg:col-span-2">
-                    <div class="bg-white rounded-xl p-8 border border-blue-500 border-opacity-30">
+                    <div class="bg-white rounded-xl p-8 border border-yellow-500 border-opacity-30">
                         <h2 class="text-3xl font-bold text-gray-950 mb-2">Send us a Message</h2>
                         <p class="text-gray-600 mb-8">Fill out the form below and we'll get back to you within 24 hours.</p>
 
@@ -87,7 +87,7 @@
                             <!-- Name Field -->
                             <div>
                                 <label for="name" class="block text-sm font-semibold text-gray-950 mb-2">
-                                    <i class="fas fa-user text-blue-400 mr-2"></i>Full Name
+                                    <i class="fas fa-user text-yellow-400 mr-2"></i>Full Name
                                 </label>
                                 <input
                                     type="text"
@@ -104,7 +104,7 @@
                             <!-- Email Field -->
                             <div>
                                 <label for="email" class="block text-sm font-semibold text-gray-950 mb-2">
-                                    <i class="fas fa-envelope text-blue-400 mr-2"></i>Email Address
+                                    <i class="fas fa-envelope text-yellow-400 mr-2"></i>Email Address
                                 </label>
                                 <input
                                     type="email"
@@ -121,7 +121,7 @@
                             <!-- Subject Field -->
                             <div>
                                 <label for="subject" class="block text-sm font-semibold text-gray-950 mb-2">
-                                    <i class="fas fa-heading text-blue-400 mr-2"></i>Subject
+                                    <i class="fas fa-heading text-yellow-400 mr-2"></i>Subject
                                 </label>
                                 <input
                                     type="text"
@@ -138,7 +138,7 @@
                             <!-- Message Field -->
                             <div>
                                 <label for="message" class="block text-sm font-semibold text-gray-950 mb-2">
-                                    <i class="fas fa-message text-blue-400 mr-2"></i>Message
+                                    <i class="fas fa-message text-yellow-400 mr-2"></i>Message
                                 </label>
                                 <textarea
                                     id="message"
@@ -168,27 +168,27 @@
                         <div class="space-y-6">
                             <!-- Email -->
                             <div>
-                                <h4 class="text-blue-400 font-semibold mb-2 flex items-center">
+                                <h4 class="text-yellow-400 font-semibold mb-2 flex items-center">
                                     <i class="fas fa-envelope text-2xl mr-3"></i>Email
                                 </h4>
-                                <a href="mailto:digital@typhonmachinery.com" class="text-gray-600 hover:text-blue-400 transition text-sm break-all">
+                                <a href="mailto:digital@typhonmachinery.com" class="text-gray-600 hover:text-yellow-400 transition text-sm break-all">
                                     digital@typhonmachinery.com
                                 </a>
                             </div>
 
                             <!-- Phone -->
                             <div>
-                                <h4 class="text-blue-400 font-semibold mb-2 flex items-center">
+                                <h4 class="text-yellow-400 font-semibold mb-2 flex items-center">
                                     <i class="fas fa-phone text-2xl mr-3"></i>Phone
                                 </h4>
-                                <a href="tel:+15551234567" class="text-gray-600 hover:text-blue-400 transition text-sm">
+                                <a href="tel:+15551234567" class="text-gray-600 hover:text-yellow-400 transition text-sm">
                                     +1 (555) 123-4567
                                 </a>
                             </div>
 
                             <!-- Address -->
                             <div>
-                                <h4 class="text-blue-400 font-semibold mb-2 flex items-center">
+                                <h4 class="text-yellow-400 font-semibold mb-2 flex items-center">
                                     <i class="fas fa-map-marker-alt text-2xl mr-3"></i>Address
                                 </h4>
                                 <p class="text-gray-600 text-sm">
@@ -200,14 +200,14 @@
 
                             <!-- Hours -->
                             <div>
-                                <h4 class="text-blue-400 font-semibold mb-2 flex items-center">
+                                <h4 class="text-yellow-400 font-semibold mb-2 flex items-center">
                                     <i class="fas fa-clock text-2xl mr-3"></i>Business Hours
                                 </h4>
                                 <p class="text-gray-600 text-sm">
                                     Monday - Friday: 8:00 AM - 6:00 PM PST<br>
                                     Saturday: 9:00 AM - 2:00 PM PST<br>
                                     Sunday: Closed<br>
-                                    <span class="text-blue-400 font-semibold">24/7 Emergency Support</span>
+                                    <span class="text-yellow-400 font-semibold">24/7 Emergency Support</span>
                                 </p>
                             </div>
                         </div>
@@ -216,7 +216,7 @@
                     <!-- Quick Info -->
                     <div class="contact-card rounded-xl p-8">
                         <h3 class="text-xl font-bold text-gray-950 mb-4 flex items-center">
-                            <i class="fas fa-headset text-blue-500 mr-3"></i>Response Time
+                            <i class="fas fa-headset text-yellow-500 mr-3"></i>Response Time
                         </h3>
                         <p class="text-gray-600 text-sm">
                             We aim to respond to all inquiries within 24 hours during business hours. For urgent matters, please call our direct line.
@@ -231,7 +231,7 @@
     <section class="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-3xl font-bold text-gray-950 mb-8 text-center">Find Us</h2>
-            <div class="bg-gradient-to-br from-white to-white rounded-xl overflow-hidden border border-blue-500 border-opacity-30" style="height: 400px;">
+            <div class="bg-gradient-to-br from-white to-white rounded-xl overflow-hidden border border-yellow-500 border-opacity-30" style="height: 400px;">
                 <!-- Embedded Map Placeholder -->
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3307.4629869752544!2d-118.1604!3d33.9817!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c355555555%3A0x555555555555!2sCommerce%2C%20CA!5e0!3m2!1sen!2sus!4v1234567890"
@@ -245,7 +245,7 @@
             </div>
             <div class="mt-8 text-center">
                 <p class="text-gray-600 mb-4">
-                    <i class="fas fa-map-marker-alt text-blue-400 mr-2"></i>
+                    <i class="fas fa-map-marker-alt text-yellow-400 mr-2"></i>
                     Commerce, CA 90040
                 </p>
                 <button class="btn-primary text-white px-8 py-3 rounded-lg font-semibold">

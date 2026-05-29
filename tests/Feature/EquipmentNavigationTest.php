@@ -47,6 +47,24 @@ class EquipmentNavigationTest extends TestCase
             ->assertDontSee(route('equipment', ['category' => 'Skid Steer Attachments']).'#catalog', escape: false);
     }
 
+    public function test_attachment_dropdown_lists_machine_type_subcategories(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('Attachment Catalog')
+            ->assertSee('Browse attachments by machine type')
+            ->assertSee('X2 Attachments')
+            ->assertSee('XXV Attachments')
+            ->assertSee('2 Ton and Below Attachments')
+            ->assertSee('Mini Excavator Attachments')
+            ->assertSee('Compact Series 501-507 Attachments')
+            ->assertSee('Standard Series (X1300-509) Attachments')
+            ->assertSee(route('attachments.x2'), escape: false)
+            ->assertSee(route('attachments.xxv'), escape: false)
+            ->assertSee(route('attachments.skid-steer.series', ['series' => 'compact-series']), escape: false)
+            ->assertSee(route('attachments.skid-steer.series', ['series' => 'standard-series']), escape: false);
+    }
+
     public function test_scissor_lift_products_are_available_and_buy_now_opens_the_matching_store_product(): void
     {
         $scissorLifts = app(ProductCatalog::class)->all()->where('category', 'Scissor Lifts');
@@ -84,6 +102,9 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('role="search"', escape: false)
             ->assertSee('action="'.route('equipment').'#catalog"', escape: false)
             ->assertSee('name="search"', escape: false)
+            ->assertSee('class="site-navbar__search-toggle"', escape: false)
+            ->assertSee('aria-controls="navbar-search-panel"', escape: false)
+            ->assertSee('id="navbar-search-panel"', escape: false)
             ->assertSee('--nav-bg: #0b101a', escape: false)
             ->assertSee('--nav-yellow: #facc15', escape: false)
             ->assertDontSee('Get Quote');

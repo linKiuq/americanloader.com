@@ -28,6 +28,12 @@ Route::get('/attachments', [AttachmentController::class, 'index'])->name('attach
 Route::get('/attachments/mini-excavator', [AttachmentController::class, 'miniExcavators'])
     ->defaults('size', 'all')
     ->name('attachments.mini-excavator');
+Route::get('/attachments/x2-attachments', [AttachmentController::class, 'miniExcavators'])
+    ->defaults('size', 'x2')
+    ->name('attachments.x2');
+Route::get('/attachments/xxv-attachments', [AttachmentController::class, 'miniExcavators'])
+    ->defaults('size', 'xxv')
+    ->name('attachments.xxv');
 Route::get('/attachments/mini-excavators-2-5-tons', [AttachmentController::class, 'miniExcavators'])
     ->defaults('size', '2-5-tons')
     ->name('attachments.mini-excavators-2-5-tons');
