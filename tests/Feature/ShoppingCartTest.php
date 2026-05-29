@@ -90,12 +90,12 @@ class ShoppingCartTest extends TestCase
         ]])->post(route('checkout.store'), [
             'name' => 'Pat Builder',
             'email' => 'pat@example.com',
-            'phone' => '555-0100',
+            'phone' => '+1 213-214-2203',
             'company' => 'Site Works',
-            'address' => '1200 Loader Lane',
-            'city' => 'Commerce',
+            'address' => '2642 River Ave #A',
+            'city' => 'Rosemead',
             'state' => 'CA',
-            'zip' => '90040',
+            'zip' => '91770',
             'notes' => 'Call before delivery.',
         ]);
 

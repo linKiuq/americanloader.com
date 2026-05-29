@@ -130,7 +130,7 @@
             width: 100%;
             min-height: 100vh;
             background: linear-gradient(rgba(11, 16, 26, 0.85), rgba(11, 16, 26, 0.85)),
-                        url('https://minexcavators.com/wp-content/uploads/2026/05/image.webp') no-repeat center center !important;
+                        url('{{ asset('hero-power-loader.png') }}') no-repeat center center !important;
             background-size: cover !important;
             display: flex;
             flex-direction: column;
@@ -424,7 +424,7 @@
                 </div>
 
                 <div class="button-group">
-                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="btn-yellow" id="primary-action-btn">Shop Skoop Loader</a>
+                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="btn-yellow" id="primary-action-btn">Shop Power Loader</a>
                     <a href="#specs" class="btn-outline">View All Specs</a>
                 </div>
             </div>
@@ -658,9 +658,9 @@
 
         <div class="skp-showcase-container px-6">
 
-            <div class="skp-feature-card active-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8017" data-title="Ditching Machine" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Ditching_Machine_please_202604280920.webp">
+            <div class="skp-feature-card active-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8017" data-title="Ditching Machine" data-img="https://minexcavators.com/wp-content/uploads/2026/05/430332ee-3571-46c6-99b1-89a47c2629e9.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Ditching_Machine_please_202604280920.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/430332ee-3571-46c6-99b1-89a47c2629e9.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -693,9 +693,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8012" data-title="Enclosed Sweeper" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-1.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8012" data-title="Enclosed Sweeper" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_37_17-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-1.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_37_17-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -709,9 +709,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8006" data-title="4-in-1 Bucket" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-2.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8006" data-title="4-in-1 Bucket" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_44_57-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Gemini_Generated_Image_zgbjg0zgbjg0zgbj-1-2.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_44_57-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -725,9 +725,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8005" data-title="Hydraulic Fork" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280903.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8005" data-title="Hydraulic Fork" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_50_17-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280903.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_50_17-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -741,9 +741,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8008" data-title="Grass Grapple" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/dense-type_Grass_Grapple_202604280911.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8008" data-title="Grass Grapple" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_55_29-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/dense-type_Grass_Grapple_202604280911.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_55_29-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -757,9 +757,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8009" data-title="Drilling Rig" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Rotary_Drilling_Rig_202604280917.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8009" data-title="Drilling Rig" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_58_15-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Rotary_Drilling_Rig_202604280917.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-02_58_15-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -773,9 +773,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8007" data-title="Log Grapple" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280906.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8007" data-title="Log Grapple" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_00_54-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/please_make_this_202604280906.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_00_54-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -789,9 +789,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8023" data-title="Lawn Mower" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Lawn_Mower_please_202604280922.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8023" data-title="Lawn Mower" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_03_17-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Lawn_Mower_please_202604280922.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_03_17-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -805,9 +805,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8026" data-title="Reclamation Tool" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Reclamation_Machine_please_202604280925.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8026" data-title="Reclamation Tool" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_05_08-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Reclamation_Machine_please_202604280925.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_05_08-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>
@@ -821,9 +821,9 @@
                 </div>
             </div>
 
-            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8013" data-title="Hydraulic Breaker" data-img="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Hydraulic_Breaker_please_202604280927.webp">
+            <div class="skp-feature-card bg-gradient-to-br from-white to-white border border-gray-200 rounded-3xl overflow-hidden shadow-2xl shadow-gray-200 flex flex-col h-full cursor-pointer" data-sku="TYPH-8013" data-title="Hydraulic Breaker" data-img="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_12_47-PM.png">
                 <div class="w-full flex-1 bg-white/40 flex items-center justify-center border-b border-gray-200 border-l-8 border-skoopYellow relative">
-                    <img src="https://slategray-lyrebird-947003.hostingersite.com/wp-content/uploads/2026/04/Hydraulic_Breaker_please_202604280927.webp" class="w-full h-full object-cover transition duration-500">
+                    <img src="https://minexcavators.com/wp-content/uploads/2026/05/ChatGPT-Image-May-29-2026-03_12_47-PM.png" class="w-full h-full object-cover transition duration-500">
                 </div>
                 <div class="p-8 bg-white/90 backdrop-blur-md flex justify-between items-center">
                     <div>

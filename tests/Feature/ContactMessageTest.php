@@ -24,10 +24,10 @@ class ContactMessageTest extends TestCase
             ->assertSessionHas('success');
 
         Mail::assertSent(ContactMessage::class, function (ContactMessage $mail): bool {
-            return $mail->hasTo('digital@typhonmachinery.com')
+            return $mail->hasTo('sales@typhonmachinery.com')
                 && $mail->hasCc('customer@example.com')
                 && $mail->hasReplyTo('customer@example.com')
-                && $mail->envelope()->subject === '[Skoop Loaders Contact] Attachment inquiry';
+                && $mail->envelope()->subject === '[The Power Loader Contact] Attachment inquiry';
         });
     }
 
@@ -45,6 +45,9 @@ class ContactMessageTest extends TestCase
     {
         $this->get(route('contact'))
             ->assertOk()
-            ->assertSee('digital@typhonmachinery.com');
+            ->assertSee('sales@typhonmachinery.com')
+            ->assertSee('support@typhonmachinery.com')
+            ->assertSee('+1 213-214-2203')
+            ->assertSee('2642 River Ave #A, Rosemead, CA 91770');
     }
 }

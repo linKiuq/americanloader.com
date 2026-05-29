@@ -4,7 +4,7 @@
             <div>
                 <div class="flex items-center gap-2 mb-4">
                     <img src="{{ asset('power-loader-logo.png') }}" alt="Power Loader" class="h-16 w-16 object-contain">
-                    <span class="text-gray-950 font-black text-lg uppercase tracking-tight">Skoop <span class="text-yellow-600">Loaders</span></span>
+                    <span class="text-gray-950 font-black text-lg uppercase tracking-tight">The <span class="text-yellow-600">Power Loader</span></span>
                 </div>
                 <p class="text-gray-600 text-sm leading-relaxed">
                     Compact loaders, excavators, forklifts, attachments, and jobsite equipment built for practical daily work.
@@ -36,9 +36,10 @@
             <div>
                 <h4 class="text-gray-950 font-bold mb-4">Contact</h4>
                 <div class="space-y-2 text-sm text-gray-600">
-                    <p><a href="mailto:digital@typhonmachinery.com" class="hover:text-yellow-600 transition">digital@typhonmachinery.com</a></p>
-                    <p><a href="tel:+15551234567" class="hover:text-yellow-600 transition">+1 (555) 123-4567</a></p>
-                    <p>Commerce, CA 90040</p>
+                    <p><a href="mailto:sales@typhonmachinery.com" class="hover:text-yellow-600 transition">sales@typhonmachinery.com</a></p>
+                    <p><a href="mailto:support@typhonmachinery.com" class="hover:text-yellow-600 transition">support@typhonmachinery.com</a></p>
+                    <p><a href="tel:+12132142203" class="hover:text-yellow-600 transition">+1 213-214-2203</a></p>
+                    <p>2642 River Ave #A, Rosemead, CA 91770</p>
                 </div>
             </div>
         </div>

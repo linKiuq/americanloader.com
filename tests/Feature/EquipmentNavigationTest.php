@@ -122,7 +122,7 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('Power Your')
             ->assertSee('Next Project')
             ->assertSee('Engine Power and Torque')
-            ->assertSee('https://minexcavators.com/wp-content/uploads/2026/05/image.webp', escape: false)
+            ->assertSee(asset('hero-power-loader.png'), escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
             ->assertSee('background-color: #facc15', escape: false)
             ->assertDontSee('#e67e22', escape: false)

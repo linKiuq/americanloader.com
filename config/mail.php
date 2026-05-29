@@ -115,6 +115,6 @@ return [
         'name' => env('MAIL_FROM_NAME', env('APP_NAME', 'Laravel')),
     ],
 
-    'contact_to' => env('CONTACT_TO_ADDRESS', 'digital@typhonmachinery.com'),
+    'contact_to' => env('CONTACT_TO_ADDRESS', 'sales@typhonmachinery.com'),
 
 ];

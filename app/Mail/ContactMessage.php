@@ -19,7 +19,7 @@ class ContactMessage extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: '[Skoop Loaders Contact] '.$this->contactMessage['subject'],
+            subject: '[The Power Loader Contact] '.$this->contactMessage['subject'],
             replyTo: [$this->contactMessage['email']],
         );
     }

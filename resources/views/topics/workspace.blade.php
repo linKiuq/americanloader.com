@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Workspace - Topics - Typhon Machinery</title>
+    <title>Workspace - Topics - The Power Loader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {

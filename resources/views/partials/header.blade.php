@@ -83,6 +83,14 @@
         object-fit: contain;
     }
 
+    .site-navbar__brand-text {
+        color: #fff;
+    }
+
+    .site-navbar__brand-accent {
+        color: var(--nav-yellow);
+    }
+
     .primary-menu,
     .equipment-dropdown,
     .attachments-dropdown {
@@ -626,7 +634,7 @@
             padding-bottom: 0.5rem;
         }
 
-        .site-navbar__brand span {
+        .site-navbar__brand-text {
             display: none;
         }
 
@@ -857,7 +865,7 @@
             <span class="site-navbar__logo" aria-hidden="true">
                 <img src="{{ asset('power-loader-logo.png') }}" alt="">
             </span>
-            <span>The Power Loader</span>
+            <span class="site-navbar__brand-text">The <span class="site-navbar__brand-accent">Power Loader</span></span>
         </a>
 
         <ul class="primary-menu">

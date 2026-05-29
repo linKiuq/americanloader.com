@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Blog - Skoop Loaders</title>
+    <title>Blog - The Power Loader</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -17,7 +17,7 @@
         <div class="mx-auto max-w-7xl px-6 text-center">
             <p class="mb-4 text-xs font-black uppercase tracking-[0.35em] text-yellow-400">Equipment Journal</p>
             <h1 class="text-4xl font-black uppercase md:text-5xl" style="font-family: 'Montserrat', sans-serif;">Explore Our Blog</h1>
-            <p class="mx-auto mt-4 max-w-2xl text-slate-300">News, equipment insights, and machine walkthroughs from Skoop Loaders.</p>
+            <p class="mx-auto mt-4 max-w-2xl text-slate-300">News, equipment insights, and machine walkthroughs from The Power Loader.</p>
         </div>
     </header>
 

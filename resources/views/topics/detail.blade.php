@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>{{ $title }} - Topics - Typhon Machinery</title>
+    <title>{{ $title }} - Topics - The Power Loader</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #fff; color: #111827; }
