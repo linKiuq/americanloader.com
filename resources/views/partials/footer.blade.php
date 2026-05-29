@@ -44,7 +44,7 @@
         </div>
 
         <div class="mt-10 border-t border-gray-200 pt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <p class="text-gray-500 text-sm">&copy; 2026 Skoop Loaders. All rights reserved.</p>
+            <p class="text-gray-500 text-sm">&copy; 2026 The Power Loader. All rights reserved.</p>
             <div class="flex gap-5 text-sm font-semibold">
                 <a href="{{ route('equipment') }}" class="text-gray-500 hover:text-blue-600 transition">Shop</a>
                 <a href="{{ route('cart') }}" class="text-gray-500 hover:text-blue-600 transition">Cart</a>

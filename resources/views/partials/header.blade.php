@@ -445,11 +445,11 @@
 
 <nav class="site-navbar" aria-label="Main navigation">
     <div class="site-navbar__inner">
-        <a href="{{ route('welcome') }}" class="site-navbar__brand" aria-label="Skoop Loaders home">
+        <a href="{{ route('welcome') }}" class="site-navbar__brand" aria-label="The Power Loader home">
             <span class="site-navbar__logo" aria-hidden="true">
                 <img src="{{ asset('power-loader-logo.png') }}" alt="">
             </span>
-            <span>Skoop Loaders</span>
+            <span>The Power Loader</span>
         </a>
 
         <ul class="primary-menu">
