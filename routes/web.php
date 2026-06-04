@@ -74,6 +74,7 @@ Route::post('/contact', [ContactController::class, 'store'])->name('contact.stor
 
 // Blog index and posts
 Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/category/{category}', [BlogController::class, 'category'])->name('blog.category');
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Blog administration

@@ -6,7 +6,9 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
+use App\Services\SupabaseCmsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Mockery\MockInterface;
 use Tests\TestCase;
 
 class BlogAdminTest extends TestCase
@@ -15,24 +17,56 @@ class BlogAdminTest extends TestCase
 
     public function test_public_blog_displays_published_posts_and_hides_drafts(): void
     {
-        $draft = BlogPost::create([
-            'title' => 'Internal Draft Article',
-            'slug' => 'internal-draft-article',
-            'excerpt' => 'A draft description.',
-            'content' => 'Draft body.',
-            'is_published' => false,
-        ]);
+        $this->mock(SupabaseCmsService::class, function (MockInterface $mock): void {
+            $mock->shouldReceive('getPublishedPosts')
+                ->once()
+                ->andReturn([
+                    [
+                        'title' => 'Telescopic Wheel Loader - Field Demo',
+                        'slug' => 'wheel-loader-demo',
+                        'excerpt' => 'A published equipment guide.',
+                        'category' => 'Buyer Guides',
+                        'featured_image' => null,
+                        'featured_image_alt' => null,
+                        'author' => 'The Power Loader',
+                        'publish_date' => '2026-05-27',
+                    ],
+                ]);
+
+            $mock->shouldReceive('getPostBySlug')
+                ->with('wheel-loader-demo')
+                ->once()
+                ->andReturn([
+                    'title' => 'Telescopic Wheel Loader - Field Demo',
+                    'slug' => 'wheel-loader-demo',
+                    'excerpt' => 'A published equipment guide.',
+                    'category' => 'Buyer Guides',
+                    'content' => "## Field Notes\n\nPublished CMS body.",
+                    'featured_image' => null,
+                    'featured_image_alt' => null,
+                    'author' => 'The Power Loader',
+                    'publish_date' => '2026-05-27',
+                    'seo_title' => null,
+                    'seo_description' => null,
+                ]);
+
+            $mock->shouldReceive('getPostBySlug')
+                ->with('internal-draft-article')
+                ->once()
+                ->andReturn(null);
+        });
 
         $this->get(route('blog.index'))
             ->assertOk()
             ->assertSee('Telescopic Wheel Loader - Field Demo')
-            ->assertDontSee($draft->title);
+            ->assertDontSee('Internal Draft Article');
 
         $this->get(route('blog.show', 'wheel-loader-demo'))
             ->assertOk()
-            ->assertSee('Telescopic Wheel Loader - Field Demo');
+            ->assertSee('Telescopic Wheel Loader - Field Demo')
+            ->assertSee('Field Notes');
 
-        $this->get(route('blog.show', $draft->slug))->assertNotFound();
+        $this->get(route('blog.show', 'internal-draft-article'))->assertNotFound();
     }
 
     public function test_admin_blog_pages_require_an_admin_account(): void
@@ -71,10 +105,7 @@ class BlogAdminTest extends TestCase
         $post = BlogPost::where('slug', 'loader-maintenance-checklist')->firstOrFail();
 
         $this->assertTrue($post->is_published);
-        $this->get(route('blog.show', $post->slug))
-            ->assertOk()
-            ->assertSee('Loader Maintenance Checklist')
-            ->assertSee('Inspect tires and fluid levels.');
+        $this->assertSame('Inspect tires and fluid levels.', str($post->content)->before("\n\n")->toString());
 
         $this->actingAs($admin)
             ->put(route('admin.blog.update', $post), [
@@ -85,7 +116,14 @@ class BlogAdminTest extends TestCase
             ])
             ->assertRedirect(route('admin.blog.edit', $post));
 
-        $this->get(route('blog.show', $post->slug))->assertNotFound();
+        $this->assertDatabaseHas('blog_posts', [
+            'id' => $post->id,
+            'title' => 'Loader Maintenance Checklist Updated',
+            'is_published' => false,
+        ]);
+
+        $post->refresh();
+        $this->assertNull($post->published_at);
 
         $this->actingAs($admin)
             ->delete(route('admin.blog.destroy', $post))
@@ -153,7 +191,8 @@ class BlogAdminTest extends TestCase
         $this->assertSame($category->id, $post->category_id);
         $this->assertTrue($post->tags->contains($tag));
 
-        $this->get(route('blog.show', $post->slug))
+        $this->actingAs($admin)
+            ->get(route('admin.blog.edit', $post))
             ->assertOk()
             ->assertSee('Maintenance')
             ->assertSee('Hydraulics');
