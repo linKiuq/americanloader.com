@@ -433,7 +433,7 @@
                 <div class="main-hero-card">
                     <div class="main-hero-card-tag">// Active Selected Feature</div>
                     <div class="main-hero-card-title" id="card-feature-title">Engine Power and Torque</div>
-                    <div class="main-hero-card-sub" id="card-feature-sub">$16,999.00 Base Value — Torque Rise Parameters</div>
+                    <div class="main-hero-card-sub" id="card-feature-sub">Base Value — Torque Rise Parameters</div>
                     <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="btn-yellow" style="display: inline-block; padding: 10px 20px; font-size: 0.75rem;" id="secondary-action-btn">Configure Asset &rarr;</a>
                 </div>
 
@@ -606,7 +606,7 @@
                         <h3 class="text-lg font-black uppercase tracking-tight text-gray-950 mb-3">New TYPHON Telescopic Wheel Loader</h3>
                         <p class="text-sm text-gray-600 mb-6">Kubota D1105 engine, 25 hp, 1 ton load capacity, built for tight site loading and reliable material handling.</p>
                         <div class="flex items-center justify-between gap-4">
-                            <span class="text-gray-950 text-lg font-black">$16,999</span>
+                            <span class="text-gray-950 text-lg font-black">Quote on request</span>
                             <a href="{{ route('product.show', 'new-typhon-telescopic-wheel-loader-with-kubota-d1105-engine-25-hp-1-ton-load-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
@@ -622,7 +622,7 @@
                         <h3 class="text-lg font-black uppercase tracking-tight text-gray-950 mb-3">TYPHON Thunder VI 23hp</h3>
                         <p class="text-sm text-gray-600 mb-6">EPA B&S engine wheel loader engineered for agile site work, fast loading, and reliable performance.</p>
                         <div class="flex items-center justify-between gap-4">
-                            <span class="text-gray-950 text-lg font-black">$10,798</span>
+                            <span class="text-gray-950 text-lg font-black">Quote on request</span>
                             <a href="{{ route('product.show', 'typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
@@ -638,7 +638,7 @@
                         <h3 class="text-lg font-black uppercase tracking-tight text-gray-950 mb-3">TYPHON TERROR 4WD Backhoe Loader</h3>
                         <p class="text-sm text-gray-600 mb-6">Heavy-duty 4WD backhoe loader for tough digging, loading, and yard-moving jobs.</p>
                         <div class="flex items-center justify-between gap-4">
-                            <span class="text-gray-950 text-lg font-black">$37,080</span>
+                            <span class="text-gray-950 text-lg font-black">Quote on request</span>
                             <a href="{{ route('product.show', 'brand-new-typhon-terror-4wd-backhoe-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-yellow-700 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
@@ -1170,7 +1170,7 @@
             {
                 title: "Engine Power and Torque",
                 sub: "Torque Rise Parameters",
-                price: "$17,848.95 Base Value",
+                price: "Base Value",
                 desc: "Engine horsepower sets the ceiling for what a wheel loader can do, but torque is what actually gets material moving. High torque at low engine speeds gives the loader the pulling force needed to penetrate dense material, push into heavy piles, and maintain momentum without bogging down the drivetrain. A well-matched engine delivers strong torque across a broad RPM range rather than only at peak RPM. This means the machine responds immediately when the operator drives into a pile instead of requiring the engine to rev before producing useful force. When comparing engine performance, pay attention to: Peak torque and the RPM range where it is available; Torque rise — how much torque increases as load rises and engine speed drops; Engine response time under sudden load changes. An engine with strong torque rise maintains productivity during demanding cycles, while a less capable engine forces operators to slow down or take smaller bites of material."
             },
             {

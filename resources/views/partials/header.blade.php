@@ -38,6 +38,7 @@
         border-bottom: 1px solid rgba(250, 204, 21, 0.18);
         box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
         font-family: "Inter", Arial, "Helvetica Neue", sans-serif;
+        overflow: visible;
     }
 
     .site-navbar__inner {
@@ -675,6 +676,7 @@
             grid-template-columns: auto minmax(0, 1fr);
             gap: 0 0.65rem;
             align-items: center;
+            overflow: visible;
         }
 
         .site-navbar__brand {
@@ -826,6 +828,56 @@
             padding-left: 0.65rem;
             font-size: 0.82rem;
         }
+
+        .primary-menu__item--dropdown.is-open .equipment-dropdown,
+        .primary-menu__item--dropdown.is-open .attachments-dropdown,
+        .primary-menu__item--dropdown.is-open .topics-dropdown {
+            visibility: visible;
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .primary-menu__item--dropdown.is-open .primary-menu__chevron,
+        .primary-menu__item--dropdown.is-open .primary-menu__dropdown-toggle svg {
+            transform: rotate(180deg);
+        }
+
+        .primary-menu__dropdown-toggle {
+            display: none;
+            border: none;
+            background: transparent;
+            color: inherit;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 0.35rem;
+            width: 24px;
+            height: 24px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .primary-menu__dropdown-toggle svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        @media (max-width: 760px) {
+            .primary-menu__dropdown-toggle {
+                display: inline-flex;
+            }
+
+            .primary-menu__item--dropdown {
+                display: inline-flex;
+                align-items: center;
+            }
+
+            .primary-menu__item--dropdown .primary-menu__link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.35rem;
+            }
+        }
     }
 
     @media (max-width: 420px) {
@@ -879,6 +931,11 @@
                         <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </a>
+                <button type="button" class="primary-menu__dropdown-toggle" aria-expanded="false" aria-label="Toggle Shop menu">
+                    <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 5.5h8M5.5 2v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    </svg>
+                </button>
                 <span class="equipment-tooltip" aria-hidden="true">Shop</span>
                 <div class="equipment-dropdown">
                     <ul class="equipment-dropdown__list" aria-label="Equipment categories">
@@ -899,6 +956,11 @@
                         <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </a>
+                <button type="button" class="primary-menu__dropdown-toggle" aria-expanded="false" aria-label="Toggle Attachments menu">
+                    <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 5.5h8M5.5 2v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    </svg>
+                </button>
                 <div class="attachments-dropdown" aria-label="Attachment categories">
                     <div class="attachments-dropdown__header">
                         <div>
@@ -937,6 +999,11 @@
                         <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </a>
+                <button type="button" class="primary-menu__dropdown-toggle" aria-expanded="false" aria-label="Toggle Topics menu">
+                    <svg viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                        <path d="M2 5.5h8M5.5 2v8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" />
+                    </svg>
+                </button>
                 <ul class="topics-dropdown" aria-label="Topics categories">
                     <li><a href="{{ route('blog.index') }}" class="topics-dropdown__link">Blog</a></li>
                     <li><a href="{{ route('topics.show', 'buy-guides') }}" class="topics-dropdown__link">Buy Guides</a></li>
@@ -1017,6 +1084,94 @@
                     toggle.focus();
                 }
             });
+        });
+
+        const bindDropdownToggle = (element, handler) => {
+            element.addEventListener('click', handler);
+            element.addEventListener('pointerdown', (event) => {
+                if (event.pointerType && event.pointerType !== 'mouse') {
+                    handler(event);
+                }
+            });
+        };
+
+        document.querySelectorAll('.primary-menu__item--dropdown > .primary-menu__link').forEach((link) => {
+            const parentItem = link.closest('.primary-menu__item--dropdown');
+            if (! parentItem) {
+                return;
+            }
+
+            bindDropdownToggle(link, (event) => {
+                if (window.innerWidth > 760) {
+                    return;
+                }
+
+                const isOpen = parentItem.classList.contains('is-open');
+                if (! isOpen) {
+                    event.preventDefault();
+                    document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
+                        if (openItem !== parentItem) {
+                            openItem.classList.remove('is-open');
+                            const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
+                            if (otherToggle) {
+                                otherToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                    parentItem.classList.add('is-open');
+                    const dropdownToggle = parentItem.querySelector('.primary-menu__dropdown-toggle');
+                    if (dropdownToggle) {
+                        dropdownToggle.setAttribute('aria-expanded', 'true');
+                    }
+                }
+            });
+        });
+
+        document.querySelectorAll('.primary-menu__dropdown-toggle').forEach((toggle) => {
+            const parentItem = toggle.closest('.primary-menu__item--dropdown');
+            if (! parentItem) {
+                return;
+            }
+
+            bindDropdownToggle(toggle, (event) => {
+                if (window.innerWidth > 760) {
+                    return;
+                }
+
+                event.preventDefault();
+                event.stopPropagation();
+
+                const isOpen = parentItem.classList.toggle('is-open');
+                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+                if (isOpen) {
+                    document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
+                        if (openItem !== parentItem) {
+                            openItem.classList.remove('is-open');
+                            const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
+                            if (otherToggle) {
+                                otherToggle.setAttribute('aria-expanded', 'false');
+                            }
+                        }
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('click', (event) => {
+            if (window.innerWidth > 760) {
+                return;
+            }
+
+            if (! event.target.closest('.primary-menu__item--dropdown')) {
+                document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
+                    openItem.classList.remove('is-open');
+                    const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
+                    if (otherToggle) {
+                        otherToggle.setAttribute('aria-expanded', 'false');
+                    }
+                });
+            }
         });
     });
 </script>

@@ -149,20 +149,68 @@
             margin: 50px 0;
         }
 
-        footer {
-            margin-top: 60px;
-            padding: 30px 20px;
-            border-top: 1px solid var(--border);
-            text-align: center;
-            color: #64748b;
-            font-size: 0.95rem;
-        }
-
         @media (max-width: 768px) {
             header h1 { font-size: 2.1rem; }
             header p { font-size: 1.1rem; }
             h2 { font-size: 1.5rem; }
             .container { padding: 15px; }
+        }
+
+        /* Footer utility styles for the shared footer partial */
+        footer { width: 100%; }
+        .bg-white { background-color: #ffffff; }
+        .border-t { border-top: 1px solid #e5e7eb; }
+        .border-gray-200 { border-color: #e5e7eb; }
+        .px-4 { padding-left: 1rem; padding-right: 1rem; }
+        .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+        .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
+        .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+        .max-w-7xl { max-width: 80rem; }
+        .mx-auto { margin-left: auto; margin-right: auto; }
+        .grid { display: grid; }
+        .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+        .gap-8 { gap: 2rem; }
+        .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        .space-y-2 > * + * { margin-top: 0.5rem; }
+        .flex { display: flex; }
+        .flex-col { flex-direction: column; }
+        .items-center { align-items: center; }
+        .gap-2 { gap: 0.5rem; }
+        .gap-5 { gap: 1.25rem; }
+        .mb-4 { margin-bottom: 1rem; }
+        .h-16 { height: 4rem; }
+        .w-16 { width: 4rem; }
+        .object-contain { object-fit: contain; }
+        .text-gray-950 { color: #0f172a; }
+        .font-black { font-weight: 900; }
+        .font-bold { font-weight: 700; }
+        .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
+        .uppercase { text-transform: uppercase; }
+        .tracking-tight { letter-spacing: -0.025em; }
+        .text-gray-600 { color: #4b5563; }
+        .text-gray-500 { color: #6b7280; }
+        .hover\:text-yellow-600:hover { color: #ca8a04; }
+        .transition { transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out; }
+        .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
+        .font-semibold { font-weight: 600; }
+        .pt-6 { padding-top: 1.5rem; }
+        .sm\:flex-row { flex-direction: row; }
+        .sm\:items-center { align-items: center; }
+        .sm\:justify-between { justify-content: space-between; }
+
+        @media (min-width: 640px) {
+            .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+            .sm\:flex-row { flex-direction: row; }
+            .sm\:items-center { align-items: center; }
+            .sm\:justify-between { justify-content: space-between; }
+        }
+
+        @media (min-width: 768px) {
+            .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+        }
+
+        @media (min-width: 1024px) {
+            .lg\:px-8 { padding-left: 2rem; padding-right: 2rem; }
         }
     </style>
 </head>
@@ -341,11 +389,7 @@
         <p>Then build your five-year cost model, review your dealer relationships, and make a decision based on the full picture — not just the price tag or the brand name. The wheel loader that earns its keep day after day, shift after shift, is the one that fits your operation from the ground up.</p>
     </main>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Heavy Equipment Procurement Guide. All text retained explicitly in full configuration.</p>
-        </div>
-    </footer>
+    @include('partials.footer')
 
 </body>
 </html>

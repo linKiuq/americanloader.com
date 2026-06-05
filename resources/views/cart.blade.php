@@ -68,18 +68,17 @@
                                                     @endfor
                                                 </select>
                                             </form>
-                                            <p class="text-lg font-semibold">${{ number_format($item['line_total'], 2) }}</p>
+                                            <p class="text-sm font-semibold text-gray-500">Pricing hidden in cart</p>
                                         </div>
                                     </div>
                                 </article>
                             @endforeach
                         </div>
 
-                        <dl class="mt-3 space-y-4 border-y border-gray-200 py-7 text-lg">
-                            <div class="flex justify-between"><dt>Subtotal</dt><dd>${{ number_format($subtotal, 2) }}</dd></div>
-                            <div class="flex justify-between"><dt>Shipping</dt><dd>Free</dd></div>
-                            <div class="flex justify-between pt-1 text-2xl font-black"><dt>TOTAL</dt><dd>${{ number_format($subtotal, 2) }}</dd></div>
-                        </dl>
+                        <div class="mt-3 rounded-2xl border border-gray-200 bg-gray-50 p-6 text-sm text-gray-600">
+                            <p class="font-semibold">Pricing is hidden in the shopping cart.</p>
+                            <p class="mt-2">Full order pricing will be available during checkout.</p>
+                        </div>
 
                         <div class="border-b border-gray-200 py-8">
                             <h2 class="text-xl font-black">Apply a promo coupon</h2>
@@ -146,7 +145,7 @@
                                     </a>
                                     <div class="min-w-0">
                                         <a href="{{ route('product.show', $product['slug']) }}" class="line-clamp-2 text-sm font-bold hover:text-yellow-700">{{ $product['name'] }}</a>
-                                        <p class="mt-2 font-black">${{ number_format((float) ($product['price'] ?? 0), 2) }}</p>
+                                        <p class="mt-2 font-black text-gray-500">Quote on request</p>
                                     </div>
                                 </article>
                             @endforeach

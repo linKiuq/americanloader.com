@@ -129,7 +129,7 @@
                                             <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
                                         </div>
                                         <a href="{{ route('product.show', $product['slug']) }}" class="line-clamp-2 min-h-[3rem] text-sm font-bold leading-6 transition hover:text-yellow-700">{{ $product['name'] }}</a>
-                                        <p class="mt-3 text-xl font-black text-gray-950">${{ number_format((float) ($product['price'] ?? 0), 2) }}</p>
+                                        <p class="mt-3 text-xl font-black text-gray-500">Quote on request</p>
                                         <div class="mt-auto flex gap-2 pt-5">
                                             <form method="POST" action="{{ route('cart.items.store') }}" class="flex-1">
                                                 @csrf

@@ -327,7 +327,7 @@
                     <div class="p-5 flex flex-col flex-grow">
                         <h3 class="text-gray-950 font-bold text-sm line-clamp-2 uppercase tracking-tight mb-2 min-h-10 group-hover:text-yellow-600 transition">${escapeHtml(product.name)}</h3>
                         <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col gap-3">
-                            <span class="text-gray-950 text-base font-black tracking-tight">${product.price ? currencyFormatter.format(product.price) : 'Quote'}</span>
+                            <span class="text-gray-500 text-base font-black tracking-tight">Quote on request</span>
                             <div class="flex gap-2">
                                 <form method="POST" action="{{ route('cart.items.store') }}" class="flex-1">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">

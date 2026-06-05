@@ -42,7 +42,7 @@
                 <section>
                     <p class="mb-3 text-sm font-semibold uppercase tracking-[0.28em] text-yellow-600">{{ $product['category'] ?? 'Product' }}</p>
                     <h1 class="text-4xl font-black leading-tight">{{ $product['name'] }}</h1>
-                    <p class="mt-4 text-3xl font-black">${{ number_format((float) ($product['price'] ?? 0), 2) }}</p>
+                    <p class="mt-4 text-3xl font-black text-gray-500">Quote on request</p>
                     <div class="mt-8 space-y-6 text-gray-600">
                         <div>
                             <h2 class="mb-3 text-lg font-bold text-gray-950">Overview</h2>
@@ -88,7 +88,7 @@
                                 </a>
                                 <a href="{{ route('product.show', $related['slug']) }}" class="mt-5 block text-lg font-bold hover:text-yellow-600">{{ $related['name'] }}</a>
                                 <div class="mt-5 flex items-center justify-between">
-                                    <span class="font-black">${{ number_format((float) ($related['price'] ?? 0), 2) }}</span>
+                                    <span class="font-black text-gray-500">Quote on request</span>
                                     <a href="{{ route('product.show', $related['slug']) }}" class="text-sm font-semibold text-yellow-600">View</a>
                                 </div>
                             </article>
