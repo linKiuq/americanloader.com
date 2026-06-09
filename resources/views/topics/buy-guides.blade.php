@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
     <title>Wheel Loader Buyer's Guide</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {
             --primary: #f28d1a;
@@ -70,6 +71,7 @@
 
         h2 {
             font-size: 1.8rem;
+            font-weight: bold;
             color: var(--secondary);
             margin-top: 45px;
             margin-bottom: 20px;
@@ -80,6 +82,7 @@
 
         h3 {
             font-size: 1.3rem;
+            font-weight: bold;
             color: var(--secondary);
             margin-top: 25px;
             margin-bottom: 12px;
@@ -92,6 +95,7 @@
 
         strong {
             color: var(--dark);
+            font-weight: bold;
         }
 
         ul {
