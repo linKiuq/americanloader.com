@@ -51,7 +51,7 @@ jobs:
           server: "195.184.64.49"
           username: "u504000170"
           password: "KhmerLucky#2026"
-          server-dir: "./laravel/"
+          server-dir: "./public_html/"
           protocol: "ftp"
           exclude: |
             **/.git*
