@@ -25,8 +25,14 @@ jobs:
           php-version: '8.2'
           tools: composer:v2
 
+      - name: Prepare environment
+        run: |
+          cp .env.example .env
+
       - name: Install PHP Dependencies
-        run: composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+        run: |
+          composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
+          php artisan key:generate || true
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
