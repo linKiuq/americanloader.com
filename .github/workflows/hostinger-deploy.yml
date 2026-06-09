@@ -1,4 +1,4 @@
-name: Hostinger Auto Deploy (FTP)
+name: Hostinger SSH Auto Deploy
 
 on:
   push:
@@ -12,45 +12,97 @@ concurrency:
 
 jobs:
   deploy:
-    name: Build & Deploy via FTP
+    name: Deploy to Hostinger via SSH
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '8.2'
-          tools: composer:v2
-
-      - name: Prepare environment
-        run: |
-          cp .env.example .env
-
-      - name: Install PHP Dependencies
-        run: |
-          composer install --no-dev --optimize-autoloader --no-interaction --prefer-dist
-          php artisan key:generate || true
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '22'
-          cache: 'npm'
-
-      - name: Install NPM Dependencies & Build
-        run: |
-          npm ci
-          npm run build
-
-      - name: Sync via FTP using lftp
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
         env:
-          FTP_HOST: "195.184.64.49"
-          FTP_USER: "u504000170"
-          FTP_PASS: "KhmerLucky#2026"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USER,$FTP_PASS ftp://$FTP_HOST; mirror -R --verbose --exclude-glob .git/ --exclude-glob node_modules/ ./ public_html/"
+          APP_ROOT: /home/u534600013/laravel
+          WEB_ROOT: /home/u534600013/public_html
+          DEPLOY_REPO_URL: "https://github.com/luusea76-bot/Wheel-Loader.git"
+          SSH_USER: "u534600013"
+        with:
+          host: "194.164.64.89"
+          port: "65002"
+          username: "u534600013"
+          password: "KhmerLucky#2026"
+          envs: APP_ROOT,WEB_ROOT,DEPLOY_REPO_URL,SSH_USER
+          script_stop: true
+          script: |
+            set -Eeuo pipefail
+
+            BRANCH="main"
+            
+            echo "Deploying $DEPLOY_REPO_URL#$BRANCH"
+            echo "Application root: $APP_ROOT"
+            echo "Web root: $WEB_ROOT"
+
+            require_command() {
+              if ! command -v "$1" >/dev/null 2>&1; then
+                echo "Required command not found on Hostinger: $1"
+                exit 1
+              fi
+            }
+
+            require_command git
+            require_command php
+
+            mkdir -p "$(dirname "$APP_ROOT")" "$WEB_ROOT"
+
+            if [ -d "$APP_ROOT/.git" ]; then
+              cd "$APP_ROOT"
+              git remote set-url origin "$DEPLOY_REPO_URL"
+              git fetch --prune origin "$BRANCH"
+            else
+              rm -rf "$APP_ROOT"
+              git clone --branch "$BRANCH" "$DEPLOY_REPO_URL" "$APP_ROOT"
+              cd "$APP_ROOT"
+            fi
+
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            git reset --hard "origin/$BRANCH"
+
+            # Setup .env file
+            if [ ! -f .env ]; then
+              cp .env.example .env
+            fi
+
+            # Install dependencies locally on server
+            if command -v composer >/dev/null 2>&1; then
+              composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            elif [ -f composer.phar ]; then
+              php composer.phar install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            else
+              echo "Downloading composer..."
+              wget -qO composer.phar https://getcomposer.org/download/latest-stable/composer.phar
+              php composer.phar install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            fi
+
+            # Set up app key if missing
+            if ! grep -Eq '^APP_KEY=base64:.+' .env; then
+              php artisan key:generate --force --no-interaction || true
+            fi
+            
+            # Run basic laravel commands
+            php artisan storage:link --force || true
+            php artisan migrate --force --no-interaction || true
+            php artisan optimize:clear || true
+
+            chmod -R ug+rwX storage bootstrap/cache
+
+            # Symlink public directory
+            if ln -sfn "$APP_ROOT/public" "$WEB_ROOT.tmp" 2>/dev/null; then
+              rm -rf "$WEB_ROOT"
+              mv "$WEB_ROOT.tmp" "$WEB_ROOT"
+              echo "Linked public_html to Laravel public directory."
+            else
+              echo "Symlink failed; copying public files and patching index.php paths."
+              rm -rf "$WEB_ROOT.tmp"
+              mkdir -p "$WEB_ROOT"
+              cp -R "$APP_ROOT/public/." "$WEB_ROOT/"
+              php -r '$f=getenv("WEB_ROOT")."/index.php"; $app=getenv("APP_ROOT"); $s=file_get_contents($f); $s=str_replace("__DIR__.\x27/../vendor/autoload.php\x27", "\x27".$app."/vendor/autoload.php\x27", $s); $s=str_replace("__DIR__.\x27/../bootstrap/app.php\x27", "\x27".$app."/bootstrap/app.php\x27", $s); $s=str_replace("__DIR__.\x27/../storage/framework/maintenance.php\x27", "\x27".$app."/storage/framework/maintenance.php\x27", $s); file_put_contents($f, $s);'
+            fi
+
+            echo "Hostinger SSH deployment finished successfully."
