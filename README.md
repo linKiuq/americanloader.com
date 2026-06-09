@@ -21,6 +21,24 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
+## Auto deploy via GitHub Actions
+
+This repository now includes a GitHub Actions workflow at `.github/workflows/hostinger-deploy.yml`.
+When code is pushed to `main`, GitHub will deploy the app to Hostinger over SSH. You can also run it manually from the GitHub Actions tab with **Hostinger Auto Deploy**.
+
+Required repository secrets:
+- `HOSTINGER_SSH_HOST`
+- `HOSTINGER_SSH_USER`
+- `HOSTINGER_SSH_PORT` (optional; defaults to `22`)
+- `HOSTINGER_SSH_KEY` (preferred) or `HOSTINGER_SSH_PASSWORD`
+
+Optional repository secrets and variables:
+- Secret `DEPLOY_REPO_URL`: use this only if Hostinger must clone from a private repository or a custom Git URL.
+- Variable `HOSTINGER_APP_ROOT`: defaults to `/home/<HOSTINGER_SSH_USER>/laravel`.
+- Variable `HOSTINGER_WEB_ROOT`: defaults to `/home/<HOSTINGER_SSH_USER>/public_html`.
+
+The workflow keeps the server `.env` file if it already exists, installs Composer dependencies when Composer is available, runs migrations, clears and rebuilds Laravel caches, and points `public_html` at Laravel's `public` directory.
+
 ## Learning Laravel
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.

@@ -1,0 +1,107 @@
+name: Hostinger Auto Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+concurrency:
+  group: hostinger-deploy-main
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    name: Deploy to Hostinger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          APP_ROOT: ${{ vars.HOSTINGER_APP_ROOT }}
+          WEB_ROOT: ${{ vars.HOSTINGER_WEB_ROOT }}
+          DEPLOY_REPO_URL: ${{ secrets.DEPLOY_REPO_URL }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST }}
+          port: ${{ secrets.HOSTINGER_SSH_PORT || 22 }}
+          username: ${{ secrets.HOSTINGER_SSH_USER }}
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          envs: APP_ROOT,WEB_ROOT,DEPLOY_REPO_URL,SSH_USER
+          script_stop: true
+          script: |
+            set -Eeuo pipefail
+
+            BRANCH="main"
+            APP_ROOT="${APP_ROOT:-/home/$SSH_USER/laravel}"
+            WEB_ROOT="${WEB_ROOT:-/home/$SSH_USER/public_html}"
+            REPO_URL="${DEPLOY_REPO_URL:-https://github.com/${{ github.repository }}.git}"
+
+            echo "Deploying $REPO_URL#$BRANCH"
+            echo "Application root: $APP_ROOT"
+            echo "Web root: $WEB_ROOT"
+
+            require_command() {
+              if ! command -v "$1" >/dev/null 2>&1; then
+                echo "Required command not found on Hostinger: $1"
+                exit 1
+              fi
+            }
+
+            require_command git
+            require_command php
+
+            mkdir -p "$(dirname "$APP_ROOT")" "$WEB_ROOT"
+
+            if [ -d "$APP_ROOT/.git" ]; then
+              cd "$APP_ROOT"
+              git remote set-url origin "$REPO_URL"
+              git fetch --prune origin "$BRANCH"
+            else
+              rm -rf "$APP_ROOT"
+              git clone --branch "$BRANCH" "$REPO_URL" "$APP_ROOT"
+              cd "$APP_ROOT"
+            fi
+
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            git reset --hard "origin/$BRANCH"
+
+            if [ ! -f .env ]; then
+              cp .env.example .env
+            fi
+
+            if command -v composer >/dev/null 2>&1; then
+              composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            elif [ ! -f vendor/autoload.php ]; then
+              echo "Composer is not available and vendor/autoload.php is missing."
+              exit 1
+            else
+              echo "Composer not available; using committed vendor directory."
+            fi
+
+            if ! grep -Eq '^APP_KEY=base64:.+' .env; then
+              php artisan key:generate --force --no-interaction
+            fi
+            php artisan storage:link --force || true
+            php artisan migrate --force --no-interaction
+            php artisan optimize:clear
+            php artisan config:cache
+            php artisan view:cache
+
+            chmod -R ug+rwX storage bootstrap/cache
+
+            if ln -sfn "$APP_ROOT/public" "$WEB_ROOT.tmp" 2>/dev/null; then
+              rm -rf "$WEB_ROOT"
+              mv "$WEB_ROOT.tmp" "$WEB_ROOT"
+              echo "Linked public_html to Laravel public directory."
+            else
+              echo "Symlink failed; copying public files and patching index.php paths."
+              rm -rf "$WEB_ROOT.tmp"
+              mkdir -p "$WEB_ROOT"
+              cp -R "$APP_ROOT/public/." "$WEB_ROOT/"
+              php -r '$f=getenv("WEB_ROOT")."/index.php"; $app=getenv("APP_ROOT"); $s=file_get_contents($f); $s=str_replace("__DIR__.\x27/../vendor/autoload.php\x27", "\x27".$app."/vendor/autoload.php\x27", $s); $s=str_replace("__DIR__.\x27/../bootstrap/app.php\x27", "\x27".$app."/bootstrap/app.php\x27", $s); $s=str_replace("__DIR__.\x27/../storage/framework/maintenance.php\x27", "\x27".$app."/storage/framework/maintenance.php\x27", $s); file_put_contents($f, $s);'
+            fi
+
+            echo "Hostinger deployment finished."
