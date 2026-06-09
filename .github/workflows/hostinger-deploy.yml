@@ -1,4 +1,4 @@
-name: Hostinger Auto Deploy (Old Server)
+name: Hostinger Auto Deploy (New Server)
 
 on:
   push:
@@ -12,27 +12,74 @@ concurrency:
 
 jobs:
   deploy:
-    name: Deploy via LFTP to Old Server
+    name: Deploy to Hostinger via SSH
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
-          php-version: '8.3'
-          
-      - name: Install Dependencies
-        run: composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction --no-scripts
-        
-      - name: Sync via FTP using lftp
-        env:
-          FTP_HOST: "195.184.64.49"
-          FTP_USER: "u504000170"
-          FTP_PASS: "KhmerLucky#2026"
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y lftp
-          lftp -c "set ftp:ssl-allow no; open -u $FTP_USER,$FTP_PASS ftp://$FTP_HOST; mirror -R --verbose --exclude-glob .git/ ./ public_html/"
+          host: "194.164.64.89"
+          port: "65002"
+          username: "u534600013"
+          password: "LIn12345@"
+          script_stop: true
+          script: |
+            set -e
+            echo "Connected to Hostinger Server!"
+            
+            APP_ROOT="/home/u534600013/laravel"
+            WEB_ROOT="/home/u534600013/public_html"
+            REPO_URL="https://github.com/luusea76-bot/Wheel-Loader.git"
+            BRANCH="main"
+            PHP_BIN="/opt/alt/php84/usr/bin/php"
+
+            mkdir -p "$APP_ROOT"
+            cd "$APP_ROOT"
+
+            if [ -d ".git" ]; then
+              echo "Pulling latest code..."
+              git remote set-url origin "$REPO_URL"
+              git fetch --prune origin "$BRANCH"
+              git reset --hard "origin/$BRANCH"
+            else
+              echo "Cloning repository..."
+              git clone --branch "$BRANCH" "$REPO_URL" .
+            fi
+
+            if [ ! -f .env ]; then
+              echo "Setting up .env file..."
+              cp .env.example .env
+            fi
+
+            echo "Downloading composer..."
+            wget -qO composer.phar https://getcomposer.org/download/latest-stable/composer.phar
+
+            echo "Cleaning up broken vendor directory..."
+            rm -rf vendor
+
+            echo "Installing PHP dependencies with PHP 8.4 AND --no-scripts..."
+            $PHP_BIN composer.phar install --no-dev --optimize-autoloader --no-interaction --no-scripts
+
+            echo "Generating application key..."
+            if ! grep -Eq '^APP_KEY=base64:.+' .env; then
+              $PHP_BIN artisan key:generate --force
+            fi
+
+            echo "Running artisan commands manually..."
+            $PHP_BIN artisan package:discover --ansi
+            $PHP_BIN artisan migrate --force || true
+            $PHP_BIN artisan optimize:clear
+
+            echo "Setting up public directory symlink..."
+            if ln -sfn "$APP_ROOT/public" "$WEB_ROOT.tmp" 2>/dev/null; then
+              rm -rf "$WEB_ROOT"
+              mv "$WEB_ROOT.tmp" "$WEB_ROOT"
+            else
+              echo "Symlink failed, copying files..."
+              rm -rf "$WEB_ROOT"
+              mkdir -p "$WEB_ROOT"
+              cp -r "$APP_ROOT/public/"* "$WEB_ROOT/"
+            fi
+
+            echo "✅ Deployment Complete!"
