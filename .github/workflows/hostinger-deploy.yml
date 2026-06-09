@@ -45,16 +45,12 @@ jobs:
           npm ci
           npm run build
 
-      - name: Sync via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: "195.184.64.49"
-          username: "u504000170"
-          password: "KhmerLucky#2026"
-          server-dir: "./public_html/"
-          protocol: "ftp"
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
+      - name: Sync via FTP using lftp
+        env:
+          FTP_HOST: "195.184.64.49"
+          FTP_USER: "u504000170"
+          FTP_PASS: "KhmerLucky#2026"
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lftp
+          lftp -c "set ftp:ssl-allow no; open -u $FTP_USER,$FTP_PASS ftp://$FTP_HOST; mirror -R --verbose --exclude-glob .git/ --exclude-glob node_modules/ ./ public_html/"
