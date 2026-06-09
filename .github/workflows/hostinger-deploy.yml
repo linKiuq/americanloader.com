@@ -16,7 +16,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Check deploy configuration
+        id: deploy_config
+        env:
+          HOSTINGER_SSH_HOST: ${{ secrets.HOSTINGER_SSH_HOST }}
+          HOSTINGER_SSH_USER: ${{ secrets.HOSTINGER_SSH_USER }}
+          HOSTINGER_SSH_KEY: ${{ secrets.HOSTINGER_SSH_KEY }}
+          HOSTINGER_SSH_PASSWORD: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+        run: |
+          if [ -z "$HOSTINGER_SSH_HOST" ] || [ -z "$HOSTINGER_SSH_USER" ]; then
+            echo "::notice::Hostinger deploy skipped because HOSTINGER_SSH_HOST or HOSTINGER_SSH_USER is not configured."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          if [ -z "$HOSTINGER_SSH_KEY" ] && [ -z "$HOSTINGER_SSH_PASSWORD" ]; then
+            echo "::notice::Hostinger deploy skipped because neither HOSTINGER_SSH_KEY nor HOSTINGER_SSH_PASSWORD is configured."
+            echo "ready=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+
       - name: Deploy over SSH
+        if: steps.deploy_config.outputs.ready == 'true'
         uses: appleboy/ssh-action@v1.0.3
         env:
           APP_ROOT: ${{ vars.HOSTINGER_APP_ROOT }}
