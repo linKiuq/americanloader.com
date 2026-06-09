@@ -32,7 +32,7 @@ jobs:
           host: "195.184.64.49"
           port: "65002"
           username: "u504000170"
-          password: "naP6tvZLZ!2$JQc"
+          password: "KhmerLucky#2026"
           envs: APP_ROOT,WEB_ROOT,DEPLOY_REPO_URL,SSH_USER
           script_stop: true
           script: |
