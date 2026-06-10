@@ -633,7 +633,7 @@
         }
 
         .site-navbar__hamburger {
-            display: inline-flex;
+            display: inline-flex !important;
         }
 
         .site-navbar__inner {
