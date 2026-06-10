@@ -82,6 +82,6 @@ class AttachmentCatalogTest extends TestCase
         $this->get(route('cart'))
             ->assertOk()
             ->assertSee('10-in-1 Mini Excavator Attachment Bundle')
-            ->assertSee('$3,095.10');
+            ->assertSee('Pricing is hidden in the shopping cart');
     }
 }

@@ -230,10 +230,6 @@
             <p>When engineering an asset framework or introducing a machine into a high-risk area, overlooking visibility ratings or physical frame protection parameters creates significant legal and structural liability. True productivity is only realized when safety limits are maintained completely.</p>
         </div>
 
-        <div class="image-wrapper">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1579165466991-46715500e801?auto=format&fit=crop&w=1200&q=80" alt="Yellow heavy wheel loader with safety mirrors and structural roll protection visible on site">
-            <div class="image-caption">Risk Mitigation Architecture: Integrated roll-over structural guards (ROPS) and wide-angle mirrors preserve operator safety.</div>
-        </div>
 
         <h2>Critical Visibility & Warning Protocols</h2>
         <p>Blind spots account for a high percentage of heavy machinery contact incidents. Maintaining complete workspace awareness requires strict adherence to the following visual and sensor-based equipment standards:</p>

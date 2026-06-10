@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-#[Fillable(['user_id', 'category_id', 'title', 'slug', 'excerpt', 'content', 'image_url', 'is_published', 'published_at'])]
 class BlogPost extends Model
 {
+    protected $fillable = ['user_id', 'category_id', 'title', 'slug', 'excerpt', 'content', 'image_url', 'is_published', 'published_at'];
     protected function casts(): array
     {
         return [

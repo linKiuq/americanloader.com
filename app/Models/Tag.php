@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-#[Fillable(['name', 'slug'])]
 class Tag extends Model
 {
+    protected $fillable = ['name', 'slug'];
     public function blogPosts(): BelongsToMany
     {
         return $this->belongsToMany(BlogPost::class);

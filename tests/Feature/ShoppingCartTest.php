@@ -25,7 +25,7 @@ class ShoppingCartTest extends TestCase
             ->assertOk()
             ->assertSee('2024 TYPHON 2 Ton Rated Capacity Electric Forklift')
             ->assertSee('New 2025 TYPHON VIGOR 1.5 Blue Electric Forklift')
-            ->assertSee('$25,597.00')
+            ->assertSee('Pricing is hidden in the shopping cart')
             ->assertSee('Shopping cart')
             ->assertSee('Your email address')
             ->assertSee('Checkout')
@@ -73,7 +73,7 @@ class ShoppingCartTest extends TestCase
 
         $this->get(route('cart'))
             ->assertOk()
-            ->assertSee('$56,793.00');
+            ->assertSee('Pricing is hidden in the shopping cart');
 
         $this->delete(route('cart.items.destroy'), ['slug' => self::VIGOR])->assertRedirect();
         $this->get(route('cart'))->assertDontSee('New 2025 TYPHON VIGOR 1.5 Blue Electric Forklift');

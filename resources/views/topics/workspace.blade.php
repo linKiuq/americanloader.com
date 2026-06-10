@@ -246,10 +246,6 @@
             <p>A well-designed loader cabin functions as a highly technical workspace. Optimizing this interior ensures reduced muscle fatigue, sharp mental acuity, and swift cycle responses throughout severe weather configurations and multi-shift timelines.</p>
         </div>
 
-        <div class="image-frame">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1579165466991-46715500e801?auto=format&fit=crop&w=1200&q=80" alt="Interior operator cabin display metrics inside modern wheel loader machinery">
-            <div class="image-label">Ergonomic Architecture: Panoramic layout minimizes blind spots while critical system displays maintain operator alignment.</div>
-        </div>
 
         <h2>Visibility and Sightline Requirements</h2>
         <p>Visibility inside the wheel loader workspace directly affects structural safety protocols and cycle time metrics. When evaluating a cab workspace setup, verify the following field-of-view specifications:</p>

@@ -232,10 +232,6 @@
         <p class="intro-text">Buying a wheel loader is a significant investment. Choose the right machine and you gain a versatile, productive workhorse that drives profitability across a wide range of tasks. Choose the wrong one and you spend years fighting a machine that is too small, too large, or simply mismatched for how you actually work.</p>
         <p class="intro-text">This guide is built for equipment buyers, contractors, site supervisors, and fleet managers who want a clear, practical framework for evaluating wheel loaders before committing to a purchase. We cover the most important specifications, jobsite factors, and ownership considerations — so you can make a confident, well-informed decision.</p>
 
-        <div class="image-container">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1579165466991-46715500e801?auto=format&fit=crop&w=1200&q=80" alt="Yellow modern wheel loader vehicle stationary on a industrial job site">
-            <div class="image-caption">Operational Assessment: Matching machine size and hydraulic capacity directly to daily tasks guarantees high return on investment.</div>
-        </div>
 
         <h2>Start with Your Application, Not the Spec Sheet</h2>
         <p>The most common mistake buyers make is leading with machine size or brand preference instead of starting with the work itself. Before you compare models, get specific about what the loader will actually do every day.</p>
@@ -268,10 +264,6 @@
         </ul>
         <p>Overloading the bucket might seem productive in the short term, but it accelerates wear on the drivetrain, axles, and tires while increasing fuel consumption.</p>
 
-        <div class="image-container">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80" alt="Heavy duty bucket component on construction machine handling raw coarse aggregate material">
-            <div class="image-caption">Material Management: Dense or wet raw material yields alternate fill factors compared to loose sand or gravel.</div>
-        </div>
 
         <h2>Lift Capacity and Hydraulic Performance</h2>
         <p>Lift capacity determines what the loader can safely pick up and carry. You need to know the rated operating capacity (ROC) and the tipping load — the point at which the machine becomes unstable with a load.</p>

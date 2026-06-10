@@ -185,10 +185,6 @@
             <p class="intro-p">This guide covers the performance features that matter most when evaluating a wheel loader — whether you are buying your first machine, upgrading a fleet, or comparing models for a specific application. Understanding these specs helps you move beyond the brochure and make a decision grounded in actual jobsite output.</p>
         </section>
 
-        <div class="image-box">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1579165466991-46715500e801?auto=format&fit=crop&w=1200&q=80" alt="Large heavy machinery wheel loader performing continuous production load-and-carry cycles">
-            <div class="image-tag">Figure 1: High-efficiency material movement depends on harmonized engine torque and hydraulic quick cycles.</div>
-        </div>
 
         <h2>Engine Power and Torque</h2>
         <p>Engine horsepower sets the ceiling for what a wheel loader can do, but torque is what actually gets material moving. High torque at low engine speeds gives the loader the pulling force needed to penetrate dense material, push into heavy piles, and maintain momentum without bogging down the drivetrain.</p>
@@ -226,10 +222,6 @@
         </ul>
         <p>Evaluate bucket options carefully alongside the machine. The right bucket matched to your material can meaningfully improve material moved per hour without increasing machine size or fuel consumption.</p>
 
-        <div class="image-box">
-            <img loading="lazy" onerror="this.onerror=null; this.src='https://via.placeholder.com/1200x500?text=Image+Unavailable';" src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=80" alt="Close up view of heavy machine bucket engagement with raw stone aggregate">
-            <div class="image-tag">Figure 2: Customizing attachment specifications directly controls bucket fill metrics and eliminates unnecessary drivetrain wear.</div>
-        </div>
 
         <h2>Hydraulic Flow and System Performance</h2>
         <p>The hydraulic system is the foundation of a wheel loader's work capability. It powers the lift arms, controls bucket movement, and drives attachments. Hydraulic performance directly determines how fast and responsive the machine feels during a full work cycle.</p>
