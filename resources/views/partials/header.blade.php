@@ -340,11 +340,11 @@
     }
 
     .attachments-dropdown__heading {
-        min-height: 96px;
-        padding: 1.45rem 2rem;
+        min-height: 64px;
+        padding: 1.15rem 2rem;
         color: #e2e8f0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 900;
         letter-spacing: 0.16em;
         line-height: 1.45;
@@ -360,11 +360,11 @@
     .attachments-dropdown__link {
         display: flex;
         align-items: center;
-        min-height: 82px;
-        padding: 1rem 2rem;
+        min-height: 58px;
+        padding: 0.85rem 2rem;
         color: #e2e8f0;
         border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        font-size: 1rem;
+        font-size: 0.95rem;
         font-weight: 700;
         line-height: 1.45;
         text-decoration: none;
@@ -626,288 +626,331 @@
         }
     }
 
-    @media (max-width: 1080px) {
+    /* Clean Responsive Navigation Styles */
+    @media (max-width: 1024px) {
+        .primary-menu {
+            display: none !important;
+        }
+
+        .site-navbar__hamburger {
+            display: inline-flex;
+        }
+
         .site-navbar__inner {
-            flex-wrap: wrap;
-            row-gap: 0;
-            column-gap: 1.25rem;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
+            min-height: 72px;
+            padding: 0 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .site-navbar__logo {
+            width: 48px;
+            height: 48px;
         }
 
         .site-navbar__brand-text {
             display: none;
         }
 
-        .primary-menu {
-            order: 3;
-            flex: 0 0 100%;
-            width: 100%;
-            margin-left: 0;
-            height: 46px;
-            justify-content: flex-start;
-            gap: 1.35rem;
-            overflow-x: auto;
-            overflow-y: visible;
-            scrollbar-width: none;
-            -webkit-overflow-scrolling: touch;
-        }
-
-        .primary-menu::-webkit-scrollbar {
-            display: none;
-        }
-
         .site-navbar__actions {
             margin-left: auto;
-            flex: 0 0 auto;
-            justify-content: flex-end;
-        }
-    }
-
-    @media (max-width: 760px) {
-        .site-navbar {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
-        }
-
-        .site-navbar__inner {
-            min-height: 0;
-            padding: 0 0.75rem 0.45rem;
-            display: grid;
-            grid-template-columns: auto minmax(0, 1fr);
-            gap: 0 0.65rem;
+            display: flex;
             align-items: center;
-            overflow: visible;
-        }
-
-        .site-navbar__brand {
-            grid-column: 1 / 2;
-            grid-row: 1;
-            min-height: 50px;
-        }
-
-        .site-navbar__logo {
-            width: 44px;
-            height: 44px;
-        }
-
-        .primary-menu {
-            grid-column: 1 / 2;
-            grid-row: 2;
-            order: initial;
-            height: 40px;
-            width: auto;
-            margin: 0;
-            padding: 0;
-            align-items: center;
-            gap: 0.35rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            background: transparent;
-            max-width: calc(100vw - 7.6rem);
-        }
-
-        .primary-menu__link {
-            min-height: 30px;
-            padding: 0 0.52rem;
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            color: #cbd5e1;
-            background: rgba(255, 255, 255, 0.03);
-            font-size: 0.6rem;
-            letter-spacing: 0.045em;
-        }
-
-        .primary-menu__link.is-active {
-            color: var(--nav-bg);
-            background: var(--nav-yellow);
-            border-color: var(--nav-yellow);
-        }
-
-        .primary-menu__link::after {
-            display: none;
-        }
-
-        .primary-menu__chevron {
-            width: 9px;
-            height: 6px;
-        }
-
-        .primary-menu__item:not(.primary-menu__item--dropdown):last-child,
-        .site-navbar__cart-label {
-            display: none;
-        }
-
-        .site-navbar__actions {
-            grid-column: 2 / 3;
-            grid-row: 2;
-            justify-self: end;
-            justify-content: flex-end;
-            width: auto;
-            margin: 0;
-            padding: 0;
-            margin-left: 0;
-            gap: 0.35rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.08);
-            background: transparent;
+            gap: 0.65rem;
         }
 
         .site-navbar__cart,
         .site-navbar__search-toggle {
-            width: 34px;
-            height: 34px;
-            min-height: 34px;
+            width: 40px;
+            height: 40px;
+            min-height: 40px;
+            padding: 0;
+            justify-content: center;
             background: rgba(255, 255, 255, 0.03);
             border-color: rgba(250, 204, 21, 0.45);
         }
 
-        .site-navbar__cart {
-            min-width: 34px;
-            padding: 0;
-        }
-
         .site-navbar__cart-icon,
         .site-navbar__search-toggle svg {
-            width: 15px;
-            height: 15px;
+            width: 18px;
+            height: 18px;
+            display: block;
+        }
+
+        .site-navbar__cart-label {
+            display: none;
         }
 
         .site-navbar__count {
             position: absolute;
-            top: -6px;
-            right: -6px;
-            min-width: 1rem;
-            padding: 0.08rem 0.24rem;
+            top: -5px;
+            right: -5px;
+            min-width: 1.15rem;
+            height: 1.15rem;
+            padding: 0;
+            border-radius: 50%;
             border: 2px solid var(--nav-bg);
-            font-size: 0.58rem;
-            line-height: 1;
-        }
-
-        .equipment-dropdown {
-            left: 0;
-            padding-right: 1.15rem;
-            padding-left: 1.15rem;
-        }
-
-        .attachments-dropdown {
-            width: min(560px, calc(100vw - 1rem));
-        }
-
-        .attachments-dropdown__header {
-            align-items: flex-start;
-            flex-direction: column;
-            padding: 1.15rem;
-        }
-
-        .attachments-dropdown__grid {
-            grid-template-columns: 1fr;
-        }
-
-        .attachments-dropdown__group + .attachments-dropdown__group {
-            border-left: 0;
-        }
-
-        .attachments-dropdown__heading,
-        .attachments-dropdown__link {
-            padding-right: 1.15rem;
-            padding-left: 1.15rem;
-        }
-
-        .attachments-dropdown__link:hover,
-        .attachments-dropdown__link:focus-visible {
-            padding-left: 1.3rem;
+            font-size: 0.62rem;
+            line-height: 1.15rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .site-navbar__search-form {
             position: fixed;
-            top: 96px;
+            top: 86px;
             right: 0.75rem;
             left: 0.75rem;
             width: auto;
             max-width: none;
         }
+    }
 
-        .site-navbar__search-input {
-            padding-left: 0.65rem;
-            font-size: 0.82rem;
+    @media (max-width: 480px) {
+        .site-navbar__logo {
+            width: 42px;
+            height: 42px;
         }
 
-        .primary-menu__item--dropdown.is-open .equipment-dropdown,
-        .primary-menu__item--dropdown.is-open .attachments-dropdown,
-        .primary-menu__item--dropdown.is-open .topics-dropdown {
-            visibility: visible;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .primary-menu__item--dropdown.is-open .primary-menu__chevron,
-        .primary-menu__item--dropdown.is-open .primary-menu__dropdown-toggle svg {
-            transform: rotate(180deg);
-        }
-
-        .primary-menu__dropdown-toggle {
-            display: none;
-            border: none;
-            background: transparent;
-            color: inherit;
-            cursor: pointer;
-            padding: 0;
-            margin-left: 0.35rem;
-            width: 24px;
-            height: 24px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .primary-menu__dropdown-toggle svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        @media (max-width: 760px) {
-            .primary-menu__dropdown-toggle {
-                display: inline-flex;
-            }
-
-            .primary-menu__item--dropdown {
-                display: inline-flex;
-                align-items: center;
-            }
-
-            .primary-menu__item--dropdown .primary-menu__link {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.35rem;
-            }
+        .site-navbar__inner {
+            min-height: 64px;
         }
     }
 
-    @media (max-width: 420px) {
-        .site-navbar__logo {
-            width: 40px;
-            height: 40px;
-        }
+    /* Mobile Hamburger Menu Toggle Button */
+    .site-navbar__hamburger {
+        display: none;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        color: var(--nav-yellow);
+        background: transparent;
+        border: 1px solid rgba(250, 204, 21, 0.55);
+        cursor: pointer;
+        transition: background-color 160ms ease, color 160ms ease;
+    }
 
-        .site-navbar__brand {
-            min-height: 48px;
-        }
+    .site-navbar__hamburger:hover,
+    .site-navbar__hamburger:focus-visible {
+        color: var(--nav-bg);
+        background: var(--nav-yellow);
+        outline: none;
+    }
 
-        .primary-menu {
-            height: 38px;
-            gap: 0.3rem;
-        }
+    .site-navbar__hamburger svg {
+        width: 20px;
+        height: 20px;
+    }
 
-        .primary-menu__link {
-            min-height: 28px;
-            padding: 0 0.48rem;
-            font-size: 0.58rem;
-        }
+    /* Mobile Navigation Drawer Overlay & Panel */
+    .mobile-drawer {
+        position: fixed;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 100;
+        visibility: hidden;
+        pointer-events: none;
+        transition: visibility 0.3s;
+    }
 
-        .site-navbar__actions {
-            gap: 0.4rem;
-        }
+    .mobile-drawer.is-active {
+        visibility: visible;
+        pointer-events: auto;
+    }
 
-        .site-navbar__search-input {
-            padding-right: 2.25rem;
-        }
+    .mobile-drawer__overlay {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.65);
+        backdrop-filter: blur(4px);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-drawer.is-active .mobile-drawer__overlay {
+        opacity: 1;
+    }
+
+    .mobile-drawer__content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: min(340px, 85vw);
+        background: var(--nav-bg);
+        border-left: 1px solid rgba(250, 204, 21, 0.2);
+        box-shadow: -10px 0 35px rgba(0, 0, 0, 0.55);
+        display: flex;
+        flex-direction: column;
+        transform: translateX(100%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-drawer.is-active .mobile-drawer__content {
+        transform: translateX(0);
+    }
+
+    .mobile-drawer__header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 1.25rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-drawer__title {
+        color: #fff;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 1.15rem;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+    }
+
+    .mobile-drawer__close {
+        color: #fff;
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        width: 36px;
+        height: 36px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 150ms ease;
+    }
+
+    .mobile-drawer__close:hover {
+        color: var(--nav-yellow);
+    }
+
+    .mobile-drawer__close svg {
+        width: 22px;
+        height: 22px;
+    }
+
+    .mobile-drawer__body {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1.5rem 1.25rem;
+    }
+
+    /* Mobile Vertical Menu Structure */
+    .mobile-nav {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .mobile-nav__item {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 0.5rem;
+    }
+
+    .mobile-nav__item:last-child {
+        border-bottom: none;
+    }
+
+    .mobile-nav__header-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .mobile-nav__link {
+        display: block;
+        padding: 0.75rem 0;
+        color: #e2e8f0;
+        font-size: 1.05rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-decoration: none;
+        text-transform: uppercase;
+        transition: color 150ms ease;
+    }
+
+    .mobile-nav__link:hover,
+    .mobile-nav__link.is-active {
+        color: var(--nav-yellow);
+    }
+
+    .mobile-nav__submenu-trigger {
+        background: transparent;
+        border: none;
+        color: #94a3b8;
+        cursor: pointer;
+        width: 44px;
+        height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: color 150ms ease;
+    }
+
+    .mobile-nav__submenu-trigger:hover {
+        color: #fff;
+    }
+
+    .mobile-nav__chevron {
+        width: 14px;
+        height: 14px;
+        transition: transform 0.25s ease;
+    }
+
+    .mobile-nav__item.is-open .mobile-nav__chevron {
+        transform: rotate(180deg);
+        color: var(--nav-yellow);
+    }
+
+    .mobile-nav__submenu {
+        list-style: none;
+        padding: 0 0 0.5rem 1.25rem;
+        margin: 0;
+        display: none;
+        flex-direction: column;
+        gap: 0.25rem;
+        border-left: 2px solid rgba(250, 204, 21, 0.25);
+    }
+
+    .mobile-nav__item.is-open .mobile-nav__submenu {
+        display: flex;
+    }
+
+    .mobile-nav__submenu-link {
+        display: block;
+        padding: 0.5rem 0;
+        color: #cbd5e1;
+        font-size: 0.94rem;
+        font-weight: 500;
+        text-decoration: none;
+        transition: color 150ms ease;
+    }
+
+    .mobile-nav__submenu-link:hover {
+        color: #fff;
+    }
+
+    .mobile-nav__submenu-section-title {
+        color: var(--nav-yellow);
+        font-size: 0.75rem;
+        font-weight: 900;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-top: 0.85rem;
+        margin-bottom: 0.25rem;
+        opacity: 0.85;
     }
 </style>
 
@@ -1044,9 +1087,108 @@
                     </svg>
                 </form>
             </div>
+            <button type="button" class="site-navbar__hamburger" aria-expanded="false" aria-controls="mobile-menu-drawer" aria-label="Open navigation menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
     </div>
 </nav>
+
+<!-- Mobile Navigation Drawer Overlay & Panel -->
+<div id="mobile-menu-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer__overlay"></div>
+    <div class="mobile-drawer__content">
+        <div class="mobile-drawer__header">
+            <span class="mobile-drawer__title">Menu</span>
+            <button type="button" class="mobile-drawer__close" aria-label="Close navigation menu">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="mobile-drawer__body">
+            <ul class="mobile-nav">
+                <li class="mobile-nav__item">
+                    <a href="{{ route('welcome') }}" class="mobile-nav__link {{ $currentRoute === 'welcome' ? 'is-active' : '' }}">Home</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <div class="mobile-nav__header-wrapper">
+                        <a href="{{ route('equipment') }}" class="mobile-nav__link {{ $shopActive ? 'is-active' : '' }}">Shop</a>
+                        <button type="button" class="mobile-nav__submenu-trigger" aria-expanded="false" aria-label="Toggle Shop submenu">
+                            <svg class="mobile-nav__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                                <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="mobile-nav__submenu">
+                        @foreach ($shopCategories as $label => $category)
+                            <li>
+                                <a href="{{ route('equipment', ['category' => $category]) }}#catalog" class="mobile-nav__submenu-link">
+                                    {{ $label }}
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="mobile-nav__item">
+                    <div class="mobile-nav__header-wrapper">
+                        <a href="{{ route('attachments.index') }}" class="mobile-nav__link {{ str_starts_with($currentRoute, 'attachments.') ? 'is-active' : '' }}">Attachments</a>
+                        <button type="button" class="mobile-nav__submenu-trigger" aria-expanded="false" aria-label="Toggle Attachments submenu">
+                            <svg class="mobile-nav__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                                <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="mobile-nav__submenu">
+                        <li>
+                            <a href="{{ route('attachments.index') }}" class="mobile-nav__submenu-link font-bold text-yellow-400">
+                                View All Attachments
+                            </a>
+                        </li>
+                        @foreach ($attachmentCategoryGroups as $groupTitle => $items)
+                            <li class="mobile-nav__submenu-section-title">{{ $groupTitle }}</li>
+                            @foreach ($items as $item)
+                                <li>
+                                    <a href="{{ $item['url'] }}" class="mobile-nav__submenu-link">
+                                        {{ $item['label'] }}
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endforeach
+                    </ul>
+                </li>
+                <li class="mobile-nav__item">
+                    <div class="mobile-nav__header-wrapper">
+                        <a href="{{ route('topics.index') }}" class="mobile-nav__link {{ $topicsActive ? 'is-active' : '' }}">Topics</a>
+                        <button type="button" class="mobile-nav__submenu-trigger" aria-expanded="false" aria-label="Toggle Topics submenu">
+                            <svg class="mobile-nav__chevron" viewBox="0 0 11 7" fill="none" aria-hidden="true">
+                                <path d="M1 1 5.5 5.5 10 1" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
+                            </svg>
+                        </button>
+                    </div>
+                    <ul class="mobile-nav__submenu">
+                        <li><a href="{{ route('blog.index') }}" class="mobile-nav__submenu-link">Blog</a></li>
+                        <li><a href="{{ route('topics.show', 'buy-guides') }}" class="mobile-nav__submenu-link">Buy Guides</a></li>
+                        <li><a href="{{ route('topics.show', 'features') }}" class="mobile-nav__submenu-link">Features</a></li>
+                        <li><a href="{{ route('topics.show', 'workspace') }}" class="mobile-nav__submenu-link">Workspace</a></li>
+                        <li><a href="{{ route('topics.show', 'safety') }}" class="mobile-nav__submenu-link">Safety</a></li>
+                    </ul>
+                </li>
+                <li class="mobile-nav__item">
+                    <a href="{{ route('about') }}" class="mobile-nav__link {{ $currentRoute === 'about' ? 'is-active' : '' }}">About</a>
+                </li>
+                <li class="mobile-nav__item">
+                    <a href="{{ route('contact') }}" class="mobile-nav__link {{ $currentRoute === 'contact' ? 'is-active' : '' }}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
 
 <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -1086,92 +1228,57 @@
             });
         });
 
-        const bindDropdownToggle = (element, handler) => {
-            element.addEventListener('click', handler);
-            element.addEventListener('pointerdown', (event) => {
-                if (event.pointerType && event.pointerType !== 'mouse') {
-                    handler(event);
-                }
-            });
+        // Mobile Drawer Toggle Logic
+        const drawer = document.getElementById('mobile-menu-drawer');
+        const hamburger = document.querySelector('.site-navbar__hamburger');
+        const closeBtn = document.querySelector('.mobile-drawer__close');
+        const overlay = document.querySelector('.mobile-drawer__overlay');
+
+        const setDrawerOpen = (isOpen) => {
+            if (!drawer) return;
+            drawer.classList.toggle('is-active', isOpen);
+            drawer.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+            if (hamburger) {
+                hamburger.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+            }
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         };
 
-        document.querySelectorAll('.primary-menu__item--dropdown > .primary-menu__link').forEach((link) => {
-            const parentItem = link.closest('.primary-menu__item--dropdown');
-            if (! parentItem) {
-                return;
-            }
+        if (hamburger) {
+            hamburger.addEventListener('click', () => setDrawerOpen(true));
+        }
 
-            bindDropdownToggle(link, (event) => {
-                if (window.innerWidth > 760) {
-                    return;
-                }
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => setDrawerOpen(false));
+        }
 
-                const isOpen = parentItem.classList.contains('is-open');
-                if (! isOpen) {
-                    event.preventDefault();
-                    document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
-                        if (openItem !== parentItem) {
-                            openItem.classList.remove('is-open');
-                            const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
-                            if (otherToggle) {
-                                otherToggle.setAttribute('aria-expanded', 'false');
-                            }
+        if (overlay) {
+            overlay.addEventListener('click', () => setDrawerOpen(false));
+        }
+
+        // Mobile Submenu Accordion Logic
+        document.querySelectorAll('.mobile-nav__submenu-trigger').forEach((trigger) => {
+            trigger.addEventListener('click', (e) => {
+                e.preventDefault();
+                const item = trigger.closest('.mobile-nav__item');
+                if (!item) return;
+
+                const isOpen = item.classList.contains('is-open');
+
+                // Collapse other accordion menus to keep it neat
+                document.querySelectorAll('.mobile-nav__item.is-open').forEach((openItem) => {
+                    if (openItem !== item) {
+                        openItem.classList.remove('is-open');
+                        const otherTrigger = openItem.querySelector('.mobile-nav__submenu-trigger');
+                        if (otherTrigger) {
+                            otherTrigger.setAttribute('aria-expanded', 'false');
                         }
-                    });
-                    parentItem.classList.add('is-open');
-                    const dropdownToggle = parentItem.querySelector('.primary-menu__dropdown-toggle');
-                    if (dropdownToggle) {
-                        dropdownToggle.setAttribute('aria-expanded', 'true');
-                    }
-                }
-            });
-        });
-
-        document.querySelectorAll('.primary-menu__dropdown-toggle').forEach((toggle) => {
-            const parentItem = toggle.closest('.primary-menu__item--dropdown');
-            if (! parentItem) {
-                return;
-            }
-
-            bindDropdownToggle(toggle, (event) => {
-                if (window.innerWidth > 760) {
-                    return;
-                }
-
-                event.preventDefault();
-                event.stopPropagation();
-
-                const isOpen = parentItem.classList.toggle('is-open');
-                toggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-
-                if (isOpen) {
-                    document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
-                        if (openItem !== parentItem) {
-                            openItem.classList.remove('is-open');
-                            const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
-                            if (otherToggle) {
-                                otherToggle.setAttribute('aria-expanded', 'false');
-                            }
-                        }
-                    });
-                }
-            });
-        });
-
-        document.addEventListener('click', (event) => {
-            if (window.innerWidth > 760) {
-                return;
-            }
-
-            if (! event.target.closest('.primary-menu__item--dropdown')) {
-                document.querySelectorAll('.primary-menu__item--dropdown.is-open').forEach((openItem) => {
-                    openItem.classList.remove('is-open');
-                    const otherToggle = openItem.querySelector('.primary-menu__dropdown-toggle');
-                    if (otherToggle) {
-                        otherToggle.setAttribute('aria-expanded', 'false');
                     }
                 });
-            }
+
+                item.classList.toggle('is-open', !isOpen);
+                trigger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
+            });
         });
     });
 </script>
