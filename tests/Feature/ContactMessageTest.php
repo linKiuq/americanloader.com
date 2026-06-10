@@ -48,6 +48,6 @@ class ContactMessageTest extends TestCase
             ->assertSee('sales@typhonmachinery.com')
             ->assertSee('support@typhonmachinery.com')
             ->assertSee('+1 213-214-2203')
-            ->assertSee('2642 River Ave #A, Rosemead, CA 91770');
+            ->assertSee('2522 S Malt Ave. Commerce, CA 90040 United States');
     }
 }

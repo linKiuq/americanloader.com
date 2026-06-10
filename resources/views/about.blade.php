@@ -60,7 +60,7 @@
                 <div class="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
                     <div class="border border-gray-200 bg-white p-6">
                         <h3 class="text-sm font-black uppercase tracking-wider text-gray-500">Address</h3>
-                        <p class="mt-3 text-sm leading-6 text-gray-700">2642 River Ave #A, Rosemead, CA 91770, United States</p>
+                        <p class="mt-3 text-sm leading-6 text-gray-700">2522 S Malt Ave. Commerce, CA 90040 United States</p>
                     </div>
                     <div class="border border-gray-200 bg-white p-6">
                         <h3 class="text-sm font-black uppercase tracking-wider text-gray-500">Sales</h3>

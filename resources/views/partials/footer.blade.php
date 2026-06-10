@@ -39,7 +39,7 @@
                     <p><a href="mailto:sales@typhonmachinery.com" class="hover:text-yellow-600 transition">sales@typhonmachinery.com</a></p>
                     <p><a href="mailto:support@typhonmachinery.com" class="hover:text-yellow-600 transition">support@typhonmachinery.com</a></p>
                     <p><a href="tel:+12132142203" class="hover:text-yellow-600 transition">+1 213-214-2203</a></p>
-                    <p>2642 River Ave #A, Rosemead, CA 91770</p>
+                    <p>2522 S Malt Ave. Commerce, CA 90040 United States</p>
                 </div>
             </div>
         </div>

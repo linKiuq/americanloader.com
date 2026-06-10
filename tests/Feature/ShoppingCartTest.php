@@ -92,10 +92,10 @@ class ShoppingCartTest extends TestCase
             'email' => 'pat@example.com',
             'phone' => '+1 213-214-2203',
             'company' => 'Site Works',
-            'address' => '2642 River Ave #A',
-            'city' => 'Rosemead',
+            'address' => '2522 S Malt Ave.',
+            'city' => 'Commerce',
             'state' => 'CA',
-            'zip' => '91770',
+            'zip' => '90040',
             'notes' => 'Call before delivery.',
         ]);
 

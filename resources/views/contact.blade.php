@@ -196,7 +196,7 @@
                                 <h4 class="text-yellow-400 font-semibold mb-2 flex items-center">
                                     <i class="fas fa-location-dot text-2xl mr-3"></i>Location
                                 </h4>
-                                <p class="text-gray-600 text-sm">2642 River Ave #A, Rosemead, CA 91770, United States</p>
+                                <p class="text-gray-600 text-sm">2522 S Malt Ave. Commerce, CA 90040 United States</p>
                             </div>
                         </div>
                     </div>
