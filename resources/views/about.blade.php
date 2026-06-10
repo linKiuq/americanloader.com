@@ -14,7 +14,7 @@
         <section class="bg-gradient-to-br from-white via-white to-yellow-50 px-4 py-16 sm:px-6 lg:px-8">
             <div class="mx-auto max-w-7xl">
                 <p class="mb-4 text-xs font-black uppercase tracking-[0.3em] text-yellow-600">About Us</p>
-                <h1 class="max-w-4xl text-4xl font-black tracking-tight text-gray-950 sm:text-5xl">Typhon machinery information without made-up details</h1>
+                <h1 class="max-w-4xl text-4xl font-black tracking-tight text-gray-950 sm:text-5xl">Machinery information without made-up details</h1>
                 <p class="mt-6 max-w-3xl text-lg leading-8 text-gray-600">
                     The Power Loader presents construction equipment and attachments using verified Typhon Machinery information, including mini excavators, compactor rollers, forklifts, wheel loaders, skid steer loaders, attachments, and parts.
                 </p>

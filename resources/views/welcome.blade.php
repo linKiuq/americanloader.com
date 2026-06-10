@@ -847,7 +847,7 @@
             <div class="mx-auto max-w-5xl space-y-8">
                     <div>
                         <span class="inline-flex items-center gap-2 rounded-full bg-skoopYellow/10 px-4 py-2 text-skoopYellow text-xs font-black uppercase tracking-[0.35em]">Equipment Features</span>
-                        <h2 style="font-family: 'Archivo Black', sans-serif;" class="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-950 leading-tight">Why choose the TYPHON SKOOP for compact loader work?</h2>
+                        <h2 style="font-family: 'Archivo Black', sans-serif;" class="mt-6 text-4xl md:text-5xl font-black tracking-tight text-slate-950 leading-tight">Why choose the SKOOP for compact loader work?</h2>
                         <p class="mt-5 text-gray-600 max-w-2xl text-base leading-8">Designed for busy sites where space is tight, the TYPHON SKOOP pairs a compact chassis with rugged lift capacity, quick attachment changeover, and reliable diesel power for tough loading jobs.</p>
                     </div>
 

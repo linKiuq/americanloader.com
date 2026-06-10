@@ -175,7 +175,7 @@ class EquipmentNavigationTest extends TestCase
         $this->get(route('welcome'))
             ->assertOk()
             ->assertSee('id="why-choose"', escape: false)
-            ->assertSee('Why choose the TYPHON SKOOP for compact loader work?')
+            ->assertSee('Why choose the SKOOP for compact loader work?')
             ->assertDontSee('ChatGPT-Image-May-27-2026-02_31_46-PM.png', escape: false)
             ->assertDontSee('Kubota diesel engine');
     }

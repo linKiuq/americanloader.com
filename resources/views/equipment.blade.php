@@ -63,7 +63,7 @@
         <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-end">
             <div>
                 <p class="text-yellow-400 text-sm font-bold uppercase tracking-[0.25em] mb-3">Equipment Catalog</p>
-                <h1 class="text-4xl sm:text-5xl font-black text-gray-950 mb-4">Shop Typhon machinery and attachments</h1>
+                <h1 class="text-4xl sm:text-5xl font-black text-gray-950 mb-4">Shop machinery and attachments</h1>
                 <p class="text-lg text-gray-600 max-w-3xl">Browse <span id="hero-product-description-count">products</span>, add the equipment you need, and submit everything together in one streamlined checkout.</p>
             </div>
             <div class="grid grid-cols-3 gap-3 text-center">
