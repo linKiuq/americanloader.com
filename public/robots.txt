@@ -1,2 +1,5 @@
 User-agent: *
-Disallow:
+Disallow: /admin
+Disallow: /store/checkout
+
+Sitemap: https://americanloader.com/sitemap.xml

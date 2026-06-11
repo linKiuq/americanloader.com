@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>About - The Power Loader</title>
+    <title>About Us | American Loader</title>
+    <meta name="description" content="Learn more about our compact loaders and attachments. High-quality construction equipment and verified technical details for construction pros.">
+    <meta property="og:title" content="About Us | American Loader">
+    <meta property="og:description" content="Learn more about our compact loaders and attachments. High-quality construction equipment and verified technical details for construction pros.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://americanloader.com/about">
+    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
+    <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-white text-gray-950 flex flex-col">

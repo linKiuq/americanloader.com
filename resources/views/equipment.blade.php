@@ -4,7 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Equipment - The Power Loader</title>
+    <title>Compact Machinery & Equipment Catalog | American Loader</title>
+    <meta name="description" content="Browse our full range of heavy machinery, forklifts, scissor lifts, compactor rollers, and excavator attachments. Find the right machine for your job.">
+    <meta property="og:title" content="Compact Machinery & Equipment Catalog | American Loader">
+    <meta property="og:description" content="Browse our full range of heavy machinery, forklifts, scissor lifts, compactor rollers, and excavator attachments. Find the right machine for your job.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://americanloader.com/equipment">
+    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
+    <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>

@@ -4,7 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
-    <title>TYPHON SKOOP | Heavy Machinery Ecosystem</title>
+    <title>Compact Loaders, Mini Excavators & Attachments | American Loader</title>
+    <meta name="description" content="Explore compact wheel loaders, mini excavators, forklifts, compactor rollers, and high-performance attachments built for daily worksite productivity. Request a quote today.">
+    <meta property="og:title" content="Compact Loaders, Mini Excavators & Attachments | American Loader">
+    <meta property="og:description" content="Explore compact wheel loaders, mini excavators, forklifts, compactor rollers, and high-performance attachments built for daily worksite productivity. Request a quote today.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://americanloader.com/">
+    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
