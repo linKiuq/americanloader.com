@@ -6,9 +6,7 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
-use App\Services\SupabaseCmsService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Mockery\MockInterface;
 use Tests\TestCase;
 
 class BlogAdminTest extends TestCase
@@ -17,44 +15,31 @@ class BlogAdminTest extends TestCase
 
     public function test_public_blog_displays_published_posts_and_hides_drafts(): void
     {
-        $this->mock(SupabaseCmsService::class, function (MockInterface $mock): void {
-            $mock->shouldReceive('getPublishedPosts')
-                ->once()
-                ->andReturn([
-                    [
-                        'title' => 'Telescopic Wheel Loader - Field Demo',
-                        'slug' => 'wheel-loader-demo',
-                        'excerpt' => 'A published equipment guide.',
-                        'category' => 'Buyer Guides',
-                        'featured_image' => null,
-                        'featured_image_alt' => null,
-                        'author' => 'The Power Loader',
-                        'publish_date' => '2026-05-27',
-                    ],
-                ]);
+        BlogPost::query()->delete();
 
-            $mock->shouldReceive('getPostBySlug')
-                ->with('wheel-loader-demo')
-                ->once()
-                ->andReturn([
-                    'title' => 'Telescopic Wheel Loader - Field Demo',
-                    'slug' => 'wheel-loader-demo',
-                    'excerpt' => 'A published equipment guide.',
-                    'category' => 'Buyer Guides',
-                    'content' => "## Field Notes\n\nPublished CMS body.",
-                    'featured_image' => null,
-                    'featured_image_alt' => null,
-                    'author' => 'The Power Loader',
-                    'publish_date' => '2026-05-27',
-                    'seo_title' => null,
-                    'seo_description' => null,
-                ]);
+        $category = Category::firstOrCreate([
+            'slug' => 'buyer-guides',
+        ], [
+            'name' => 'Buyer Guides',
+        ]);
 
-            $mock->shouldReceive('getPostBySlug')
-                ->with('internal-draft-article')
-                ->once()
-                ->andReturn(null);
-        });
+        $published = BlogPost::create([
+            'title' => 'Telescopic Wheel Loader - Field Demo',
+            'slug' => 'wheel-loader-demo',
+            'excerpt' => 'A published equipment guide.',
+            'content' => "## Field Notes\n\nPublished CMS body.",
+            'category_id' => $category->id,
+            'is_published' => true,
+            'published_at' => now(),
+        ]);
+
+        $draft = BlogPost::create([
+            'title' => 'Internal Draft Article',
+            'slug' => 'internal-draft-article',
+            'excerpt' => 'A draft description.',
+            'content' => 'Draft body.',
+            'is_published' => false,
+        ]);
 
         $this->get(route('blog.index'))
             ->assertOk()
