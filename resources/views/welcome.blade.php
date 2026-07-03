@@ -359,6 +359,45 @@
             margin-top: 4px;
         }
 
+        .hero-product-logos {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(120px, 1fr));
+            gap: clamp(0.75rem, 1.8vw, 1.25rem);
+            width: 100%;
+            max-width: 1440px;
+            margin: clamp(2rem, 4vw, 3.5rem) auto 0;
+            padding: clamp(1rem, 2vw, 1.35rem);
+            background: rgba(11, 16, 26, 0.68);
+            border: 1px solid rgba(250, 204, 21, 0.28);
+            border-radius: 8px;
+            box-shadow: 0 24px 70px rgba(0, 0, 0, 0.44), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
+        }
+
+        .hero-product-logo-card {
+            min-height: 84px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.85rem 1rem;
+            border-radius: 6px;
+            background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.025));
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.32);
+        }
+
+        .hero-product-logo-card img {
+            display: block;
+            max-width: 100%;
+            max-height: 62px;
+            object-fit: contain;
+            filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.72));
+        }
+
+        .hero-product-logo-card.is-tall img {
+            max-height: 78px;
+        }
+
         /* --- Footer Statistics Bar Panel --- */
         .stats-footer-bar {
             display: flex;
@@ -394,11 +433,14 @@
         @media (max-width: 1024px) {
             .hero-main-layout { grid-template-columns: 1fr; gap: 40px; }
             .left-content-panel { max-width: 100%; }
+            .hero-product-logos { grid-template-columns: repeat(3, minmax(120px, 1fr)); }
             .stats-footer-bar { gap: 30px; justify-content: space-between; }
         }
 
         @media (max-width: 600px) {
             .secondary-cards-grid { grid-template-columns: 1fr; }
+            .hero-product-logos { grid-template-columns: 1fr 1fr; }
+            .hero-product-logo-card { min-height: 74px; padding: 0.75rem; }
             .stats-footer-bar { flex-wrap: wrap; gap: 20px; }
             .stat-node { width: 45%; }
             .skp-showcase-container { height: 400px; }
@@ -493,6 +535,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+
+        <div class="hero-product-logos" aria-label="Featured product logos">
+            <div class="hero-product-logo-card">
+                <img src="{{ asset('product-logos/kuvuo.png') }}" alt="Kuvuo product logo" loading="lazy">
+            </div>
+            <div class="hero-product-logo-card">
+                <img src="{{ asset('product-logos/spider-one.png') }}" alt="Spider One product logo" loading="lazy">
+            </div>
+            <div class="hero-product-logo-card">
+                <img src="{{ asset('product-logos/stomp.png') }}" alt="Stomp product logo" loading="lazy">
+            </div>
+            <div class="hero-product-logo-card is-tall">
+                <img src="{{ asset('product-logos/stonekrusher.png') }}" alt="StoneKrusher product logo" loading="lazy">
+            </div>
+            <div class="hero-product-logo-card">
+                <img src="{{ asset('product-logos/thunderdump.png') }}" alt="ThunderDump product logo" loading="lazy">
             </div>
         </div>
 
