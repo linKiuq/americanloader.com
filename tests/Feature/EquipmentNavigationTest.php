@@ -188,4 +188,48 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee(route('topics.show', 'buy-guides'), escape: false)
             ->assertSee(route('topics.show', 'safety'), escape: false);
     }
+
+    public function test_public_pages_include_search_optimized_metadata(): void
+    {
+        $this->get(route('welcome'))
+            ->assertOk()
+            ->assertSee('<title>KONSTRUCTZ | Skoop Loader, Wheel Loader &amp; Heavy Equipment</title>', escape: false)
+            ->assertSee('<link rel="canonical" href="https://cwqv.com/">', escape: false)
+            ->assertSee('<meta property="og:site_name" content="KONSTRUCTZ">', escape: false)
+            ->assertSee('application/ld+json', escape: false)
+            ->assertSee('SearchAction', escape: false);
+
+        $this->get(route('equipment'))
+            ->assertOk()
+            ->assertSee('<title>KONSTRUCTZ Skoop Loader &amp; Wheel Loader for Sale | cwqv.com</title>', escape: false)
+            ->assertSee('<link rel="canonical" href="https://cwqv.com/equipment">', escape: false)
+            ->assertSee('Skoop loader and wheel loader')
+            ->assertSee('CollectionPage', escape: false);
+    }
+
+    public function test_product_pages_include_product_schema_and_canonical_url(): void
+    {
+        $this->get(route('product.show', self::SCISSOR_LIFT))
+            ->assertOk()
+            ->assertSee('<meta property="og:type" content="product">', escape: false)
+            ->assertSee('<link rel="canonical" href="https://cwqv.com/product/'.self::SCISSOR_LIFT.'">', escape: false)
+            ->assertSee('"@type":"Product"', escape: false)
+            ->assertSee('"category":"Scissor Lifts"', escape: false);
+    }
+
+    public function test_sitemap_and_robots_expose_crawl_paths(): void
+    {
+        $this->get('/robots.txt')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
+            ->assertSee('Disallow: /admin', escape: false)
+            ->assertSee('Sitemap: https://cwqv.com/sitemap.xml', escape: false);
+
+        $this->get('/sitemap.xml')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
+            ->assertSee('<loc>https://cwqv.com/equipment</loc>', escape: false)
+            ->assertSee('<loc>https://cwqv.com/attachments/skid-steer/compact-series</loc>', escape: false)
+            ->assertSee('<loc>https://cwqv.com/product/'.self::SCISSOR_LIFT.'</loc>', escape: false);
+    }
 }

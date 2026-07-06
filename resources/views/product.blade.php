@@ -4,7 +4,28 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>{{ $product['name'] }} - The Power Loader</title>
+    @php
+        $productDescription = \Illuminate\Support\Str::limit(strip_tags($product['fullDesc'] ?? $product['desc'] ?? 'Heavy equipment for sale from KONSTRUCTZ.'), 155);
+    @endphp
+    @include('partials.seo', [
+        'title' => $product['name'] . ' | KONSTRUCTZ',
+        'description' => $productDescription,
+        'type' => 'product',
+        'image' => $product['image'] ?? null,
+        'jsonLd' => [
+            '@context' => 'https://schema.org',
+            '@type' => 'Product',
+            'name' => $product['name'],
+            'description' => $productDescription,
+            'image' => $product['images'] ?? [$product['image'] ?? config('seo.default_image')],
+            'brand' => [
+                '@type' => 'Brand',
+                'name' => 'TYPHON',
+            ],
+            'category' => $product['category'] ?? 'Heavy Equipment',
+            'url' => config('seo.site_url') . '/product/' . $product['slug'],
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>

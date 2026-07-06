@@ -4,14 +4,18 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Compact Machinery & Equipment Catalog | American Loader</title>
-    <meta name="description" content="Browse our full range of heavy machinery, forklifts, scissor lifts, compactor rollers, and excavator attachments. Find the right machine for your job.">
-    <meta property="og:title" content="Compact Machinery & Equipment Catalog | American Loader">
-    <meta property="og:description" content="Browse our full range of heavy machinery, forklifts, scissor lifts, compactor rollers, and excavator attachments. Find the right machine for your job.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://americanloader.com/equipment">
-    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
-    <meta name="twitter:card" content="summary_large_image">
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader for Sale | cwqv.com',
+        'description' => 'Browse KONSTRUCTZ equipment for sale at cwqv.com, including Skoop loader and wheel loader machines, mini excavators, skid steer loaders, forklifts, road rollers, scissor lifts, and compact jobsite machines.',
+        'keywords' => 'KONSTRUCTZ, KONSTRUCTZ equipment, cwqv equipment, Skoop loader for sale, wheel loader for sale, Skoop wheel loader, compact wheel loaders, mini excavator for sale, skid steer loaders, forklifts',
+        'jsonLd' => [
+            '@type' => 'CollectionPage',
+            '@id' => config('seo.site_url') . '/equipment#collection',
+            'name' => 'KONSTRUCTZ Skoop Loader and Wheel Loader Equipment for Sale',
+            'description' => 'KONSTRUCTZ equipment catalog for Skoop loader and wheel loader machines, mini excavators, forklifts, rollers, scissor lifts, and jobsite machines.',
+            'url' => config('seo.site_url') . '/equipment',
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>

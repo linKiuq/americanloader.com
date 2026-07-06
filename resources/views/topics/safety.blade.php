@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Safety - Topics - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Wheel Loader Safety Guide',
+        'description' => 'Review KONSTRUCTZ Skoop loader, wheel loader, and heavy equipment safety practices for inspections, visibility, jobsite communication, operator control, and attachment handling.',
+        'type' => 'article',
+        'keywords' => 'KONSTRUCTZ safety, KONSTRUCTZ wheel loader safety, Skoop loader safety, wheel loader safety, loader inspection checklist, wheel loader visibility, attachment handling safety',
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {

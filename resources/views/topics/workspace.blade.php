@@ -4,7 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Workspace - Topics - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Wheel Loader Workspace Planning Guide',
+        'description' => 'Plan KONSTRUCTZ Skoop loader and wheel loader workspace layouts for access, turning radius, loading zones, surface conditions, staging, site safety, and efficient material handling.',
+        'type' => 'article',
+        'keywords' => 'KONSTRUCTZ workspace, KONSTRUCTZ wheel loader workspace, Skoop loader workspace, wheel loader workspace, wheel loader turning radius, loader loading zones, compact wheel loader site planning',
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {

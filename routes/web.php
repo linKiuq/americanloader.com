@@ -11,7 +11,70 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\CheckoutController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProductController;
+use App\Services\SupabaseCmsService;
+use App\Support\ProductCatalog;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/robots.txt', function () {
+    return response(
+        "User-agent: *\nDisallow: /admin\nDisallow: /store/checkout\nDisallow: /store/cart\n\nSitemap: " . rtrim(config('seo.site_url'), '/') . "/sitemap.xml\n",
+        200,
+        ['Content-Type' => 'text/plain; charset=UTF-8']
+    );
+})->name('robots');
+
+Route::get('/sitemap.xml', function (ProductCatalog $catalog, SupabaseCmsService $cms) {
+    $siteUrl = rtrim(config('seo.site_url'), '/');
+    $today = now()->toDateString();
+    $url = fn (string $path): string => $siteUrl . ($path === '/' ? '/' : '/' . ltrim($path, '/'));
+    $urls = collect([
+        ['loc' => $url('/'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 1.0],
+        ['loc' => $url('/equipment'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.9],
+        ['loc' => $url('/attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
+        ['loc' => $url('/attachments/mini-excavator'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/x2-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/xxv-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/mini-excavators-2-5-tons'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/mini-excavators-2-tons-and-below'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/skid-steer'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/skid-steer/compact-series'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/skid-steer/standard-series'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/store'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
+        ['loc' => $url('/about'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.6],
+        ['loc' => $url('/contact'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.6],
+        ['loc' => $url('/blog'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.7],
+        ['loc' => $url('/topics'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.7],
+        ['loc' => $url('/topics/buy-guides'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.7],
+        ['loc' => $url('/topics/features'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.7],
+        ['loc' => $url('/topics/workspace'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.7],
+        ['loc' => $url('/topics/safety'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.7],
+    ]);
+
+    $productUrls = $catalog->all()
+        ->map(fn (array $product): array => [
+            'loc' => $url('/product/' . $product['slug']),
+            'lastmod' => $today,
+            'changefreq' => 'weekly',
+            'priority' => 0.8,
+        ]);
+
+    try {
+        $blogUrls = collect($cms->getPublishedPosts())
+            ->filter(fn (array $post): bool => ! empty($post['slug']))
+            ->map(fn (array $post): array => [
+                'loc' => $url('/blog/' . $post['slug']),
+                'lastmod' => \Illuminate\Support\Carbon::parse($post['updated_at'] ?? $post['publish_date'] ?? $today)->toDateString(),
+                'changefreq' => 'monthly',
+                'priority' => 0.7,
+            ]);
+    } catch (\Throwable) {
+        $blogUrls = collect();
+    }
+
+    return response()
+        ->view('sitemap', ['urls' => $urls->merge($productUrls)->merge($blogUrls)->values()])
+        ->header('Content-Type', 'application/xml; charset=UTF-8');
+})->name('sitemap');
 
 // Home/Welcome Page
 Route::get('/', function () {
@@ -86,6 +149,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::post('/logout', [AdminAuthController::class, 'destroy'])->name('logout');
     Route::get('/password', [AdminPasswordController::class, 'edit'])->name('password.edit');
     Route::put('/password', [AdminPasswordController::class, 'update'])->name('password.update');
+    Route::post('/blog/images', [AdminBlogPostController::class, 'storeImage'])->name('blog.images.store');
     Route::resource('blog', AdminBlogPostController::class)
         ->parameters(['blog' => 'post'])
         ->except(['show']);

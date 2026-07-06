@@ -4,13 +4,35 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>{{ ($post['seo_title'] ?? null) ?: $post['title'] }} - The Power Loader Blog</title>
-    <meta name="description" content="{{ ($post['seo_description'] ?? null) ?: ($post['excerpt'] ?? '') }}">
-    <meta property="og:title" content="{{ $post['title'] }}">
-    <meta property="og:type" content="article">
-    @if (! empty($post['featured_image']))
-        <meta property="og:image" content="{{ $post['featured_image'] }}">
-    @endif
+    @include('partials.seo', [
+        'title' => (($post['seo_title'] ?? null) ?: $post['title']) . ' | KONSTRUCTZ Blog',
+        'description' => ($post['seo_description'] ?? null) ?: ($post['excerpt'] ?? config('seo.default_description')),
+        'type' => 'article',
+        'image' => $post['featured_image'] ?? null,
+        'publishedTime' => $post['publish_date'] ?? $post['published_at'] ?? null,
+        'modifiedTime' => $post['updated_at'] ?? $post['publish_date'] ?? null,
+        'jsonLd' => [
+            '@type' => 'Article',
+            'headline' => $post['title'],
+            'description' => ($post['seo_description'] ?? null) ?: ($post['excerpt'] ?? ''),
+            'image' => $post['featured_image'] ?? config('seo.site_url') . '/' . config('seo.default_image'),
+            'datePublished' => $post['publish_date'] ?? $post['published_at'] ?? null,
+            'dateModified' => $post['updated_at'] ?? $post['publish_date'] ?? null,
+            'author' => [
+                '@type' => 'Organization',
+                'name' => $post['author'] ?? config('seo.site_name'),
+            ],
+            'publisher' => [
+                '@type' => 'Organization',
+                'name' => config('seo.site_name'),
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => config('seo.site_url') . '/power-loader-logo.png',
+                ],
+            ],
+            'mainEntityOfPage' => config('seo.site_url') . '/blog/' . $post['slug'],
+        ],
+    ])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">

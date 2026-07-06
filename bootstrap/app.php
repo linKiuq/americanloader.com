@@ -1,23 +1,28 @@
 <?php
 
-use App\Http\Middleware\EnsureAdmin;
+use App\Exceptions\Handler;
+use App\Http\Kernel as HttpKernel;
+use App\Console\Kernel as ConsoleKernel;
+use Illuminate\Contracts\Debug\ExceptionHandler;
 use Illuminate\Foundation\Application;
-use Illuminate\Foundation\Configuration\Exceptions;
-use Illuminate\Foundation\Configuration\Middleware;
 
-return Application::configure(basePath: dirname(__DIR__))
-    ->withRouting(
-        web: __DIR__.'/../routes/web.php',
-        commands: __DIR__.'/../routes/console.php',
-        health: '/up',
-    )
-    ->withMiddleware(function (Middleware $middleware): void {
-        $middleware->redirectGuestsTo(fn () => route('admin.login'));
-        $middleware->redirectUsersTo(fn () => route('admin.blog.index'));
-        $middleware->alias([
-            'admin' => EnsureAdmin::class,
-        ]);
-    })
-    ->withExceptions(function (Exceptions $exceptions): void {
-        //
-    })->create();
+$app = new Application(
+    dirname(__DIR__)
+);
+
+$app->singleton(
+    Illuminate\Contracts\Http\Kernel::class,
+    HttpKernel::class
+);
+
+$app->singleton(
+    Illuminate\Contracts\Console\Kernel::class,
+    ConsoleKernel::class
+);
+
+$app->singleton(
+    ExceptionHandler::class,
+    Handler::class
+);
+
+return $app;

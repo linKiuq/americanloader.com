@@ -47,8 +47,29 @@
         </div>
         <div>
             <label for="content" class="mb-2 block text-sm font-bold">Article Content</label>
-            <textarea id="content" name="content" rows="16" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">{{ old('content', $post->content) }}</textarea>
-            <p class="mt-2 text-xs text-slate-500">Use blank lines to separate paragraphs. HTML is displayed as plain text for safety.</p>
+            <div class="overflow-hidden rounded-lg border border-slate-300 bg-white focus-within:border-yellow-500">
+                <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black uppercase tracking-wider text-slate-700">
+                    <button type="button" data-markdown-command="heading" data-level="1" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H1</button>
+                    <button type="button" data-markdown-command="heading" data-level="2" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H2</button>
+                    <button type="button" data-markdown-command="heading" data-level="3" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H3</button>
+                    <button type="button" data-markdown-command="heading" data-level="4" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H4</button>
+                    <button type="button" data-markdown-command="heading" data-level="5" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H5</button>
+                    <button type="button" data-markdown-command="heading" data-level="6" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H6</button>
+                    <button type="button" data-markdown-command="wrap" data-before="**" data-after="**" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">B</button>
+                    <button type="button" data-markdown-command="wrap" data-before="*" data-after="*" class="rounded border border-slate-300 bg-white px-3 py-2 italic hover:border-yellow-500 hover:text-yellow-700">I</button>
+                    <button type="button" data-markdown-command="line-prefix" data-prefix="- " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">List</button>
+                    <button type="button" data-markdown-command="line-prefix" data-prefix="> " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Quote</button>
+                    <button type="button" data-markdown-command="link" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Link</button>
+                    <button type="button" data-markdown-command="image-url" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Image URL</button>
+                    <label class="cursor-pointer rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">
+                        Upload Image
+                        <input type="file" accept="image/*" data-markdown-image-upload class="sr-only">
+                    </label>
+                    <span data-markdown-upload-status class="normal-case tracking-normal text-slate-500"></span>
+                </div>
+                <textarea id="content" name="content" rows="18" required class="w-full border-0 px-4 py-3 font-mono text-sm leading-7 focus:outline-none">{{ old('content', $post->content) }}</textarea>
+            </div>
+            <p class="mt-2 text-xs text-slate-500">Use Markdown for headings, links, lists, and images. Paste an image directly into the editor or use Upload Image.</p>
         </div>
     </div>
 
@@ -67,3 +88,125 @@
         <button type="submit" class="w-full rounded-lg bg-yellow-400 px-6 py-4 text-sm font-black uppercase tracking-wider text-slate-950 hover:bg-yellow-500">Save Post</button>
     </aside>
 </div>
+
+<script>
+    (() => {
+        const textarea = document.getElementById('content');
+        const status = document.querySelector('[data-markdown-upload-status]');
+        const uploadInput = document.querySelector('[data-markdown-image-upload]');
+        const imageUploadUrl = @json(route('admin.blog.images.store'));
+        const csrfToken = @json(csrf_token());
+
+        if (!textarea) {
+            return;
+        }
+
+        const setStatus = (message) => {
+            if (!status) {
+                return;
+            }
+
+            status.textContent = message;
+        };
+
+        const selection = () => ({
+            start: textarea.selectionStart,
+            end: textarea.selectionEnd,
+            value: textarea.value.slice(textarea.selectionStart, textarea.selectionEnd),
+        });
+
+        const replaceSelection = (replacement, cursorOffset = replacement.length) => {
+            const { start, end } = selection();
+            textarea.setRangeText(replacement, start, end, 'end');
+            textarea.focus();
+            textarea.setSelectionRange(start + cursorOffset, start + cursorOffset);
+        };
+
+        const prefixSelectedLines = (prefix) => {
+            const { value } = selection();
+            const text = value || 'New line';
+            replaceSelection(text.split('\n').map((line) => `${prefix}${line}`).join('\n'));
+        };
+
+        const insertImageMarkdown = (url, alt = 'Blog image') => {
+            replaceSelection(`![${alt}](${url})`);
+        };
+
+        const uploadImage = async (file) => {
+            if (!file || !file.type.startsWith('image/')) {
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('_token', csrfToken);
+            formData.append('image', file);
+
+            setStatus('Uploading image...');
+
+            try {
+                const response = await fetch(imageUploadUrl, {
+                    method: 'POST',
+                    body: formData,
+                    headers: {
+                        Accept: 'application/json',
+                    },
+                });
+
+                if (!response.ok) {
+                    throw new Error('Upload failed');
+                }
+
+                const data = await response.json();
+                insertImageMarkdown(data.url, file.name.replace(/\.[^.]+$/, '') || 'Blog image');
+                setStatus('Image inserted');
+                window.setTimeout(() => setStatus(''), 2500);
+            } catch (error) {
+                setStatus('Image upload failed');
+            }
+        };
+
+        document.querySelectorAll('[data-markdown-command]').forEach((button) => {
+            button.addEventListener('click', () => {
+                const command = button.dataset.markdownCommand;
+                const { value } = selection();
+
+                if (command === 'heading') {
+                    prefixSelectedLines(`${'#'.repeat(Number(button.dataset.level || 2))} `);
+                }
+
+                if (command === 'wrap') {
+                    const before = button.dataset.before || '';
+                    const after = button.dataset.after || before;
+                    replaceSelection(`${before}${value || 'text'}${after}`, before.length + (value || 'text').length);
+                }
+
+                if (command === 'line-prefix') {
+                    prefixSelectedLines(button.dataset.prefix || '');
+                }
+
+                if (command === 'link') {
+                    const text = value || 'link text';
+                    replaceSelection(`[${text}](https://example.com)`, text.length + 3);
+                }
+
+                if (command === 'image-url') {
+                    replaceSelection('![Image alt](https://example.com/image.jpg)', 12);
+                }
+            });
+        });
+
+        uploadInput?.addEventListener('change', (event) => {
+            uploadImage(event.target.files?.[0]);
+            event.target.value = '';
+        });
+
+        textarea.addEventListener('paste', (event) => {
+            const image = Array.from(event.clipboardData?.files || []).find((file) => file.type.startsWith('image/'));
+
+            if (image) {
+                event.preventDefault();
+                uploadImage(image);
+            }
+        });
+    })();
+</script>

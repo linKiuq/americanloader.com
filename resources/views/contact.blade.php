@@ -4,14 +4,17 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Contact Us & Request a Quote | American Loader</title>
-    <meta name="description" content="Contact the team at American Loader. Request equipment quotes, product specifications, parts help, and warranty assistance.">
-    <meta property="og:title" content="Contact Us & Request a Quote | American Loader">
-    <meta property="og:description" content="Contact the team at American Loader. Request equipment quotes, product specifications, parts help, and warranty assistance.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://americanloader.com/contact">
-    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
-    <meta name="twitter:card" content="summary_large_image">
+    @include('partials.seo', [
+        'title' => 'Contact KONSTRUCTZ | Skoop Loader & Wheel Loader Quotes',
+        'description' => 'Contact KONSTRUCTZ for Skoop loader and wheel loader quotes, loader availability, attachment compatibility, delivery questions, and compact machine support.',
+        'keywords' => 'KONSTRUCTZ contact, KONSTRUCTZ quote, request wheel loader quote, request Skoop loader quote, loader support, attachment compatibility, heavy equipment sales',
+        'jsonLd' => [
+            '@type' => 'ContactPage',
+            '@id' => config('seo.site_url') . '/contact#contact',
+            'name' => 'Contact KONSTRUCTZ',
+            'url' => config('seo.site_url') . '/contact',
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>

@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>{{ $title }} - Topics - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => $title . ' | KONSTRUCTZ Equipment Topics',
+        'description' => $description,
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body { background: #fff; color: #111827; }

@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>{{ isset($activeCategory) ? $activeCategory . ' - ' : '' }}Blog - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => (isset($activeCategory) ? $activeCategory . ' Equipment Articles' : 'KONSTRUCTZ Heavy Equipment Blog'),
+        'description' => 'Read KONSTRUCTZ equipment guides, Skoop loader walkthroughs, wheel loader buying advice, attachment tips, and compact construction equipment insights.',
+        'keywords' => 'KONSTRUCTZ blog, KONSTRUCTZ equipment guides, Skoop loader articles, wheel loader articles, loader buying advice',
+    ])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">

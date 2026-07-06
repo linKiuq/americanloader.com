@@ -4,7 +4,19 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Store - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Store | cwqv.com',
+        'description' => 'Shop KONSTRUCTZ at cwqv.com for Skoop loader and wheel loader equipment, compact construction machines, attachments, parts, and jobsite equipment online.',
+        'keywords' => 'KONSTRUCTZ store, KONSTRUCTZ loader, cwqv store, Skoop loader store, wheel loader store, wheel loader for sale, loader attachments store, construction equipment online, compact machines',
+        'jsonLd' => [
+            '@type' => 'Store',
+            '@id' => config('seo.site_url') . '/store#store',
+            'name' => 'KONSTRUCTZ Store',
+            'url' => config('seo.site_url') . '/store',
+            'description' => 'Online storefront for KONSTRUCTZ Skoop loader and wheel loader equipment, compact machines, attachments, and parts.',
+            'parentOrganization' => ['@id' => config('seo.site_url') . '/#organization'],
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-white text-gray-950">

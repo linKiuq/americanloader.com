@@ -1,5 +1,6 @@
 User-agent: *
 Disallow: /admin
 Disallow: /store/checkout
+Disallow: /store/cart
 
-Sitemap: https://americanloader.com/sitemap.xml
+Sitemap: https://cwqv.com/sitemap.xml

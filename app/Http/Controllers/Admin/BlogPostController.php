@@ -7,7 +7,9 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use App\Models\Tag;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Illuminate\View\View;
@@ -64,6 +66,19 @@ class BlogPostController extends Controller
         $post->delete();
 
         return to_route('admin.blog.index')->with('success', 'Blog post deleted.');
+    }
+
+    public function storeImage(Request $request): JsonResponse
+    {
+        $attributes = $request->validate([
+            'image' => ['required', 'image', 'max:5120'],
+        ]);
+
+        $path = $attributes['image']->store('blog-images', 'public');
+
+        return response()->json([
+            'url' => Storage::disk('public')->url($path),
+        ]);
     }
 
     private function validatedAttributes(Request $request, ?BlogPost $post = null): array

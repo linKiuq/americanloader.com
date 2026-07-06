@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Shopping Cart - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'Shopping Cart | KONSTRUCTZ',
+        'description' => 'Review selected KONSTRUCTZ equipment and attachments before checkout.',
+        'robots' => 'noindex, follow',
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>

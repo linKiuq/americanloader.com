@@ -50,7 +50,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Attachments - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Attachments | cwqv.com',
+        'description' => 'Browse KONSTRUCTZ Skoop loader, wheel loader, skid steer, and mini excavator attachments for digging, grading, trenching, hauling, cleanup, and compact equipment work.',
+        'keywords' => 'KONSTRUCTZ attachments, KONSTRUCTZ loader attachments, Skoop loader attachments, wheel loader attachments, loader attachments for sale, skid steer attachments, mini excavator attachments, buckets, augers, grapples',
+        'jsonLd' => [
+            '@type' => 'CollectionPage',
+            '@id' => config('seo.site_url') . '/attachments#collection',
+            'name' => 'KONSTRUCTZ Skoop Loader and Wheel Loader Attachments for Sale',
+            'description' => 'KONSTRUCTZ attachment category hub for Skoop loader, wheel loader, mini excavator, skid steer loader, bucket, breaker, auger, grapple, and worksite tools.',
+            'hasPart' => collect($attachmentSections)->map(fn (array $section) => [
+                '@type' => 'WebPage',
+                'name' => $section['title'],
+                'url' => str_replace(url('/'), config('seo.site_url'), $section['url']),
+                'description' => $section['description'],
+            ])->values()->all(),
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-white text-gray-950">

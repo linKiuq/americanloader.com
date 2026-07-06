@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>Topics - The Power Loader</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Equipment Topics & Wheel Loader Buying Guides',
+        'description' => 'Explore KONSTRUCTZ buying guides, Skoop loader explainers, wheel loader workspace planning advice, and safety topics for compact construction equipment.',
+        'keywords' => 'KONSTRUCTZ guides, KONSTRUCTZ equipment topics, Skoop loader guide, wheel loader buying guide, wheel loader safety',
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="min-h-screen bg-white text-gray-950">

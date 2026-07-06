@@ -4,7 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
-    <title>Wheel Loader Buyer's Guide</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Buyer Guide',
+        'description' => 'Learn how to choose KONSTRUCTZ Skoop loader or wheel loader equipment by size, lift capacity, bucket type, ground conditions, attachments, maintenance needs, and total ownership cost.',
+        'type' => 'article',
+        'keywords' => 'KONSTRUCTZ buyer guide, KONSTRUCTZ Skoop loader, Skoop loader buyer guide, wheel loader buyer guide, choose a wheel loader, Skoop wheel loader, wheel loader lift capacity, compact wheel loader buying tips',
+        'jsonLd' => [
+            '@type' => 'FAQPage',
+            '@id' => config('seo.site_url') . '/topics/buy-guides#faq',
+            'mainEntity' => [
+                [
+                    '@type' => 'Question',
+                    'name' => 'How do I choose the right wheel loader size?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Match loader size to the jobsite access, lift height, rated operating capacity, bucket volume, surface conditions, and attachment requirements.',
+                    ],
+                ],
+                [
+                    '@type' => 'Question',
+                    'name' => 'What should I compare before buying a loader?',
+                    'acceptedAnswer' => [
+                        '@type' => 'Answer',
+                        'text' => 'Compare lift capacity, breakout force, hydraulic flow, service access, warranty support, attachment compatibility, delivery needs, and total ownership cost.',
+                    ],
+                ],
+            ],
+        ],
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {

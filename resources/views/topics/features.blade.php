@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
-    <title>Wheel Loader Performance Features Guide</title>
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ Wheel Loader Performance Features Guide',
+        'description' => 'Compare KONSTRUCTZ Skoop loader and wheel loader performance features including torque, breakout force, lift capacity, hydraulics, transmission, traction, stability, and fuel efficiency.',
+        'type' => 'article',
+        'keywords' => 'KONSTRUCTZ wheel loader, KONSTRUCTZ performance, Skoop loader performance, wheel loader performance, wheel loader torque, breakout force, lift capacity, wheel loader hydraulics',
+    ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         :root {

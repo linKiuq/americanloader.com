@@ -4,14 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
-    <title>Compact Loaders, Mini Excavators & Attachments | American Loader</title>
-    <meta name="description" content="Explore compact wheel loaders, mini excavators, forklifts, compactor rollers, and high-performance attachments built for daily worksite productivity. Request a quote today.">
-    <meta property="og:title" content="Compact Loaders, Mini Excavators & Attachments | American Loader">
-    <meta property="og:description" content="Explore compact wheel loaders, mini excavators, forklifts, compactor rollers, and high-performance attachments built for daily worksite productivity. Request a quote today.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://americanloader.com/">
-    <meta property="og:image" content="{{ asset('power-loader-logo.png') }}">
-    <meta name="twitter:card" content="summary_large_image">
+    @include('partials.seo', [
+        'title' => 'KONSTRUCTZ | Skoop Loader, Wheel Loader & Heavy Equipment',
+        'description' => 'Shop KONSTRUCTZ at cwqv.com for Skoop loader and wheel loader equipment, skid steer loaders, mini excavators, attachments, forklifts, scissor lifts, and jobsite equipment for sale in the USA.',
+        'keywords' => 'KONSTRUCTZ, KONSTRUCTZ loader, cwqv, cwqv.com, Skoop loader, wheel loader, Skoop wheel loader, wheel loaders for sale, compact wheel loader, skid steer loader attachments, mini excavators for sale',
+        'jsonLd' => [
+            '@graph' => [
+                [
+                    '@type' => 'ItemList',
+                    '@id' => config('seo.site_url') . '/#featured-equipment',
+                    'name' => 'Featured KONSTRUCTZ Skoop loader and wheel loader equipment categories',
+                    'itemListElement' => [
+                        ['@type' => 'ListItem', 'position' => 1, 'name' => 'Skoop loader equipment', 'url' => config('seo.site_url') . '/equipment'],
+                        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Compact wheel loaders', 'url' => config('seo.site_url') . '/equipment'],
+                        ['@type' => 'ListItem', 'position' => 3, 'name' => 'Skid steer attachments', 'url' => config('seo.site_url') . '/attachments'],
+                        ['@type' => 'ListItem', 'position' => 4, 'name' => 'Forklifts and lifts', 'url' => config('seo.site_url') . '/equipment'],
+                    ],
+                ],
+            ],
+        ],
+    ])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">

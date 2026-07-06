@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Models\Tag;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 
 class BlogAdminTest extends TestCase
@@ -143,6 +145,26 @@ class BlogAdminTest extends TestCase
             'email' => $admin->email,
             'password' => 'new-secure-password',
         ])->assertRedirect(route('admin.blog.index'));
+    }
+
+    public function test_admin_can_upload_blog_content_images(): void
+    {
+        Storage::fake('public');
+
+        $admin = User::factory()->create(['is_admin' => true]);
+
+        $response = $this->actingAs($admin)
+            ->postJson(route('admin.blog.images.store'), [
+                'image' => UploadedFile::fake()->image('loader-service.jpg', 900, 600),
+            ]);
+
+        $response->assertOk()
+            ->assertJsonStructure(['url']);
+
+        $url = $response->json('url');
+        $this->assertStringStartsWith('/storage/blog-images/', $url);
+
+        Storage::disk('public')->assertExists(str_replace('/storage/', '', $url));
     }
 
     public function test_admin_can_manage_taxonomy_and_assign_it_to_a_post(): void
