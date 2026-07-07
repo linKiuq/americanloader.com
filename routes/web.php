@@ -81,6 +81,11 @@ Route::get('/', function () {
     return view('welcome');
 })->name('welcome');
 
+// Backwards-compatible redirect for older links
+Route::get('/home', function () {
+    return redirect()->route('welcome');
+})->name('home');
+
 // Equipment Page
 Route::get('/equipment', function () {
     return view('equipment');
