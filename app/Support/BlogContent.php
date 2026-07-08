@@ -81,10 +81,12 @@ class BlogContent
         );
 
         $html = (string) preg_replace(
-            '/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/',
+            '/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))/',
             '<a href="$2">$1</a>',
             $html
         );
+
+        $html = (string) preg_replace('/href="\(([^"]+)\)"/', 'href="$1"', $html);
 
         $html = (string) preg_replace(
             '~(?<!href=")(?<!src=")(https?://[^\s<>()]+?)([.,;:!?])?(?=\s|$)~',

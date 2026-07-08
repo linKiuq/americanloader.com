@@ -101,6 +101,23 @@ class BlogAdminTest extends TestCase
             ->assertSee('<a href="https://miniexcavator.org/">https://miniexcavator.org/</a>', escape: false);
     }
 
+    public function test_public_blog_renders_markdown_links_with_internal_and_external_targets(): void
+    {
+        $post = BlogPost::create([
+            'title' => 'Markdown Link Article',
+            'slug' => 'markdown-link-article',
+            'excerpt' => 'A post with markdown links.',
+            'content' => 'When winter shuts down other work, a wheel loader keeps earning its keep by taking on [snow removal](https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/). See our [wheel loader guide](/blog/wheel-loader).',
+            'is_published' => true,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('blog.show', $post->slug))
+            ->assertOk()
+            ->assertSee('<a href="https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/">snow removal</a>', escape: false)
+            ->assertSee('<a href="/blog/wheel-loader">wheel loader guide</a>', escape: false);
+    }
+
     public function test_admin_blog_pages_require_an_admin_account(): void
     {
         $this->get('/admin')->assertRedirect(route('admin.login'));

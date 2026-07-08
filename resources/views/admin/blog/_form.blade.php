@@ -74,7 +74,7 @@
                 <div class="border-b border-slate-100 bg-slate-50 px-5 py-3">
                     <p class="text-xs font-black uppercase tracking-[0.24em] text-slate-500">Visual Preview</p>
                 </div>
-                <div data-article-preview class="min-h-40 px-5 py-5 text-sm leading-7 text-slate-700 [&_a]:font-semibold [&_a]:text-yellow-700 [&_h2]:mb-4 [&_h2]:mt-7 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:leading-tight [&_h2]:text-slate-950 [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-slate-950 [&_img]:my-5 [&_img]:max-h-[430px] [&_img]:max-w-full [&_img]:rounded-sm [&_img]:object-contain [&_p]:my-3"></div>
+                <div data-article-preview class="min-h-40 px-5 py-5 text-sm leading-7 text-slate-700 [&_a]:font-bold [&_a]:text-yellow-700 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_h2]:mb-4 [&_h2]:mt-7 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:leading-tight [&_h2]:text-slate-950 [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-slate-950 [&_img]:my-5 [&_img]:max-h-[430px] [&_img]:max-w-full [&_img]:rounded-sm [&_img]:object-contain [&_p]:my-3"></div>
             </div>
         </div>
     </div>
@@ -154,7 +154,8 @@
 
             escaped = escaped.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
             escaped = escaped.replace(imageUrlPattern, '<img src="$&" alt="Article image">');
-            escaped = escaped.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2">$1</a>');
+            escaped = escaped.replace(/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))/g, '<a href="$2">$1</a>');
+            escaped = escaped.replace(/href="\(([^"]+)\)"/g, 'href="$1"');
             escaped = escaped.replace(linkUrlPattern, '<a href="$1">$1</a>$2');
 
             return escaped;
