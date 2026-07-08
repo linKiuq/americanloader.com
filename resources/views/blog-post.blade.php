@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => (($post['seo_title'] ?? null) ?: $post['title']) . ' | KONSTRUCTZ Blog',
+        'title' => (($post['seo_title'] ?? null) ?: $post['title']) . ' | ' . config('seo.site_name') . ' Blog',
         'description' => ($post['seo_description'] ?? null) ?: ($post['excerpt'] ?? config('seo.default_description')),
         'type' => 'article',
         'image' => $post['featured_image'] ?? null,
@@ -45,7 +45,7 @@
         <article class="mx-auto max-w-4xl px-6 py-12">
             <a href="{{ route('blog.index') }}" class="text-sm font-bold uppercase tracking-wider text-yellow-600 transition hover:text-yellow-700">&larr; Back to Blog</a>
             @if (! empty($post['category']))
-                <a href="{{ route('blog.category', $post['category']) }}" class="mt-10 inline-block text-xs font-black uppercase tracking-[0.3em] text-yellow-700 transition hover:text-yellow-600">{{ $post['category'] }}</a>
+                <a href="{{ route('blog.category', $post['category_slug'] ?? \Illuminate\Support\Str::slug($post['category'])) }}" class="mt-10 inline-block text-xs font-black uppercase tracking-[0.3em] text-yellow-700 transition hover:text-yellow-600">{{ $post['category'] }}</a>
             @endif
             @if (! empty($post['publish_date']))
                 <p class="{{ ! empty($post['category']) ? 'mt-3' : 'mt-10' }} text-xs font-black uppercase tracking-[0.3em] text-yellow-600">{{ \Illuminate\Support\Carbon::parse($post['publish_date'])->format('F j, Y') }}</p>
@@ -60,7 +60,7 @@
             @endif
 
             <div class="mt-10 max-w-none text-base leading-8 text-slate-700 [&_a]:font-semibold [&_a]:text-yellow-700 [&_blockquote]:border-l-4 [&_blockquote]:border-yellow-400 [&_blockquote]:pl-5 [&_blockquote]:text-slate-600 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-black [&_h3]:mt-8 [&_h3]:text-2xl [&_h3]:font-black [&_li]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
-                {!! \Illuminate\Support\Str::markdown($post['content'] ?? '') !!}
+                {!! \App\Support\BlogContent::markdown($post['content'] ?? '') !!}
             </div>
         </article>
     </main>

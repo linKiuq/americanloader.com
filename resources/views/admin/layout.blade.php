@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
-    <title>@yield('title', 'Blog Admin') - The Power Loader</title>
+    <title>@yield('title', 'Admin Dashboard') - The Power Loader</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
@@ -13,12 +13,13 @@
 <body class="min-h-screen bg-slate-100 font-sans text-slate-950 antialiased">
     <header class="border-b border-yellow-400/15 bg-slate-950 text-white">
         <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-5">
-            <a href="{{ route('admin.blog.index') }}" class="flex items-center gap-3 font-black uppercase tracking-wider">
+            <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-3 font-black uppercase tracking-wider">
                 <img src="{{ asset('power-loader-logo.png') }}" alt="" class="h-11 w-11 object-contain">
-                <span>Blog Admin</span>
+                <span>Admin Dashboard</span>
             </a>
             <div class="flex items-center gap-5 text-sm">
                 @auth
+                    <a href="{{ route('admin.dashboard') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Dashboard</a>
                     <a href="{{ route('admin.blog.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Posts</a>
                     <a href="{{ route('admin.categories.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Categories</a>
                     <a href="{{ route('admin.tags.index') }}" class="font-semibold text-slate-300 hover:text-yellow-400">Tags</a>

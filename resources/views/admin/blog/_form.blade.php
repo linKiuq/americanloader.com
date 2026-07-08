@@ -69,7 +69,7 @@
                 </div>
                 <textarea id="content" name="content" rows="18" required class="w-full border-0 px-4 py-3 font-mono text-sm leading-7 focus:outline-none">{{ old('content', $post->content) }}</textarea>
             </div>
-            <p class="mt-2 text-xs text-slate-500">Use Markdown for headings, links, lists, and images. Paste an image directly into the editor or use Upload Image.</p>
+            <p class="mt-2 text-xs text-slate-500">Use Markdown for headings, links, lists, and images. Paste an image file or image URL directly into the editor, or use Upload Image.</p>
         </div>
     </div>
 

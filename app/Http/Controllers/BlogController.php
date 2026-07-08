@@ -20,6 +20,7 @@ class BlogController extends Controller
                 'slug' => $post->slug,
                 'excerpt' => $post->excerpt,
                 'category' => $post->category?->name,
+                'category_slug' => $post->category?->slug,
                 'content' => $post->content,
                 'featured_image' => $post->image_url,
                 'featured_image_alt' => $post->title,
@@ -45,6 +46,7 @@ class BlogController extends Controller
             'slug' => $post->slug,
             'excerpt' => $post->excerpt,
             'category' => $post->category?->name,
+            'category_slug' => $post->category?->slug,
             'content' => $post->content,
             'featured_image' => $post->image_url,
             'featured_image_alt' => $post->title,
@@ -59,7 +61,9 @@ class BlogController extends Controller
 
     public function category(string $categoryName): View
     {
-        $category = Category::where('name', $categoryName)->first();
+        $category = Category::where('slug', $categoryName)
+            ->orWhere('name', $categoryName)
+            ->first();
         $posts = $category 
             ? BlogPost::with('category')
                 ->where('category_id', $category->id)
@@ -72,6 +76,7 @@ class BlogController extends Controller
                     'slug' => $post->slug,
                     'excerpt' => $post->excerpt,
                     'category' => $post->category?->name,
+                    'category_slug' => $post->category?->slug,
                     'content' => $post->content,
                     'featured_image' => $post->image_url,
                     'featured_image_alt' => $post->title,
@@ -82,7 +87,7 @@ class BlogController extends Controller
 
         return view('blog', [
             'posts' => $posts,
-            'activeCategory' => $categoryName,
+            'activeCategory' => $category?->name ?? $categoryName,
         ]);
     }
 }

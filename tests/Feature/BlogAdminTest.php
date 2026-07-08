@@ -51,9 +51,35 @@ class BlogAdminTest extends TestCase
         $this->get(route('blog.show', 'wheel-loader-demo'))
             ->assertOk()
             ->assertSee('Telescopic Wheel Loader - Field Demo')
-            ->assertSee('Field Notes');
+            ->assertSee('Field Notes')
+            ->assertSee('/blog/category/buyer-guides', escape: false);
+
+        $this->get(route('blog.category', 'buyer-guides'))
+            ->assertOk()
+            ->assertSee('Buyer Guides')
+            ->assertSee('Telescopic Wheel Loader - Field Demo');
 
         $this->get(route('blog.show', 'internal-draft-article'))->assertNotFound();
+    }
+
+    public function test_public_blog_turns_pasted_image_urls_into_images_and_keeps_markdown_headings(): void
+    {
+        $post = BlogPost::create([
+            'title' => 'Attachment Image Article',
+            'slug' => 'attachment-image-article',
+            'excerpt' => 'A post with pasted image URLs.',
+            'content' => "## Standard Bucket\n\nhttps://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp Grass grapples bring a specialized capability.\n\n### Pallet Forks\n\nOriginal paragraph text stays here.",
+            'is_published' => true,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('blog.show', $post->slug))
+            ->assertOk()
+            ->assertSee('<h2>Standard Bucket</h2>', escape: false)
+            ->assertSee('<img src="https://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp" alt="Article image" />', escape: false)
+            ->assertSee('Grass grapples bring a specialized capability.')
+            ->assertSee('<h3>Pallet Forks</h3>', escape: false)
+            ->assertSee('Original paragraph text stays here.');
     }
 
     public function test_admin_blog_pages_require_an_admin_account(): void
@@ -78,7 +104,13 @@ class BlogAdminTest extends TestCase
         $this->post(route('admin.login.store'), [
             'email' => $admin->email,
             'password' => 'secure-password',
-        ])->assertRedirect(route('admin.blog.index'));
+        ])->assertRedirect(route('admin.dashboard'));
+
+        $this->actingAs($admin)
+            ->get(route('admin.dashboard'))
+            ->assertOk()
+            ->assertSee('Admin Dashboard')
+            ->assertSee('New Post');
 
         $this->post(route('admin.blog.store'), [
             'title' => 'Loader Maintenance Checklist',
@@ -144,7 +176,18 @@ class BlogAdminTest extends TestCase
         $this->post(route('admin.login.store'), [
             'email' => $admin->email,
             'password' => 'new-secure-password',
-        ])->assertRedirect(route('admin.blog.index'));
+        ])->assertRedirect(route('admin.dashboard'));
+    }
+
+    public function test_admin_root_opens_dashboard(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+
+        $this->actingAs($admin)
+            ->get('/admin')
+            ->assertOk()
+            ->assertSee('Admin Dashboard')
+            ->assertSee('Recent Articles');
     }
 
     public function test_admin_can_upload_blog_content_images(): void

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\DashboardController as AdminDashboardController;
 use App\Http\Controllers\Admin\PasswordController as AdminPasswordController;
 use App\Http\Controllers\Admin\TagController as AdminTagController;
 use App\Http\Controllers\AttachmentController;
@@ -151,6 +152,8 @@ Route::middleware('guest')->group(function (): void {
     Route::post('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
 });
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function (): void {
+    Route::get('/', AdminDashboardController::class)->name('dashboard');
+    Route::get('/dashboard', AdminDashboardController::class)->name('dashboard.show');
     Route::post('/logout', [AdminAuthController::class, 'destroy'])->name('logout');
     Route::get('/password', [AdminPasswordController::class, 'edit'])->name('password.edit');
     Route::put('/password', [AdminPasswordController::class, 'update'])->name('password.update');

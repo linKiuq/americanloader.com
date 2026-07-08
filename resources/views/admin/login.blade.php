@@ -5,8 +5,8 @@
 @section('content')
     <div class="mx-auto mt-12 max-w-md rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
         <p class="text-xs font-black uppercase tracking-[0.3em] text-yellow-600">Secure Access</p>
-        <h1 class="mt-4 text-3xl font-black" style="font-family: 'Montserrat', sans-serif;">Blog Admin Login</h1>
-        <p class="mt-2 text-sm text-slate-600">Sign in to create, edit, publish, and delete blog articles.</p>
+        <h1 class="mt-4 text-3xl font-black" style="font-family: 'Montserrat', sans-serif;">Admin Dashboard Login</h1>
+        <p class="mt-2 text-sm text-slate-600">Sign in to manage dashboard content, blog posts, categories, and tags.</p>
 
         <form method="POST" action="{{ route('admin.login.store') }}" class="mt-8 space-y-5">
             @csrf

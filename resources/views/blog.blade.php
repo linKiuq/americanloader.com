@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => (isset($activeCategory) ? $activeCategory . ' Equipment Articles' : 'KONSTRUCTZ Heavy Equipment Blog'),
-        'description' => 'Read KONSTRUCTZ equipment guides, Skoop loader walkthroughs, wheel loader buying advice, attachment tips, and compact construction equipment insights.',
-        'keywords' => 'KONSTRUCTZ blog, KONSTRUCTZ equipment guides, Skoop loader articles, wheel loader articles, loader buying advice',
+        'title' => (isset($activeCategory) ? $activeCategory . ' Equipment Articles' : config('seo.site_name') . ' Heavy Equipment Blog'),
+        'description' => 'Read ' . config('seo.site_name') . ' equipment guides, Skoop loader walkthroughs, wheel loader buying advice, attachment tips, and compact construction equipment insights.',
+        'keywords' => config('seo.site_name') . ' blog, ' . config('seo.site_name') . ' equipment guides, Skoop loader articles, wheel loader articles, loader buying advice',
     ])
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,7 +36,7 @@
                     @endif
                     <div class="flex flex-1 flex-col p-6">
                         @if (! empty($post['category']))
-                            <a href="{{ route('blog.category', $post['category']) }}" class="mb-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-700 transition hover:text-yellow-600">{{ $post['category'] }}</a>
+                            <a href="{{ route('blog.category', $post['category_slug'] ?? \Illuminate\Support\Str::slug($post['category'])) }}" class="mb-2 text-xs font-black uppercase tracking-[0.2em] text-yellow-700 transition hover:text-yellow-600">{{ $post['category'] }}</a>
                         @endif
                         @if (! empty($post['publish_date']))
                             <p class="mb-3 text-xs font-bold uppercase tracking-[0.28em] text-yellow-600">{{ \Illuminate\Support\Carbon::parse($post['publish_date'])->format('M j, Y') }}</p>
