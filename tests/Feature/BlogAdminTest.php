@@ -107,7 +107,7 @@ class BlogAdminTest extends TestCase
             'title' => 'Markdown Link Article',
             'slug' => 'markdown-link-article',
             'excerpt' => 'A post with markdown links.',
-            'content' => 'When winter shuts down other work, a wheel loader keeps earning its keep by taking on [snow removal](https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/). See our [wheel loader guide](/blog/wheel-loader).',
+            'content' => 'When winter shuts down other work, a wheel loader keeps earning its keep by taking on [snow removal](https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/). See our [wheel loader guide](/blog/wheel-loader) and this [skid steer guide](skidsteers.org/skid-steer-buying-guide/).',
             'is_published' => true,
             'published_at' => now(),
         ]);
@@ -115,7 +115,8 @@ class BlogAdminTest extends TestCase
         $this->get(route('blog.show', $post->slug))
             ->assertOk()
             ->assertSee('<a href="https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/">snow removal</a>', escape: false)
-            ->assertSee('<a href="/blog/wheel-loader">wheel loader guide</a>', escape: false);
+            ->assertSee('<a href="/blog/wheel-loader">wheel loader guide</a>', escape: false)
+            ->assertSee('<a href="https://skidsteers.org/skid-steer-buying-guide/">skid steer guide</a>', escape: false);
     }
 
     public function test_public_blog_renders_link_attributes_from_admin_link_dialog(): void

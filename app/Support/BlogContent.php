@@ -6,6 +6,8 @@ use Illuminate\Support\HtmlString;
 
 class BlogContent
 {
+    private const LINK_TARGET_PATTERN = '(?:https?:\/\/|\/|mailto:|tel:)[^)]+|(?:www\.)?[a-z0-9.-]+\.[a-z]{2,}[^\s)]*';
+
     public static function markdown(string $content): HtmlString
     {
         return new HtmlString(self::render(self::prepare($content)));
@@ -81,9 +83,11 @@ class BlogContent
         );
 
         $html = (string) preg_replace_callback(
-            '/\[([^\]]+)\]\(((?:https?:\/\/|\/)[^)]+)\)(\{([^}]*)\})?/',
+            '/\[([^\]]+)\]\(('.self::LINK_TARGET_PATTERN.')\)(\{([^}]*)\})?/i',
             function (array $matches): string {
-                return '<a href="'.e($matches[2]).'"'.self::renderLinkAttributes($matches[4] ?? '').'>'.$matches[1].'</a>';
+                $href = html_entity_decode($matches[2], ENT_QUOTES | ENT_HTML5, 'UTF-8');
+
+                return '<a href="'.e(self::normalizeHref($href)).'"'.self::renderLinkAttributes($matches[4] ?? '').'>'.$matches[1].'</a>';
             },
             $html
         );
@@ -98,6 +102,21 @@ class BlogContent
         $html = (string) preg_replace('/\*([^*]+)\*/', '<em>$1</em>', $html);
 
         return $html;
+    }
+
+    private static function normalizeHref(string $href): string
+    {
+        $href = trim($href);
+
+        if (preg_match('~^(?:https?://|/|mailto:|tel:)~i', $href)) {
+            return $href;
+        }
+
+        if (preg_match('~^(?:www\.)?[a-z0-9.-]+\.[a-z]{2,}~i', $href)) {
+            return 'https://'.$href;
+        }
+
+        return $href;
     }
 
     private static function renderLinkAttributes(string $rawAttributes): string

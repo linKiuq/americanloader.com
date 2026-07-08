@@ -88,7 +88,7 @@
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-bold" for="link-url-input">URL</label>
-                            <input id="link-url-input" data-link-url type="url" placeholder="https://example.com/page" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                            <input id="link-url-input" data-link-url type="text" placeholder="https://example.com/page or /blog/page" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
                         </div>
                         <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
                             <input data-link-new-tab type="checkbox" class="h-5 w-5 accent-yellow-500">
@@ -175,8 +175,23 @@
             .replace(/"/g, '&quot;')
             .replace(/'/g, '&#039;');
 
+        const markdownLinkPattern = /\[([^\]]+)\]\(((?:https?:\/\/|\/|mailto:|tel:|(?:www\.)?[a-z0-9.-]+\.[a-z]{2,})[^\s)]*)\)(\{([^}]*)\})?/gi;
         const imageUrlPattern = /(?<!src=")(?<!href=")https?:\/\/[^\s<>()]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^\s<>()]*)?/gi;
         const linkUrlPattern = /(?<!href=")(?<!src=")(https?:\/\/[^\s<>()]+?)([.,;:!?])?(?=\s|$)/gi;
+
+        const normalizeLinkUrl = (url) => {
+            const trimmed = url.trim();
+
+            if (/^(https?:\/\/|\/|mailto:|tel:)/i.test(trimmed)) {
+                return trimmed;
+            }
+
+            if (/^(www\.)?[a-z0-9.-]+\.[a-z]{2,}/i.test(trimmed)) {
+                return `https://${trimmed}`;
+            }
+
+            return trimmed;
+        };
 
         const looksLikePlainHeading = (line) => {
             const trimmed = line.trim();
@@ -206,11 +221,9 @@
 
             escaped = escaped.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
             escaped = escaped.replace(imageUrlPattern, '<img src="$&" alt="Article image">');
-            escaped = escaped.replace(/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))(\{([^}]*)\})?/g, (match, text, wrappedUrl, attrs) => {
-                const url = wrappedUrl.slice(1, -1);
-                return `<a href="${url}"${renderLinkAttributes(attrs || '')}>${text}</a>`;
+            escaped = escaped.replace(markdownLinkPattern, (match, text, url, attrs) => {
+                return `<a href="${normalizeLinkUrl(url)}"${renderLinkAttributes(attrs || '')}>${text}</a>`;
             });
-            escaped = escaped.replace(/href="\(([^"]+)\)"/g, 'href="$1"');
             escaped = escaped.replace(linkUrlPattern, '<a href="$1">$1</a>$2');
 
             return escaped;
@@ -363,7 +376,7 @@
 
         const applyLinkDialog = () => {
             const text = linkTextInput.value.trim();
-            const url = linkUrlInput.value.trim();
+            const url = normalizeLinkUrl(linkUrlInput.value);
 
             if (!text || !url) {
                 setStatus('Link text and URL are required');
