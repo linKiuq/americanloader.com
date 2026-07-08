@@ -86,6 +86,12 @@ class BlogContent
             $html
         );
 
+        $html = (string) preg_replace(
+            '~(?<!href=")(?<!src=")(https?://[^\s<>()]+?)([.,;:!?])?(?=\s|$)~',
+            '<a href="$1">$1</a>$2',
+            $html
+        );
+
         $html = (string) preg_replace('/\*\*([^*]+)\*\*/', '<strong>$1</strong>', $html);
         $html = (string) preg_replace('/\*([^*]+)\*/', '<em>$1</em>', $html);
 

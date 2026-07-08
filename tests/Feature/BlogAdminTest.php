@@ -84,6 +84,23 @@ class BlogAdminTest extends TestCase
             ->assertSee('<h2>Site Clearing and Vegetation Management</h2>', escape: false);
     }
 
+    public function test_public_blog_auto_links_plain_internal_and_external_urls(): void
+    {
+        $post = BlogPost::create([
+            'title' => 'Linked Article',
+            'slug' => 'linked-article',
+            'excerpt' => 'A post with plain links.',
+            'content' => "Read more at https://americanloader.com/blog/wheel-loader and visit https://miniexcavator.org/ for attachments.",
+            'is_published' => true,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('blog.show', $post->slug))
+            ->assertOk()
+            ->assertSee('<a href="https://americanloader.com/blog/wheel-loader">https://americanloader.com/blog/wheel-loader</a>', escape: false)
+            ->assertSee('<a href="https://miniexcavator.org/">https://miniexcavator.org/</a>', escape: false);
+    }
+
     public function test_admin_blog_pages_require_an_admin_account(): void
     {
         $this->get('/admin')->assertRedirect(route('admin.login'));

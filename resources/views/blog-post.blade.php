@@ -59,7 +59,7 @@
                 <img src="{{ $post['featured_image'] }}" alt="{{ $post['featured_image_alt'] ?? $post['title'] }}" class="mt-10 h-[420px] w-full rounded-2xl object-cover">
             @endif
 
-            <div class="mt-10 max-w-none text-base leading-8 text-slate-700 [&_a]:font-semibold [&_a]:text-yellow-700 [&_blockquote]:border-l-4 [&_blockquote]:border-yellow-400 [&_blockquote]:pl-5 [&_blockquote]:text-slate-600 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-black [&_h3]:mt-8 [&_h3]:text-2xl [&_h3]:font-black [&_li]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
+            <div class="mt-10 max-w-none text-base leading-8 text-slate-700 [&_a]:font-bold [&_a]:text-yellow-700 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_blockquote]:border-l-4 [&_blockquote]:border-yellow-400 [&_blockquote]:pl-5 [&_blockquote]:text-slate-600 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-black [&_h3]:mt-8 [&_h3]:text-2xl [&_h3]:font-black [&_li]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
                 {!! \App\Support\BlogContent::markdown($post['content'] ?? '') !!}
             </div>
         </article>

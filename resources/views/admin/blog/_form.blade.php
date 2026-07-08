@@ -124,6 +124,7 @@
             .replace(/'/g, '&#039;');
 
         const imageUrlPattern = /(?<!src=")(?<!href=")https?:\/\/[^\s<>()]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^\s<>()]*)?/gi;
+        const linkUrlPattern = /(?<!href=")(?<!src=")(https?:\/\/[^\s<>()]+?)([.,;:!?])?(?=\s|$)/gi;
 
         const looksLikePlainHeading = (line) => {
             const trimmed = line.trim();
@@ -154,6 +155,7 @@
             escaped = escaped.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
             escaped = escaped.replace(imageUrlPattern, '<img src="$&" alt="Article image">');
             escaped = escaped.replace(/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/g, '<a href="$2">$1</a>');
+            escaped = escaped.replace(linkUrlPattern, '<a href="$1">$1</a>$2');
 
             return escaped;
         };
