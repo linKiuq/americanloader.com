@@ -55,7 +55,7 @@ class BlogContent
             return false;
         }
 
-        if (str_contains($line, '://') || preg_match('/[.!?]$/', $line) || str_word_count($line) > 12 || mb_strlen($line) > 95) {
+        if (str_contains($line, '://') || preg_match('/[.!?]$/', $line) || str_word_count($line) > 12 || strlen($line) > 95) {
             return false;
         }
 
@@ -68,7 +68,7 @@ class BlogContent
 
         $smallWords = ['a', 'an', 'and', 'as', 'at', 'but', 'by', 'for', 'from', 'in', 'into', 'of', 'on', 'or', 'the', 'to', 'with', 'your'];
         $titleWords = collect($words)->filter(function (string $word) use ($smallWords): bool {
-            return ctype_upper(mb_substr($word, 0, 1)) || in_array(mb_strtolower($word), $smallWords, true);
+            return ctype_upper(substr($word, 0, 1)) || in_array(strtolower($word), $smallWords, true);
         })->count();
 
         return ($titleWords / count($words)) >= 0.75;
