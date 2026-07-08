@@ -96,6 +96,25 @@ class BlogAdminTest extends TestCase
             ->assertForbidden();
     }
 
+    public function test_admin_login_page_does_not_redirect_non_admin_sessions_home(): void
+    {
+        $nonAdmin = User::factory()->create(['is_admin' => false]);
+
+        $this->actingAs($nonAdmin)
+            ->get(route('admin.login'))
+            ->assertOk()
+            ->assertSee('Admin Dashboard Login');
+    }
+
+    public function test_authenticated_admin_visiting_login_goes_to_dashboard(): void
+    {
+        $admin = User::factory()->create(['is_admin' => true]);
+
+        $this->actingAs($admin)
+            ->get(route('admin.login'))
+            ->assertRedirect(route('admin.dashboard'));
+    }
+
     public function test_admin_can_log_in_create_publish_update_and_delete_post(): void
     {
         $admin = User::factory()->create([

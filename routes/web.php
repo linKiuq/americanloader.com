@@ -147,10 +147,8 @@ Route::get('/blog/category/{category}', [BlogController::class, 'category'])->na
 Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
 
 // Blog administration
-Route::middleware('guest')->group(function (): void {
-    Route::get('/admin/login', [AdminAuthController::class, 'create'])->name('admin.login');
-    Route::post('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
-});
+Route::get('/admin/login', [AdminAuthController::class, 'create'])->name('admin.login');
+Route::post('/admin/login', [AdminAuthController::class, 'store'])->name('admin.login.store');
 Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(function (): void {
     Route::get('/', AdminDashboardController::class)->name('dashboard');
     Route::get('/dashboard', AdminDashboardController::class)->name('dashboard.show');

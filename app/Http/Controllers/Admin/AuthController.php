@@ -11,8 +11,18 @@ use Illuminate\View\View;
 
 class AuthController extends Controller
 {
-    public function create(): View
+    public function create(Request $request): View|RedirectResponse
     {
+        if ($request->user()?->is_admin) {
+            return to_route('admin.dashboard');
+        }
+
+        if ($request->user()) {
+            Auth::logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+        }
+
         return view('admin.login');
     }
 
