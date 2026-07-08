@@ -84,6 +84,8 @@ class BlogAdminTest extends TestCase
 
     public function test_admin_blog_pages_require_an_admin_account(): void
     {
+        $this->get('/admin')->assertRedirect(route('admin.login'));
+        $this->get(route('admin.dashboard.show'))->assertRedirect(route('admin.login'));
         $this->get(route('admin.blog.index'))->assertRedirect(route('admin.login'));
 
         $nonAdmin = User::factory()->create(['is_admin' => false]);
