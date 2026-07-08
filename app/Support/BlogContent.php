@@ -44,7 +44,7 @@ class BlogContent
                     return $line;
                 }
 
-                return '## '.$trimmed;
+                return "\n\n## {$trimmed}\n\n";
             })
             ->implode("\n");
     }

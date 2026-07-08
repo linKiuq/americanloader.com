@@ -68,7 +68,7 @@ class BlogAdminTest extends TestCase
             'title' => 'Attachment Image Article',
             'slug' => 'attachment-image-article',
             'excerpt' => 'A post with pasted image URLs.',
-            'content' => "Beyond Moving Dirt: Versatile Ways to Use Your Wheel Loader\n\nhttps://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp Grass grapples bring a specialized capability.\n\n### Pallet Forks\n\nOriginal paragraph text stays here.\n\nMaterial Handling and Logistics",
+            'content' => "Beyond Moving Dirt: Versatile Ways to Use Your Wheel Loader\n\nhttps://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp Grass grapples bring a specialized capability.\n\n### Pallet Forks\n\nOriginal paragraph text stays here.\nMaterial Handling and Logistics\nSite Clearing and Vegetation Management",
             'is_published' => true,
             'published_at' => now(),
         ]);
@@ -80,7 +80,8 @@ class BlogAdminTest extends TestCase
             ->assertSee('Grass grapples bring a specialized capability.')
             ->assertSee('<h3>Pallet Forks</h3>', escape: false)
             ->assertSee('Original paragraph text stays here.')
-            ->assertSee('<h2>Material Handling and Logistics</h2>', escape: false);
+            ->assertSee('<h2>Material Handling and Logistics</h2>', escape: false)
+            ->assertSee('<h2>Site Clearing and Vegetation Management</h2>', escape: false);
     }
 
     public function test_admin_blog_pages_require_an_admin_account(): void

@@ -158,40 +158,79 @@
             return escaped;
         };
 
+        const renderLineWithImage = (line) => {
+            const imageMatch = line.match(/^(https?:\/\/[^\s<>()]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^\s<>()]*)?)(.*)$/i);
+
+            if (!imageMatch) {
+                return null;
+            }
+
+            const [, url, rest] = imageMatch;
+            const text = rest.trim();
+
+            return `<img src="${escapeHtml(url)}" alt="Article image">${text ? `<p>${escapeHtml(text)}</p>` : ''}`;
+        };
+
         const updatePreview = () => {
             if (!preview) {
                 return;
             }
 
-            const blocks = textarea.value
-                .split(/\n{2,}/)
-                .map((block) => block.trim())
-                .filter(Boolean);
+            const lines = textarea.value.split(/\r\n|\n|\r/);
 
-            if (!blocks.length) {
+            if (!lines.some((line) => line.trim())) {
                 preview.innerHTML = '<p class="text-slate-400">Paste article content to preview it here.</p>';
                 return;
             }
 
-            preview.innerHTML = blocks.map((block) => {
-                const lines = block.split('\n').map((line) => line.trim()).filter(Boolean);
+            const html = [];
+            let paragraph = [];
 
-                if (lines.length === 1) {
-                    const line = lines[0];
-                    const heading = line.match(/^(#{1,6})\s+(.+)$/);
-
-                    if (heading) {
-                        const level = Math.min(6, heading[1].length);
-                        return `<h${level}>${escapeHtml(heading[2])}</h${level}>`;
-                    }
-
-                    if (looksLikePlainHeading(line)) {
-                        return `<h2>${escapeHtml(line)}</h2>`;
-                    }
+            const flushParagraph = () => {
+                if (!paragraph.length) {
+                    return;
                 }
 
-                return `<p>${renderInline(lines.join(' '))}</p>`;
-            }).join('');
+                html.push(`<p>${renderInline(paragraph.join(' '))}</p>`);
+                paragraph = [];
+            };
+
+            lines.forEach((rawLine) => {
+                const line = rawLine.trim();
+
+                if (!line) {
+                    flushParagraph();
+                    return;
+                }
+
+                const heading = line.match(/^(#{1,6})\s+(.+)$/);
+
+                if (heading) {
+                    flushParagraph();
+                    const level = Math.min(6, heading[1].length);
+                    html.push(`<h${level}>${escapeHtml(heading[2])}</h${level}>`);
+                    return;
+                }
+
+                if (looksLikePlainHeading(line)) {
+                    flushParagraph();
+                    html.push(`<h2>${escapeHtml(line)}</h2>`);
+                    return;
+                }
+
+                const imageHtml = renderLineWithImage(line);
+
+                if (imageHtml) {
+                    flushParagraph();
+                    html.push(imageHtml);
+                    return;
+                }
+
+                paragraph.push(line);
+            });
+
+            flushParagraph();
+            preview.innerHTML = html.join('');
         };
 
         const selection = () => ({
