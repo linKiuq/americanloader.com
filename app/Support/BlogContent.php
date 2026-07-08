@@ -2,30 +2,94 @@
 
 namespace App\Support;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\HtmlString;
 
 class BlogContent
 {
     public static function markdown(string $content): HtmlString
     {
-        return Str::markdown(self::prepare($content));
+        return new HtmlString(self::render(self::prepare($content)));
     }
 
     public static function prepare(string $content): string
     {
-        return self::convertPlainHeadings(self::convertBareImageUrls($content));
+        return self::convertPlainHeadings($content);
     }
 
-    private static function convertBareImageUrls(string $content): string
+    private static function render(string $content): string
     {
-        return (string) preg_replace_callback(
-            '~(?<!\]\()https?://[^\s<>()]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^\s<>()]*)?~i',
-            function (array $matches): string {
-                return "\n\n![Article image]({$matches[0]})\n\n";
-            },
-            $content
+        $lines = preg_split("/\r\n|\n|\r/", $content);
+
+        if ($lines === false) {
+            return '';
+        }
+
+        $html = [];
+        $paragraph = [];
+
+        $flushParagraph = function () use (&$html, &$paragraph): void {
+            if ($paragraph === []) {
+                return;
+            }
+
+            $html[] = '<p>'.self::renderInline(implode(' ', $paragraph)).'</p>';
+            $paragraph = [];
+        };
+
+        foreach ($lines as $rawLine) {
+            $line = trim($rawLine);
+
+            if ($line === '') {
+                $flushParagraph();
+                continue;
+            }
+
+            if (preg_match('/^(#{1,6})\s+(.+)$/', $line, $matches)) {
+                $flushParagraph();
+                $level = min(6, strlen($matches[1]));
+                $html[] = "<h{$level}>".e($matches[2])."</h{$level}>";
+                continue;
+            }
+
+            if (preg_match('~^(https?://[^\s<>()]+?\.(?:png|jpe?g|webp|gif|avif)(?:\?[^\s<>()]*)?)(.*)$~i', $line, $matches)) {
+                $flushParagraph();
+                $html[] = '<img src="'.e($matches[1]).'" alt="Article image">';
+
+                if (trim($matches[2]) !== '') {
+                    $html[] = '<p>'.e(trim($matches[2])).'</p>';
+                }
+
+                continue;
+            }
+
+            $paragraph[] = $line;
+        }
+
+        $flushParagraph();
+
+        return implode("\n", $html);
+    }
+
+    private static function renderInline(string $text): string
+    {
+        $html = e($text);
+
+        $html = (string) preg_replace(
+            '/!\[([^\]]*)\]\((https?:\/\/[^)]+)\)/',
+            '<img src="$2" alt="$1">',
+            $html
         );
+
+        $html = (string) preg_replace(
+            '/\[([^\]]+)\]\((https?:\/\/[^)]+)\)/',
+            '<a href="$2">$1</a>',
+            $html
+        );
+
+        $html = (string) preg_replace('/\*\*([^*]+)\*\*/', '<strong>$1</strong>', $html);
+        $html = (string) preg_replace('/\*([^*]+)\*/', '<em>$1</em>', $html);
+
+        return $html;
     }
 
     private static function convertPlainHeadings(string $content): string

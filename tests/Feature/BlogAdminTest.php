@@ -76,7 +76,7 @@ class BlogAdminTest extends TestCase
         $this->get(route('blog.show', $post->slug))
             ->assertOk()
             ->assertSee('<h2>Beyond Moving Dirt: Versatile Ways to Use Your Wheel Loader</h2>', escape: false)
-            ->assertSee('<img src="https://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp" alt="Article image" />', escape: false)
+            ->assertSee('<img src="https://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp" alt="Article image">', escape: false)
             ->assertSee('Grass grapples bring a specialized capability.')
             ->assertSee('<h3>Pallet Forks</h3>', escape: false)
             ->assertSee('Original paragraph text stays here.')
