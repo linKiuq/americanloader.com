@@ -68,18 +68,19 @@ class BlogAdminTest extends TestCase
             'title' => 'Attachment Image Article',
             'slug' => 'attachment-image-article',
             'excerpt' => 'A post with pasted image URLs.',
-            'content' => "## Standard Bucket\n\nhttps://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp Grass grapples bring a specialized capability.\n\n### Pallet Forks\n\nOriginal paragraph text stays here.",
+            'content' => "Beyond Moving Dirt: Versatile Ways to Use Your Wheel Loader\n\nhttps://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp Grass grapples bring a specialized capability.\n\n### Pallet Forks\n\nOriginal paragraph text stays here.\n\nMaterial Handling and Logistics",
             'is_published' => true,
             'published_at' => now(),
         ]);
 
         $this->get(route('blog.show', $post->slug))
             ->assertOk()
-            ->assertSee('<h2>Standard Bucket</h2>', escape: false)
+            ->assertSee('<h2>Beyond Moving Dirt: Versatile Ways to Use Your Wheel Loader</h2>', escape: false)
             ->assertSee('<img src="https://img.miniexcavator.org/ebay/Website-Team/class3-4-July/4-july/b9-02.webp" alt="Article image" />', escape: false)
             ->assertSee('Grass grapples bring a specialized capability.')
             ->assertSee('<h3>Pallet Forks</h3>', escape: false)
-            ->assertSee('Original paragraph text stays here.');
+            ->assertSee('Original paragraph text stays here.')
+            ->assertSee('<h2>Material Handling and Logistics</h2>', escape: false);
     }
 
     public function test_admin_blog_pages_require_an_admin_account(): void
