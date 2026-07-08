@@ -80,13 +80,13 @@ class BlogContent
             $html
         );
 
-        $html = (string) preg_replace(
-            '/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))/',
-            '<a href="$2">$1</a>',
+        $html = (string) preg_replace_callback(
+            '/\[([^\]]+)\]\(((?:https?:\/\/|\/)[^)]+)\)(\{([^}]*)\})?/',
+            function (array $matches): string {
+                return '<a href="'.e($matches[2]).'"'.self::renderLinkAttributes($matches[4] ?? '').'>'.$matches[1].'</a>';
+            },
             $html
         );
-
-        $html = (string) preg_replace('/href="\(([^"]+)\)"/', 'href="$1"', $html);
 
         $html = (string) preg_replace(
             '~(?<!href=")(?<!src=")(https?://[^\s<>()]+?)([.,;:!?])?(?=\s|$)~',
@@ -98,6 +98,25 @@ class BlogContent
         $html = (string) preg_replace('/\*([^*]+)\*/', '<em>$1</em>', $html);
 
         return $html;
+    }
+
+    private static function renderLinkAttributes(string $rawAttributes): string
+    {
+        $attributes = '';
+
+        if (str_contains($rawAttributes, 'target=_blank')) {
+            $attributes .= ' target="_blank"';
+        }
+
+        if (preg_match('/rel=([a-z,\-]+)/', $rawAttributes, $matches)) {
+            $attributes .= ' rel="'.e(str_replace(',', ' ', $matches[1])).'"';
+        }
+
+        if (preg_match('/title=(?:"|&quot;)(.*?)(?:"|&quot;)/', $rawAttributes, $matches)) {
+            $attributes .= ' title="'.e($matches[1]).'"';
+        }
+
+        return $attributes;
     }
 
     private static function convertPlainHeadings(string $content): string

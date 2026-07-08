@@ -76,6 +76,47 @@
                 </div>
                 <div data-article-preview class="min-h-40 px-5 py-5 text-sm leading-7 text-slate-700 [&_a]:font-bold [&_a]:text-yellow-700 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_h2]:mb-4 [&_h2]:mt-7 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:leading-tight [&_h2]:text-slate-950 [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-slate-950 [&_img]:my-5 [&_img]:max-h-[430px] [&_img]:max-w-full [&_img]:rounded-sm [&_img]:object-contain [&_p]:my-3"></div>
             </div>
+            <div data-link-dialog class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/40 px-4">
+                <div class="w-full max-w-lg rounded-xl border border-slate-200 bg-white shadow-2xl">
+                    <div class="border-b border-slate-100 px-6 py-4">
+                        <p class="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">Add Link</p>
+                    </div>
+                    <div class="space-y-4 px-6 py-5">
+                        <div>
+                            <label class="mb-2 block text-sm font-bold" for="link-text-input">Text</label>
+                            <input id="link-text-input" data-link-text type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                        </div>
+                        <div>
+                            <label class="mb-2 block text-sm font-bold" for="link-url-input">URL</label>
+                            <input id="link-url-input" data-link-url type="url" placeholder="https://example.com/page" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                        </div>
+                        <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                            <input data-link-new-tab type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            Open in new tab
+                        </label>
+                        <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                            <input data-link-nofollow type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            Add "nofollow" to link
+                        </label>
+                        <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                            <input data-link-sponsored type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            Add "sponsored" to link
+                        </label>
+                        <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
+                            <input data-link-ugc type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            Add "ugc" to link
+                        </label>
+                        <div>
+                            <label class="mb-2 block text-sm font-bold" for="link-title-input">Title Attribute</label>
+                            <input id="link-title-input" data-link-title type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-3 border-t border-slate-100 px-6 py-4">
+                        <button type="button" data-link-cancel class="rounded-lg border border-slate-300 px-5 py-3 text-sm font-bold text-slate-700 hover:border-slate-400">Cancel</button>
+                        <button type="button" data-link-apply class="rounded-lg bg-yellow-400 px-5 py-3 text-sm font-black uppercase tracking-wider text-slate-950 hover:bg-yellow-500">Add Link</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -101,8 +142,19 @@
         const status = document.querySelector('[data-markdown-upload-status]');
         const uploadInput = document.querySelector('[data-markdown-image-upload]');
         const preview = document.querySelector('[data-article-preview]');
+        const linkDialog = document.querySelector('[data-link-dialog]');
+        const linkTextInput = document.querySelector('[data-link-text]');
+        const linkUrlInput = document.querySelector('[data-link-url]');
+        const linkNewTabInput = document.querySelector('[data-link-new-tab]');
+        const linkNofollowInput = document.querySelector('[data-link-nofollow]');
+        const linkSponsoredInput = document.querySelector('[data-link-sponsored]');
+        const linkUgcInput = document.querySelector('[data-link-ugc]');
+        const linkTitleInput = document.querySelector('[data-link-title]');
+        const linkApplyButton = document.querySelector('[data-link-apply]');
+        const linkCancelButton = document.querySelector('[data-link-cancel]');
         const imageUploadUrl = @json(route('admin.blog.images.store'));
         const csrfToken = @json(csrf_token());
+        let savedSelection = null;
 
         if (!textarea) {
             return;
@@ -154,11 +206,24 @@
 
             escaped = escaped.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1">');
             escaped = escaped.replace(imageUrlPattern, '<img src="$&" alt="Article image">');
-            escaped = escaped.replace(/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))/g, '<a href="$2">$1</a>');
+            escaped = escaped.replace(/\[([^\]]+)\]((?:\((?:https?:\/\/|\/)[^)]+\)))(\{([^}]*)\})?/g, (match, text, wrappedUrl, attrs) => {
+                const url = wrappedUrl.slice(1, -1);
+                return `<a href="${url}"${renderLinkAttributes(attrs || '')}>${text}</a>`;
+            });
             escaped = escaped.replace(/href="\(([^"]+)\)"/g, 'href="$1"');
             escaped = escaped.replace(linkUrlPattern, '<a href="$1">$1</a>$2');
 
             return escaped;
+        };
+
+        const renderLinkAttributes = (rawAttrs) => {
+            const target = rawAttrs.includes('target=_blank') ? ' target="_blank"' : '';
+            const relMatch = rawAttrs.match(/rel=([a-z,\-]+)/);
+            const rel = relMatch ? ` rel="${relMatch[1].replaceAll(',', ' ')}"` : '';
+            const titleMatch = rawAttrs.match(/title=(?:"|&quot;)(.*?)(?:"|&quot;)/);
+            const title = titleMatch ? ` title="${escapeHtml(titleMatch[1])}"` : '';
+
+            return `${target}${rel}${title}`;
         };
 
         const renderLineWithImage = (line) => {
@@ -250,6 +315,20 @@
             updatePreview();
         };
 
+        const replaceSavedSelection = (replacement, cursorOffset = replacement.length) => {
+            if (!savedSelection) {
+                replaceSelection(replacement, cursorOffset);
+                return;
+            }
+
+            const { start, end } = savedSelection;
+            textarea.setRangeText(replacement, start, end, 'end');
+            textarea.focus();
+            textarea.setSelectionRange(start + cursorOffset, start + cursorOffset);
+            savedSelection = null;
+            updatePreview();
+        };
+
         const prefixSelectedLines = (prefix) => {
             const { value } = selection();
             const text = value || 'New line';
@@ -258,6 +337,57 @@
 
         const insertImageMarkdown = (url, alt = 'Blog image') => {
             replaceSelection(`![${alt}](${url})`);
+        };
+
+        const openLinkDialog = () => {
+            const currentSelection = selection();
+            savedSelection = currentSelection;
+            linkTextInput.value = currentSelection.value.trim() || '';
+            linkUrlInput.value = '';
+            linkNewTabInput.checked = false;
+            linkNofollowInput.checked = false;
+            linkSponsoredInput.checked = false;
+            linkUgcInput.checked = false;
+            linkTitleInput.value = '';
+            linkDialog?.classList.remove('hidden');
+            linkDialog?.classList.add('flex');
+            window.setTimeout(() => linkUrlInput?.focus(), 0);
+        };
+
+        const closeLinkDialog = () => {
+            linkDialog?.classList.add('hidden');
+            linkDialog?.classList.remove('flex');
+            savedSelection = null;
+            textarea.focus();
+        };
+
+        const applyLinkDialog = () => {
+            const text = linkTextInput.value.trim();
+            const url = linkUrlInput.value.trim();
+
+            if (!text || !url) {
+                setStatus('Link text and URL are required');
+                return;
+            }
+
+            const rel = [];
+
+            if (linkNofollowInput.checked) rel.push('nofollow');
+            if (linkSponsoredInput.checked) rel.push('sponsored');
+            if (linkUgcInput.checked) rel.push('ugc');
+
+            const attrs = [];
+
+            if (linkNewTabInput.checked) attrs.push('target=_blank');
+            if (rel.length) attrs.push(`rel=${rel.join(',')}`);
+            if (linkTitleInput.value.trim()) attrs.push(`title="${linkTitleInput.value.trim().replaceAll('"', "'")}"`);
+
+            const suffix = attrs.length ? `{${attrs.join(' ')}}` : '';
+            replaceSavedSelection(`[${text}](${url})${suffix}`, text.length + 3);
+            linkDialog?.classList.add('hidden');
+            linkDialog?.classList.remove('flex');
+            setStatus('Link inserted');
+            window.setTimeout(() => setStatus(''), 2000);
         };
 
         const uploadImage = async (file) => {
@@ -313,19 +443,7 @@
                 }
 
                 if (command === 'link') {
-                    const text = value.trim() || window.prompt('Link text', 'link text');
-
-                    if (!text) {
-                        return;
-                    }
-
-                    const url = window.prompt('Paste the link URL', 'https://');
-
-                    if (!url || url === 'https://') {
-                        return;
-                    }
-
-                    replaceSelection(`[${text}](${url})`, text.length + 3);
+                    openLinkDialog();
                 }
 
                 if (command === 'image-url') {
@@ -337,6 +455,14 @@
         uploadInput?.addEventListener('change', (event) => {
             uploadImage(event.target.files?.[0]);
             event.target.value = '';
+        });
+
+        linkApplyButton?.addEventListener('click', applyLinkDialog);
+        linkCancelButton?.addEventListener('click', closeLinkDialog);
+        linkDialog?.addEventListener('click', (event) => {
+            if (event.target === linkDialog) {
+                closeLinkDialog();
+            }
         });
 
         textarea.addEventListener('input', updatePreview);

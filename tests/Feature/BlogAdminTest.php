@@ -118,6 +118,22 @@ class BlogAdminTest extends TestCase
             ->assertSee('<a href="/blog/wheel-loader">wheel loader guide</a>', escape: false);
     }
 
+    public function test_public_blog_renders_link_attributes_from_admin_link_dialog(): void
+    {
+        $post = BlogPost::create([
+            'title' => 'Attributed Link Article',
+            'slug' => 'attributed-link-article',
+            'excerpt' => 'A post with attributed links.',
+            'content' => '[snow removal](https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/){target=_blank rel=nofollow,sponsored,ugc title="Snow removal guide"}',
+            'is_published' => true,
+            'published_at' => now(),
+        ]);
+
+        $this->get(route('blog.show', $post->slug))
+            ->assertOk()
+            ->assertSee('<a href="https://wheelloadersusa.com/why-wheel-loaders-are-essential-for-large-scale-snow-removal/" target="_blank" rel="nofollow sponsored ugc" title="Snow removal guide">snow removal</a>', escape: false);
+    }
+
     public function test_admin_blog_pages_require_an_admin_account(): void
     {
         $this->get('/admin')->assertRedirect(route('admin.login'));
