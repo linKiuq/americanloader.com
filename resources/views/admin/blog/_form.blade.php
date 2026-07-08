@@ -313,8 +313,19 @@
                 }
 
                 if (command === 'link') {
-                    const text = value || 'link text';
-                    replaceSelection(`[${text}](https://example.com)`, text.length + 3);
+                    const text = value.trim() || window.prompt('Link text', 'link text');
+
+                    if (!text) {
+                        return;
+                    }
+
+                    const url = window.prompt('Paste the link URL', 'https://');
+
+                    if (!url || url === 'https://') {
+                        return;
+                    }
+
+                    replaceSelection(`[${text}](${url})`, text.length + 3);
                 }
 
                 if (command === 'image-url') {
