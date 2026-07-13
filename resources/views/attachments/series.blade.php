@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => $series['title'] . ' | KONSTRUCTZ Attachments',
-        'description' => $series['description'] ?? 'Browse KONSTRUCTZ skid steer attachment series, Skoop loader attachments, and compact loader attachment packages.',
+        'title' => $series['title'] . ' | The Power Loader Attachments',
+        'description' => $series['description'] ?? 'Browse The Power Loader skid steer attachment series, Skoop loader attachments, and compact loader attachment packages.',
     ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

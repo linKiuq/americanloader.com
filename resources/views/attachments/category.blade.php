@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => $title . ' for Sale | KONSTRUCTZ',
-        'description' => $description ?? 'Browse KONSTRUCTZ heavy equipment attachments for compact machines, Skoop loaders, wheel loaders, skid steers, and mini excavators.',
+        'title' => $title . ' for Sale | The Power Loader',
+        'description' => $description ?? 'Browse The Power Loader heavy equipment attachments for compact machines, Skoop loaders, wheel loaders, skid steers, and mini excavators.',
     ])
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">

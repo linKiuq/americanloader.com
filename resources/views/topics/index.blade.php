@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Equipment Topics & Wheel Loader Buying Guides',
-        'description' => 'Explore KONSTRUCTZ buying guides, Skoop loader explainers, wheel loader workspace planning advice, and safety topics for compact construction equipment.',
-        'keywords' => 'KONSTRUCTZ guides, KONSTRUCTZ equipment topics, Skoop loader guide, wheel loader buying guide, wheel loader safety',
+        'title' => 'The Power Loader Equipment Topics & Wheel Loader Buying Guides',
+        'description' => 'Explore Power Loader buying guides, Skoop loader explainers, wheel loader workspace planning advice, and safety topics for compact construction equipment.',
+        'keywords' => 'Power Loader guides, Power Loader equipment topics, Skoop loader guide, wheel loader buying guide, wheel loader safety',
     ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>

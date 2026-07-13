@@ -193,15 +193,15 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('<title>KONSTRUCTZ | Skoop Loader, Wheel Loader &amp; Heavy Equipment</title>', escape: false)
+            ->assertSee('<title>The Power Loader | Skoop Loader, Wheel Loader &amp; Heavy Equipment</title>', escape: false)
             ->assertSee('<link rel="canonical" href="https://cwqv.com/">', escape: false)
-            ->assertSee('<meta property="og:site_name" content="KONSTRUCTZ">', escape: false)
+            ->assertSee('<meta property="og:site_name" content="The Power Loader">', escape: false)
             ->assertSee('application/ld+json', escape: false)
             ->assertSee('SearchAction', escape: false);
 
         $this->get(route('equipment'))
             ->assertOk()
-            ->assertSee('<title>KONSTRUCTZ Skoop Loader &amp; Wheel Loader for Sale | cwqv.com</title>', escape: false)
+            ->assertSee('<title>Skoop Loader &amp; Wheel Loader for Sale | cwqv.com</title>', escape: false)
             ->assertSee('<link rel="canonical" href="https://cwqv.com/equipment">', escape: false)
             ->assertSee('Skoop loader and wheel loader')
             ->assertSee('CollectionPage', escape: false);

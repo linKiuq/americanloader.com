@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => $title . ' | KONSTRUCTZ Equipment Topics',
+        'title' => $title . ' | The Power Loader Equipment Topics',
         'description' => $description,
     ])
     <script src="https://cdn.tailwindcss.com"></script>

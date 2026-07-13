@@ -51,14 +51,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Attachments | cwqv.com',
-        'description' => 'Browse KONSTRUCTZ Skoop loader, wheel loader, skid steer, and mini excavator attachments for digging, grading, trenching, hauling, cleanup, and compact equipment work.',
-        'keywords' => 'KONSTRUCTZ attachments, KONSTRUCTZ loader attachments, Skoop loader attachments, wheel loader attachments, loader attachments for sale, skid steer attachments, mini excavator attachments, buckets, augers, grapples',
+        'title' => 'Skoop Loader & Wheel Loader Attachments | cwqv.com',
+        'description' => 'Browse Skoop loader, wheel loader, skid steer, and mini excavator attachments for digging, grading, trenching, hauling, cleanup, and compact equipment work.',
+        'keywords' => 'The Power Loader attachments, Power Loader attachments, Skoop loader attachments, wheel loader attachments, loader attachments for sale, skid steer attachments, mini excavator attachments, buckets, augers, grapples',
         'jsonLd' => [
             '@type' => 'CollectionPage',
             '@id' => config('seo.site_url') . '/attachments#collection',
-            'name' => 'KONSTRUCTZ Skoop Loader and Wheel Loader Attachments for Sale',
-            'description' => 'KONSTRUCTZ attachment category hub for Skoop loader, wheel loader, mini excavator, skid steer loader, bucket, breaker, auger, grapple, and worksite tools.',
+            'name' => 'Skoop Loader and Wheel Loader Attachments for Sale',
+            'description' => 'The Power Loader attachment category hub for Skoop loader, wheel loader, mini excavator, skid steer loader, bucket, breaker, auger, grapple, and worksite tools.',
             'hasPart' => collect($attachmentSections)->map(fn (array $section) => [
                 '@type' => 'WebPage',
                 'name' => $section['title'],

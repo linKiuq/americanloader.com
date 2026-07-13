@@ -1,5 +1,5 @@
 @php
-    $seoSiteName = config('seo.site_name', 'KONSTRUCTZ');
+    $seoSiteName = config('seo.site_name', 'The Power Loader');
     $seoSiteUrl = rtrim(config('seo.site_url', url('/')), '/');
     $seoTitle = $title ?? config('seo.default_title');
     $seoDescription = $description ?? config('seo.default_description');

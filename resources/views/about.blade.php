@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'About KONSTRUCTZ | Skoop Loader & Wheel Loader Equipment',
-        'description' => 'Learn about KONSTRUCTZ at cwqv.com, a source for Skoop loader, wheel loader, compact construction equipment, attachments, and jobsite machines.',
-        'keywords' => 'about KONSTRUCTZ, KONSTRUCTZ loader, Skoop loader source, wheel loader source, construction equipment supplier, equipment attachments, jobsite machines',
+        'title' => 'About The Power Loader | Skoop Loader & Wheel Loader Equipment',
+        'description' => 'Learn about The Power Loader at cwqv.com, a source for Skoop loader, wheel loader, compact construction equipment, attachments, and jobsite machines.',
+        'keywords' => 'about The Power Loader, Power Loader equipment, Skoop loader source, wheel loader source, construction equipment supplier, equipment attachments, jobsite machines',
         'jsonLd' => [
             '@type' => 'AboutPage',
             '@id' => config('seo.site_url') . '/about#about',
-            'name' => 'About KONSTRUCTZ',
+            'name' => 'About The Power Loader',
             'url' => config('seo.site_url') . '/about',
         ],
     ])

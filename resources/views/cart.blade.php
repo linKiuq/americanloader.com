@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'Shopping Cart | KONSTRUCTZ',
-        'description' => 'Review selected KONSTRUCTZ equipment and attachments before checkout.',
+        'title' => 'Shopping Cart | The Power Loader',
+        'description' => 'Review selected The Power Loader equipment and attachments before checkout.',
         'robots' => 'noindex, follow',
     ])
     <script src="https://cdn.tailwindcss.com"></script>

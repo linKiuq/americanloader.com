@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ | Skoop Loader, Wheel Loader & Heavy Equipment',
-        'description' => 'Shop KONSTRUCTZ at cwqv.com for Skoop loader and wheel loader equipment, skid steer loaders, mini excavators, attachments, forklifts, scissor lifts, and jobsite equipment for sale in the USA.',
-        'keywords' => 'KONSTRUCTZ, KONSTRUCTZ loader, cwqv, cwqv.com, Skoop loader, wheel loader, Skoop wheel loader, wheel loaders for sale, compact wheel loader, skid steer loader attachments, mini excavators for sale',
+        'title' => 'The Power Loader | Skoop Loader, Wheel Loader & Heavy Equipment',
+        'description' => 'Shop The Power Loader at cwqv.com for Skoop loader and wheel loader equipment, skid steer loaders, mini excavators, attachments, forklifts, scissor lifts, and jobsite equipment for sale in the USA.',
+        'keywords' => 'The Power Loader, Power Loader equipment, cwqv, cwqv.com, Skoop loader, wheel loader, Skoop wheel loader, wheel loaders for sale, compact wheel loader, skid steer loader attachments, mini excavators for sale',
         'jsonLd' => [
             '@graph' => [
                 [
                     '@type' => 'ItemList',
                     '@id' => config('seo.site_url') . '/#featured-equipment',
-                    'name' => 'Featured KONSTRUCTZ Skoop loader and wheel loader equipment categories',
+                    'name' => 'Featured Skoop loader and wheel loader equipment categories',
                     'itemListElement' => [
                         ['@type' => 'ListItem', 'position' => 1, 'name' => 'Skoop loader equipment', 'url' => config('seo.site_url') . '/equipment'],
                         ['@type' => 'ListItem', 'position' => 2, 'name' => 'Compact wheel loaders', 'url' => config('seo.site_url') . '/equipment'],
@@ -605,6 +605,118 @@
     </section>
 
 
+    <section id="jobsite-applications" class="py-24 bg-white border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-12 lg:items-start">
+                <div class="lg:col-span-5">
+                    <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-3 block">// JOBSITE APPLICATIONS</span>
+                    <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-tight text-slate-950">
+                        Compact loaders built for the work you actually do
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-gray-600">
+                        Picture the machine in your own yard, farm, warehouse, or construction site. Power Loader equipments are positioned for crews that need practical lift power, compact movement, attachment flexibility, and fast support before and after purchase.
+                    </p>
+                    <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <a href="{{ route('equipment') }}#catalog" class="inline-flex items-center justify-center rounded-lg bg-slate-950 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:bg-slate-800">
+                            Browse Equipment
+                        </a>
+                        <a href="{{ route('topics.show', 'buy-guides') }}" class="inline-flex items-center justify-center rounded-lg border border-slate-300 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-slate-950 transition hover:border-yellow-400 hover:text-yellow-600">
+                            Read Buyer Guide
+                        </a>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-7">
+                    <div class="grid gap-5 sm:grid-cols-2">
+                        <article class="rounded-2xl border border-gray-200 bg-slate-50 p-6">
+                            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400 text-slate-950">
+                                <i data-lucide="hard-hat" class="h-6 w-6"></i>
+                            </div>
+                            <h3 class="text-lg font-black uppercase tracking-tight text-slate-950">Construction sites</h3>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Move aggregate, backfill trenches, clear debris, stage pallets, and support crews where a full-size loader takes up too much space.</p>
+                        </article>
+
+                        <article class="rounded-2xl border border-gray-200 bg-slate-50 p-6">
+                            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400 text-slate-950">
+                                <i data-lucide="tractor" class="h-6 w-6"></i>
+                            </div>
+                            <h3 class="text-lg font-black uppercase tracking-tight text-slate-950">Farms and land work</h3>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Handle feed, soil, mulch, gravel, fencing supplies, logs, and general property maintenance with a compact machine that is easy to maneuver.</p>
+                        </article>
+
+                        <article class="rounded-2xl border border-gray-200 bg-slate-50 p-6">
+                            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400 text-slate-950">
+                                <i data-lucide="warehouse" class="h-6 w-6"></i>
+                            </div>
+                            <h3 class="text-lg font-black uppercase tracking-tight text-slate-950">Yards and warehouses</h3>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Support daily material handling, outdoor storage, loading docks, equipment staging, and pallet movement without tying up larger machines.</p>
+                        </article>
+
+                        <article class="rounded-2xl border border-gray-200 bg-slate-50 p-6">
+                            <div class="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-yellow-400 text-slate-950">
+                                <i data-lucide="trees" class="h-6 w-6"></i>
+                            </div>
+                            <h3 class="text-lg font-black uppercase tracking-tight text-slate-950">Landscaping crews</h3>
+                            <p class="mt-3 text-sm leading-6 text-gray-600">Load mulch, prep surfaces, carry stone, remove brush, and switch attachments quickly during residential or commercial outdoor projects.</p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="loader-buying-support" class="py-24 bg-slate-950 border-b border-white/10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+                <div class="lg:col-span-6">
+                    <span class="text-yellow-400 font-black text-xs uppercase tracking-widest mb-3 block">// BUY WITH CLARITY</span>
+                    <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-tight">
+                        From loader selection to delivery planning
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-slate-300">
+                        Choosing the right Skoop loader or wheel loader is easier when the machine is matched to your material, lift height, surface conditions, attachments, and transport needs. Our site brings equipment details, product pages, application guidance, and contact support together so buyers can make a confident decision.
+                    </p>
+                </div>
+
+                <div class="lg:col-span-6">
+                    <div class="grid gap-4">
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                            <div class="flex gap-4">
+                                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-yellow-400 text-sm font-black text-slate-950">01</span>
+                                <div>
+                                    <h3 class="text-lg font-black uppercase tracking-tight">Match the work</h3>
+                                    <p class="mt-2 text-sm leading-6 text-slate-400">Start with the materials you move, travel distance, lift height, bucket size, ground conditions, and how often you need attachments.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                            <div class="flex gap-4">
+                                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-yellow-400 text-sm font-black text-slate-950">02</span>
+                                <div>
+                                    <h3 class="text-lg font-black uppercase tracking-tight">Compare real specs</h3>
+                                    <p class="mt-2 text-sm leading-6 text-slate-400">Review engine type, rated load, dump height, gradeability, hydraulic performance, operating weight, dimensions, and attachment compatibility.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                            <div class="flex gap-4">
+                                <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-yellow-400 text-sm font-black text-slate-950">03</span>
+                                <div>
+                                    <h3 class="text-lg font-black uppercase tracking-tight">Plan support early</h3>
+                                    <p class="mt-2 text-sm leading-6 text-slate-400">Ask about delivery timing, warranty coverage, parts availability, maintenance routines, and which attachments should be ordered with the machine.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 
     <section class="py-24 bg-slate-50 border-t border-b border-gray-200">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -981,6 +1093,52 @@
         </div>
     </section>
 
+    <section id="field-loader-showcase" class="py-24 bg-slate-950 border-b border-white/10 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid gap-12 lg:grid-cols-12 lg:items-center">
+                <div class="lg:col-span-7">
+                    <div class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900 shadow-2xl">
+                        <img src="{{ asset('wheel-loader-field-showcase.jpg') }}" alt="Heavy wheel loader with large bucket working on sandy jobsite" class="h-full w-full object-cover" width="1080" height="1208" loading="lazy" decoding="async">
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5">
+                    <span class="text-yellow-400 font-black text-xs uppercase tracking-widest mb-3 block">// HEAVY MATERIAL HANDLING</span>
+                    <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-5xl font-black uppercase tracking-tight leading-tight">
+                        Built for bucket work, stockpiles, and rough ground
+                    </h2>
+                    <p class="mt-6 text-lg leading-8 text-slate-300">
+                        Large bucket work demands traction, stable lift geometry, responsive hydraulics, and enough machine weight to stay planted while moving dense material. This is the kind of jobsite environment where a wheel loader earns its place every shift.
+                    </p>
+
+                    <div class="mt-8 grid gap-4">
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-sm font-black uppercase tracking-[0.24em] text-yellow-300">High-volume loading</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">Move sand, gravel, soil, aggregate, and debris with a bucket profile designed for repeated dig, carry, and dump cycles.</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-sm font-black uppercase tracking-[0.24em] text-yellow-300">Stable jobsite control</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">A wide stance, large tires, and strong loader arms help operators stay confident across loose surfaces and uneven haul paths.</p>
+                        </div>
+                        <div class="rounded-2xl border border-white/10 bg-white/[0.04] p-5">
+                            <h3 class="text-sm font-black uppercase tracking-[0.24em] text-yellow-300">Daily production focus</h3>
+                            <p class="mt-3 text-sm leading-6 text-slate-400">For contractors, farms, yards, and material sites, the right loader reduces handling time and keeps trucks, bins, and stockpiles moving.</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 flex flex-col gap-4 sm:flex-row">
+                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="inline-flex items-center justify-center rounded-lg bg-yellow-400 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-slate-950 transition hover:bg-yellow-300">
+                            View Loaders
+                        </a>
+                        <a href="{{ route('contact') }}" class="inline-flex items-center justify-center rounded-lg border border-white/30 px-7 py-4 text-sm font-black uppercase tracking-[0.18em] text-white transition hover:border-yellow-400 hover:text-yellow-300">
+                            Ask About Fit
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <section id="videos" class="py-20 bg-white border-t border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-8">
@@ -1009,6 +1167,114 @@
                         <p class="text-xs text-gray-500">Performance and attachment walkthrough.</p>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="mo-mosaic-stories" class="py-24 bg-white border-t border-b border-gray-200" aria-labelledby="mo-delivery-title" itemscope itemtype="https://schema.org/ItemList">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mx-auto mb-14 max-w-3xl text-center">
+                <span class="inline-flex items-center rounded-full bg-yellow-400/10 px-4 py-2 text-xs font-black uppercase tracking-[0.28em] text-yellow-600">First Encounter</span>
+                <h2 id="mo-delivery-title" itemprop="name" style="font-family: 'Archivo Black', sans-serif;" class="mt-5 text-4xl md:text-5xl uppercase tracking-tight text-slate-950">Our Deliveries</h2>
+                <p itemprop="description" class="mt-5 text-lg leading-8 text-gray-600">Raw moments from the field. We capture the exact moment operators and site managers take delivery of their engineered machinery.</p>
+            </div>
+
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4" role="list" aria-label="Machinery delivery gallery">
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="1">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image2-scaled.webp" alt="Skid steer delivery for Apex Excavation Group" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Skidsteers</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Apex Excavation Group</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">We were losing time on deep trenching. First look at the steel frame and the hydraulic lines, I knew this beast would handle the site.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="2">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-skid-steer-loader-scaled.webp" alt="Skid steer loader delivery for Civil Pro Builders" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Skid Steer</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Civil Pro Builders</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">It just felt rugged. As soon as I stepped into the cage, the visibility and solid frame reassured the crew.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="3">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/march-typhon-machinery-deliverys-7-1.jpeg" alt="Warehouse forklift delivery for Regional Logistics" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Warehouse Forklift</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Regional Logistics</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">Silent mast operation was the first thing we tested. Huge relief for the narrow aisles in our facility.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="4">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image5.webp" alt="Typhon Series Loader delivery for Steelcore Mining Ops" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Typhon Series Loader</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Steelcore Mining Ops</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">You don't realize how big the bucket is until you're standing next to the tires. This will cut our material loading times in half.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="5">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image4.webp" alt="Agri Utility Series delivery for Valley Cultivators" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Agri/Utility Series</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Valley Cultivators</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">We needed torque without the massive footprint. The build quality on this unit is immaculate.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="6">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image3.webp" alt="Skidsteers delivery for Urban Development" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Skidsteers</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Urban Development</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">Perfect for city infrastructure. Narrow enough for alleys, but zero compromise on the lifting power.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="7">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-road-roller-scaled.webp" alt="Double drum roller delivery for Highway Tech Inc." class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Double Drum Roller</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Highway Tech Inc.</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">The drum thickness is what sold us originally. Seeing it come off the trailer today confirmed it is built for serious road work.</p>
+                    </div>
+                </article>
+
+                <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                    <meta itemprop="position" content="8">
+                    <div class="aspect-[3/4] overflow-hidden bg-slate-900">
+                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-skid-steer-scaled.webp" alt="Tracked skid steer delivery for Timber Supply Co." class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                    </div>
+                    <div class="border-t-4 border-yellow-400 p-5">
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-yellow-600">Tracked Skid Steer</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-slate-950">Timber Supply Co.</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">Needed raw power to punch through the mud. The undercarriage and track design are exactly what we ordered.</p>
+                    </div>
+                </article>
             </div>
         </div>
     </section>
@@ -1069,6 +1335,30 @@
                         </div>
                     </div>
                 </blockquote>
+            </div>
+        </div>
+    </section>
+
+    <section id="home-faq" class="py-20 bg-slate-50 border-t border-gray-200">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-2 block">// COMMON BUYER QUESTIONS</span>
+                <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-4xl uppercase tracking-tight text-slate-950">Helpful details before you choose a loader</h2>
+            </div>
+
+            <div class="divide-y divide-gray-200 rounded-2xl border border-gray-200 bg-white">
+                <div class="p-6">
+                    <h3 class="text-lg font-black text-slate-950">What size loader should I choose?</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">Choose by your jobsite access, lift height, loaded bucket weight, terrain, and attachment needs. Compact loaders are a strong fit when maneuverability matters as much as power.</p>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-black text-slate-950">Can one loader handle multiple jobs?</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">Yes. A loader with the right coupler and hydraulic setup can move between bucket work, fork handling, sweeping, grappling, light drilling, mowing, and cleanup tasks.</p>
+                </div>
+                <div class="p-6">
+                    <h3 class="text-lg font-black text-slate-950">What should I ask before ordering?</h3>
+                    <p class="mt-3 text-sm leading-6 text-gray-600">Confirm machine dimensions, operating weight, engine platform, rated load, dump height, warranty coverage, delivery details, parts support, and attachment compatibility.</p>
+                </div>
             </div>
         </div>
     </section>

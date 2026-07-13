@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Buyer Guide',
-        'description' => 'Learn how to choose KONSTRUCTZ Skoop loader or wheel loader equipment by size, lift capacity, bucket type, ground conditions, attachments, maintenance needs, and total ownership cost.',
+        'title' => 'Skoop Loader & Wheel Loader Buyer Guide',
+        'description' => 'Learn how to choose Skoop loader or wheel loader equipment by size, lift capacity, bucket type, ground conditions, attachments, maintenance needs, and total ownership cost.',
         'type' => 'article',
-        'keywords' => 'KONSTRUCTZ buyer guide, KONSTRUCTZ Skoop loader, Skoop loader buyer guide, wheel loader buyer guide, choose a wheel loader, Skoop wheel loader, wheel loader lift capacity, compact wheel loader buying tips',
+        'keywords' => 'The Power Loader buyer guide, Skoop loader, Skoop loader buyer guide, wheel loader buyer guide, choose a wheel loader, Skoop wheel loader, wheel loader lift capacity, compact wheel loader buying tips',
         'jsonLd' => [
             '@type' => 'FAQPage',
             '@id' => config('seo.site_url') . '/topics/buy-guides#faq',

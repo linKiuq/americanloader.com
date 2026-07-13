@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader for Sale | cwqv.com',
-        'description' => 'Browse KONSTRUCTZ equipment for sale at cwqv.com, including Skoop loader and wheel loader machines, mini excavators, skid steer loaders, forklifts, road rollers, scissor lifts, and compact jobsite machines.',
-        'keywords' => 'KONSTRUCTZ, KONSTRUCTZ equipment, cwqv equipment, Skoop loader for sale, wheel loader for sale, Skoop wheel loader, compact wheel loaders, mini excavator for sale, skid steer loaders, forklifts',
+        'title' => 'Skoop Loader & Wheel Loader for Sale | cwqv.com',
+        'description' => 'Browse The Power Loader equipment for sale at cwqv.com, including Skoop loader and wheel loader machines, mini excavators, skid steer loaders, forklifts, road rollers, scissor lifts, and compact jobsite machines.',
+        'keywords' => 'The Power Loader, The Power Loader equipment, cwqv equipment, Skoop loader for sale, wheel loader for sale, Skoop wheel loader, compact wheel loaders, mini excavator for sale, skid steer loaders, forklifts',
         'jsonLd' => [
             '@type' => 'CollectionPage',
             '@id' => config('seo.site_url') . '/equipment#collection',
-            'name' => 'KONSTRUCTZ Skoop Loader and Wheel Loader Equipment for Sale',
-            'description' => 'KONSTRUCTZ equipment catalog for Skoop loader and wheel loader machines, mini excavators, forklifts, rollers, scissor lifts, and jobsite machines.',
+            'name' => 'Skoop Loader and Wheel Loader Equipment for Sale',
+            'description' => 'The Power Loader equipment catalog for Skoop loader and wheel loader machines, mini excavators, forklifts, rollers, scissor lifts, and jobsite machines.',
             'url' => config('seo.site_url') . '/equipment',
         ],
     ])

@@ -5,15 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Skoop Loader & Wheel Loader Store | cwqv.com',
-        'description' => 'Shop KONSTRUCTZ at cwqv.com for Skoop loader and wheel loader equipment, compact construction machines, attachments, parts, and jobsite equipment online.',
-        'keywords' => 'KONSTRUCTZ store, KONSTRUCTZ loader, cwqv store, Skoop loader store, wheel loader store, wheel loader for sale, loader attachments store, construction equipment online, compact machines',
+        'title' => 'Skoop Loader & Wheel Loader Store | cwqv.com',
+        'description' => 'Shop The Power Loader at cwqv.com for Skoop loader and wheel loader equipment, compact construction machines, attachments, parts, and jobsite equipment online.',
+        'keywords' => 'The Power Loader store, Power Loader equipment, cwqv store, Skoop loader store, wheel loader store, wheel loader for sale, loader attachments store, construction equipment online, compact machines',
         'jsonLd' => [
             '@type' => 'Store',
             '@id' => config('seo.site_url') . '/store#store',
-            'name' => 'KONSTRUCTZ Store',
+            'name' => 'The Power Loader Store',
             'url' => config('seo.site_url') . '/store',
-            'description' => 'Online storefront for KONSTRUCTZ Skoop loader and wheel loader equipment, compact machines, attachments, and parts.',
+            'description' => 'Online storefront for Skoop loader and wheel loader equipment, compact machines, attachments, and parts.',
             'parentOrganization' => ['@id' => config('seo.site_url') . '/#organization'],
         ],
     ])

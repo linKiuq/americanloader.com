@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'KONSTRUCTZ Wheel Loader Performance Features Guide',
-        'description' => 'Compare KONSTRUCTZ Skoop loader and wheel loader performance features including torque, breakout force, lift capacity, hydraulics, transmission, traction, stability, and fuel efficiency.',
+        'title' => 'The Power Loader Wheel Loader Performance Features Guide',
+        'description' => 'Compare Skoop loader and wheel loader performance features including torque, breakout force, lift capacity, hydraulics, transmission, traction, stability, and fuel efficiency.',
         'type' => 'article',
-        'keywords' => 'KONSTRUCTZ wheel loader, KONSTRUCTZ performance, Skoop loader performance, wheel loader performance, wheel loader torque, breakout force, lift capacity, wheel loader hydraulics',
+        'keywords' => 'The Power Loader wheel loader, The Power Loader performance, Skoop loader performance, wheel loader performance, wheel loader torque, breakout force, lift capacity, wheel loader hydraulics',
     ])
     <script src="https://cdn.tailwindcss.com"></script>
     <style>

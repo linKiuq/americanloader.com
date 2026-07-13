@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @php
-        $productDescription = \Illuminate\Support\Str::limit(strip_tags($product['fullDesc'] ?? $product['desc'] ?? 'Heavy equipment for sale from KONSTRUCTZ.'), 155);
+        $productDescription = \Illuminate\Support\Str::limit(strip_tags($product['fullDesc'] ?? $product['desc'] ?? 'Heavy equipment for sale from The Power Loader.'), 155);
     @endphp
     @include('partials.seo', [
-        'title' => $product['name'] . ' | KONSTRUCTZ',
+        'title' => $product['name'] . ' | The Power Loader',
         'description' => $productDescription,
         'type' => 'product',
         'image' => $product['image'] ?? null,

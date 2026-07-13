@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'Contact KONSTRUCTZ | Skoop Loader & Wheel Loader Quotes',
-        'description' => 'Contact KONSTRUCTZ for Skoop loader and wheel loader quotes, loader availability, attachment compatibility, delivery questions, and compact machine support.',
-        'keywords' => 'KONSTRUCTZ contact, KONSTRUCTZ quote, request wheel loader quote, request Skoop loader quote, loader support, attachment compatibility, heavy equipment sales',
+        'title' => 'Contact The Power Loader | Skoop Loader & Wheel Loader Quotes',
+        'description' => 'Contact The Power Loader for Skoop loader and wheel loader quotes, loader availability, attachment compatibility, delivery questions, and compact machine support.',
+        'keywords' => 'The Power Loader contact, The Power Loader quote, request wheel loader quote, request Skoop loader quote, loader support, attachment compatibility, heavy equipment sales',
         'jsonLd' => [
             '@type' => 'ContactPage',
             '@id' => config('seo.site_url') . '/contact#contact',
-            'name' => 'Contact KONSTRUCTZ',
+            'name' => 'Contact The Power Loader',
             'url' => config('seo.site_url') . '/contact',
         ],
     ])
