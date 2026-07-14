@@ -156,8 +156,8 @@ jobs:
             git checkout -B "$BRANCH" "origin/$BRANCH"
             git reset --hard "origin/$BRANCH"
 
-            php artisan migrate --force --no-interaction
             php artisan optimize:clear
+            php artisan migrate --force --no-interaction
             php artisan config:cache
             php artisan view:cache
 
