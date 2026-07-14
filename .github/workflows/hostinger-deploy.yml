@@ -123,3 +123,42 @@ jobs:
             fi
 
             echo "Hostinger deployment finished."
+
+      - name: Deploy americanloader.com subdomain
+        if: steps.deploy_config.outputs.ready == 'true'
+        uses: appleboy/ssh-action@v1.0.3
+        env:
+          DEPLOY_REPO_URL: ${{ secrets.DEPLOY_REPO_URL }}
+          SSH_USER: ${{ secrets.HOSTINGER_SSH_USER || 'u534600013' }}
+        with:
+          host: ${{ secrets.HOSTINGER_SSH_HOST || '194.164.64.89' }}
+          port: ${{ secrets.HOSTINGER_SSH_PORT || 65002 }}
+          username: ${{ secrets.HOSTINGER_SSH_USER || 'u534600013' }}
+          key: ${{ secrets.HOSTINGER_SSH_KEY }}
+          password: ${{ secrets.HOSTINGER_SSH_PASSWORD }}
+          envs: DEPLOY_REPO_URL,SSH_USER
+          script_stop: true
+          script: |
+            set -Eeuo pipefail
+
+            BRANCH="main"
+            APP_ROOT="/home/$SSH_USER/domains/americanloader.com/public_html"
+            REPO_URL="${DEPLOY_REPO_URL:-https://github.com/${{ github.repository }}.git}"
+
+            if [ ! -d "$APP_ROOT/.git" ]; then
+              echo "americanloader.com app root is not a git checkout: $APP_ROOT"
+              exit 1
+            fi
+
+            cd "$APP_ROOT"
+            git remote set-url origin "$REPO_URL"
+            git fetch --prune origin "$BRANCH"
+            git checkout -B "$BRANCH" "origin/$BRANCH"
+            git reset --hard "origin/$BRANCH"
+
+            php artisan migrate --force --no-interaction
+            php artisan optimize:clear
+            php artisan config:cache
+            php artisan view:cache
+
+            echo "americanloader.com subdomain deployment finished."
