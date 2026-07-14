@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use App\Models\Category;
-use App\Support\LegacyBlogPosts;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
@@ -24,13 +23,9 @@ class BlogController extends Controller
             ->published()
             ->first();
 
-        $postArray = $post
-            ? $this->postToArray($post)
-            : LegacyBlogPosts::find($slug);
+        abort_if(! $post, 404);
 
-        abort_if(! $postArray, 404);
-
-        return view('blog-post', ['post' => $postArray]);
+        return view('blog-post', ['post' => $this->postToArray($post)]);
     }
 
     public function category(string $categoryName): View
@@ -56,9 +51,6 @@ class BlogController extends Controller
             ->latest('published_at')
             ->get()
             ->map(fn ($post) => $this->postToArray($post))
-            ->merge(LegacyBlogPosts::all())
-            ->unique('slug')
-            ->sortByDesc('publish_date')
             ->values();
     }
 
