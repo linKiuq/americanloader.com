@@ -147,33 +147,61 @@
         .industrial-hero-section {
             position: relative;
             width: 100%;
-            min-height: 100vh;
-            background: linear-gradient(rgba(11, 16, 26, 0.85), rgba(11, 16, 26, 0.85)),
-                        url('{{ asset('hero-power-loader.png') }}') no-repeat center center !important;
+            min-height: calc(100svh - 82px);
+            isolation: isolate;
+            overflow: hidden;
+            background:
+                linear-gradient(180deg, rgba(3, 7, 18, 0.42) 0%, rgba(3, 7, 18, 0.34) 38%, rgba(3, 7, 18, 0.78) 100%),
+                radial-gradient(circle at 50% 42%, rgba(250, 204, 21, 0.16), transparent 34%),
+                url('{{ asset('hero-power-loader.png') }}') no-repeat center 42% !important;
             background-size: cover !important;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            padding: 80px 6%;
+            padding: clamp(4rem, 7vw, 7rem) clamp(1rem, 4vw, 4.5rem) clamp(2rem, 4vw, 3.75rem);
             box-sizing: border-box;
+        }
+
+        .industrial-hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            z-index: -1;
+            background:
+                linear-gradient(90deg, rgba(3, 7, 18, 0.5), transparent 25%, transparent 75%, rgba(3, 7, 18, 0.48)),
+                linear-gradient(0deg, rgba(3, 7, 18, 0.52), transparent 32%);
+            pointer-events: none;
+        }
+
+        .industrial-hero-section::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(250, 204, 21, 0.65), transparent);
+            pointer-events: none;
         }
 
         /* --- Global Grid Workspace Framework --- */
         .hero-main-layout {
             display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-            gap: 50px;
+            grid-template-columns: 1fr;
+            gap: clamp(1.75rem, 4vw, 3rem);
             align-items: center;
+            justify-items: center;
             margin-top: auto;
             margin-bottom: auto;
             width: 100%;
-            max-width: 1440px;
+            max-width: 1180px;
+            align-self: center;
         }
 
         /* --- Left Column Content Side Styles --- */
         .left-content-panel {
-            max-width: 680px;
-            text-align: left;
+            max-width: 980px;
+            text-align: center;
         }
 
         .tag-pill {
@@ -187,20 +215,22 @@
             font-size: 0.75rem;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-bottom: 25px;
-            border-radius: 3px;
+            letter-spacing: 0.16em;
+            margin-bottom: 22px;
+            border-radius: 999px;
+            backdrop-filter: blur(12px);
         }
 
         .hero-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: clamp(2.5rem, 4.5vw, 4rem);
+            font-size: clamp(2.6rem, 6vw, 5.8rem);
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 0.98;
             text-transform: uppercase;
-            letter-spacing: -1.5px;
-            margin-bottom: 25px;
+            letter-spacing: 0;
+            margin-bottom: 24px;
             color: #ffffff !important;
+            text-shadow: 0 14px 36px rgba(0, 0, 0, 0.42);
         }
 
         .hero-title span {
@@ -208,13 +238,15 @@
         }
 
         .hero-sub-description {
-            font-size: 1.05rem;
-            line-height: 1.6;
+            font-size: clamp(1rem, 1.45vw, 1.2rem);
+            line-height: 1.7;
             color: #ffffff !important;
-            margin-bottom: 35px;
-            max-height: 180px;
-            overflow-y: auto;
-            padding-right: 15px;
+            margin: 0 auto 34px;
+            max-width: 820px;
+            max-height: none;
+            overflow: visible;
+            padding-right: 0;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.54);
         }
 
         .hero-sub-description::-webkit-scrollbar {
@@ -229,6 +261,7 @@
             display: flex;
             gap: 20px;
             flex-wrap: wrap;
+            justify-content: center;
         }
 
         .btn-yellow {
@@ -239,12 +272,13 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 18px 36px;
+            padding: 18px 34px;
             border: none;
-            border-radius: 4px;
+            border-radius: 999px;
             cursor: pointer;
             transition: 0.2s;
             text-decoration: none;
+            box-shadow: 0 18px 36px rgba(250, 204, 21, 0.2);
         }
 
         .btn-yellow:hover {
@@ -259,12 +293,13 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
-            padding: 18px 36px;
+            padding: 18px 34px;
             border: 1.5px solid rgba(255, 255, 255, 0.4);
-            border-radius: 4px;
+            border-radius: 999px;
             cursor: pointer;
             transition: 0.2s;
             text-decoration: none;
+            backdrop-filter: blur(12px);
         }
 
         .btn-outline:hover {
@@ -278,20 +313,25 @@
             grid-template-columns: 1fr;
             gap: 15px;
             width: 100%;
+            max-width: 920px;
         }
 
         .main-hero-card {
-            background: rgba(255, 255, 255, 0.04);
-            border: 1px solid rgba(250, 204, 21, 0.42);
-            border-radius: 6px;
-            padding: 25px;
+            background: rgba(3, 7, 18, 0.48);
+            border: 1px solid rgba(250, 204, 21, 0.32);
+            border-radius: 14px;
+            padding: 18px 22px;
             backdrop-filter: blur(12px);
             position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
         }
 
         .main-hero-card-tag {
             color: #facc15;
-            font-size: 0.75rem;
+            font-size: 0.68rem;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -303,7 +343,7 @@
 
         .main-hero-card-title {
             font-family: 'Montserrat', sans-serif;
-            font-size: 1.4rem;
+            font-size: clamp(1.05rem, 2vw, 1.35rem);
             font-weight: 800;
             text-transform: uppercase;
             margin-bottom: 6px;
@@ -319,23 +359,23 @@
         /* Core Dynamic Secondary Grid layout from template */
         .secondary-cards-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 10px;
         }
 
         .spec-selection-button {
             background: rgba(255, 255, 255, 0.06);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 6px;
-            padding: 20px;
-            text-align: left;
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
             cursor: pointer;
             backdrop-filter: blur(8px);
             transition: all 0.2s ease;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 120px;
+            min-height: 112px;
         }
 
         .spec-selection-button:hover {
@@ -376,10 +416,13 @@
             display: flex;
             gap: clamp(2rem, 8vw, 6rem);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 30px;
-            margin-top: 40px;
+            padding-top: 24px;
+            margin-top: 34px;
             width: 100%;
-            max-width: 1440px;
+            max-width: 1080px;
+            align-self: center;
+            justify-content: center;
+            text-align: center;
         }
 
         .stat-node {
@@ -404,15 +447,28 @@
         }
 
         @media (max-width: 1024px) {
-            .hero-main-layout { grid-template-columns: 1fr; gap: 40px; }
+            .industrial-hero-section {
+                min-height: calc(100svh - 82px);
+                background-position: center 36% !important;
+            }
+            .hero-main-layout { gap: 36px; }
             .left-content-panel { max-width: 100%; }
-            .stats-footer-bar { gap: 30px; justify-content: space-between; }
+            .secondary-cards-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+            .stats-footer-bar { gap: 30px; justify-content: center; }
         }
 
         @media (max-width: 600px) {
-            .secondary-cards-grid { grid-template-columns: 1fr; }
-            .stats-footer-bar { flex-wrap: wrap; gap: 20px; }
-            .stat-node { width: 45%; }
+            .industrial-hero-section {
+                min-height: calc(100svh - 74px);
+                padding: 3rem 1rem 1.5rem;
+            }
+            .secondary-cards-grid { grid-template-columns: 1fr 1fr; }
+            .main-hero-card {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+            .stats-footer-bar { flex-wrap: wrap; gap: 18px; }
+            .stat-node { width: 100%; }
             .skp-showcase-container { height: 400px; }
             #attachments .skp-feature-card > div:last-child {
                 align-items: flex-start;
