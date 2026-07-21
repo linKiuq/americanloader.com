@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Session\TokenMismatchException;
 use Throwable;
 
 class Handler extends ExceptionHandler
@@ -39,6 +40,17 @@ class Handler extends ExceptionHandler
     public function register(): void
     {
         //
+    }
+
+    public function render($request, Throwable $e)
+    {
+        if ($e instanceof TokenMismatchException && $request->is('admin/login')) {
+            return redirect()
+                ->route('admin.login')
+                ->with('status', 'Your login session expired. Please try again with the fresh form.');
+        }
+
+        return parent::render($request, $e);
     }
 
     protected function unauthenticated($request, AuthenticationException $exception)

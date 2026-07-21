@@ -25,6 +25,12 @@
             <h1 class="mt-4 text-3xl font-black leading-tight text-white" style="font-family: 'Montserrat', sans-serif;">Admin Dashboard Login</h1>
             <p class="mt-3 text-sm leading-6 text-slate-300">Sign in to manage dashboard content, blog posts, categories, and tags.</p>
 
+            @if (session('status'))
+                <div class="mt-6 rounded-lg border border-yellow-300/30 bg-yellow-300/10 px-4 py-3 text-sm font-semibold text-yellow-100">
+                    {{ session('status') }}
+                </div>
+            @endif
+
             <form method="POST" action="{{ route('admin.login.store') }}" class="mt-8 space-y-5">
                 @csrf
                 <div>
