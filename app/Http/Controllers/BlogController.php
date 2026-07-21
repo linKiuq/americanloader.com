@@ -6,6 +6,7 @@ use App\Models\BlogPost;
 use App\Models\Category;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
+use Throwable;
 
 class BlogController extends Controller
 {
@@ -18,10 +19,14 @@ class BlogController extends Controller
 
     public function show(string $slug): View
     {
-        $post = BlogPost::with(['category', 'author'])
-            ->where('slug', $slug)
-            ->published()
-            ->first();
+        try {
+            $post = BlogPost::with(['category', 'author'])
+                ->where('slug', $slug)
+                ->published()
+                ->first();
+        } catch (Throwable) {
+            $post = null;
+        }
 
         if (! $post) {
             $legacyPost = $this->legacyPost($slug);
@@ -35,9 +40,14 @@ class BlogController extends Controller
 
     public function category(string $categoryName): View
     {
-        $category = Category::where('slug', $categoryName)
-            ->orWhere('name', $categoryName)
-            ->first();
+        try {
+            $category = Category::where('slug', $categoryName)
+                ->orWhere('name', $categoryName)
+                ->first();
+        } catch (Throwable) {
+            $category = null;
+        }
+
         $categorySlug = $category?->slug ?? $categoryName;
         $posts = $this->publishedPosts()
             ->filter(fn (array $post): bool => ($post['category_slug'] ?? null) === $categorySlug || ($post['category'] ?? null) === $categoryName)
@@ -51,12 +61,16 @@ class BlogController extends Controller
 
     private function publishedPosts(): Collection
     {
-        $databasePosts = BlogPost::with(['category', 'author'])
-            ->published()
-            ->latest('published_at')
-            ->get()
-            ->map(fn ($post) => $this->postToArray($post))
-            ->values();
+        try {
+            $databasePosts = BlogPost::with(['category', 'author'])
+                ->published()
+                ->latest('published_at')
+                ->get()
+                ->map(fn ($post) => $this->postToArray($post))
+                ->values();
+        } catch (Throwable) {
+            $databasePosts = collect();
+        }
 
         return $databasePosts
             ->merge(collect($this->legacyPosts())->reject(fn (array $post): bool => $databasePosts->contains('slug', $post['slug'])))
