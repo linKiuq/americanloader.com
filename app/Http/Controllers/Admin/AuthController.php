@@ -13,16 +13,6 @@ class AuthController extends Controller
 {
     public function create(Request $request): View|RedirectResponse
     {
-        if ($request->user()?->is_admin) {
-            return to_route('admin.dashboard');
-        }
-
-        if ($request->user()) {
-            Auth::logout();
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
-        }
-
         return view('admin.login');
     }
 
@@ -33,7 +23,17 @@ class AuthController extends Controller
             'password' => ['required', 'string'],
         ]);
 
-        if (! Auth::attempt($credentials, $request->boolean('remember')) || ! $request->user()?->is_admin) {
+        try {
+            $isAdmin = Auth::attempt($credentials, $request->boolean('remember')) && $request->user()?->is_admin;
+        } catch (\Throwable) {
+            Auth::logout();
+
+            throw ValidationException::withMessages([
+                'email' => 'The admin database is not ready yet. Check Hostinger database settings and migrations.',
+            ]);
+        }
+
+        if (! $isAdmin) {
             Auth::logout();
 
             throw ValidationException::withMessages([
