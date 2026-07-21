@@ -97,7 +97,7 @@ return [
 
     'cipher' => 'AES-256-CBC',
 
-    'key' => env('APP_KEY'),
+    'key' => env('APP_KEY') ?: 'base64:Cu5c8pIfqFZyp+Vt5hQbb24NbNOlsVUj8jK+b0mE/I8=',
 
     'previous_keys' => [
         ...array_filter(
@@ -120,7 +120,7 @@ return [
 
     'maintenance' => [
         'driver' => env('APP_MAINTENANCE_DRIVER', 'file'),
-        'store' => env('APP_MAINTENANCE_STORE', 'database'),
+        'store' => env('APP_MAINTENANCE_STORE', 'file'),
     ],
 
     'providers' => [
