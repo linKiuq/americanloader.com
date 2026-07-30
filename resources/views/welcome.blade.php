@@ -29,6 +29,7 @@
             ],
         ],
     ])
+    <link rel="preload" as="image" href="{{ asset('american-loader-hero-poster.jpg') }}" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&family=Oswald:wght@600;700&display=swap" rel="stylesheet">
@@ -719,7 +720,7 @@
         .brand-hero__poster {
             background-image:
                 linear-gradient(180deg, rgba(3, 7, 18, 0.18), rgba(3, 7, 18, 0.9)),
-                url('{{ asset('american-loader-hero.png') }}');
+                url('{{ asset('american-loader-hero-poster.jpg') }}');
             background-position: 68% center;
             background-size: cover;
         }
@@ -1052,7 +1053,7 @@
             .brand-hero__video-panel {
                 background:
                     linear-gradient(180deg, rgba(7, 29, 56, 0.25), rgba(7, 29, 56, 0.92)),
-                    url('{{ asset('american-loader-hero.png') }}') center / cover;
+                    url('{{ asset('american-loader-hero-poster.jpg') }}') center / cover;
             }
         }
     </style>
@@ -1076,7 +1077,7 @@
             </article>
 
             <article class="brand-hero__panel brand-hero__video-panel">
-                <video class="brand-hero__video" autoplay muted loop playsinline preload="metadata" poster="{{ asset('american-loader-hero.png') }}" aria-label="Wheel loader scooping and dumping gravel">
+                <video class="brand-hero__video" autoplay muted loop playsinline preload="auto" poster="{{ asset('american-loader-hero-poster.jpg') }}" aria-label="Wheel loader scooping and dumping gravel">
                     <source src="{{ asset('wheel-loader-gravel.mp4') }}" type="video/mp4">
                 </video>
                 <div class="brand-hero__video-content">

@@ -121,9 +121,10 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('brand-hero')
             ->assertSee('Equipment Ready for Real Work')
             ->assertSee('Wheel Loaders in Action')
-            ->assertSee(asset('american-loader-hero.png'), escape: false)
+            ->assertSee(asset('american-loader-hero-poster.jpg'), escape: false)
             ->assertSee(asset('wheel-loader-gravel.mp4'), escape: false)
             ->assertSee('autoplay muted loop playsinline', escape: false)
+            ->assertSee('preload="auto"', escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
             ->assertSee('background: #c91f2c', escape: false)
             ->assertDontSee('#e67e22', escape: false);
