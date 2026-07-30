@@ -22,6 +22,9 @@
             ['label' => 'Compact Series 501-507 Attachments', 'url' => route('attachments.skid-steer.series', ['series' => 'compact-series'])],
             ['label' => 'Standard Series (X1300-509) Attachments', 'url' => route('attachments.skid-steer.series', ['series' => 'standard-series'])],
         ],
+        'Wheel Loader Attachments' => [
+            ['label' => 'SKOOP Wheel Loader Attachments', 'url' => route('attachments.skoop-wheel-loader')],
+        ],
     ];
 @endphp
 

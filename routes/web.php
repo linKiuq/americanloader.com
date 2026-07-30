@@ -40,6 +40,7 @@ Route::get('/sitemap.xml', function (ProductCatalog $catalog, SupabaseCmsService
         ['loc' => $url('/attachments/skid-steer'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
         ['loc' => $url('/attachments/skid-steer/compact-series'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
         ['loc' => $url('/attachments/skid-steer/standard-series'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
+        ['loc' => $url('/attachments/skoop-wheel-loader'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
         ['loc' => $url('/store'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
         ['loc' => $url('/about'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.6],
         ['loc' => $url('/contact'), 'lastmod' => $today, 'changefreq' => 'monthly', 'priority' => 0.6],
@@ -113,6 +114,8 @@ Route::get('/attachments/skid-steer', [AttachmentController::class, 'skidSteer']
 Route::get('/attachments/skid-steer/{series}', [AttachmentController::class, 'skidSteer'])
     ->whereIn('series', ['compact-series', 'standard-series'])
     ->name('attachments.skid-steer.series');
+Route::get('/attachments/skoop-wheel-loader', [AttachmentController::class, 'skoopWheelLoader'])
+    ->name('attachments.skoop-wheel-loader');
 
 // Ecwid Store Page
 Route::get('/store', function () {

@@ -47,7 +47,7 @@
                         <p class="mt-1 text-xs uppercase tracking-wider text-slate-300">Products</p>
                     </div>
                     <div class="rounded-2xl border border-white/10 bg-white/10 px-6 py-5 text-center">
-                        <p class="text-3xl font-black">2</p>
+                        <p class="text-3xl font-black">3</p>
                         <p class="mt-1 text-xs uppercase tracking-wider text-slate-300">Categories</p>
                     </div>
                 </div>
@@ -79,6 +79,10 @@
                             <a href="{{ route('attachments.skid-steer') }}" class="flex items-center justify-between rounded-xl px-3 py-3 {{ request()->routeIs('attachments.skid-steer*') ? 'bg-red-50 font-bold text-red-800' : 'text-gray-600 hover:bg-gray-50 hover:text-red-800' }}">
                                 <span>Skid Steer</span>
                                 <span>{{ $attachmentCounts->get('Skid Steer Attachments', 0) }}</span>
+                            </a>
+                            <a href="{{ route('attachments.skoop-wheel-loader') }}" class="flex items-center justify-between rounded-xl px-3 py-3 {{ request()->routeIs('attachments.skoop-wheel-loader') ? 'bg-red-50 font-bold text-red-800' : 'text-gray-600 hover:bg-gray-50 hover:text-red-800' }}">
+                                <span>SKOOP Wheel Loader</span>
+                                <span>{{ $attachmentCounts->get('SKOOP Wheel Loader Attachments', 0) }}</span>
                             </a>
                         </nav>
                     </div>

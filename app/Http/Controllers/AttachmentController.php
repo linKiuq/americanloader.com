@@ -101,6 +101,22 @@ class AttachmentController extends Controller
         );
     }
 
+    public function skoopWheelLoader(Request $request, ProductCatalog $catalog): View
+    {
+        return $this->renderCatalog(
+            $request,
+            $catalog,
+            'SKOOP Wheel Loader Attachments',
+            'Shop hydraulic pallet forks, log grapples, and purpose-built attachments for TYPHON SKOOP wheel loaders.',
+            $catalog->all()
+                ->filter(fn (array $product): bool => strcasecmp(
+                    (string) ($product['subcategory'] ?? ''),
+                    'SKOOP Attachments'
+                ) === 0)
+                ->values()
+        );
+    }
+
     private function attachments(ProductCatalog $catalog): Collection
     {
         return $catalog->all()
@@ -116,6 +132,13 @@ class AttachmentController extends Controller
         Collection $products
     ): View {
         $attachmentCounts = $this->attachments($catalog)->countBy('category');
+        $attachmentCounts->put(
+            'SKOOP Wheel Loader Attachments',
+            $catalog->all()->filter(fn (array $product): bool => strcasecmp(
+                (string) ($product['subcategory'] ?? ''),
+                'SKOOP Attachments'
+            ) === 0)->count()
+        );
         $search = trim((string) $request->query('search'));
         $sort = (string) $request->query('sort', 'featured');
 
