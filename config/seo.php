@@ -2,7 +2,7 @@
 
 return [
     'site_name' => env('SEO_SITE_NAME', 'American Loader'),
-    'site_url' => rtrim(env('SEO_SITE_URL', 'https://cwqv.com'), '/'),
+    'site_url' => rtrim(env('SEO_SITE_URL', 'https://americanloader.com'), '/'),
     'default_title' => env('SEO_DEFAULT_TITLE', 'American Loader | Wheel Loaders, Skid Steers & Mini Excavators'),
     'default_description' => env('SEO_DEFAULT_DESCRIPTION', 'Shop American Loader for TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and jobsite attachments in the USA.'),
     'default_image' => env('SEO_DEFAULT_IMAGE', 'hero-power-loader.png'),
@@ -19,7 +19,7 @@ return [
     ],
     'google_site_verification' => env('GOOGLE_SITE_VERIFICATION', 'google862afbc0daae0b2d.html'),
     'phone' => env('SEO_PHONE', '+1-800-000-0000'),
-    'email' => env('SEO_EMAIL', 'sales@cwqv.com'),
+    'email' => env('SEO_EMAIL', 'sales@typhonmachinery.com'),
     'address' => [
         'street' => env('SEO_STREET_ADDRESS', '2522 S Malt Ave'),
         'city' => env('SEO_CITY', 'Commerce'),

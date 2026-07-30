@@ -3,4 +3,4 @@ Disallow: /admin
 Disallow: /store/checkout
 Disallow: /store/cart
 
-Sitemap: https://cwqv.com/sitemap.xml
+Sitemap: https://americanloader.com/sitemap.xml
