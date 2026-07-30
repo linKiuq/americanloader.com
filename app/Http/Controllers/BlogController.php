@@ -10,6 +10,12 @@ use Throwable;
 
 class BlogController extends Controller
 {
+    private const REMOVED_POST_SLUGS = [
+        'wheel-loader-demo',
+        'thunder-vi-review',
+        'typhon-terror-usecase',
+    ];
+
     public function index(): View
     {
         $allPosts = $this->publishedPosts();
@@ -38,6 +44,8 @@ class BlogController extends Controller
 
     public function show(string $slug): View
     {
+        abort_if(in_array($slug, self::REMOVED_POST_SLUGS, true), 404);
+
         $allPosts = $this->publishedPosts();
 
         try {
@@ -125,6 +133,7 @@ class BlogController extends Controller
 
         return $databasePosts
             ->merge(collect($this->legacyPosts())->reject(fn (array $post): bool => $databasePosts->contains('slug', $post['slug'])))
+            ->reject(fn (array $post): bool => in_array($post['slug'] ?? '', self::REMOVED_POST_SLUGS, true))
             ->sortByDesc('publish_date')
             ->values();
     }
