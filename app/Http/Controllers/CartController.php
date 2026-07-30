@@ -16,7 +16,7 @@ class CartController extends Controller
         $cartSlugs = array_column($summary['items'], 'slug');
         $recommendations = $catalog->all()
             ->reject(fn (array $product): bool => in_array($product['slug'], $cartSlugs, true))
-            ->whereIn('category', ['Mini Excavator Attachments', 'Skid Steer Attachments'])
+            ->whereIn('category', ['Mini Excavator Attachments', 'Skid Steer Attachments', 'SKOOP Attachments'])
             ->take(3);
 
         return view('cart', array_merge($summary, compact('recommendations')));

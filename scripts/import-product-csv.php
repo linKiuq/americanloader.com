@@ -158,7 +158,11 @@ function mapCategory(string $path): array
             return ['Mini Excavator Attachments', $leaf];
         }
 
-        if (str_contains($path, 'Skid Steer Attachments') || strcasecmp($leaf, 'Skoop Attachments') === 0) {
+        if (strcasecmp($leaf, 'Skoop Attachments') === 0) {
+            return ['SKOOP Attachments', 'SKOOP Attachments'];
+        }
+
+        if (str_contains($path, 'Skid Steer Attachments')) {
             return ['Skid Steer Attachments', $leaf];
         }
     }

@@ -120,7 +120,7 @@ class AttachmentController extends Controller
     private function attachments(ProductCatalog $catalog): Collection
     {
         return $catalog->all()
-            ->whereIn('category', ['Mini Excavator Attachments', 'Skid Steer Attachments'])
+            ->whereIn('category', ['Mini Excavator Attachments', 'Skid Steer Attachments', 'SKOOP Attachments'])
             ->values();
     }
 
