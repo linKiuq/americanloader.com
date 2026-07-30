@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @php
-        $productDescription = \Illuminate\Support\Str::limit(strip_tags($product['fullDesc'] ?? $product['desc'] ?? 'Heavy equipment for sale from The Power Loader.'), 155);
+        $productDescription = \Illuminate\Support\Str::limit(
+            'Shop ' . ($product['name'] ?? 'heavy equipment') . ' from American Loader. ' .
+            strip_tags($product['fullDesc'] ?? $product['desc'] ?? 'Heavy equipment for sale in the USA.'),
+            155
+        );
     @endphp
     @include('partials.seo', [
         'title' => $product['name'] . ' | American Loader',
@@ -17,6 +21,8 @@
             $product['name'] ?? null,
             $product['category'] ?? null,
             'American Loader',
+            'American Loader equipment',
+            'American Loader ' . \Illuminate\Support\Str::lower($product['category'] ?? 'heavy equipment'),
             'TYPHON equipment',
             ($product['category'] ?? 'heavy equipment') . ' for sale',
         ]),
@@ -29,6 +35,10 @@
             'brand' => [
                 '@type' => 'Brand',
                 'name' => 'TYPHON',
+            ],
+            'manufacturer' => [
+                '@type' => 'Organization',
+                'name' => 'TYPHON Machinery',
             ],
             'category' => $product['category'] ?? 'Heavy Equipment',
             'url' => config('seo.site_url') . '/product/' . $product['slug'],
@@ -123,14 +133,14 @@
                             <div class="order-2 flex gap-3 overflow-x-auto pb-2 lg:order-1 lg:max-h-[560px] lg:flex-col lg:overflow-x-visible lg:overflow-y-auto lg:pr-1">
                                 @foreach ($images as $image)
                                     <button type="button" class="gallery-thumb h-20 w-20 flex-none rounded-xl border-2 {{ $loop->first ? 'border-red-500' : 'border-gray-200' }} bg-white p-1.5 transition hover:border-red-500" data-image="{{ $image }}">
-                                        <img src="{{ $image }}" alt="{{ $product['name'] }} image {{ $loop->iteration }}" class="h-full w-full rounded-lg object-contain">
+                                        <img src="{{ $image }}" alt="{{ $product['name'] }} from American Loader — image {{ $loop->iteration }}" class="h-full w-full rounded-lg object-contain">
                                     </button>
                                 @endforeach
                             </div>
                         @endif
                         <div class="{{ count($images) > 1 ? 'order-1 lg:order-2' : 'lg:col-span-2' }} flex min-h-[420px] items-center justify-center rounded-2xl border border-gray-200 bg-white p-5 shadow-sm lg:min-h-[560px] 2xl:min-h-[640px]">
                             @if ($images[0] ?? null)
-                                <img id="main-product-image" src="{{ $images[0] }}" alt="{{ $product['name'] }}" class="max-h-[520px] w-full rounded-xl object-contain 2xl:max-h-[600px]">
+                                <img id="main-product-image" src="{{ $images[0] }}" alt="{{ $product['name'] }} from American Loader" class="max-h-[520px] w-full rounded-xl object-contain 2xl:max-h-[600px]">
                             @else
                                 <div class="flex h-[440px] items-center justify-center text-6xl text-gray-300"><i class="fas fa-truck-monster"></i></div>
                             @endif
@@ -228,7 +238,7 @@
                         @foreach ($relatedProducts as $related)
                             <article class="rounded-3xl border border-gray-200 bg-white p-5 shadow-sm transition hover:border-red-500 hover:shadow-lg">
                                 <a href="{{ route('product.show', $related['slug']) }}" class="block overflow-hidden rounded-2xl bg-gray-50">
-                                    <img src="{{ $related['image'] ?? '' }}" alt="{{ $related['name'] }}" class="h-48 w-full object-contain">
+                                    <img src="{{ $related['image'] ?? '' }}" alt="{{ $related['name'] }} from American Loader" class="h-48 w-full object-contain">
                                 </a>
                                 <a href="{{ route('product.show', $related['slug']) }}" class="mt-5 block text-lg font-bold hover:text-red-700">{{ $related['name'] }}</a>
                                 <div class="mt-5 flex items-center justify-between">

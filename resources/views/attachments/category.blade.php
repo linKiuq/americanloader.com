@@ -130,7 +130,7 @@
                             @foreach ($products as $product)
                                 <article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:border-red-300 hover:shadow-lg">
                                     <a href="{{ route('product.show', $product['slug']) }}" class="relative flex h-56 items-center justify-center overflow-hidden bg-gray-50 p-5">
-                                        <img src="{{ $product['image'] ?? '' }}" alt="{{ $product['name'] }}" loading="lazy" class="max-h-full max-w-full object-contain transition duration-300 group-hover:scale-105">
+                                        <img src="{{ $product['image'] ?? '' }}" alt="{{ $product['name'] }} from American Loader" loading="lazy" class="max-h-full max-w-full object-contain transition duration-300 group-hover:scale-105">
                                         <span class="absolute left-4 top-4 rounded-full bg-white px-3 py-1 text-[10px] font-black uppercase tracking-wider text-red-800 shadow-sm">{{ str_replace(' Attachments', '', $product['category']) }}</span>
                                     </a>
                                     <div class="flex flex-grow flex-col p-5">
