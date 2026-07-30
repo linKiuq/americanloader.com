@@ -29,7 +29,7 @@
             <script type="text/javascript">
                 xProductBrowser("categoriesPerRow=3","views=grid(20,3) list(60) table(60)","categoryView=grid","searchView=list","id=my-store-80100025");
 
-                const cleanStoreProductMatch = window.location.pathname.match(/\/p\/(\d+)\/?$/);
+                const cleanStoreProductMatch = window.location.pathname.match(/(?:\/p\/|-p)(\d+)\/?$/);
 
                 if (cleanStoreProductMatch) {
                     Ecwid.OnAPILoaded.add(() => {
