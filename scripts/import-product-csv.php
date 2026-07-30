@@ -153,12 +153,12 @@ function mapCategory(string $path): array
         return [$leaf, $leaf];
     }
 
-    if ($root === 'Attachment & Parts') {
+    if ($root === 'Attachment & Parts' || $root === 'Attachments') {
         if (str_contains($path, 'Attachments for Mini Excavators')) {
             return ['Mini Excavator Attachments', $leaf];
         }
 
-        if (str_contains($path, 'Skid Steer Attachments') || $leaf === 'Skoop Attachments') {
+        if (str_contains($path, 'Skid Steer Attachments') || strcasecmp($leaf, 'Skoop Attachments') === 0) {
             return ['Skid Steer Attachments', $leaf];
         }
     }
