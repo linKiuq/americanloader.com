@@ -292,7 +292,15 @@
 
             filteredProducts = productsInventory.filter(product => {
                 const matchesCategory = activeCategory === 'All' || product.category === activeCategory;
-                const matchesQuery = !searchQuery || `${product.name} ${product.desc}`.toLowerCase().includes(searchQuery);
+                const searchText = [
+                    product.name,
+                    product.sku,
+                    product.category,
+                    product.subcategory,
+                    product.desc,
+                    product.fullDesc,
+                ].filter(Boolean).join(' ').toLowerCase();
+                const matchesQuery = !searchQuery || searchText.includes(searchQuery);
                 return matchesCategory && matchesQuery;
             });
 
