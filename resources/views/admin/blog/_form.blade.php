@@ -13,55 +13,55 @@
     <div class="space-y-6 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
         <div>
             <label for="title" class="mb-2 block text-sm font-bold">Title</label>
-            <input id="title" type="text" name="title" value="{{ old('title', $post->title) }}" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+            <input id="title" type="text" name="title" value="{{ old('title', $post->title) }}" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
         </div>
         <div>
             <label for="slug" class="mb-2 block text-sm font-bold">URL Slug <span class="font-normal text-slate-500">(leave blank to create from title)</span></label>
-            <input id="slug" type="text" name="slug" value="{{ old('slug', $post->slug) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+            <input id="slug" type="text" name="slug" value="{{ old('slug', $post->slug) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
         </div>
         <div>
             <label for="excerpt" class="mb-2 block text-sm font-bold">Excerpt</label>
-            <textarea id="excerpt" name="excerpt" rows="3" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">{{ old('excerpt', $post->excerpt) }}</textarea>
+            <textarea id="excerpt" name="excerpt" rows="3" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">{{ old('excerpt', $post->excerpt) }}</textarea>
         </div>
         <div class="grid gap-5 sm:grid-cols-2">
             <div>
                 <label for="category_id" class="mb-2 block text-sm font-bold">Category</label>
-                <select id="category_id" name="category_id" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                <select id="category_id" name="category_id" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
                     <option value="">No category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}" @selected((int) old('category_id', $post->category_id) === $category->id)>{{ $category->name }}</option>
                     @endforeach
                 </select>
-                <a href="{{ route('admin.categories.create') }}" class="mt-2 inline-block text-xs font-bold text-yellow-600 hover:text-yellow-700">Add a category</a>
+                <a href="{{ route('admin.categories.create') }}" class="mt-2 inline-block text-xs font-bold text-red-700 hover:text-red-800">Add a category</a>
             </div>
             <div>
                 <label for="tags" class="mb-2 block text-sm font-bold">Tags</label>
                 @php($selectedTags = collect(old('tags', $post->exists ? $post->tags->pluck('id')->all() : []))->map(fn ($id) => (int) $id)->all())
-                <select id="tags" name="tags[]" multiple class="h-32 w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                <select id="tags" name="tags[]" multiple class="h-32 w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
                     @foreach ($tags as $tag)
                         <option value="{{ $tag->id }}" @selected(in_array($tag->id, $selectedTags, true))>{{ $tag->name }}</option>
                     @endforeach
                 </select>
-                <a href="{{ route('admin.tags.create') }}" class="mt-2 inline-block text-xs font-bold text-yellow-600 hover:text-yellow-700">Add tags</a>
+                <a href="{{ route('admin.tags.create') }}" class="mt-2 inline-block text-xs font-bold text-red-700 hover:text-red-800">Add tags</a>
             </div>
         </div>
         <div>
             <label for="content" class="mb-2 block text-sm font-bold">Article Content</label>
-            <div class="overflow-hidden rounded-lg border border-slate-300 bg-white focus-within:border-yellow-500">
+            <div class="overflow-hidden rounded-lg border border-slate-300 bg-white focus-within:border-red-500">
                 <div class="flex flex-wrap items-center gap-2 border-b border-slate-200 bg-slate-50 px-3 py-2 text-xs font-black uppercase tracking-wider text-slate-700">
-                    <button type="button" data-markdown-command="heading" data-level="1" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H1</button>
-                    <button type="button" data-markdown-command="heading" data-level="2" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H2</button>
-                    <button type="button" data-markdown-command="heading" data-level="3" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H3</button>
-                    <button type="button" data-markdown-command="heading" data-level="4" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H4</button>
-                    <button type="button" data-markdown-command="heading" data-level="5" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H5</button>
-                    <button type="button" data-markdown-command="heading" data-level="6" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">H6</button>
-                    <button type="button" data-markdown-command="wrap" data-before="**" data-after="**" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">B</button>
-                    <button type="button" data-markdown-command="wrap" data-before="*" data-after="*" class="rounded border border-slate-300 bg-white px-3 py-2 italic hover:border-yellow-500 hover:text-yellow-700">I</button>
-                    <button type="button" data-markdown-command="line-prefix" data-prefix="- " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">List</button>
-                    <button type="button" data-markdown-command="line-prefix" data-prefix="> " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Quote</button>
-                    <button type="button" data-markdown-command="link" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Link</button>
-                    <button type="button" data-markdown-command="image-url" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">Image URL</button>
-                    <label class="cursor-pointer rounded border border-slate-300 bg-white px-3 py-2 hover:border-yellow-500 hover:text-yellow-700">
+                    <button type="button" data-markdown-command="heading" data-level="1" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H1</button>
+                    <button type="button" data-markdown-command="heading" data-level="2" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H2</button>
+                    <button type="button" data-markdown-command="heading" data-level="3" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H3</button>
+                    <button type="button" data-markdown-command="heading" data-level="4" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H4</button>
+                    <button type="button" data-markdown-command="heading" data-level="5" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H5</button>
+                    <button type="button" data-markdown-command="heading" data-level="6" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">H6</button>
+                    <button type="button" data-markdown-command="wrap" data-before="**" data-after="**" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">B</button>
+                    <button type="button" data-markdown-command="wrap" data-before="*" data-after="*" class="rounded border border-slate-300 bg-white px-3 py-2 italic hover:border-red-500 hover:text-red-800">I</button>
+                    <button type="button" data-markdown-command="line-prefix" data-prefix="- " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">List</button>
+                    <button type="button" data-markdown-command="line-prefix" data-prefix="> " class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">Quote</button>
+                    <button type="button" data-markdown-command="link" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">Link</button>
+                    <button type="button" data-markdown-command="image-url" class="rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">Image URL</button>
+                    <label class="cursor-pointer rounded border border-slate-300 bg-white px-3 py-2 hover:border-red-500 hover:text-red-800">
                         Upload Image
                         <input type="file" accept="image/*" data-markdown-image-upload class="sr-only">
                     </label>
@@ -74,46 +74,46 @@
                 <div class="border-b border-slate-100 bg-slate-50 px-5 py-3">
                     <p class="text-xs font-black uppercase tracking-[0.24em] text-slate-500">Visual Preview</p>
                 </div>
-                <div data-article-preview class="min-h-40 px-5 py-5 text-sm leading-7 text-slate-700 [&_a]:font-bold [&_a]:text-yellow-700 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_h2]:mb-4 [&_h2]:mt-7 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:leading-tight [&_h2]:text-slate-950 [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-slate-950 [&_img]:my-5 [&_img]:max-h-[430px] [&_img]:max-w-full [&_img]:rounded-sm [&_img]:object-contain [&_p]:my-3"></div>
+                <div data-article-preview class="min-h-40 px-5 py-5 text-sm leading-7 text-slate-700 [&_a]:font-bold [&_a]:text-red-800 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_h2]:mb-4 [&_h2]:mt-7 [&_h2]:text-2xl [&_h2]:font-black [&_h2]:leading-tight [&_h2]:text-[#071d38] [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:text-xl [&_h3]:font-black [&_h3]:text-[#071d38] [&_img]:my-5 [&_img]:max-h-[430px] [&_img]:max-w-full [&_img]:rounded-sm [&_img]:object-contain [&_p]:my-3"></div>
             </div>
-            <div data-link-dialog class="fixed inset-0 z-50 hidden items-center justify-center bg-slate-950/40 px-4">
+            <div data-link-dialog class="fixed inset-0 z-50 hidden items-center justify-center bg-[#071d38]/40 px-4">
                 <div class="w-full max-w-lg rounded-xl border border-slate-200 bg-white shadow-2xl">
                     <div class="border-b border-slate-100 px-6 py-4">
-                        <p class="text-xs font-black uppercase tracking-[0.24em] text-yellow-700">Add Link</p>
+                        <p class="text-xs font-black uppercase tracking-[0.24em] text-red-800">Add Link</p>
                     </div>
                     <div class="space-y-4 px-6 py-5">
                         <div>
                             <label class="mb-2 block text-sm font-bold" for="link-text-input">Text</label>
-                            <input id="link-text-input" data-link-text type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                            <input id="link-text-input" data-link-text type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
                         </div>
                         <div>
                             <label class="mb-2 block text-sm font-bold" for="link-url-input">URL</label>
-                            <input id="link-url-input" data-link-url type="text" placeholder="https://example.com/page or /blog/page" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                            <input id="link-url-input" data-link-url type="text" placeholder="https://example.com/page or /blog/page" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
                         </div>
                         <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <input data-link-new-tab type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            <input data-link-new-tab type="checkbox" class="h-5 w-5 accent-red-500">
                             Open in new tab
                         </label>
                         <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <input data-link-nofollow type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            <input data-link-nofollow type="checkbox" class="h-5 w-5 accent-red-500">
                             Add "nofollow" to link
                         </label>
                         <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <input data-link-sponsored type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            <input data-link-sponsored type="checkbox" class="h-5 w-5 accent-red-500">
                             Add "sponsored" to link
                         </label>
                         <label class="flex items-center gap-3 text-sm font-semibold text-slate-700">
-                            <input data-link-ugc type="checkbox" class="h-5 w-5 accent-yellow-500">
+                            <input data-link-ugc type="checkbox" class="h-5 w-5 accent-red-500">
                             Add "ugc" to link
                         </label>
                         <div>
                             <label class="mb-2 block text-sm font-bold" for="link-title-input">Title Attribute</label>
-                            <input id="link-title-input" data-link-title type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+                            <input id="link-title-input" data-link-title type="text" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
                         </div>
                     </div>
                     <div class="flex justify-end gap-3 border-t border-slate-100 px-6 py-4">
                         <button type="button" data-link-cancel class="rounded-lg border border-slate-300 px-5 py-3 text-sm font-bold text-slate-700 hover:border-slate-400">Cancel</button>
-                        <button type="button" data-link-apply class="rounded-lg bg-yellow-400 px-5 py-3 text-sm font-black uppercase tracking-wider text-slate-950 hover:bg-yellow-500">Add Link</button>
+                        <button type="button" data-link-apply class="rounded-lg bg-red-500 px-5 py-3 text-sm font-black uppercase tracking-wider text-white hover:bg-red-500">Add Link</button>
                     </div>
                 </div>
             </div>
@@ -123,16 +123,16 @@
     <aside class="space-y-6">
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <label class="flex items-center gap-3 font-bold">
-                <input type="checkbox" name="is_published" value="1" class="h-5 w-5 accent-yellow-500" @checked(old('is_published', $post->is_published))>
+                <input type="checkbox" name="is_published" value="1" class="h-5 w-5 accent-red-500" @checked(old('is_published', $post->is_published))>
                 Published
             </label>
             <p class="mt-3 text-xs leading-5 text-slate-500">Published articles appear immediately on the public blog.</p>
         </div>
         <div class="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
             <label for="image_url" class="mb-2 block text-sm font-bold">Featured Image URL</label>
-            <input id="image_url" type="url" name="image_url" value="{{ old('image_url', $post->image_url) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-yellow-500 focus:outline-none">
+            <input id="image_url" type="url" name="image_url" value="{{ old('image_url', $post->image_url) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 text-sm focus:border-red-500 focus:outline-none">
         </div>
-        <button type="submit" class="w-full rounded-lg bg-yellow-400 px-6 py-4 text-sm font-black uppercase tracking-wider text-slate-950 hover:bg-yellow-500">Save Post</button>
+        <button type="submit" class="w-full rounded-lg bg-red-500 px-6 py-4 text-sm font-black uppercase tracking-wider text-white hover:bg-red-500">Save Post</button>
     </aside>
 </div>
 

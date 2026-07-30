@@ -32,22 +32,24 @@ class AttachmentController extends Controller
             'x2' => [
                 'title' => 'X2 Attachments',
                 'description' => 'Browse high-performance machinery and professional attachment solutions in the X2 Attachments collection.',
-                'filter' => fn (Collection $products): Collection => $this->matchingNames($products, ['x2']),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'X2 Attachments')->values(),
             ],
             'xxv' => [
                 'title' => 'XXV Attachments',
                 'description' => 'Browse professional mini excavator attachment solutions built for Terror XXV machines and worksite upgrades.',
-                'filter' => fn (Collection $products): Collection => $this->matchingNames($products, ['xxv']),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'XXV Attachments')->values(),
             ],
             '2-5-tons' => [
                 'title' => 'XXV Attachments',
                 'description' => 'Shop buckets, breakers, augers, grapples, and couplers compatible with heavy-duty compact excavator workflows.',
-                'filter' => fn (Collection $products): Collection => $this->matchingNames($products, ['xxv']),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'XXV Attachments')->values(),
             ],
             '2-tons-and-below' => [
                 'title' => '2 Ton and Below Attachments',
                 'description' => 'Shop maneuverable excavation attachments for landscaping, trenching, material handling, and site cleanup.',
-                'filter' => fn (Collection $products): Collection => $this->miniExcavatorTwoTonsAndBelow($products),
+                'filter' => fn (Collection $products): Collection => $products
+                    ->where('subcategory', 'Attachments for Mini Excavators (2 Tons and Below)')
+                    ->values(),
             ],
         ];
 
@@ -74,14 +76,16 @@ class AttachmentController extends Controller
             'compact-series' => [
                 'title' => 'Compact Series 501-507 Attachments',
                 'description' => 'Shop versatile attachments for compact skid steer loader work in tight jobsites and material handling applications.',
-                'filter' => fn (Collection $products): Collection => $products->reject(
-                    fn (array $product): bool => $this->productNameContains($product, ['x1300', '509', 'stomp'])
-                )->values(),
+                'filter' => fn (Collection $products): Collection => $products
+                    ->where('subcategory', 'Compact Series (501–507)')
+                    ->values(),
             ],
             'standard-series' => [
                 'title' => 'Standard Series (X1300-509) Attachments',
                 'description' => 'Shop heavy-duty buckets, grapples, tillers, trenchers, mulchers, and site-preparation attachments.',
-                'filter' => fn (Collection $products): Collection => $this->matchingNames($products, ['x1300', '509', 'stomp']),
+                'filter' => fn (Collection $products): Collection => $products
+                    ->where('subcategory', 'Standard Series (X1300, 509)')
+                    ->values(),
             ],
             default => abort(404),
         };
@@ -101,39 +105,6 @@ class AttachmentController extends Controller
     {
         return $catalog->all()
             ->whereIn('category', ['Mini Excavator Attachments', 'Skid Steer Attachments'])
-            ->values();
-    }
-
-    private function matchingNames(Collection $products, array $needles): Collection
-    {
-        return $products
-            ->filter(fn (array $product): bool => $this->productNameContains($product, $needles))
-            ->values();
-    }
-
-    private function productNameContains(array $product, array $needles): bool
-    {
-        $name = mb_strtolower((string) ($product['name'] ?? ''));
-
-        foreach ($needles as $needle) {
-            if (str_contains($name, mb_strtolower($needle))) {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private function miniExcavatorTwoTonsAndBelow(Collection $products): Collection
-    {
-        return $products
-            ->filter(function (array $product): bool {
-                $name = mb_strtolower((string) ($product['name'] ?? ''));
-
-                return str_contains($name, '0.8-2 ton')
-                    || str_contains($name, '2ton')
-                    || preg_match('/(^|[^0-9.])2\s*ton([^s]|$)/', $name) === 1;
-            })
             ->values();
     }
 

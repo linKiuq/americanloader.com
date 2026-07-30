@@ -8,6 +8,10 @@
     $seoType = $type ?? 'website';
     $seoImage = $image ?? config('seo.default_image');
     $seoKeywords = $keywords ?? config('seo.keywords');
+    if (is_array($seoKeywords)) {
+        $seoKeywords = implode(', ', array_filter($seoKeywords));
+    }
+    $seoImageAlt = $imageAlt ?? $seoTitle;
     $seoPublishedTime = $publishedTime ?? null;
     $seoModifiedTime = $modifiedTime ?? $seoPublishedTime;
     $seoGoogleVerification = config('seo.google_site_verification');
@@ -24,7 +28,7 @@
             'url' => $seoSiteUrl . '/',
             'logo' => [
                 '@type' => 'ImageObject',
-                'url' => $seoSiteUrl . '/power-loader-logo.png',
+                'url' => $seoSiteUrl . '/american-loader-logo.webp',
             ],
             'image' => $seoImage,
             'email' => config('seo.email'),
@@ -137,6 +141,7 @@
 <meta property="og:type" content="{{ $seoType }}">
 <meta property="og:url" content="{{ $seoCanonical }}">
 <meta property="og:image" content="{{ $seoImage }}">
+<meta property="og:image:alt" content="{{ $seoImageAlt }}">
 <meta property="og:locale" content="en_US">
 @if ($seoPublishedTime)
 <meta property="article:published_time" content="{{ $seoPublishedTime }}">
@@ -148,4 +153,5 @@
 <meta name="twitter:title" content="{{ $seoTitle }}">
 <meta name="twitter:description" content="{{ $seoDescription }}">
 <meta name="twitter:image" content="{{ $seoImage }}">
+<meta name="twitter:image:alt" content="{{ $seoImageAlt }}">
 <script type="application/ld+json">{!! json_encode($seoSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}</script>

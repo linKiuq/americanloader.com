@@ -5,14 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'Skoop Loader & Wheel Loader for Sale | cwqv.com',
-        'description' => 'Browse The Power Loader equipment for sale at cwqv.com, including Skoop loader and wheel loader machines, mini excavators, skid steer loaders, forklifts, road rollers, scissor lifts, and compact jobsite machines.',
-        'keywords' => 'The Power Loader, The Power Loader equipment, cwqv equipment, Skoop loader for sale, wheel loader for sale, Skoop wheel loader, compact wheel loaders, mini excavator for sale, skid steer loaders, forklifts',
+        'title' => 'Heavy Equipment for Sale | Wheel Loaders, Skid Steers & Excavators',
+        'description' => 'Browse American Loader equipment: TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and attachments.',
+        'keywords' => config('seo.keywords'),
+        'imageAlt' => 'TYPHON wheel loaders, skid steer loaders, and STORM mini excavators',
         'jsonLd' => [
             '@type' => 'CollectionPage',
             '@id' => config('seo.site_url') . '/equipment#collection',
-            'name' => 'Skoop Loader and Wheel Loader Equipment for Sale',
-            'description' => 'The Power Loader equipment catalog for Skoop loader and wheel loader machines, mini excavators, forklifts, rollers, scissor lifts, and jobsite machines.',
+            'name' => 'American Loader Heavy Equipment for Sale',
+            'description' => 'Catalog of TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and machine attachments.',
             'url' => config('seo.site_url') . '/equipment',
         ],
     ])
@@ -35,17 +36,17 @@
             background: linear-gradient(135deg, #ffffff 0%, #f8fafc 58%, #fffbeb 100%);
         }
         .btn-primary {
-            background: #facc15;
+            background: #c91f2c;
             transition: all 0.2s ease;
         }
         .btn-primary:hover {
-            background: #eab308;
-            box-shadow: 0 0 18px rgba(250, 204, 21, 0.35);
+            background: #a91521;
+            box-shadow: 0 0 18px rgba(201, 31, 44, 0.35);
         }
         .tab-btn.active {
-            border-color: #facc15;
-            color: #eab308;
-            background-color: rgba(250, 204, 21, 0.12);
+            border-color: #c91f2c;
+            color: #a91521;
+            background-color: rgba(201, 31, 44, 0.12);
         }
         .product-card {
             min-height: 360px;
@@ -73,21 +74,21 @@
     <section class="hero-bg py-14 px-4 sm:px-6 lg:px-8 border-b border-gray-200">
         <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.2fr_0.8fr] gap-8 items-end">
             <div>
-                <p class="text-yellow-400 text-sm font-bold uppercase tracking-[0.25em] mb-3">Equipment Catalog</p>
-                <h1 class="text-4xl sm:text-5xl font-black text-gray-950 mb-4">Shop machinery and attachments</h1>
-                <p class="text-lg text-gray-600 max-w-3xl">Browse <span id="hero-product-description-count">products</span>, add the equipment you need, and submit everything together in one streamlined checkout.</p>
+                <p class="text-red-500 text-sm font-bold uppercase tracking-[0.25em] mb-3">Equipment Catalog</p>
+                <h1 class="text-4xl sm:text-5xl font-black text-[#071d38] mb-4">Wheel loaders, skid steers, mini excavators and attachments</h1>
+                <p class="text-lg text-gray-600 max-w-3xl">Browse <span id="hero-product-description-count">products</span> including TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and jobsite attachments.</p>
             </div>
             <div class="grid grid-cols-3 gap-3 text-center">
                 <div class="border border-gray-200 bg-white rounded-lg p-4 shadow-sm">
-                    <div class="text-2xl font-black text-gray-950" id="hero-product-count">--</div>
+                    <div class="text-2xl font-black text-[#071d38]" id="hero-product-count">--</div>
                     <div class="text-[11px] text-gray-500 uppercase tracking-wider mt-1">Products</div>
                 </div>
                 <div class="border border-gray-200 bg-white rounded-lg p-4 shadow-sm">
-                    <div class="text-2xl font-black text-gray-950" id="hero-category-count">0</div>
+                    <div class="text-2xl font-black text-[#071d38]" id="hero-category-count">0</div>
                     <div class="text-[11px] text-gray-500 uppercase tracking-wider mt-1">Categories</div>
                 </div>
                 <div class="border border-gray-200 bg-white rounded-lg p-4 shadow-sm">
-                    <div class="text-2xl font-black text-gray-950">One</div>
+                    <div class="text-2xl font-black text-[#071d38]">One</div>
                     <div class="text-[11px] text-gray-500 uppercase tracking-wider mt-1">Checkout</div>
                 </div>
             </div>
@@ -101,16 +102,16 @@
             @endif
             <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 pb-6 border-b border-gray-200">
                 <div>
-                    <h2 class="text-2xl font-black text-gray-950 uppercase tracking-wide">Product Directory</h2>
+                    <h2 class="text-2xl font-black text-[#071d38] uppercase tracking-wide">Product Directory</h2>
                     <p class="text-gray-600 text-sm mt-2">Add multiple products to your cart and place one combined order.</p>
                 </div>
                 <div class="flex flex-col sm:flex-row items-stretch gap-4">
                     <div class="relative min-w-full sm:min-w-[300px]">
                         <i class="fas fa-search absolute left-4 top-3.5 text-gray-500 text-sm"></i>
-                        <input type="search" id="search-box" value="{{ request('search') }}" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-yellow-500 transition">
+                        <input type="search" id="search-box" value="{{ request('search') }}" placeholder="Search product name..." class="w-full bg-white border border-gray-300 rounded-lg pl-10 pr-4 py-2.5 text-[#071d38] text-sm focus:outline-none focus:border-red-500 transition">
                     </div>
                     <div class="relative">
-                        <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-gray-950 text-sm focus:outline-none focus:border-yellow-500 transition appearance-none cursor-pointer pr-10">
+                        <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-[#071d38] text-sm focus:outline-none focus:border-red-500 transition appearance-none cursor-pointer pr-10">
                             <option value="default">Default Sort</option>
                             <option value="price-low">Price: Low to High</option>
                             <option value="price-high">Price: High to Low</option>
@@ -127,14 +128,14 @@
 
             <div id="empty-state" class="hidden text-center py-16 border border-dashed border-gray-300 rounded-lg bg-gray-50">
                 <i class="fas fa-magnifying-glass text-gray-600 text-3xl mb-3"></i>
-                <h3 class="text-lg font-bold text-gray-950">No products found</h3>
+                <h3 class="text-lg font-bold text-[#071d38]">No products found</h3>
                 <p class="text-sm text-gray-500 mt-2">Try another search or category.</p>
             </div>
 
             <div class="flex justify-center items-center gap-4 mt-12 pt-6 border-t border-gray-200" id="pagination-bar">
-                <button id="btn-prev" class="px-4 py-2 bg-white border border-gray-300 hover:border-yellow-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Prev</button>
-                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Page <span id="current-page-num" class="text-yellow-500">1</span> of <span id="total-pages-num">1</span></span>
-                <button id="btn-next" class="px-4 py-2 bg-white border border-gray-300 hover:border-yellow-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Next</button>
+                <button id="btn-prev" class="px-4 py-2 bg-white border border-gray-300 hover:border-red-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Prev</button>
+                <span class="text-xs font-bold text-gray-500 uppercase tracking-widest">Page <span id="current-page-num" class="text-red-500">1</span> of <span id="total-pages-num">1</span></span>
+                <button id="btn-next" class="px-4 py-2 bg-white border border-gray-300 hover:border-red-500 rounded-lg text-xs font-bold uppercase text-gray-900 disabled:opacity-30 disabled:hover:border-gray-300 transition">Next</button>
             </div>
         </div>
     </section>
@@ -142,15 +143,15 @@
     <section class="py-12 px-4 sm:px-6 lg:px-8 bg-white border-t border-gray-200">
         <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-shipping-fast text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Fast Shipping</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-shipping-fast text-red-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-[#071d38]">Fast Shipping</h3></div>
                 <p class="text-gray-600 text-sm">Reliable delivery support for machinery, attachments, and parts.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-headset text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Expert Support</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-headset text-red-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-[#071d38]">Expert Support</h3></div>
                 <p class="text-gray-600 text-sm">Our team can help buyers select the correct equipment configuration.</p>
             </div>
             <div class="bg-white p-6 rounded-lg border border-gray-200 shadow-sm">
-                <div class="flex items-center mb-3"><i class="fas fa-shield-alt text-yellow-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-gray-950">Warranty Protected</h3></div>
+                <div class="flex items-center mb-3"><i class="fas fa-shield-alt text-red-500 text-xl mr-3"></i><h3 class="text-lg font-bold text-[#071d38]">Warranty Protected</h3></div>
                 <p class="text-gray-600 text-sm">Equipment options include service and warranty coverage.</p>
             </div>
         </div>
@@ -182,15 +183,15 @@
         }
 
         function uniqueProducts(products) {
-            const names = new Set();
+            const skus = new Set();
             const storeIds = new Set();
 
             return products.filter(product => {
-                const name = String(product.name || '').trim().toLowerCase();
+                const sku = String(product.sku || '').trim().toLowerCase();
                 const storeId = String(product.hash || product.checkoutUrl || '');
-                const isDuplicate = (name && names.has(name)) || (storeId && storeIds.has(storeId));
+                const isDuplicate = (sku && skus.has(sku)) || (storeId && storeIds.has(storeId));
 
-                if (name) names.add(name);
+                if (sku) skus.add(sku);
                 if (storeId) storeIds.add(storeId);
 
                 return !isDuplicate;
@@ -216,10 +217,10 @@
         }
 
         function productStoreUrl(productHash) {
-            if (!productHash) return '/store#!/';
+            if (!productHash) return '/store';
             if (productHash.startsWith('http') || productHash.startsWith('/product/')) return productHash;
             if (productHash.startsWith('/')) return productHash;
-            return `/store${productHash}`;
+            return `/store/${productHash.replace(/^#!?\/?/, '')}`;
         }
 
         function productDetailUrl(product) {
@@ -330,22 +331,22 @@
 
             const itemsToRender = filteredProducts.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
             gridContainer.innerHTML = itemsToRender.map(product => `
-                <article class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-yellow-500/60 hover:shadow-md transition duration-300 flex flex-col h-full group cursor-pointer focus-within:border-yellow-500" data-product-url="${escapeHtml(productDetailUrl(product))}" tabindex="0" role="link" aria-label="Open ${escapeHtml(product.name)}">
+                <article class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-red-500/60 hover:shadow-md transition duration-300 flex flex-col h-full group cursor-pointer focus-within:border-red-500" data-product-url="${escapeHtml(productDetailUrl(product))}" tabindex="0" role="link" aria-label="Open ${escapeHtml(product.name)}">
                     <div class="w-full h-52 bg-gray-50 p-4 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-                        ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)}" loading="lazy" class="max-w-full max-h-full object-contain group-hover:scale-105 transition duration-500 rounded">` : '<i class="fas fa-truck-monster text-gray-300 text-5xl"></i>'}
-                        <span class="absolute top-3 left-3 bg-white/95 border border-gray-200 text-[10px] font-black text-yellow-600 px-2 py-0.5 rounded tracking-wider uppercase shadow-sm">${escapeHtml(product.category)}</span>
+                        ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)} — ${escapeHtml(product.category)} from American Loader" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain group-hover:scale-105 transition duration-500 rounded">` : '<i class="fas fa-truck-monster text-gray-300 text-5xl"></i>'}
+                        <span class="absolute top-3 left-3 bg-white/95 border border-gray-200 text-[10px] font-black text-red-700 px-2 py-0.5 rounded tracking-wider uppercase shadow-sm">${escapeHtml(product.category)}</span>
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
-                        <h3 class="text-gray-950 font-bold text-sm line-clamp-2 uppercase tracking-tight mb-2 min-h-10 group-hover:text-yellow-600 transition">${escapeHtml(product.name)}</h3>
+                        <h3 class="text-[#071d38] font-bold text-sm line-clamp-2 uppercase tracking-tight mb-2 min-h-10 group-hover:text-red-700 transition">${escapeHtml(product.name)}</h3>
                         <div class="mt-auto pt-4 border-t border-gray-200 flex flex-col gap-3">
                             <span class="text-gray-500 text-base font-black tracking-tight">Quote on request</span>
                             <div class="flex gap-2">
                                 <form method="POST" action="{{ route('cart.items.store') }}" class="flex-1">
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="slug" value="${escapeHtml(product.slug)}">
-                                    <button type="submit" class="w-full border border-gray-300 hover:border-yellow-500 text-gray-950 text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Add</button>
+                                    <button type="submit" class="w-full border border-gray-300 hover:border-red-500 text-[#071d38] text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Add</button>
                                 </form>
-                                <a href="${escapeHtml(productCheckoutUrl(product))}" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-center text-white text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Buy Now</a>
+                                <a href="${escapeHtml(productCheckoutUrl(product))}" class="flex-1 bg-red-700 hover:bg-red-800 text-center text-white text-[11px] font-black px-3 py-2.5 rounded uppercase tracking-wider transition whitespace-nowrap">Buy Now</a>
                             </div>
                         </div>
                     </div>

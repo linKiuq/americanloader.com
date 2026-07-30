@@ -51,14 +51,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'Skoop Loader & Wheel Loader Attachments | cwqv.com',
-        'description' => 'Browse Skoop loader, wheel loader, skid steer, and mini excavator attachments for digging, grading, trenching, hauling, cleanup, and compact equipment work.',
-        'keywords' => 'The Power Loader attachments, Power Loader attachments, Skoop loader attachments, wheel loader attachments, loader attachments for sale, skid steer attachments, mini excavator attachments, buckets, augers, grapples',
+        'title' => 'Loader & Excavator Attachments | American Loader',
+        'description' => 'Browse wheel loader, skid steer, and mini excavator attachments including buckets, hydraulic breakers, augers, grapples, forks, sweepers, and mower tools.',
+        'keywords' => 'wheel loader attachments, skid steer attachments, mini excavator attachments, loader buckets, hydraulic breakers, augers, grapples, pallet forks, sweepers, mower attachments',
+        'imageAlt' => 'Wheel loader, skid steer, and mini excavator attachments',
         'jsonLd' => [
             '@type' => 'CollectionPage',
             '@id' => config('seo.site_url') . '/attachments#collection',
             'name' => 'Skoop Loader and Wheel Loader Attachments for Sale',
-            'description' => 'The Power Loader attachment category hub for Skoop loader, wheel loader, mini excavator, skid steer loader, bucket, breaker, auger, grapple, and worksite tools.',
+            'description' => 'American Loader attachment hub for wheel loaders, mini excavators, skid steer loaders, buckets, breakers, augers, grapples, forks, sweepers, and worksite tools.',
             'hasPart' => collect($attachmentSections)->map(fn (array $section) => [
                 '@type' => 'WebPage',
                 'name' => $section['title'],
@@ -69,26 +70,26 @@
     ])
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-white text-gray-950">
+<body class="min-h-screen bg-white text-[#071d38]">
     @include('partials.header')
 
     <main class="py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
-                <p class="text-sm font-semibold uppercase tracking-[0.3em] text-yellow-600">Attachments</p>
-                <h1 class="mt-4 text-4xl sm:text-5xl font-black text-gray-950">Premium attachments for every loader and excavator</h1>
+                <p class="text-sm font-semibold uppercase tracking-[0.3em] text-red-700">Attachments</p>
+                <h1 class="mt-4 text-4xl sm:text-5xl font-black text-[#071d38]">Premium attachments for every loader and excavator</h1>
                 <p class="mt-4 text-gray-600 max-w-3xl mx-auto">Explore category pages for mini excavator attachments, skid steer tools, and specialized worksite equipment built to enhance productivity.</p>
             </div>
 
             <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
                 @foreach ($attachmentSections as $section)
-                    <a href="{{ $section['url'] }}" class="group block border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-yellow-400 hover:shadow-lg">
+                    <a href="{{ $section['url'] }}" class="group block border border-gray-200 bg-white p-7 shadow-sm transition hover:-translate-y-1 hover:border-red-500 hover:shadow-lg">
                         <div class="flex items-start justify-between gap-4">
                             <div>
-                                <p class="text-yellow-600 text-xs uppercase tracking-[0.28em] font-black mb-3">{{ $section['type'] }}</p>
-                                <h2 class="text-2xl font-black text-gray-950">{{ $section['title'] }}</h2>
+                                <p class="text-red-700 text-xs uppercase tracking-[0.28em] font-black mb-3">{{ $section['type'] }}</p>
+                                <h2 class="text-2xl font-black text-[#071d38]">{{ $section['title'] }}</h2>
                             </div>
-                            <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center bg-yellow-50 text-sm font-black text-yellow-700">{{ $section['badge'] }}</div>
+                            <div class="inline-flex h-12 w-12 shrink-0 items-center justify-center bg-red-50 text-sm font-black text-red-800">{{ $section['badge'] }}</div>
                         </div>
                         <p class="mt-5 text-gray-600">{{ $section['description'] }}</p>
                     </a>

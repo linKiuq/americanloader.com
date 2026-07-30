@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-white text-slate-950 flex flex-col">
+<body class="min-h-screen bg-white text-[#071d38] flex flex-col">
     @include('partials.header')
 
     <main class="flex-grow px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -48,7 +48,7 @@
                         <div class="flex justify-between"><dt>Shipping</dt><dd>Free</dd></div>
                         <div class="flex justify-between text-2xl font-black"><dt>TOTAL</dt><dd>${{ number_format($subtotal, 2) }}</dd></div>
                     </dl>
-                    <a href="{{ route('cart') }}" class="mt-7 inline-flex text-base font-semibold text-yellow-700 hover:text-yellow-800"><i class="fas fa-arrow-left mr-3 mt-1"></i>Return to cart</a>
+                    <a href="{{ route('cart') }}" class="mt-7 inline-flex text-base font-semibold text-red-800 hover:text-red-900"><i class="fas fa-arrow-left mr-3 mt-1"></i>Return to cart</a>
                 </aside>
 
                 <section class="max-w-3xl">
@@ -58,7 +58,7 @@
                     <form method="POST" action="{{ route('checkout.store') }}" class="mt-8">
                         @csrf
                         @if ($paymentPreference === 'link' || $paymentPreference === 'paypal')
-                            <div class="mb-6 rounded border border-yellow-100 bg-yellow-50 px-5 py-4 text-sm text-yellow-800">
+                            <div class="mb-6 rounded border border-red-100 bg-red-50 px-5 py-4 text-sm text-red-900">
                                 {{ $paymentPreference === 'link' ? 'Link' : 'PayPal' }} selected. Complete your delivery details to continue with order processing.
                             </div>
                         @endif
@@ -68,7 +68,7 @@
 
                         <label class="block">
                             <span class="sr-only">Your email address</span>
-                            <input type="email" name="email" value="{{ old('email', $email) }}" required placeholder="Your email address" class="h-16 w-full rounded border {{ $errors->has('email') ? 'border-red-400' : 'border-yellow-400' }} px-4 text-lg focus:border-yellow-600 focus:outline-none">
+                            <input type="email" name="email" value="{{ old('email', $email) }}" required placeholder="Your email address" class="h-16 w-full rounded border {{ $errors->has('email') ? 'border-red-400' : 'border-red-500' }} px-4 text-lg focus:border-red-700 focus:outline-none">
                             @error('email')<span class="mt-1 block text-xs text-red-600">{{ $message }}</span>@enderror
                         </label>
                         <label class="mt-5 flex items-center gap-3 text-lg">
@@ -81,19 +81,19 @@
                             @foreach (['name' => 'Full name', 'phone' => 'Phone number', 'company' => 'Company (optional)', 'address' => 'Delivery address', 'city' => 'City', 'state' => 'State', 'zip' => 'ZIP code'] as $field => $label)
                                 <label class="{{ $field === 'address' ? 'sm:col-span-2' : '' }}">
                                     <span class="mb-2 block text-sm font-semibold text-gray-700">{{ $label }}</span>
-                                    <input type="text" name="{{ $field }}" value="{{ old($field) }}" {{ $field === 'company' ? '' : 'required' }} class="h-13 w-full rounded border {{ $errors->has($field) ? 'border-red-400' : 'border-gray-300' }} px-4 py-3 text-base focus:border-yellow-500 focus:outline-none">
+                                    <input type="text" name="{{ $field }}" value="{{ old($field) }}" {{ $field === 'company' ? '' : 'required' }} class="h-13 w-full rounded border {{ $errors->has($field) ? 'border-red-400' : 'border-gray-300' }} px-4 py-3 text-base focus:border-red-500 focus:outline-none">
                                     @error($field)<span class="mt-1 block text-xs text-red-600">{{ $message }}</span>@enderror
                                 </label>
                             @endforeach
                             <label class="sm:col-span-2">
                                 <span class="mb-2 block text-sm font-semibold text-gray-700">Order notes (optional)</span>
-                                <textarea name="notes" rows="3" class="w-full rounded border border-gray-300 px-4 py-3 text-base focus:border-yellow-500 focus:outline-none">{{ old('notes') }}</textarea>
+                                <textarea name="notes" rows="3" class="w-full rounded border border-gray-300 px-4 py-3 text-base focus:border-red-500 focus:outline-none">{{ old('notes') }}</textarea>
                             </label>
                         </div>
 
                         <h3 class="mt-9 border-b border-gray-200 pb-4 text-2xl font-black">Order confirmation</h3>
                         <div class="mt-6 grid gap-4 lg:grid-cols-[1fr_auto] lg:items-center">
-                            <button type="submit" class="h-16 rounded bg-gray-800 px-10 text-xl font-bold text-white transition hover:bg-gray-950">Place order</button>
+                            <button type="submit" class="h-16 rounded bg-gray-800 px-10 text-xl font-bold text-white transition hover:bg-[#071d38]">Place order</button>
                             <p class="flex max-w-sm items-center gap-4 text-base text-gray-500"><i class="fas fa-lock text-2xl text-gray-300"></i>All data is transmitted encrypted via a secure TLS connection</p>
                         </div>
                     </form>

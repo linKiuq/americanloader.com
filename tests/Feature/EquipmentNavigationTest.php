@@ -9,11 +9,11 @@ class EquipmentNavigationTest extends TestCase
 {
     private const SCISSOR_LIFT = 'typhon-xflex-4068et-electric-rubber-track-scissor-lift-3-2-ton-with-5-4hp-hydraulic-pump-motor-drive-and-hydraulic-lifting-cylinder-40-ft-max-lifting-height';
 
-    public function test_catalog_removes_products_with_duplicate_names_or_store_ids(): void
+    public function test_catalog_keeps_unique_sku_variants_and_removes_duplicate_store_ids(): void
     {
         $products = app(ProductCatalog::class)->all();
 
-        $this->assertCount($products->count(), $products->unique(fn (array $product) => mb_strtolower($product['name'])));
+        $this->assertCount($products->count(), $products->unique(fn (array $product) => mb_strtolower($product['sku'])));
         $this->assertCount(
             $products->count(),
             $products->unique(fn (array $product) => $product['hash'] ?? $product['checkoutUrl'] ?? '')
@@ -69,18 +69,18 @@ class EquipmentNavigationTest extends TestCase
     {
         $scissorLifts = app(ProductCatalog::class)->all()->where('category', 'Scissor Lifts');
         $expectedUrls = [
-            self::SCISSOR_LIFT => '/store#!/TYPHON-xFlex-4068ET-Electric-Rubber-Track-Scissor-Lift-3-2-Ton-with-5-4HP-Hydraulic-Pump-Motor-Drive-and-Hydraulic-Lifting-Cylinder-40-ft-Max-Lifting-Height/p/837444761',
-            'typhon-xflex-4065w-walk-behind-scissor-lift-2-7-ton-with-assisted-walking-manual-outriggers-of-40-ft-lifting-height-110v-electric' => '/store#!/TYPHON-xFlex-4065W-Walk-Behind-Scissor-Lift-2-7-Ton-with-Assisted-Walking-Manual-outriggers-of-40-ft-lifting-Height-&-110V-Electric/p/837469759',
-            'typhon-xflex-4046ew-electric-wheel-scissor-lift-2-6-ton-operating-weight-and-40ft-platform-height-with-705lbs-load-capacity' => '/store#!/TYPHON-xFlex-4046EW-Electric-Wheel-Scissor-Lift-2-6-Ton-operating-weight-and-40ft-platform-height-with-705lbs-Load-Capacity/p/837444764',
-            'typhon-xflex-2037w-walk-behind-scissor-lift-comes-with-20ft-working-height-and-manual-outriggers-1102-lbs-load-capacity-110v-electric' => '/store#!/TYPHON-xFlex-2037W-Walk-Behind-Scissor-Lift-comes-with-20ft-Working-Height-and-Manual-outriggers-1102-lbs-load-capacity-110V-Electric/p/837469757',
-            'typhon-xflex-2031em-1-2-ton-electric-mini-scissor-lift-with-20ft-max-platform-height-and-19-7-platform-extend' => '/store#!/TYPHON-xFLEX-2031EM-1-2-Ton-Electric-Mini-Scissor-Lift-with-20ft-Max-Platform-Height-and-19-7-Platform-Extend/p/837464013',
+            self::SCISSOR_LIFT => '/store/TYPHON-xFlex-4068ET-Electric-Rubber-Track-Scissor-Lift-3-2-Ton-with-5-4HP-Hydraulic-Pump-Motor-Drive-and-Hydraulic-Lifting-Cylinder-40-ft-Max-Lifting-Height/p/837444761',
+            'typhon-xflex-4065w-walk-behind-scissor-lift-2-7-ton-with-assisted-walking-manual-outriggers-of-40-ft-lifting-height-110v-electric' => '/store/TYPHON-xFlex-4065W-Walk-Behind-Scissor-Lift-2-7-Ton-with-Assisted-Walking-Manual-outriggers-of-40-ft-lifting-Height-&-110V-Electric/p/837469759',
+            'typhon-xflex-4046ew-electric-wheel-scissor-lift-2-6-ton-operating-weight-and-40ft-platform-height-with-705lbs-load-capacity' => '/store/TYPHON-xFlex-4046EW-Electric-Wheel-Scissor-Lift-2-6-Ton-operating-weight-and-40ft-platform-height-with-705lbs-Load-Capacity/p/837444764',
+            'typhon-xflex-2037w-walk-behind-scissor-lift-comes-with-20ft-working-height-and-manual-outriggers-1102-lbs-load-capacity-110v-electric' => '/store/TYPHON-xFlex-2037W-Walk-Behind-Scissor-Lift-comes-with-20ft-Working-Height-and-Manual-outriggers-1102-lbs-load-capacity-110V-Electric/p/837469757',
+            'typhon-xflex-2031em-1-2-ton-electric-mini-scissor-lift-with-20ft-max-platform-height-and-19-7-platform-extend' => '/store/TYPHON-xFLEX-2031EM-1-2-Ton-Electric-Mini-Scissor-Lift-with-20ft-Max-Platform-Height-and-19-7-Platform-Extend/p/837464013',
         ];
 
         $this->assertCount(5, $scissorLifts);
         $this->assertCount(5, $scissorLifts->unique('checkoutUrl'));
         $this->assertSame($expectedUrls, $scissorLifts->pluck('checkoutUrl', 'slug')->all());
         $this->assertTrue($scissorLifts->every(
-            fn (array $product): bool => str_starts_with($product['checkoutUrl'], '/store#!/')
+            fn (array $product): bool => str_starts_with($product['checkoutUrl'], '/store/')
                 && $product['hash'] === $product['checkoutUrl']
                 && str_starts_with($product['image'], 'https://d2j6dbq0eux0bg.cloudfront.net/images/80100025/products/')
         ));
@@ -96,8 +96,8 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('src="'.asset('power-loader-logo.png').'"', escape: false)
-            ->assertSee(asset('favicon-32x32.png').'?v=4', escape: false)
+            ->assertSee('src="'.asset('american-loader-logo.webp').'"', escape: false)
+            ->assertSee(asset('favicon.webp').'?v=6', escape: false)
             ->assertDontSee('data:image/svg+xml')
             ->assertSee('role="search"', escape: false)
             ->assertSee('action="'.route('equipment').'#catalog"', escape: false)
@@ -105,8 +105,8 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('class="site-navbar__search-toggle"', escape: false)
             ->assertSee('aria-controls="navbar-search-panel"', escape: false)
             ->assertSee('id="navbar-search-panel"', escape: false)
-            ->assertSee('--nav-bg: #0b101a', escape: false)
-            ->assertSee('--nav-yellow: #facc15', escape: false)
+            ->assertSee('--nav-bg: #ffffff', escape: false)
+            ->assertSee('--nav-accent: #c91f2c', escape: false)
             ->assertDontSee('Get Quote');
 
         $this->get(route('equipment', ['search' => 'scissor lift']))
@@ -114,21 +114,19 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('value="scissor lift"', escape: false);
     }
 
-    public function test_home_hero_renders_the_interactive_wheel_loader_configurator(): void
+    public function test_home_hero_renders_the_branded_poster_and_loader_video(): void
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('industrial-hero-section')
-            ->assertSee('Power Your')
-            ->assertSee('Next Project')
-            ->assertSee('Engine Power and Torque')
-            ->assertSee(asset('hero-power-loader.png'), escape: false)
+            ->assertSee('brand-hero')
+            ->assertSee('Equipment Ready for Real Work')
+            ->assertSee('Wheel Loaders in Action')
+            ->assertSee(asset('american-loader-hero.png'), escape: false)
+            ->assertSee(asset('wheel-loader-gravel.mp4'), escape: false)
+            ->assertSee('autoplay muted loop playsinline', escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
-            ->assertSee('background-color: #facc15', escape: false)
-            ->assertDontSee('#e67e22', escape: false)
-            ->assertDontSee('orange-', escape: false)
-            ->assertDontSee('🔥', escape: false)
-            ->assertSee('swapFeatureContext', escape: false);
+            ->assertSee('background: #c91f2c', escape: false)
+            ->assertDontSee('#e67e22', escape: false);
     }
 
     public function test_home_includes_wheel_loader_solutions_section_with_real_links(): void
@@ -136,22 +134,25 @@ class EquipmentNavigationTest extends TestCase
         $this->get(route('welcome'))
             ->assertOk()
             ->assertSee('id="wheel-loader-solutions"', escape: false)
-            ->assertSee('Built for Serious Work')
-            ->assertSee('https://electricforklift.org/wp-content/uploads/2026/05/ChatGPT-Image-May-27-2026-02_03_58-PM.png', escape: false)
+            ->assertSee('Wheel Loaders')
+            ->assertSee('Worksite Attachments')
+            ->assertSee('Financing Available')
+            ->assertSee(asset('wheel-loader-solutions-red.png'), escape: false)
+            ->assertSee(asset('wheel-loader-applications.png'), escape: false)
             ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee(route('attachments.index'), escape: false)
             ->assertSee(route('contact'), escape: false);
     }
 
-    public function test_home_replaces_hero_statistics_with_service_assurances(): void
+    public function test_home_hero_contains_only_the_poster_and_video_cards(): void
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('Shipping Sitewide')
-            ->assertSee('Free US shipping')
-            ->assertSee('Return Policy')
-            ->assertSee('30 Days return &amp; Exchange', escape: false)
-            ->assertSee('1 Year Warranty')
-            ->assertSee('On all equipment purchases')
+            ->assertSee('Equipment Ready for Real Work')
+            ->assertSee('Wheel Loaders in Action')
+            ->assertDontSee('Buy Now, Pay Over Time')
+            ->assertSee('Fast Free Shipping')
+            ->assertSee('Shop All')
             ->assertDontSee('id="service-assurances"', escape: false)
             ->assertDontSee('Products Active')
             ->assertDontSee('Customers Served')
@@ -163,11 +164,11 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('id="attachments" class="py-16 lg:py-20 bg-slate-950', escape: false)
+            ->assertSee('id="attachments" class="py-16 lg:py-20 bg-[#071d38]', escape: false)
             ->assertSee('max-width: 940px', escape: false)
             ->assertSee('height: 510px', escape: false)
-            ->assertSee('text-yellow-400 font-black text-xs uppercase tracking-widest')
-            ->assertSee('bg-yellow-400 w-8', escape: false);
+            ->assertSee('text-red-500 font-black text-xs uppercase tracking-widest')
+            ->assertSee('bg-red-500 w-8', escape: false);
     }
 
     public function test_home_why_choose_section_does_not_render_image_panel(): void

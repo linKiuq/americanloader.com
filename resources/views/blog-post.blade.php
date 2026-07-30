@@ -27,7 +27,7 @@
                 'name' => config('seo.site_name'),
                 'logo' => [
                     '@type' => 'ImageObject',
-                    'url' => config('seo.site_url') . '/power-loader-logo.png',
+                    'url' => config('seo.site_url') . '/american-loader-logo.webp',
                 ],
             ],
             'mainEntityOfPage' => config('seo.site_url') . '/blog/' . $post['slug'],
@@ -38,17 +38,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="min-h-screen bg-white text-slate-950 antialiased">
+<body class="min-h-screen bg-white text-[#071d38] antialiased">
     @include('partials.header')
 
-    <main class="flex-grow">
-        <article class="mx-auto max-w-4xl px-6 py-12">
-            <a href="{{ route('blog.index') }}" class="text-sm font-bold uppercase tracking-wider text-yellow-600 transition hover:text-yellow-700">&larr; Back to Blog</a>
+    <main class="flex-grow py-12">
+        <div class="mx-auto grid max-w-7xl gap-10 px-6 lg:grid-cols-[minmax(0,1fr)_320px] lg:items-start">
+        <article class="min-w-0">
+            <a href="{{ route('blog.index') }}" class="text-sm font-bold uppercase tracking-wider text-red-700 transition hover:text-red-800">&larr; Back to Blog</a>
             @if (! empty($post['category']))
-                <a href="{{ route('blog.category', $post['category_slug'] ?? \Illuminate\Support\Str::slug($post['category'])) }}" class="mt-10 inline-block text-xs font-black uppercase tracking-[0.3em] text-yellow-700 transition hover:text-yellow-600">{{ $post['category'] }}</a>
+                <a href="{{ route('blog.category', $post['category_slug'] ?? \Illuminate\Support\Str::slug($post['category'])) }}" class="mt-10 inline-block text-xs font-black uppercase tracking-[0.3em] text-red-800 transition hover:text-red-700">{{ $post['category'] }}</a>
             @endif
             @if (! empty($post['publish_date']))
-                <p class="{{ ! empty($post['category']) ? 'mt-3' : 'mt-10' }} text-xs font-black uppercase tracking-[0.3em] text-yellow-600">{{ \Illuminate\Support\Carbon::parse($post['publish_date'])->format('F j, Y') }}</p>
+                <p class="{{ ! empty($post['category']) ? 'mt-3' : 'mt-10' }} text-xs font-black uppercase tracking-[0.3em] text-red-700">{{ \Illuminate\Support\Carbon::parse($post['publish_date'])->format('F j, Y') }}</p>
             @endif
             <h1 class="mt-4 text-4xl font-black leading-tight md:text-5xl" style="font-family: 'Montserrat', sans-serif;">{{ $post['title'] }}</h1>
             @if (! empty($post['excerpt']))
@@ -59,10 +60,12 @@
                 <img src="{{ $post['featured_image'] }}" alt="{{ $post['featured_image_alt'] ?? $post['title'] }}" class="mt-10 h-[420px] w-full rounded-2xl object-cover">
             @endif
 
-            <div class="mt-10 max-w-none text-base leading-8 text-slate-700 [&_a]:font-bold [&_a]:text-yellow-700 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_blockquote]:border-l-4 [&_blockquote]:border-yellow-400 [&_blockquote]:pl-5 [&_blockquote]:text-slate-600 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-black [&_h3]:mt-8 [&_h3]:text-2xl [&_h3]:font-black [&_li]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
+            <div class="mt-10 max-w-none text-base leading-8 text-slate-700 [&_a]:font-bold [&_a]:text-red-800 [&_a]:underline [&_a]:decoration-2 [&_a]:underline-offset-4 [&_blockquote]:border-l-4 [&_blockquote]:border-red-500 [&_blockquote]:pl-5 [&_blockquote]:text-slate-600 [&_h2]:mt-10 [&_h2]:text-3xl [&_h2]:font-black [&_h3]:mt-8 [&_h3]:text-2xl [&_h3]:font-black [&_li]:my-2 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:my-5 [&_ul]:list-disc [&_ul]:pl-6">
                 {!! \App\Support\BlogContent::markdown($post['content'] ?? '') !!}
             </div>
         </article>
+        @include('partials.blog-sidebar')
+        </div>
     </main>
 
     @include('partials.footer')

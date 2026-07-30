@@ -12,13 +12,34 @@ class BlogController extends Controller
 {
     public function index(): View
     {
-        $posts = $this->publishedPosts();
+        $allPosts = $this->publishedPosts();
+        $search = trim((string) request('search', ''));
+        $posts = $search === ''
+            ? $allPosts
+            : $allPosts->filter(function (array $post) use ($search): bool {
+                $haystack = implode(' ', [
+                    $post['title'] ?? '',
+                    $post['excerpt'] ?? '',
+                    $post['category'] ?? '',
+                    $post['content'] ?? '',
+                ]);
 
-        return view('blog', compact('posts'));
+                return \Illuminate\Support\Str::contains(
+                    \Illuminate\Support\Str::lower($haystack),
+                    \Illuminate\Support\Str::lower($search)
+                );
+            })->values();
+
+        return view('blog', [
+            'posts' => $posts,
+            ...$this->sidebarData($allPosts),
+        ]);
     }
 
     public function show(string $slug): View
     {
+        $allPosts = $this->publishedPosts();
+
         try {
             $post = BlogPost::with(['category', 'author'])
                 ->where('slug', $slug)
@@ -32,10 +53,16 @@ class BlogController extends Controller
             $legacyPost = $this->legacyPost($slug);
             abort_if(! $legacyPost, 404);
 
-            return view('blog-post', ['post' => $legacyPost]);
+            return view('blog-post', [
+                'post' => $legacyPost,
+                ...$this->sidebarData($allPosts, $slug),
+            ]);
         }
 
-        return view('blog-post', ['post' => $this->postToArray($post)]);
+        return view('blog-post', [
+            'post' => $this->postToArray($post),
+            ...$this->sidebarData($allPosts, $slug),
+        ]);
     }
 
     public function category(string $categoryName): View
@@ -49,14 +76,38 @@ class BlogController extends Controller
         }
 
         $categorySlug = $category?->slug ?? $categoryName;
-        $posts = $this->publishedPosts()
+        $allPosts = $this->publishedPosts();
+        $posts = $allPosts
             ->filter(fn (array $post): bool => ($post['category_slug'] ?? null) === $categorySlug || ($post['category'] ?? null) === $categoryName)
             ->values();
 
         return view('blog', [
             'posts' => $posts,
             'activeCategory' => $category?->name ?? $categoryName,
+            ...$this->sidebarData($allPosts),
         ]);
+    }
+
+    private function sidebarData(Collection $posts, ?string $currentSlug = null): array
+    {
+        $recentPosts = $posts
+            ->when($currentSlug, fn (Collection $items) => $items->reject(fn (array $post): bool => $post['slug'] === $currentSlug))
+            ->take(7)
+            ->values();
+        $popularCategories = $posts
+            ->filter(fn (array $post): bool => ! empty($post['category']))
+            ->groupBy(fn (array $post): string => $post['category_slug'] ?? \Illuminate\Support\Str::slug($post['category']))
+            ->map(function (Collection $categoryPosts, string $slug): array {
+                return [
+                    'name' => $categoryPosts->first()['category'],
+                    'slug' => $slug,
+                    'count' => $categoryPosts->count(),
+                ];
+            })
+            ->sortByDesc('count')
+            ->values();
+
+        return compact('recentPosts', 'popularCategories');
     }
 
     private function publishedPosts(): Collection

@@ -132,6 +132,11 @@ Route::delete('/store/cart', [CartController::class, 'clear'])->name('cart.clear
 Route::get('/store/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
 Route::post('/store/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
+// Clean Ecwid product URLs such as /store/product-name/p/123456.
+Route::get('/store/{productPath}', function () {
+    return view('store');
+})->where('productPath', '.+/p/[0-9]+')->name('store.product');
+
 // About Page
 Route::get('/about', function () {
     return view('about');

@@ -130,7 +130,7 @@ class ShoppingCartTest extends TestCase
         $this->get(route('product.show', self::FORKLIFT))
             ->assertOk()
             ->assertSee('Buy Now')
-            ->assertSee('/store#!/2024-TYPHON-2-Ton-Rated-Capacity-Electric-Forklift-Lifter-Lift-Truck-USA-p598669332');
+            ->assertSee('/store/2024-TYPHON-2-Ton-Rated-Capacity-Electric-Forklift-Lifter-Lift-Truck-USA-p598669332');
     }
 
     public function test_cart_and_checkout_use_store_prefixed_routes(): void

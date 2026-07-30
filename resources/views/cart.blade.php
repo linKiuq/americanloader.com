@@ -20,7 +20,7 @@
         }
     </style>
 </head>
-<body class="min-h-screen bg-white text-slate-950 flex flex-col">
+<body class="min-h-screen bg-white text-[#071d38] flex flex-col">
     @include('partials.header')
 
     <main class="flex-grow px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
@@ -36,7 +36,7 @@
                 <div class="rounded-2xl border border-gray-200 px-6 py-20 text-center">
                     <h1 class="text-4xl font-black">Shopping cart</h1>
                     <p class="mt-4 text-lg text-gray-500">Your cart is empty.</p>
-                    <a href="{{ route('attachments.index') }}" class="mt-8 inline-flex rounded-lg bg-yellow-600 px-7 py-4 text-sm font-black uppercase tracking-wider text-white hover:bg-yellow-700">Continue Shopping</a>
+                    <a href="{{ route('attachments.index') }}" class="mt-8 inline-flex rounded-lg bg-red-700 px-7 py-4 text-sm font-black uppercase tracking-wider text-white hover:bg-red-800">Continue Shopping</a>
                 </div>
             @else
                 <div class="grid gap-14 xl:grid-cols-[500px_1fr]">
@@ -52,7 +52,7 @@
                                     </a>
                                     <div class="min-w-0 flex-grow">
                                         <div class="flex items-start gap-3">
-                                            <a href="{{ route('product.show', $item['slug']) }}" class="line-clamp-2 flex-grow text-lg font-semibold leading-7 hover:text-yellow-700">{{ $item['name'] }}</a>
+                                            <a href="{{ route('product.show', $item['slug']) }}" class="line-clamp-2 flex-grow text-lg font-semibold leading-7 hover:text-red-800">{{ $item['name'] }}</a>
                                             <form method="POST" action="{{ route('cart.items.destroy') }}">
                                                 @csrf
                                                 @method('DELETE')
@@ -93,7 +93,7 @@
                             </div>
                         </div>
                         <div class="flex items-center justify-between gap-3 py-7 text-base">
-                            <a href="{{ route('attachments.index') }}" class="hover:text-yellow-700">Looking for more? <span class="font-semibold">Continue shopping</span></a>
+                            <a href="{{ route('attachments.index') }}" class="hover:text-red-800">Looking for more? <span class="font-semibold">Continue shopping</span></a>
                             <form method="POST" action="{{ route('cart.clear') }}">
                                 @csrf
                                 @method('DELETE')
@@ -107,7 +107,7 @@
                         <p class="mt-3 text-lg">Enter your email address. This address will be used to send you order status updates.</p>
                         <form method="GET" action="{{ route('checkout.show') }}" class="mt-8">
                             <label for="checkout-email" class="sr-only">Your email address</label>
-                            <input id="checkout-email" type="email" name="email" required placeholder="Your email address" class="h-16 w-full rounded border border-yellow-400 px-4 text-lg focus:border-yellow-600 focus:outline-none">
+                            <input id="checkout-email" type="email" name="email" required placeholder="Your email address" class="h-16 w-full rounded border border-red-500 px-4 text-lg focus:border-red-700 focus:outline-none">
                             <label class="mt-6 flex items-center gap-3 text-base sm:text-lg">
                                 <input type="checkbox" name="offers" value="1" checked class="h-5 w-5 accent-slate-950">
                                 <span>Keep me up to date on news and exclusive offers</span>
@@ -115,9 +115,9 @@
 
                             <div class="mt-8 grid gap-5 lg:grid-cols-[540px_1fr] lg:items-start">
                                 <div class="space-y-3">
-                                    <button type="submit" class="h-16 w-full rounded bg-gray-800 px-10 text-xl font-bold text-white transition hover:bg-gray-950">Checkout</button>
-                                    <button type="submit" name="payment" value="link" class="flex h-16 w-full items-center justify-center rounded bg-[#00d66f] px-10 text-xl font-medium text-gray-950 transition hover:bg-[#00c664]">
-                                        Pay with <span class="ml-2 font-black"><span class="mr-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-gray-950 text-sm text-white">&#8250;</span>link</span>
+                                    <button type="submit" class="h-16 w-full rounded bg-gray-800 px-10 text-xl font-bold text-white transition hover:bg-[#071d38]">Checkout</button>
+                                    <button type="submit" name="payment" value="link" class="flex h-16 w-full items-center justify-center rounded bg-[#00d66f] px-10 text-xl font-medium text-[#071d38] transition hover:bg-[#00c664]">
+                                        Pay with <span class="ml-2 font-black"><span class="mr-1 inline-flex h-6 w-6 items-center justify-center rounded-full bg-[#071d38] text-sm text-white">&#8250;</span>link</span>
                                     </button>
                                     <button type="submit" name="payment" value="paypal" class="flex h-16 w-full items-center justify-center rounded bg-[#ffc439] px-10 text-xl font-semibold text-[#142c8e] transition hover:bg-[#ffb91f]">
                                         <span class="mr-2 text-2xl font-black italic">PayPal</span><span class="text-gray-800">Checkout</span>
@@ -148,7 +148,7 @@
                                         <img src="{{ $product['image'] ?? '' }}" alt="{{ $product['name'] }}" class="max-h-full max-w-full object-contain">
                                     </a>
                                     <div class="min-w-0">
-                                        <a href="{{ route('product.show', $product['slug']) }}" class="line-clamp-2 text-sm font-bold hover:text-yellow-700">{{ $product['name'] }}</a>
+                                        <a href="{{ route('product.show', $product['slug']) }}" class="line-clamp-2 text-sm font-bold hover:text-red-800">{{ $product['name'] }}</a>
                                         <p class="mt-2 font-black text-gray-500">Quote on request</p>
                                     </div>
                                 </article>

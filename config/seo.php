@@ -1,12 +1,22 @@
 <?php
 
 return [
-    'site_name' => env('SEO_SITE_NAME', 'The Power Loader'),
+    'site_name' => env('SEO_SITE_NAME', 'American Loader'),
     'site_url' => rtrim(env('SEO_SITE_URL', 'https://cwqv.com'), '/'),
-    'default_title' => env('SEO_DEFAULT_TITLE', 'The Power Loader | Skoop Loader, Wheel Loader & Attachments'),
-    'default_description' => env('SEO_DEFAULT_DESCRIPTION', 'Shop The Power Loader at cwqv.com for Skoop loader and wheel loader equipment, skid steer loaders, mini excavators, forklifts, scissor lifts, and jobsite attachments for sale in the USA.'),
+    'default_title' => env('SEO_DEFAULT_TITLE', 'American Loader | Wheel Loaders, Skid Steers & Mini Excavators'),
+    'default_description' => env('SEO_DEFAULT_DESCRIPTION', 'Shop American Loader for TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and jobsite attachments in the USA.'),
     'default_image' => env('SEO_DEFAULT_IMAGE', 'hero-power-loader.png'),
-    'keywords' => env('SEO_KEYWORDS', 'The Power Loader, Power Loader equipment, cwqv, cwqv.com, Skoop loader, wheel loader, Skoop wheel loader, wheel loader for sale, compact wheel loader, loader attachments, skid steer loaders, mini excavators'),
+    'keywords' => env('SEO_KEYWORDS', 'American Loader, TYPHON wheel loader, wheel loaders for sale, skid steer loader, STORM mini excavator, mini excavator attachments, skid steer attachments, electric forklift, road roller, scissor lift, compact construction equipment'),
+    'equipment_categories' => [
+        'Wheel Loaders',
+        'Skid Steer Loaders',
+        'Mini Excavators',
+        'Mini Excavator Attachments',
+        'Skid Steer Attachments',
+        'Forklifts',
+        'Road Rollers',
+        'Scissor Lifts',
+    ],
     'google_site_verification' => env('GOOGLE_SITE_VERIFICATION', 'google862afbc0daae0b2d.html'),
     'phone' => env('SEO_PHONE', '+1-800-000-0000'),
     'email' => env('SEO_EMAIL', 'sales@cwqv.com'),

@@ -12,11 +12,11 @@
 <div class="space-y-6 rounded-2xl border border-slate-200 bg-white p-7 shadow-sm">
     <div>
         <label for="name" class="mb-2 block text-sm font-bold">Category Name</label>
-        <input id="name" type="text" name="name" value="{{ old('name', $category->name) }}" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+        <input id="name" type="text" name="name" value="{{ old('name', $category->name) }}" required class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
     </div>
     <div>
         <label for="slug" class="mb-2 block text-sm font-bold">URL Slug <span class="font-normal text-slate-500">(leave blank to create from name)</span></label>
-        <input id="slug" type="text" name="slug" value="{{ old('slug', $category->slug) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-yellow-500 focus:outline-none">
+        <input id="slug" type="text" name="slug" value="{{ old('slug', $category->slug) }}" class="w-full rounded-lg border border-slate-300 px-4 py-3 focus:border-red-500 focus:outline-none">
     </div>
-    <button type="submit" class="rounded-lg bg-yellow-400 px-7 py-4 text-sm font-black uppercase tracking-wider text-slate-950 hover:bg-yellow-500">Save Category</button>
+    <button type="submit" class="rounded-lg bg-red-500 px-7 py-4 text-sm font-black uppercase tracking-wider text-white hover:bg-red-500">Save Category</button>
 </div>

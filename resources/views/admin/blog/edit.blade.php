@@ -4,7 +4,7 @@
 
 @section('content')
     <div class="mb-8">
-        <p class="text-xs font-black uppercase tracking-[0.3em] text-yellow-600">Blog Editor</p>
+        <p class="text-xs font-black uppercase tracking-[0.3em] text-red-700">Blog Editor</p>
         <h1 class="mt-3 text-4xl font-black" style="font-family: 'Montserrat', sans-serif;">Edit Post</h1>
     </div>
 

@@ -212,7 +212,7 @@
         .h-16 { height: 4rem; }
         .w-16 { width: 4rem; }
         .object-contain { object-fit: contain; }
-        .text-gray-950 { color: #0f172a; }
+        .text-[#071d38] { color: #0f172a; }
         .font-black { font-weight: 900; }
         .font-bold { font-weight: 700; }
         .text-lg { font-size: 1.125rem; line-height: 1.75rem; }
@@ -220,7 +220,7 @@
         .tracking-tight { letter-spacing: -0.025em; }
         .text-gray-600 { color: #4b5563; }
         .text-gray-500 { color: #6b7280; }
-        .hover\:text-yellow-600:hover { color: #ca8a04; }
+        .hover\:text-red-700:hover { color: #ca8a04; }
         .transition { transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out; }
         .text-sm { font-size: 0.875rem; line-height: 1.25rem; }
         .font-semibold { font-weight: 600; }

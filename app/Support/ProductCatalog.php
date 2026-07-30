@@ -15,18 +15,18 @@ class ProductCatalog
         }
 
         $products = json_decode(file_get_contents(public_path('equipment-products.json')), true, flags: JSON_THROW_ON_ERROR);
-        $seenNames = [];
+        $seenSkus = [];
         $seenStoreIds = [];
 
         return $this->products = collect($products)
-            ->reject(function (array $product) use (&$seenNames, &$seenStoreIds): bool {
-                $name = mb_strtolower(trim((string) ($product['name'] ?? '')));
+            ->reject(function (array $product) use (&$seenSkus, &$seenStoreIds): bool {
+                $sku = mb_strtolower(trim((string) ($product['sku'] ?? '')));
                 $storeId = (string) ($product['hash'] ?? $product['checkoutUrl'] ?? '');
-                $isDuplicate = ($name !== '' && isset($seenNames[$name]))
+                $isDuplicate = ($sku !== '' && isset($seenSkus[$sku]))
                     || ($storeId !== '' && isset($seenStoreIds[$storeId]));
 
-                if ($name !== '') {
-                    $seenNames[$name] = true;
+                if ($sku !== '') {
+                    $seenSkus[$sku] = true;
                 }
 
                 if ($storeId !== '') {
