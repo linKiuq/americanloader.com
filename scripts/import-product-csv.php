@@ -116,9 +116,9 @@ function cleanText(string $value): string
 
 function cleanDescriptionHtml(string $value): string
 {
-    $html = strip_tags($value, '<p><br><strong><em><ul><ol><li><h1><h2><h3><h4>');
+    $html = strip_tags($value, '<p><br><strong><em><ul><ol><li><h1><h2><h3><h4><table><thead><tbody><tr><th><td>');
     $html = preg_replace_callback(
-        '/<(\/?)(p|br|strong|em|ul|ol|li|h1|h2|h3|h4)\b[^>]*>/i',
+        '/<(\/?)(p|br|strong|em|ul|ol|li|h1|h2|h3|h4|table|thead|tbody|tr|th|td)\b[^>]*>/i',
         static function (array $match): string {
             $tag = strtolower($match[2]) === 'h1' ? 'h2' : strtolower($match[2]);
 

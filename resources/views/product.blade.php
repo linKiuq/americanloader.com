@@ -78,6 +78,30 @@
             line-height: 1.7;
         }
         .product-description strong { color: #0b2d55; font-weight: 800; }
+        .product-description table {
+            width: 100%;
+            margin: 1.25rem 0 1.75rem;
+            border-collapse: collapse;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: 0.925rem;
+        }
+        .product-description th,
+        .product-description td {
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0.8rem 1rem;
+            text-align: left;
+            vertical-align: top;
+        }
+        .product-description th {
+            width: 38%;
+            background: #f8fafc;
+            color: #071d38;
+            font-weight: 800;
+        }
+        .product-description tr:last-child th,
+        .product-description tr:last-child td { border-bottom: 0; }
     </style>
 </head>
 <body class="min-h-screen bg-white text-[#071d38] flex flex-col">
