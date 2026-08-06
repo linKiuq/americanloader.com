@@ -1800,7 +1800,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="1">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image2-scaled.webp" alt="Skid steer delivery for Apex Excavation Group" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-apex.webp') }}" alt="Skid steer delivery for Apex Excavation Group" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Skidsteers</span>
@@ -1812,7 +1812,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="2">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-skid-steer-loader-scaled.webp" alt="Skid steer loader delivery for Civil Pro Builders" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-civil.webp') }}" alt="Skid steer loader delivery for Civil Pro Builders" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Skid Steer</span>
@@ -1824,7 +1824,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="3">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/march-typhon-machinery-deliverys-7-1.jpeg" alt="Warehouse forklift delivery for Regional Logistics" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-logistics.jpeg') }}" alt="Warehouse forklift delivery for Regional Logistics" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Warehouse Forklift</span>
@@ -1836,7 +1836,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="4">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image5.webp" alt="Typhon Series Loader delivery for Steelcore Mining Ops" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-steelcore.webp') }}" alt="Typhon Series Loader delivery for Steelcore Mining Ops" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Typhon Series Loader</span>
@@ -1848,7 +1848,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="5">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image4.webp" alt="Agri Utility Series delivery for Valley Cultivators" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-valley.webp') }}" alt="Agri Utility Series delivery for Valley Cultivators" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Agri/Utility Series</span>
@@ -1860,7 +1860,7 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="6">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://skidsteers.org/wp-content/uploads/2026/05/image3.webp" alt="Skidsteers delivery for Urban Development" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-urban.webp') }}" alt="Skidsteers delivery for Urban Development" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
                         <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Skidsteers</span>
@@ -1872,24 +1872,24 @@
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="7">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-road-roller-scaled.webp" alt="Double drum roller delivery for Highway Tech Inc." class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-forklift.webp') }}" alt="Electric forklift handover to a customer" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
-                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Double Drum Roller</span>
-                        <h3 class="mt-2 text-lg font-black tracking-tight text-[#071d38]">Highway Tech Inc.</h3>
-                        <p class="mt-3 text-sm leading-6 text-gray-600">The drum thickness is what sold us originally. Seeing it come off the trailer today confirmed it is built for serious road work.</p>
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Electric Forklift</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-[#071d38]">Warehouse Operations</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">The controls felt familiar immediately, and the compact chassis is ready for daily material handling work.</p>
                     </div>
                 </article>
 
                 <article class="group overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-xl" role="listitem" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
                     <meta itemprop="position" content="8">
                     <div class="aspect-[3/4] overflow-hidden bg-slate-900">
-                        <img src="https://machinery.org/wp-content/uploads/2026/03/machinery-delivery-skid-steer-scaled.webp" alt="Tracked skid steer delivery for Timber Supply Co." class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
+                        <img src="{{ asset('customer-handover-fleet.webp') }}" alt="Electric forklift fleet prepared for customer delivery" class="h-full w-full object-cover opacity-95 transition duration-700 group-hover:scale-105 group-hover:opacity-80" width="700" height="933" loading="lazy" decoding="async">
                     </div>
                     <div class="border-t-4 border-red-500 p-5">
-                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Tracked Skid Steer</span>
-                        <h3 class="mt-2 text-lg font-black tracking-tight text-[#071d38]">Timber Supply Co.</h3>
-                        <p class="mt-3 text-sm leading-6 text-gray-600">Needed raw power to punch through the mud. The undercarriage and track design are exactly what we ordered.</p>
+                        <span itemprop="name" class="text-[11px] font-black uppercase tracking-[0.22em] text-red-700">Forklift Fleet</span>
+                        <h3 class="mt-2 text-lg font-black tracking-tight text-[#071d38]">Distribution Center</h3>
+                        <p class="mt-3 text-sm leading-6 text-gray-600">A full fleet prepared together gives the team consistent controls, capacity, and service planning from the first shift.</p>
                     </div>
                 </article>
             </div>
