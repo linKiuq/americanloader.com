@@ -268,7 +268,11 @@
         }
 
         #mo-mosaic-stories .delivery-slider [role="listitem"] > div:first-of-type img {
-            object-fit: contain !important;
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover !important;
+            object-position: center center;
             opacity: 1 !important;
         }
 
