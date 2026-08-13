@@ -14,12 +14,13 @@ return new class extends Migration
             ['name' => 'Wheel Loader Insights']
         );
 
-        BlogPost::updateOrCreate(
-            ['slug' => 'wheel-loader-bucket-spillage-prevention'],
+        $posts = [
             [
-                'category_id' => $category->id,
+                'slug' => 'wheel-loader-bucket-spillage-prevention',
                 'title' => 'How to Reduce Your Wheel Loader Bucket Spillage During Material Transport',
                 'excerpt' => 'Stop losing profit to wheel loader bucket spillage. Master these 5 vital adjustments to travel speeds, bucket angles, and operator loading techniques.',
+                'image_url' => 'https://img.miniexcavator.org/ebay/Website-Team/class3-4July/14-july/b9-01.webp',
+                'published_at' => '2026-07-14 00:00:00',
                 'content' => <<<'MARKDOWN'
 ## Wheel Loader Bucket Spillage: 5 Vital Ways to Stop Costly Loss
 
@@ -76,15 +77,103 @@ Reducing bucket spillage comes down to controlling the details that quietly drai
 
 Each of these practices reinforces the others, so together they keep your loads intact from the pile to the drop point. Put them into practice on every cycle, and you will move more material with less waste, less cleanup, and a safer, more efficient operation. If your machine needs service or the right bucket for the job, reach out to your dealer to get equipped for dependable, spill-free material transport.
 MARKDOWN,
-                'image_url' => 'https://img.miniexcavator.org/ebay/Website-Team/class3-4July/14-july/b9-01.webp',
-                'is_published' => true,
-                'published_at' => Carbon::parse('2026-07-14 00:00:00'),
-            ]
-        );
+            ],
+            [
+                'slug' => 'attachments-wheel-loader',
+                'title' => 'Wheel Loader Attachments Guide',
+                'excerpt' => 'A practical guide to common wheel loader attachments, including buckets, forks, grapples, sweepers, snow tools, and material handling options.',
+                'image_url' => 'https://img.miniexcavator.org/ebay/Website-Team/class3-4July/4-july/b9-01.webp',
+                'published_at' => '2026-07-04 00:00:00',
+                'content' => <<<'MARKDOWN'
+## Wheel Loader Attachments Guide
+
+Wheel loader attachments make one machine useful for many different jobs. The right tool can help a loader scoop, lift, carry, clear, sweep, stack, and handle material more efficiently.
+
+## Common Wheel Loader Attachments
+
+Standard buckets are the everyday choice for dirt, gravel, mulch, feed, sand, and other loose material. Light material buckets are useful when the job involves high-volume, low-density material such as mulch, compost, grain, wood chips, or snow.
+
+Pallet forks help move bagged products, lumber, pipe, palletized material, attachments, and jobsite supplies. Grapple attachments help secure brush, logs, demolition debris, scrap, and irregular loads that can shift or spill from a standard bucket.
+
+## Snow Attachments
+
+Snow pushers, snow buckets, and snow blowers can turn a wheel loader into a strong winter cleanup machine. Open lots may benefit from a snow pusher, while tight sites or haul-off work may need a bucket. The best snow attachment depends on the site layout, snowfall volume, stacking space, and hauling plan.
+
+## Sweepers and Cleanup Tools
+
+Angle brooms and pickup brooms clean paved yards, warehouses, parking lots, streets, and construction areas. They remove dust, gravel, leaves, light snow, and debris faster than hand cleanup and help keep traffic areas safer.
+
+## Choosing the Right Attachment
+
+Start with the work the loader does most often. Match the attachment to the material, hydraulic setup, quick coupler, lift capacity, visibility, and working space. The best attachment is not always the largest one; it is the one the loader can use safely and efficiently all day.
+
+## Conclusion
+
+Wheel loader attachments expand what a single machine can do. Buckets, forks, grapples, snow tools, sweepers, and specialty tools all have a place when they match the loader and the job. Choose attachments around real daily tasks, not just occasional needs, and always stay within the machine's rated limits.
+MARKDOWN,
+            ],
+            [
+                'slug' => 'wheel-loader-vs-tractor-loader-performance',
+                'title' => 'Wheel Loader vs. Tractor Loader Performance',
+                'excerpt' => 'Compare wheel loader and tractor loader performance for lifting, loading, traction, maneuverability, attachments, and daily jobsite productivity.',
+                'image_url' => 'https://img.miniexcavator.org/ebay/Website-Team/class3-4July/30-june/b9-01.webp',
+                'published_at' => '2026-07-11 00:00:00',
+                'content' => <<<'MARKDOWN'
+## Wheel Loader vs. Tractor Loader Performance
+
+Wheel loaders and tractor loaders can both move material, lift supplies, and support outdoor work. They are not built for the same performance profile. A wheel loader is designed around loading, carrying, lifting, dumping, and repeated material handling. A tractor loader is usually a multi-purpose machine where the front loader is one part of a broader utility setup.
+
+## Wheel Loader Performance
+
+A wheel loader usually has the advantage when the main job is moving material all day. Its frame, lift arms, hydraulic system, counterweight, cab position, and steering are designed for efficient loading cycles. That makes it a strong fit for gravel yards, feed handling, snow removal, landscape supply yards, construction cleanup, and stockpile work.
+
+## Tractor Loader Performance
+
+A tractor loader can be a good fit when the machine needs to handle mixed farm, property, or utility jobs. It can use rear implements and PTO-powered tools, so it may be more flexible for mowing, grading, pulling, light loader work, and acreage maintenance.
+
+The tradeoff is that a tractor loader may not match a dedicated wheel loader in cycle speed, lift height, breakout force, visibility, or stability under heavy repeated bucket work.
+
+## Cycle Time and Productivity
+
+For repeated loading, cycle time matters. A wheel loader is built to enter a pile, fill the bucket, reverse, travel, lift, dump, and return with a smooth rhythm. A tractor loader can do lighter loading work, but it may need more careful positioning and slower handling with dense material or high loading targets.
+
+## Lift Capacity and Stability
+
+Wheel loaders are generally stronger for heavy carry-and-load tasks because their weight distribution and counterweight are designed for loader work. Tractor loaders can lift effectively within their rated limits, but rear ballast, tire setup, slope, and load height become especially important.
+
+## Which One Fits Best?
+
+Choose a wheel loader when most hours are spent loading, carrying, stacking, clearing, or handling material. Choose a tractor loader when the work is split across many property or farm tasks and loader work is only part of the schedule.
+
+## Conclusion
+
+The best machine depends on the job you do most often. If productivity depends on loader cycle time, lift strength, visibility, and stable material handling, a wheel loader is usually the stronger performance choice. If the job requires one machine for varied utility work, a tractor loader may be the more flexible option.
+MARKDOWN,
+            ],
+        ];
+
+        foreach ($posts as $post) {
+            BlogPost::updateOrCreate(
+                ['slug' => $post['slug']],
+                [
+                    'category_id' => $category->id,
+                    'title' => $post['title'],
+                    'excerpt' => $post['excerpt'],
+                    'content' => $post['content'],
+                    'image_url' => $post['image_url'],
+                    'is_published' => true,
+                    'published_at' => Carbon::parse($post['published_at']),
+                ]
+            );
+        }
     }
 
     public function down(): void
     {
-        BlogPost::where('slug', 'wheel-loader-bucket-spillage-prevention')->delete();
+        BlogPost::whereIn('slug', [
+            'wheel-loader-bucket-spillage-prevention',
+            'attachments-wheel-loader',
+            'wheel-loader-vs-tractor-loader-performance',
+        ])->delete();
     }
 };
