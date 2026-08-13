@@ -58,6 +58,13 @@ Route::get('/sitemap.xml', function (ProductCatalog $catalog, SupabaseCmsService
             'lastmod' => $today,
             'changefreq' => 'weekly',
             'priority' => 0.8,
+            'images' => collect($product['images'] ?? [$product['image'] ?? null])
+                ->filter()
+                ->unique()
+                ->take(10)
+                ->map(fn (string $image): array => ['loc' => $image])
+                ->values()
+                ->all(),
         ]);
 
     try {

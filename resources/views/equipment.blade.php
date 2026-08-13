@@ -112,7 +112,7 @@
                     </div>
                     <div class="relative">
                         <select id="sort-box" class="w-full bg-white border border-gray-300 rounded-lg px-4 py-2.5 text-[#071d38] text-sm focus:outline-none focus:border-red-500 transition appearance-none cursor-pointer pr-10">
-                            <option value="default">Default Sort</option>
+                            <option value="latest">Sort by Latest</option>
                             <option value="price-low">Price: Low to High</option>
                             <option value="price-high">Price: High to Low</option>
                             <option value="alpha">Alphabetical</option>
@@ -231,6 +231,16 @@
             return product.checkoutUrl || productStoreUrl(product.hash);
         }
 
+        function miniExcavatorPriority(product) {
+            const name = String(product.name || '').toUpperCase();
+
+            if (name.includes('XVII PRO') && name.includes('PRESTIGE')) return 0;
+            if (name.includes('XVII PRO')) return 1;
+            if (name.includes('XVIII')) return 2;
+
+            return 3;
+        }
+
         async function initializeCatalog() {
             const response = await fetch('/equipment-products.json');
             productsInventory = uniqueProducts(await response.json());
@@ -304,7 +314,16 @@
                 return matchesCategory && matchesQuery;
             });
 
-            if (sortSelection === 'price-low') {
+            if (sortSelection === 'latest') {
+                filteredProducts.sort((a, b) => {
+                    if (activeCategory === 'Mini Excavators') {
+                        const familyOrder = miniExcavatorPriority(a) - miniExcavatorPriority(b);
+                        if (familyOrder !== 0) return familyOrder;
+                    }
+
+                    return Number(b.id || 0) - Number(a.id || 0);
+                });
+            } else if (sortSelection === 'price-low') {
                 filteredProducts.sort((a, b) => a.price - b.price);
             } else if (sortSelection === 'price-high') {
                 filteredProducts.sort((a, b) => b.price - a.price);

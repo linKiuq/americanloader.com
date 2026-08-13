@@ -18,7 +18,9 @@ return [
         'Road Rollers',
         'Scissor Lifts',
     ],
-    'google_site_verification' => env('GOOGLE_SITE_VERIFICATION', 'google862afbc0daae0b2d.html'),
+    // The checked-in HTML verification file is the default verification method.
+    // Set this only to the token from Google's HTML-tag verification method.
+    'google_site_verification' => env('GOOGLE_SITE_VERIFICATION'),
     'phone' => env('SEO_PHONE', '+1-800-000-0000'),
     'email' => env('SEO_EMAIL', 'sales@typhonmachinery.com'),
     'address' => [

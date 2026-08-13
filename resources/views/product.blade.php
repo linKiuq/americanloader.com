@@ -193,6 +193,36 @@
                         </div>
                     </div>
 
+                    @php
+                        $categoryLabels = collect(explode(',', $product['categoryPath'] ?? ''))
+                            ->flatMap(fn (string $path) => collect(explode('>', $path))->map(fn (string $label) => trim($label)))
+                            ->filter(fn (string $label) => $label !== '' && !in_array($label, ['Attachment & Parts', 'Attachments'], true))
+                            ->push($product['category'] ?? null)
+                            ->filter()
+                            ->unique()
+                            ->values();
+                        $catalogRoot = str_contains($product['categoryPath'] ?? '', 'Equipment') ? 'Equipment' : 'Attachments';
+                        $categoryLabels = $categoryLabels->prepend($catalogRoot)->unique()->values();
+                    @endphp
+                    <dl class="mt-6 space-y-3 rounded-xl border border-gray-200 bg-gray-50 px-5 py-5 text-sm">
+                        <div class="flex flex-wrap gap-x-2">
+                            <dt class="font-black text-[#071d38]">SKU:</dt>
+                            <dd class="text-gray-600">{{ $product['sku'] ?: 'N/A' }}</dd>
+                        </div>
+                        <div class="flex flex-wrap gap-x-2">
+                            <dt class="font-black text-[#071d38]">Categories:</dt>
+                            <dd class="text-gray-600">{{ $categoryLabels->implode(', ') }}</dd>
+                        </div>
+                        <div class="flex flex-wrap gap-x-2">
+                            <dt class="font-black text-[#071d38]">Tag:</dt>
+                            <dd class="font-bold text-red-700">TYPHON</dd>
+                        </div>
+                        <div class="flex flex-wrap gap-x-2">
+                            <dt class="font-black text-[#071d38]">Brand:</dt>
+                            <dd class="text-gray-600">TYPHON</dd>
+                        </div>
+                    </dl>
+
                     <div class="mt-7 space-y-3 border-t border-gray-200 pt-7">
                         <a href="{{ $product['checkoutUrl'] ?? route('store') }}" class="inline-flex w-full items-center justify-center rounded-lg bg-red-700 px-7 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:bg-red-800">Explore Product</a>
                         <div class="grid grid-cols-2 gap-3">
