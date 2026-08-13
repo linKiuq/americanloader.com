@@ -573,6 +573,79 @@
         outline-offset: -2px;
     }
 
+    .site-navbar__search-results {
+        position: absolute;
+        top: calc(100% + 0.55rem);
+        right: 0;
+        z-index: 60;
+        width: min(420px, calc(100vw - 2rem));
+        max-height: min(480px, calc(100vh - 8rem));
+        overflow-y: auto;
+        padding: 0.45rem;
+        background: #fff;
+        border: 1px solid rgba(7, 29, 56, 0.12);
+        border-radius: 0.8rem;
+        box-shadow: 0 22px 50px rgba(7, 29, 56, 0.22);
+    }
+
+    .site-navbar__search-results[hidden] {
+        display: none;
+    }
+
+    .site-navbar__search-result {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr);
+        gap: 0.8rem;
+        align-items: center;
+        padding: 0.65rem;
+        color: var(--nav-ink);
+        border-radius: 0.6rem;
+        text-decoration: none;
+    }
+
+    .site-navbar__search-result:hover,
+    .site-navbar__search-result:focus,
+    .site-navbar__search-result.is-active {
+        background: #fef2f2;
+        outline: none;
+    }
+
+    .site-navbar__search-result-image {
+        width: 64px;
+        height: 54px;
+        object-fit: contain;
+        background: #f8fafc;
+        border-radius: 0.45rem;
+    }
+
+    .site-navbar__search-result-name {
+        display: -webkit-box;
+        overflow: hidden;
+        color: var(--nav-ink);
+        font-size: 0.82rem;
+        font-weight: 800;
+        line-height: 1.3;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    .site-navbar__search-result-meta {
+        display: block;
+        margin-top: 0.3rem;
+        color: #64748b;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+    }
+
+    .site-navbar__search-status {
+        padding: 1rem;
+        color: #64748b;
+        font-size: 0.8rem;
+        text-align: center;
+    }
+
     @media (max-width: 2200px) {
         .site-navbar__inner {
             gap: 1.1rem;
@@ -1096,6 +1169,7 @@
                     <svg class="site-navbar__search-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="m21 21-4.4-4.4m2-5.1a7.1 7.1 0 1 1-14.2 0 7.1 7.1 0 0 1 14.2 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
+                    <div class="site-navbar__search-results" role="listbox" aria-label="Product suggestions" hidden></div>
                 </form>
             </div>
             <button type="button" class="site-navbar__hamburger" aria-expanded="false" aria-controls="mobile-menu-drawer" aria-label="Open navigation menu">
@@ -1206,10 +1280,130 @@
         document.querySelectorAll('.site-navbar__search-shell').forEach((shell) => {
             const toggle = shell.querySelector('.site-navbar__search-toggle');
             const input = shell.querySelector('.site-navbar__search-input');
+            const results = shell.querySelector('.site-navbar__search-results');
 
-            if (! toggle || ! input) {
+            if (! toggle || ! input || ! results) {
                 return;
             }
+
+            let products = null;
+            let searchTimer = null;
+            let activeResult = -1;
+
+            const hideResults = () => {
+                results.hidden = true;
+                results.replaceChildren();
+                activeResult = -1;
+                input.removeAttribute('aria-activedescendant');
+            };
+
+            const showStatus = (message) => {
+                const status = document.createElement('div');
+                status.className = 'site-navbar__search-status';
+                status.textContent = message;
+                results.replaceChildren(status);
+                results.hidden = false;
+            };
+
+            const productSearchText = (product) => [
+                product.name,
+                product.sku,
+                product.category,
+                product.subcategory,
+                product.categoryPath,
+            ].filter(Boolean).join(' ').toLowerCase();
+
+            const loadProducts = async () => {
+                if (products) {
+                    return products;
+                }
+
+                const response = await fetch('{{ asset('equipment-products.json') }}', {
+                    headers: { Accept: 'application/json' },
+                });
+
+                if (! response.ok) {
+                    throw new Error('Unable to load the product catalog.');
+                }
+
+                products = await response.json();
+                return products;
+            };
+
+            const renderResults = (matches) => {
+                results.replaceChildren();
+                activeResult = -1;
+
+                if (matches.length === 0) {
+                    showStatus('No matching products found.');
+                    return;
+                }
+
+                matches.forEach((product, index) => {
+                    const link = document.createElement('a');
+                    const image = document.createElement('img');
+                    const content = document.createElement('span');
+                    const name = document.createElement('span');
+                    const meta = document.createElement('span');
+
+                    link.id = `navbar-search-result-${index}`;
+                    link.className = 'site-navbar__search-result';
+                    link.href = product.detailUrl || product.checkoutUrl || product.hash || '#';
+                    link.setAttribute('role', 'option');
+
+                    image.className = 'site-navbar__search-result-image';
+                    image.src = product.image || '';
+                    image.alt = '';
+                    image.loading = 'lazy';
+
+                    name.className = 'site-navbar__search-result-name';
+                    name.textContent = product.name || 'Product';
+
+                    meta.className = 'site-navbar__search-result-meta';
+                    meta.textContent = [product.category, product.sku].filter(Boolean).join(' · ');
+
+                    content.append(name, meta);
+                    link.append(image, content);
+                    results.append(link);
+                });
+
+                results.hidden = false;
+            };
+
+            const searchProducts = async () => {
+                const query = input.value.trim().toLowerCase();
+
+                if (query.length < 2) {
+                    hideResults();
+                    return;
+                }
+
+                showStatus('Searching products…');
+
+                try {
+                    const catalog = await loadProducts();
+                    const currentQuery = input.value.trim().toLowerCase();
+
+                    if (currentQuery !== query) {
+                        return;
+                    }
+
+                    const matches = catalog
+                        .filter((product) => productSearchText(product).includes(query))
+                        .sort((a, b) => {
+                            const aName = (a.name || '').toLowerCase();
+                            const bName = (b.name || '').toLowerCase();
+                            const aStarts = aName.startsWith(query) ? 0 : 1;
+                            const bStarts = bName.startsWith(query) ? 0 : 1;
+                            return aStarts - bStarts || aName.localeCompare(bName);
+                        })
+                        .slice(0, 6);
+
+                    renderResults(matches);
+                } catch (error) {
+                    showStatus('Product suggestions are unavailable. Press Enter to search.');
+                }
+            };
 
             const setOpen = (open) => {
                 shell.classList.toggle('is-open', open);
@@ -1225,14 +1419,56 @@
                 setOpen(! shell.classList.contains('is-open'));
             });
 
+            input.setAttribute('autocomplete', 'off');
+            input.setAttribute('aria-autocomplete', 'list');
+            input.setAttribute('aria-controls', 'navbar-search-suggestions');
+            results.id = 'navbar-search-suggestions';
+
+            input.addEventListener('input', () => {
+                window.clearTimeout(searchTimer);
+                searchTimer = window.setTimeout(searchProducts, 180);
+            });
+
+            input.addEventListener('focus', () => {
+                if (input.value.trim().length >= 2) {
+                    searchProducts();
+                }
+            });
+
+            input.addEventListener('keydown', (event) => {
+                const links = [...results.querySelectorAll('.site-navbar__search-result')];
+
+                if (results.hidden || links.length === 0) {
+                    return;
+                }
+
+                if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+                    event.preventDefault();
+                    links.forEach((link) => link.classList.remove('is-active'));
+                    const direction = event.key === 'ArrowDown' ? 1 : -1;
+                    activeResult = (activeResult + direction + links.length) % links.length;
+                    links[activeResult].classList.add('is-active');
+                    links[activeResult].scrollIntoView({ block: 'nearest' });
+                    input.setAttribute('aria-activedescendant', links[activeResult].id);
+                } else if (event.key === 'Enter' && activeResult >= 0) {
+                    event.preventDefault();
+                    window.location.href = links[activeResult].href;
+                } else if (event.key === 'Escape') {
+                    event.stopPropagation();
+                    hideResults();
+                }
+            });
+
             document.addEventListener('click', (event) => {
                 if (! shell.contains(event.target)) {
+                    hideResults();
                     setOpen(false);
                 }
             });
 
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
+                    hideResults();
                     setOpen(false);
                     toggle.focus();
                 }

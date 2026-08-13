@@ -1297,8 +1297,8 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-12">
                 <span class="text-skoopYellow font-black text-xs uppercase tracking-widest mb-2 block">// EXPLORE OUR FLEET</span>
-                <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-4xl uppercase tracking-tight">Featured Wheel Loader Models</h2>
-                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Shop the top loader machines from our equipment catalog, including the new Telescopic Wheel Loader, Thunder VI, and TYPHON TERROR Backhoe Loader.</p>
+                <h2 style="font-family: 'Archivo Black', sans-serif;" class="text-3xl md:text-4xl uppercase tracking-tight">Featured Wheel Loaders &amp; Attachments</h2>
+                <p class="mt-4 text-gray-600 max-w-2xl mx-auto">Shop the Telescopic Wheel Loader and purpose-built SKOOP attachments, including the heavy-duty log grapple and hydraulic pallet fork.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1320,32 +1320,32 @@
 
                 <article class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
                     <div class="relative overflow-hidden h-72 bg-gray-100">
-                        <img src="https://machinery.online/wp-content/uploads/2025/03/TYPHON-Thunder-VI-23hp-EPA-BS-Engine-Wheel-Loader-scaled-1.webp" alt="TYPHON Thunder VI Wheel Loader" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
+                        <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/80100025/products/843668254/5836129613.jpg" alt="TYPHON SKOOP heavy-duty wheel loader log grapple attachment" class="w-full h-full object-contain transition duration-500 group-hover:scale-105">
+                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">SKOOP Attachments</span>
                     </div>
                     <div class="p-6">
-                        <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Equipment</p>
-                        <h3 class="text-lg font-black uppercase tracking-tight text-[#071d38] mb-3">TYPHON Thunder VI 23hp</h3>
-                        <p class="text-sm text-gray-600 mb-6">EPA B&S engine wheel loader engineered for agile site work, fast loading, and reliable performance.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Attachment</p>
+                        <h3 class="text-lg font-black uppercase tracking-tight text-[#071d38] mb-3">TYPHON SKOOP Heavy-Duty Log Grapple</h3>
+                        <p class="text-sm text-gray-600 mb-6">Robust 295 lb log and brush handler with a 6+4 tine grip for compatible SKOOP wheel loaders.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-[#071d38] text-lg font-black">Quote on request</span>
-                            <a href="{{ route('product.show', 'typhon-thunder-vi-23hp-epa-b-s-engine-wheel-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-red-800 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'typhon-skoop-heavy-duty-wheel-loader-log-grapple-295-lbs-robust-log-brush-handler-with-64-tine-grip') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-red-800 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
 
                 <article class="group bg-white border border-gray-200 rounded-3xl overflow-hidden shadow-sm hover:shadow-lg transition duration-300">
                     <div class="relative overflow-hidden h-72 bg-gray-100">
-                        <img src="https://machinery.online/wp-content/uploads/2025/03/Brand-New-TYPHON-TERROR-4WD-Backhoe-Loader-USA.webp" alt="Brand New TYPHON TERROR 4WD Backhoe Loader" class="w-full h-full object-cover transition duration-500 group-hover:scale-105">
-                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">Wheel Loaders</span>
+                        <img src="https://d2j6dbq0eux0bg.cloudfront.net/images/80100025/products/843665003/5836138008.jpg" alt="TYPHON SKOOP hydraulic pallet fork attachment for wheel loaders" class="w-full h-full object-contain transition duration-500 group-hover:scale-105">
+                        <span class="absolute top-4 left-4 bg-skoopYellow text-white text-[10px] font-black uppercase tracking-widest px-3 py-1 rounded-full">SKOOP Attachments</span>
                     </div>
                     <div class="p-6">
-                        <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Equipment</p>
-                        <h3 class="text-lg font-black uppercase tracking-tight text-[#071d38] mb-3">TYPHON TERROR 4WD Backhoe Loader</h3>
-                        <p class="text-sm text-gray-600 mb-6">Heavy-duty 4WD backhoe loader for tough digging, loading, and yard-moving jobs.</p>
+                        <p class="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">Attachment</p>
+                        <h3 class="text-lg font-black uppercase tracking-tight text-[#071d38] mb-3">TYPHON SKOOP Hydraulic Pallet Fork</h3>
+                        <p class="text-sm text-gray-600 mb-6">43-inch hydraulic pallet fork rated for 11.1 GPM and built for compatible SKOOP wheel loaders.</p>
                         <div class="flex items-center justify-between gap-4">
                             <span class="text-[#071d38] text-lg font-black">Quote on request</span>
-                            <a href="{{ route('product.show', 'brand-new-typhon-terror-4wd-backhoe-loader-usa') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-red-800 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
+                            <a href="{{ route('product.show', 'typhon-skoop-hydraulic-pallet-fork-attachment-for-wheel-loader-43-inch-111-gpm') }}" class="inline-flex items-center justify-center bg-skoopYellow hover:bg-red-800 text-white text-sm font-black uppercase tracking-[0.18em] px-4 py-3 rounded-2xl transition">View</a>
                         </div>
                     </div>
                 </article>
