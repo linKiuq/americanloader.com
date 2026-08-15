@@ -40,11 +40,11 @@ return new class extends Migration
             ],
             'typhon-stomp-x1300-mini-skid-steer-loader-best-mini-skid-steer-for-small-property-work' => [
                 'original' => 'https://kaaekveaaoriacwzzrnf.supabase.co/storage/v1/object/public/cms-media/1d463b79-438f-4f2b-9e88-acd42a324c27/blog/1781313219042-lhlfp0y-task-image-2026-06-13T0113.webp',
-                'replacement' => 'https://wheelloader.org/wp-content/uploads/2026/07/1-37.webp',
+                'replacement' => 'https://wheelloader.org/wp-content/uploads/2026/07/5894215154.jpg',
             ],
             'best-mini-skid-steer-for-small-property-work' => [
                 'original' => 'https://kaaekveaaoriacwzzrnf.supabase.co/storage/v1/object/public/cms-media/1d463b79-438f-4f2b-9e88-acd42a324c27/blog/1781313371315-xlt83s6-task-image-2026-06-13T0116.webp',
-                'replacement' => 'https://wheelloader.org/wp-content/uploads/2026/07/1-37.webp',
+                'replacement' => 'https://wheelloader.org/wp-content/uploads/2026/07/5927664001.jpg',
             ],
         ];
     }
