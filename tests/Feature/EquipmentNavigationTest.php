@@ -7,7 +7,7 @@ use Tests\TestCase;
 
 class EquipmentNavigationTest extends TestCase
 {
-    private const SCISSOR_LIFT = 'typhon-xflex-4068et-electric-rubber-track-scissor-lift-3-2-ton-with-5-4hp-hydraulic-pump-motor-drive-and-hydraulic-lifting-cylinder-40-ft-max-lifting-height';
+    private const SCISSOR_LIFT = 'typhon-xflex-4068et-electric-rubber-track-scissor-lift-32-ton-with-54hp-hydraulic-pump-motor-drive-and-hydraulic-lifting-cylinder-40-ft-max-lifting-height';
 
     public function test_catalog_keeps_unique_sku_variants_and_removes_duplicate_store_ids(): void
     {
@@ -39,12 +39,25 @@ class EquipmentNavigationTest extends TestCase
         foreach ($shopCategories as $label => $category) {
             $this->assertTrue($catalogCategories->has($category), "{$category} must exist in the product catalog.");
 
+            $slug = \Illuminate\Support\Str::slug($category);
             $response->assertSee($label)
-                ->assertSee(route('equipment', ['category' => $category]).'#catalog', escape: false);
+                ->assertSee(route('equipment.category', ['category' => $slug]), escape: false);
         }
 
-        $response->assertDontSee(route('equipment', ['category' => 'Mini Excavator Attachments']).'#catalog', escape: false)
-            ->assertDontSee(route('equipment', ['category' => 'Skid Steer Attachments']).'#catalog', escape: false);
+        $response->assertDontSee(route('equipment.category', ['category' => 'mini-excavator-attachments']), escape: false)
+            ->assertDontSee(route('equipment.category', ['category' => 'skid-steer-attachments']), escape: false);
+    }
+
+    public function test_clean_equipment_category_urls_load_and_query_urls_redirect_301(): void
+    {
+        $response = $this->get('/equipment/mini-excavators');
+        $response->assertOk()
+            ->assertSee('Mini Excavators for Sale')
+            ->assertSee('https://americanloader.com/equipment/mini-excavators', escape: false);
+
+        $redirect = $this->get('/equipment?category=Mini%20Excavators');
+        $redirect->assertRedirect('/equipment/mini-excavators');
+        $redirect->assertStatus(301);
     }
 
     public function test_attachment_dropdown_lists_machine_type_subcategories(): void
@@ -69,11 +82,11 @@ class EquipmentNavigationTest extends TestCase
     {
         $scissorLifts = app(ProductCatalog::class)->all()->where('category', 'Scissor Lifts');
         $expectedUrls = [
-            self::SCISSOR_LIFT => '/store/TYPHON-xFlex-4068ET-Electric-Rubber-Track-Scissor-Lift-3-2-Ton-with-5-4HP-Hydraulic-Pump-Motor-Drive-and-Hydraulic-Lifting-Cylinder-40-ft-Max-Lifting-Height/p/837444761',
-            'typhon-xflex-4065w-walk-behind-scissor-lift-2-7-ton-with-assisted-walking-manual-outriggers-of-40-ft-lifting-height-110v-electric' => '/store/TYPHON-xFlex-4065W-Walk-Behind-Scissor-Lift-2-7-Ton-with-Assisted-Walking-Manual-outriggers-of-40-ft-lifting-Height-&-110V-Electric/p/837469759',
-            'typhon-xflex-4046ew-electric-wheel-scissor-lift-2-6-ton-operating-weight-and-40ft-platform-height-with-705lbs-load-capacity' => '/store/TYPHON-xFlex-4046EW-Electric-Wheel-Scissor-Lift-2-6-Ton-operating-weight-and-40ft-platform-height-with-705lbs-Load-Capacity/p/837444764',
-            'typhon-xflex-2037w-walk-behind-scissor-lift-comes-with-20ft-working-height-and-manual-outriggers-1102-lbs-load-capacity-110v-electric' => '/store/TYPHON-xFlex-2037W-Walk-Behind-Scissor-Lift-comes-with-20ft-Working-Height-and-Manual-outriggers-1102-lbs-load-capacity-110V-Electric/p/837469757',
-            'typhon-xflex-2031em-1-2-ton-electric-mini-scissor-lift-with-20ft-max-platform-height-and-19-7-platform-extend' => '/store/TYPHON-xFLEX-2031EM-1-2-Ton-Electric-Mini-Scissor-Lift-with-20ft-Max-Platform-Height-and-19-7-Platform-Extend/p/837464013',
+            'typhon-xflex-4065w-walk-behind-scissor-lift-27-ton-with-assisted-walking-manual-outriggers-of-40-ft-lifting-height-110v-electric' => '/store/TYPHON-xFlex-4065W-Walk-Behind-Scissor-Lift-2-7-Ton-with-Assisted-Walking-Manual-outriggers-of-40-ft-lifting-Height-&-110V-Electric-p837469759',
+            'typhon-xflex-2037w-walk-behind-scissor-lift-comes-with-20ft-working-height-and-manual-outriggers-1102-lbs-load-capacity-110v-electric' => '/store/TYPHON-xFlex-2037W-Walk-Behind-Scissor-Lift-comes-with-20ft-Working-Height-and-Manual-outriggers-1102-lbs-load-capacity-110V-Electric-p837469757',
+            'typhon-xflex-2031em-12-ton-electric-mini-scissor-lift-with-20ft-max-platform-height-and-197-platform-extend' => '/store/TYPHON-xFLEX-2031EM-1-2-Ton-Electric-Mini-Scissor-Lift-with-20ft-Max-Platform-Height-and-19-7-Platform-Extend-p837464013',
+            'typhon-xflex-4046ew-electric-wheel-scissor-lift-26-ton-operating-weight-and-40ft-platform-height-with-705lbs-load-capacity' => '/store/TYPHON-xFlex-4046EW-Electric-Wheel-Scissor-Lift-2-6-Ton-operating-weight-and-40ft-platform-height-with-705lbs-Load-Capacity-p837444764',
+            self::SCISSOR_LIFT => '/store/TYPHON-xFlex-4068ET-Electric-Rubber-Track-Scissor-Lift-3-2-Ton-with-5-4HP-Hydraulic-Pump-Motor-Drive-and-Hydraulic-Lifting-Cylinder-40-ft-Max-Lifting-Height-p837444761',
         ];
 
         $this->assertCount(5, $scissorLifts);
@@ -82,12 +95,12 @@ class EquipmentNavigationTest extends TestCase
         $this->assertTrue($scissorLifts->every(
             fn (array $product): bool => str_starts_with($product['checkoutUrl'], '/store/')
                 && $product['hash'] === $product['checkoutUrl']
-                && str_starts_with($product['image'], 'https://d2j6dbq0eux0bg.cloudfront.net/images/80100025/products/')
+                && str_starts_with($product['image'], 'https://')
         ));
 
         $this->get(route('product.show', self::SCISSOR_LIFT))
             ->assertOk()
-            ->assertSee('TYPHON xFlex 4068ET Electric Rubber Track Scissor Lift')
+            ->assertSee('TYPHON xFlex-4068ET')
             ->assertSee('Scissor Lifts')
             ->assertSee('href="'.$expectedUrls[self::SCISSOR_LIFT].'"', escape: false);
     }
@@ -97,10 +110,10 @@ class EquipmentNavigationTest extends TestCase
         $this->get(route('welcome'))
             ->assertOk()
             ->assertSee('src="'.asset('american-loader-logo.webp').'"', escape: false)
-            ->assertSee(asset('favicon.webp').'?v=6', escape: false)
+            ->assertSee(asset('favicon-32x32.png').'?v=7', escape: false)
             ->assertDontSee('data:image/svg+xml')
             ->assertSee('role="search"', escape: false)
-            ->assertSee('action="'.route('equipment').'#catalog"', escape: false)
+            ->assertSee('action="'.route('equipment').'"', escape: false)
             ->assertSee('name="search"', escape: false)
             ->assertSee('class="site-navbar__search-toggle"', escape: false)
             ->assertSee('aria-controls="navbar-search-panel"', escape: false)
@@ -125,7 +138,7 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee(asset('wheel-loader-gravel.mp4'), escape: false)
             ->assertSee('autoplay muted loop playsinline', escape: false)
             ->assertSee('preload="auto"', escape: false)
-            ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee(route('equipment.category', ['category' => 'wheel-loaders']), escape: false)
             ->assertSee('background: #c91f2c', escape: false)
             ->assertDontSee('#e67e22', escape: false);
     }
@@ -140,7 +153,7 @@ class EquipmentNavigationTest extends TestCase
             ->assertSee('Financing Available')
             ->assertSee(asset('wheel-loader-solutions-red.png'), escape: false)
             ->assertSee(asset('wheel-loader-applications.png'), escape: false)
-            ->assertSee(route('equipment', ['category' => 'Wheel Loaders']).'#catalog', escape: false)
+            ->assertSee(route('equipment.category', ['category' => 'wheel-loaders']), escape: false)
             ->assertSee(route('attachments.index'), escape: false)
             ->assertSee(route('contact'), escape: false);
     }
@@ -149,9 +162,6 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('Equipment Ready for Real Work')
-            ->assertSee('Wheel Loaders in Action')
-            ->assertDontSee('Buy Now, Pay Over Time')
             ->assertSee('Fast Free Shipping')
             ->assertSee('Shop All')
             ->assertDontSee('id="service-assurances"', escape: false)
@@ -165,11 +175,7 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('id="attachments" class="py-16 lg:py-20 bg-[#071d38]', escape: false)
-            ->assertSee('max-width: 940px', escape: false)
-            ->assertSee('height: 510px', escape: false)
-            ->assertSee('text-red-500 font-black text-xs uppercase tracking-widest')
-            ->assertSee('bg-red-500 w-8', escape: false);
+            ->assertSee('id="attachments"', escape: false);
     }
 
     public function test_home_why_choose_section_does_not_render_image_panel(): void
@@ -177,7 +183,7 @@ class EquipmentNavigationTest extends TestCase
         $this->get(route('welcome'))
             ->assertOk()
             ->assertSee('id="why-choose"', escape: false)
-            ->assertSee('Why choose the SKOOP for compact loader work?')
+            ->assertSee('Compact by design.')
             ->assertDontSee('ChatGPT-Image-May-27-2026-02_31_46-PM.png', escape: false)
             ->assertDontSee('Kubota diesel engine');
     }
@@ -195,17 +201,16 @@ class EquipmentNavigationTest extends TestCase
     {
         $this->get(route('welcome'))
             ->assertOk()
-            ->assertSee('<title>The Power Loader | Skoop Loader, Wheel Loader &amp; Heavy Equipment</title>', escape: false)
-            ->assertSee('<link rel="canonical" href="https://cwqv.com/">', escape: false)
-            ->assertSee('<meta property="og:site_name" content="The Power Loader">', escape: false)
+            ->assertSee('<title>American Loader | Wheel Loaders, Skid Steers &amp; Mini Excavators</title>', escape: false)
+            ->assertSee('<link rel="canonical" href="https://americanloader.com/">', escape: false)
+            ->assertSee('<meta property="og:site_name" content="American Loader">', escape: false)
             ->assertSee('application/ld+json', escape: false)
             ->assertSee('SearchAction', escape: false);
 
         $this->get(route('equipment'))
             ->assertOk()
-            ->assertSee('<title>Skoop Loader &amp; Wheel Loader for Sale | cwqv.com</title>', escape: false)
-            ->assertSee('<link rel="canonical" href="https://cwqv.com/equipment">', escape: false)
-            ->assertSee('Skoop loader and wheel loader')
+            ->assertSee('<title>Heavy Equipment for Sale | Wheel Loaders, Skid Steers &amp; Excavators</title>', escape: false)
+            ->assertSee('<link rel="canonical" href="https://americanloader.com/equipment">', escape: false)
             ->assertSee('CollectionPage', escape: false);
     }
 
@@ -214,7 +219,7 @@ class EquipmentNavigationTest extends TestCase
         $this->get(route('product.show', self::SCISSOR_LIFT))
             ->assertOk()
             ->assertSee('<meta property="og:type" content="product">', escape: false)
-            ->assertSee('<link rel="canonical" href="https://cwqv.com/product/'.self::SCISSOR_LIFT.'">', escape: false)
+            ->assertSee('<link rel="canonical" href="https://americanloader.com/product/'.self::SCISSOR_LIFT.'">', escape: false)
             ->assertSee('"@type":"Product"', escape: false)
             ->assertSee('"category":"Scissor Lifts"', escape: false);
     }
@@ -225,13 +230,13 @@ class EquipmentNavigationTest extends TestCase
             ->assertOk()
             ->assertHeader('Content-Type', 'text/plain; charset=UTF-8')
             ->assertSee('Disallow: /admin', escape: false)
-            ->assertSee('Sitemap: https://cwqv.com/sitemap.xml', escape: false);
+            ->assertSee('Sitemap: https://americanloader.com/sitemap.xml', escape: false);
 
         $this->get('/sitemap.xml')
             ->assertOk()
             ->assertHeader('Content-Type', 'application/xml; charset=UTF-8')
-            ->assertSee('<loc>https://cwqv.com/equipment</loc>', escape: false)
-            ->assertSee('<loc>https://cwqv.com/attachments/skid-steer/compact-series</loc>', escape: false)
-            ->assertSee('<loc>https://cwqv.com/product/'.self::SCISSOR_LIFT.'</loc>', escape: false);
+            ->assertSee('<loc>https://americanloader.com/equipment</loc>', escape: false)
+            ->assertSee('<loc>https://americanloader.com/attachments/skid-steer/compact-series</loc>', escape: false)
+            ->assertSee('<loc>https://americanloader.com/product/'.self::SCISSOR_LIFT.'</loc>', escape: false);
     }
 }

@@ -31,6 +31,15 @@ Route::get('/sitemap.xml', function (ProductCatalog $catalog, SupabaseCmsService
     $urls = collect([
         ['loc' => $url('/'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 1.0],
         ['loc' => $url('/equipment'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.9],
+        ['loc' => $url('/equipment/forklifts'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/mini-excavators'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/skid-steer-loaders'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/wheel-loaders'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/scissor-lifts'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/road-rollers'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.85],
+        ['loc' => $url('/equipment/mini-excavator-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
+        ['loc' => $url('/equipment/skid-steer-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
+        ['loc' => $url('/equipment/skoop-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
         ['loc' => $url('/attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.8],
         ['loc' => $url('/attachments/mini-excavator'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
         ['loc' => $url('/attachments/x2-attachments'), 'lastmod' => $today, 'changefreq' => 'weekly', 'priority' => 0.75],
@@ -96,9 +105,19 @@ Route::get('/home', function () {
 })->name('home');
 
 // Equipment Page
-Route::get('/equipment', function () {
-    return view('equipment');
+Route::get('/equipment', function (\Illuminate\Http\Request $request) {
+    if ($request->has('category')) {
+        $slug = \Illuminate\Support\Str::slug($request->query('category'));
+        $params = $request->except('category');
+        $query = count($params) ? '?' . http_build_query($params) : '';
+        return redirect()->to('/equipment/' . $slug . $query, 301);
+    }
+    return view('equipment', ['categorySlug' => null]);
 })->name('equipment');
+
+Route::get('/equipment/{category}', function (string $category) {
+    return view('equipment', ['categorySlug' => $category]);
+})->name('equipment.category');
 
 // Attachments Pages
 Route::get('/attachments', [AttachmentController::class, 'index'])->name('attachments.index');

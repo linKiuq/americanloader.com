@@ -1,3 +1,18 @@
+@php
+    $categorySlug = $categorySlug ?? null;
+    $catalog = app(\App\Support\ProductCatalog::class)->all();
+    $activeCategoryName = null;
+    if ($categorySlug) {
+        $found = $catalog->first(fn($p) => \Illuminate\Support\Str::slug($p['category']) === $categorySlug);
+        if ($found) {
+            $activeCategoryName = $found['category'];
+        }
+    }
+    $pageTitle = $activeCategoryName
+        ? $activeCategoryName . ' for Sale | American Loader'
+        : 'Heavy Equipment for Sale | Wheel Loaders, Skid Steers & Excavators';
+    $canonicalUrl = config('seo.site_url') . ($categorySlug ? '/equipment/' . $categorySlug : '/equipment');
+@endphp
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -5,16 +20,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
     @include('partials.seo', [
-        'title' => 'Heavy Equipment for Sale | Wheel Loaders, Skid Steers & Excavators',
-        'description' => 'Browse American Loader equipment: TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and attachments.',
+        'title' => $pageTitle,
+        'description' => $activeCategoryName
+            ? 'Browse ' . $activeCategoryName . ' at American Loader: high quality machinery, attachments, fast shipping and warranty protection.'
+            : 'Browse American Loader equipment: TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and attachments.',
         'keywords' => config('seo.keywords'),
-        'imageAlt' => 'TYPHON wheel loaders, skid steer loaders, and STORM mini excavators',
+        'imageAlt' => ($activeCategoryName ?? 'TYPHON wheel loaders') . ', skid steer loaders, and STORM mini excavators',
         'jsonLd' => [
             '@type' => 'CollectionPage',
-            '@id' => config('seo.site_url') . '/equipment#collection',
-            'name' => 'American Loader Heavy Equipment for Sale',
-            'description' => 'Catalog of TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and machine attachments.',
-            'url' => config('seo.site_url') . '/equipment',
+            '@id' => $canonicalUrl . '#collection',
+            'name' => ($activeCategoryName ? $activeCategoryName . ' for Sale' : 'American Loader Heavy Equipment for Sale'),
+            'description' => 'Catalog of ' . ($activeCategoryName ?? 'TYPHON wheel loaders, skid steer loaders, STORM mini excavators') . ', forklifts, road rollers, scissor lifts, and machine attachments.',
+            'url' => $canonicalUrl,
         ],
     ])
     <script src="https://cdn.tailwindcss.com"></script>
@@ -198,22 +215,42 @@
             });
         }
 
+        function categorySlug(category) {
+            return String(category || '').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+        }
+
         function selectedCategoryFromUrl() {
+            const serverSlug = "{{ $categorySlug ?? '' }}";
+            const pathParts = window.location.pathname.replace(/\/$/, '').split('/');
+            const pathSlug = pathParts.length >= 3 && pathParts[1] === 'equipment' ? pathParts[2] : null;
+            const targetSlug = pathSlug || serverSlug;
+
+            if (targetSlug) {
+                const match = productsInventory.find(product => categorySlug(product.category) === targetSlug.toLowerCase());
+                if (match) return match.category;
+            }
+
             const requestedCategory = new URLSearchParams(window.location.search).get('category');
-            return productsInventory.some(product => product.category === requestedCategory) ? requestedCategory : 'All';
+            if (requestedCategory) {
+                const match = productsInventory.find(product => product.category === requestedCategory || categorySlug(product.category) === categorySlug(requestedCategory));
+                if (match) return match.category;
+            }
+
+            return 'All';
         }
 
         function updateCatalogUrl(category) {
-            const url = new URL(window.location.href);
+            const searchParams = new URLSearchParams(window.location.search);
+            searchParams.delete('category');
+            const searchString = searchParams.toString() ? '?' + searchParams.toString() : '';
 
-            if (category === 'All') {
-                url.searchParams.delete('category');
-            } else {
-                url.searchParams.set('category', category);
+            let newPath = '/equipment';
+            if (category !== 'All') {
+                newPath = `/equipment/${categorySlug(category)}`;
             }
 
-            url.hash = 'catalog';
-            window.history.replaceState({}, '', url);
+            const newUrl = `${newPath}${searchString}`;
+            window.history.replaceState({}, '', newUrl);
         }
 
         function productStoreUrl(productHash) {

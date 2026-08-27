@@ -16,14 +16,14 @@
                     '@id' => config('seo.site_url') . '/#featured-equipment',
                     'name' => 'American Loader equipment categories',
                     'itemListElement' => [
-                        ['@type' => 'ListItem', 'position' => 1, 'name' => 'TYPHON Wheel Loaders', 'url' => config('seo.site_url') . '/equipment?category=Wheel%20Loaders'],
-                        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Skid Steer Loaders', 'url' => config('seo.site_url') . '/equipment?category=Skid%20Steer%20Loaders'],
-                        ['@type' => 'ListItem', 'position' => 3, 'name' => 'STORM Mini Excavators', 'url' => config('seo.site_url') . '/equipment?category=Mini%20Excavators'],
-                        ['@type' => 'ListItem', 'position' => 4, 'name' => 'Mini Excavator Attachments', 'url' => config('seo.site_url') . '/equipment?category=Mini%20Excavator%20Attachments'],
-                        ['@type' => 'ListItem', 'position' => 5, 'name' => 'Skid Steer Attachments', 'url' => config('seo.site_url') . '/equipment?category=Skid%20Steer%20Attachments'],
-                        ['@type' => 'ListItem', 'position' => 6, 'name' => 'Electric Forklifts', 'url' => config('seo.site_url') . '/equipment?category=Forklifts'],
-                        ['@type' => 'ListItem', 'position' => 7, 'name' => 'Road Rollers', 'url' => config('seo.site_url') . '/equipment?category=Road%20Rollers'],
-                        ['@type' => 'ListItem', 'position' => 8, 'name' => 'Scissor Lifts', 'url' => config('seo.site_url') . '/equipment?category=Scissor%20Lifts'],
+                        ['@type' => 'ListItem', 'position' => 1, 'name' => 'TYPHON Wheel Loaders', 'url' => config('seo.site_url') . '/equipment/wheel-loaders'],
+                        ['@type' => 'ListItem', 'position' => 2, 'name' => 'Skid Steer Loaders', 'url' => config('seo.site_url') . '/equipment/skid-steer-loaders'],
+                        ['@type' => 'ListItem', 'position' => 3, 'name' => 'STORM Mini Excavators', 'url' => config('seo.site_url') . '/equipment/mini-excavators'],
+                        ['@type' => 'ListItem', 'position' => 4, 'name' => 'Mini Excavator Attachments', 'url' => config('seo.site_url') . '/equipment/mini-excavator-attachments'],
+                        ['@type' => 'ListItem', 'position' => 5, 'name' => 'Skid Steer Attachments', 'url' => config('seo.site_url') . '/equipment/skid-steer-attachments'],
+                        ['@type' => 'ListItem', 'position' => 6, 'name' => 'Electric Forklifts', 'url' => config('seo.site_url') . '/equipment/forklifts'],
+                        ['@type' => 'ListItem', 'position' => 7, 'name' => 'Road Rollers', 'url' => config('seo.site_url') . '/equipment/road-rollers'],
+                        ['@type' => 'ListItem', 'position' => 8, 'name' => 'Scissor Lifts', 'url' => config('seo.site_url') . '/equipment/scissor-lifts'],
                     ],
                 ],
             ],
@@ -1075,7 +1075,7 @@
                     <h1 class="brand-hero__title" id="homepage-hero-title">Equipment Ready for Real Work</h1>
                     <p class="brand-hero__description">Wheel loaders, compact machines, and worksite attachments available for construction, material handling, farm, and yard operations.</p>
                     <div class="brand-hero__actions">
-                        <a href="{{ route('equipment') }}#catalog" class="brand-hero__button brand-hero__button--primary">Shop Equipment</a>
+                        <a href="{{ route('equipment') }}" class="brand-hero__button brand-hero__button--primary">Shop Equipment</a>
                     </div>
                 </div>
             </article>
@@ -1087,7 +1087,7 @@
                 <div class="brand-hero__video-content">
                     <p class="brand-hero__video-label">See It in Action</p>
                     <h2 class="brand-hero__video-title">Wheel Loaders in Action</h2>
-                    <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="brand-hero__button brand-hero__button--primary mt-5">Shop Wheel Loaders</a>
+                    <a href="{{ route('equipment.category', ['category' => 'wheel-loaders']) }}" class="brand-hero__button brand-hero__button--primary mt-5">Shop Wheel Loaders</a>
                 </div>
             </article>
 
@@ -1105,7 +1105,7 @@
                     <span>Available on qualifying orders shipped from US warehouses.</span>
                 </div>
             </div>
-            <a href="{{ route('equipment') }}#catalog" class="brand-hero__shipping-link">Shop All</a>
+            <a href="{{ route('equipment') }}" class="brand-hero__shipping-link">Shop All</a>
         </div>
     </section>
 
@@ -1124,7 +1124,7 @@
                         <p class="text-xs font-black uppercase tracking-[0.24em] text-red-400">Material Handling</p>
                         <h3 class="mt-2 text-3xl font-bold uppercase leading-none text-white sm:text-4xl" style="font-family: 'Oswald', sans-serif;">Wheel Loaders</h3>
                         <p class="mt-3 max-w-md text-sm leading-6 text-slate-200">Powerful loading, carrying, and placement for yards, farms, construction sites, and aggregate work.</p>
-                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="mt-5 inline-flex min-h-12 items-center justify-center rounded-lg bg-red-700 px-6 text-xs font-black uppercase tracking-wider text-white transition hover:bg-red-800">Shop Wheel Loaders</a>
+                        <a href="{{ route('equipment.category', ['category' => 'wheel-loaders']) }}" class="mt-5 inline-flex min-h-12 items-center justify-center rounded-lg bg-red-700 px-6 text-xs font-black uppercase tracking-wider text-white transition hover:bg-red-800">Shop Wheel Loaders</a>
                     </div>
                 </article>
 
@@ -1181,7 +1181,7 @@
                         <h3 class="mt-3 max-w-md text-3xl font-black uppercase leading-none text-white md:text-4xl" style="font-family: 'Archivo Black', sans-serif;">Compact footprint. Serious capability.</h3>
                         <p class="mt-4 max-w-md text-sm leading-6 text-slate-200">Practical lift power, fast attachment changes, and maneuverability for demanding spaces.</p>
                         <div class="mt-6 flex flex-wrap gap-3">
-                            <a href="{{ route('equipment') }}#catalog" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-red-700 px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-800">Browse Equipment</a>
+                            <a href="{{ route('equipment') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-red-700 px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-800">Browse Equipment</a>
                             <a href="{{ route('topics.show', 'buy-guides') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/50 bg-white/10 px-6 text-xs font-black uppercase tracking-[0.16em] text-white backdrop-blur-sm transition hover:bg-white hover:text-[#071d38]">Buyer Guide</a>
                         </div>
                     </div>
@@ -1553,7 +1553,7 @@
                     </h2>
                     <p class="mt-5 max-w-lg text-base leading-7 text-slate-600">The TYPHON SKOOP combines a compact chassis with rugged lift capacity, quick attachment changes, and dependable diesel power for demanding work in tight spaces.</p>
                     <div class="mt-7 flex flex-wrap gap-3">
-                        <a href="{{ route('equipment') }}#catalog" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#071d38] px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-[#0b2d55]">Explore Equipment</a>
+                        <a href="{{ route('equipment') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-[#071d38] px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-[#0b2d55]">Explore Equipment</a>
                         <a href="{{ route('contact') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-slate-300 bg-white px-6 text-xs font-black uppercase tracking-[0.16em] text-[#071d38] transition hover:border-red-700 hover:text-red-700">Ask a Specialist</a>
                     </div>
                 </div>
@@ -1741,7 +1741,7 @@
                     </div>
 
                     <div class="mt-7 flex flex-col gap-3 sm:flex-row">
-                        <a href="{{ route('equipment', ['category' => 'Wheel Loaders']) }}#catalog" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-red-600 px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-700">
+                        <a href="{{ route('equipment.category', ['category' => 'wheel-loaders']) }}" class="inline-flex min-h-12 items-center justify-center rounded-lg bg-red-600 px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:bg-red-700">
                             Explore Wheel Loaders
                         </a>
                         <a href="{{ route('contact') }}" class="inline-flex min-h-12 items-center justify-center rounded-lg border border-white/25 px-6 text-xs font-black uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white hover:text-[#071d38]">

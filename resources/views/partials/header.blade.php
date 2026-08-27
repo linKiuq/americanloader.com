@@ -1068,7 +1068,7 @@
                     <ul class="equipment-dropdown__list" aria-label="Equipment categories">
                         @foreach ($shopCategories as $label => $category)
                             <li>
-                                <a href="{{ route('equipment', ['category' => $category]) }}#catalog" class="equipment-dropdown__link">
+                                <a href="{{ route('equipment.category', ['category' => \Illuminate\Support\Str::slug($category)]) }}" class="equipment-dropdown__link">
                                     {{ $label }}
                                 </a>
                             </li>
@@ -1162,7 +1162,7 @@
                         <path d="m21 21-4.4-4.4m2-5.1a7.1 7.1 0 1 1-14.2 0 7.1 7.1 0 0 1 14.2 0Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
-                <form id="navbar-search-panel" action="{{ route('equipment') }}#catalog" method="GET" class="site-navbar__search-form" role="search">
+                <form id="navbar-search-panel" action="{{ route('equipment') }}" method="GET" class="site-navbar__search-form" role="search">
                     <label for="navbar-search" class="sr-only">Search products</label>
                     <input id="navbar-search" name="search" type="search" value="{{ request('search') }}" placeholder="Search products" class="site-navbar__search-input">
                     <button type="submit" class="site-navbar__search-submit" aria-label="Search products">Search</button>
@@ -1213,7 +1213,7 @@
                     <ul class="mobile-nav__submenu">
                         @foreach ($shopCategories as $label => $category)
                             <li>
-                                <a href="{{ route('equipment', ['category' => $category]) }}#catalog" class="mobile-nav__submenu-link">
+                                <a href="{{ route('equipment.category', ['category' => \Illuminate\Support\Str::slug($category)]) }}" class="mobile-nav__submenu-link">
                                     {{ $label }}
                                 </a>
                             </li>

@@ -32,24 +32,22 @@ class AttachmentController extends Controller
             'x2' => [
                 'title' => 'X2 Attachments',
                 'description' => 'Browse high-performance machinery and professional attachment solutions in the X2 Attachments collection.',
-                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'X2 Attachments')->values(),
+                'filter' => fn (Collection $products): Collection => $products->filter(fn ($p) => ($p['subcategory'] ?? '') === '2.5 Tons' || str_contains(mb_strtolower($p['name'] ?? ''), 'x2'))->values(),
             ],
             'xxv' => [
                 'title' => 'XXV Attachments',
                 'description' => 'Browse professional mini excavator attachment solutions built for Terror XXV machines and worksite upgrades.',
-                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'XXV Attachments')->values(),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', '2.5 Tons')->values(),
             ],
             '2-5-tons' => [
                 'title' => 'XXV Attachments',
                 'description' => 'Shop buckets, breakers, augers, grapples, and couplers compatible with heavy-duty compact excavator workflows.',
-                'filter' => fn (Collection $products): Collection => $products->where('subcategory', 'XXV Attachments')->values(),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', '2.5 Tons')->values(),
             ],
             '2-tons-and-below' => [
                 'title' => '2 Ton and Below Attachments',
                 'description' => 'Shop maneuverable excavation attachments for landscaping, trenching, material handling, and site cleanup.',
-                'filter' => fn (Collection $products): Collection => $products
-                    ->where('subcategory', 'Attachments for Mini Excavators (2 Tons and Below)')
-                    ->values(),
+                'filter' => fn (Collection $products): Collection => $products->where('subcategory', '2 Tons and Below')->values(),
             ],
         ];
 
@@ -77,14 +75,14 @@ class AttachmentController extends Controller
                 'title' => 'Compact Series 501-507 Attachments',
                 'description' => 'Shop versatile attachments for compact skid steer loader work in tight jobsites and material handling applications.',
                 'filter' => fn (Collection $products): Collection => $products
-                    ->where('subcategory', 'Compact Series (501–507)')
+                    ->filter(fn ($p) => str_starts_with($p['subcategory'] ?? '', 'Compact Series'))
                     ->values(),
             ],
             'standard-series' => [
                 'title' => 'Standard Series (X1300-509) Attachments',
-                'description' => 'Shop heavy-duty buckets, grapples, tillers, trenchers, mulchers, and site-preparation attachments.',
+                'description' => 'Shop heavy-duty attachments engineered for standard series skid steer machinery.',
                 'filter' => fn (Collection $products): Collection => $products
-                    ->where('subcategory', 'Standard Series (X1300, 509)')
+                    ->filter(fn ($p) => str_starts_with($p['subcategory'] ?? '', 'Standard Series'))
                     ->values(),
             ],
             default => abort(404),
