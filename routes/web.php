@@ -71,8 +71,12 @@ Route::get('/sitemap.xml', function (ProductCatalog $catalog, SupabaseCmsService
                 ->filter()
                 ->unique()
                 ->take(10)
-                ->map(fn (string $image): array => ['loc' => $image])
                 ->values()
+                ->map(fn (string $image, int $index): array => [
+                    'loc' => $image,
+                    'title' => ($product['name'] ?? 'Heavy Equipment') . ' by TYPHON',
+                    'caption' => ($product['name'] ?? 'Heavy Equipment') . ' - ' . ($product['category'] ?? 'Equipment') . ' for Sale at American Loader (Photo ' . ($index + 1) . ')',
+                ])
                 ->all(),
         ]);
 

@@ -15,7 +15,7 @@ class ProductSeoTest extends TestCase
         $response = $this->get(route('product.show', $product['slug']));
 
         $response->assertOk()
-            ->assertSee('for Sale in USA | American Loader', escape: false)
+            ->assertSee('for Sale | American Loader', escape: false)
             ->assertSee('aria-label="Breadcrumb"', escape: false)
             ->assertSee('@type":"Product"', escape: false)
             ->assertSee('@type":"Offer"', escape: false)

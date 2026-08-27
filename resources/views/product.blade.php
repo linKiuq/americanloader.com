@@ -13,29 +13,40 @@
         );
         $productImages = array_values(array_filter($product['images'] ?? [$product['image'] ?? config('seo.default_image')]));
         $productRatingCount = (crc32($product['slug'] ?? 'product') % 15) + 12;
+        $productImageObjects = collect($productImages)->map(fn($img, $i) => [
+            '@type' => 'ImageObject',
+            'url' => $img,
+            'contentUrl' => $img,
+            'name' => ($product['name'] ?? 'Heavy Equipment') . ' by TYPHON',
+            'caption' => ($product['name'] ?? 'Heavy Equipment') . ' - ' . ($product['category'] ?? 'Equipment') . ' for Sale at American Loader (Photo ' . ($i + 1) . ')',
+        ])->values()->all();
     @endphp
     @include('partials.seo', [
-        'title' => ($product['name'] ?? 'Equipment') . ' for Sale in USA | American Loader',
+        'title' => ($product['name'] ?? 'Equipment') . ' | TYPHON ' . ($product['category'] ?? 'Equipment') . ' for Sale | American Loader',
         'description' => $productDescription,
         'type' => 'product',
         'image' => $product['image'] ?? null,
-        'imageAlt' => ($product['name'] ?? 'American Loader equipment') . ' for sale',
+        'imageAlt' => ($product['name'] ?? 'American Loader equipment') . ' by TYPHON - ' . ($product['category'] ?? 'Heavy Equipment') . ' for sale in USA',
         'keywords' => array_filter([
             $product['name'] ?? null,
+            'TYPHON ' . ($product['name'] ?? ''),
+            'American Loader ' . ($product['name'] ?? ''),
             $product['category'] ?? null,
+            'TYPHON ' . ($product['category'] ?? 'equipment'),
             'American Loader',
             'American Loader equipment',
-            'American Loader ' . \Illuminate\Support\Str::lower($product['category'] ?? 'heavy equipment'),
-            'TYPHON equipment',
             ($product['category'] ?? 'heavy equipment') . ' for sale',
             ($product['name'] ?? 'heavy equipment') . ' price USA',
+            ($product['name'] ?? 'heavy equipment') . ' specs',
+            $product['sku'] ?? null,
         ]),
         'jsonLd' => [
             '@context' => 'https://schema.org',
             '@type' => 'Product',
             'name' => $product['name'],
+            'alternateName' => ['TYPHON ' . $product['name'], 'American Loader ' . $product['name']],
             'description' => $productDescription,
-            'image' => $productImages,
+            'image' => $productImageObjects,
             'brand' => [
                 '@type' => 'Brand',
                 'name' => 'TYPHON',
@@ -205,14 +216,14 @@
                             <div class="order-2 flex gap-3 overflow-x-auto pb-2 lg:order-1 lg:max-h-[560px] lg:flex-col lg:overflow-x-visible lg:overflow-y-auto lg:pr-1">
                                 @foreach ($images as $image)
                                     <button type="button" class="gallery-thumb h-20 w-20 flex-none rounded-xl border-2 {{ $loop->first ? 'border-red-500' : 'border-gray-200' }} bg-white p-1.5 transition hover:border-red-500" data-image="{{ $image }}">
-                                        <img src="{{ $image }}" alt="{{ $product['name'] }} from American Loader — image {{ $loop->iteration }}" class="h-full w-full rounded-lg object-contain">
+                                        <img src="{{ $image }}" alt="{{ $product['name'] }} by TYPHON - {{ $product['category'] ?? 'Equipment' }} Photo {{ $loop->iteration }} - American Loader" title="{{ $product['name'] }} - Photo {{ $loop->iteration }}" class="h-full w-full rounded-lg object-contain">
                                     </button>
                                 @endforeach
                             </div>
                         @endif
                         <div class="{{ count($images) > 1 ? 'order-1 lg:order-2' : 'lg:col-span-2' }} flex min-h-[420px] items-center justify-center rounded-2xl border border-gray-200 bg-white p-5 shadow-sm lg:min-h-[560px] 2xl:min-h-[640px]">
                             @if ($images[0] ?? null)
-                                <img id="main-product-image" src="{{ $images[0] }}" alt="{{ $product['name'] }} from American Loader" class="max-h-[520px] w-full rounded-xl object-contain 2xl:max-h-[600px]">
+                                <img id="main-product-image" src="{{ $images[0] }}" alt="{{ $product['name'] }} by TYPHON - {{ $product['category'] ?? 'Heavy Equipment' }} for Sale at American Loader" title="{{ $product['name'] }} by TYPHON" class="max-h-[520px] w-full rounded-xl object-contain 2xl:max-h-[600px]">
                             @else
                                 <div class="flex h-[440px] items-center justify-center text-6xl text-gray-300"><i class="fas fa-truck-monster"></i></div>
                             @endif

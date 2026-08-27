@@ -415,7 +415,7 @@
             gridContainer.innerHTML = itemsToRender.map(product => `
                 <article class="product-card bg-white border border-gray-200 rounded-lg overflow-hidden hover:border-red-500/60 hover:shadow-md transition duration-300 flex flex-col h-full group cursor-pointer focus-within:border-red-500" data-product-url="${escapeHtml(productDetailUrl(product))}" tabindex="0" role="link" aria-label="Open ${escapeHtml(product.name)}">
                     <div class="w-full h-52 bg-gray-50 p-4 flex items-center justify-center relative overflow-hidden flex-shrink-0">
-                        ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)} — ${escapeHtml(product.category)} from American Loader" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain group-hover:scale-105 transition duration-500 rounded">` : '<i class="fas fa-truck-monster text-gray-300 text-5xl"></i>'}
+                        ${product.image ? `<img src="${escapeHtml(product.image)}" alt="${escapeHtml(product.name)} by TYPHON - ${escapeHtml(product.category)} for Sale at American Loader" title="${escapeHtml(product.name)} by TYPHON" loading="lazy" decoding="async" class="max-w-full max-h-full object-contain group-hover:scale-105 transition duration-500 rounded">` : '<i class="fas fa-truck-monster text-gray-300 text-5xl"></i>'}
                         <span class="absolute top-3 left-3 bg-white/95 border border-gray-200 text-[10px] font-black text-red-700 px-2 py-0.5 rounded tracking-wider uppercase shadow-sm">${escapeHtml(product.category)}</span>
                     </div>
                     <div class="p-5 flex flex-col flex-grow">
