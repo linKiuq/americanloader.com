@@ -19,10 +19,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     @include('partials.head-favicon')
+    @php
+        $itemListElements = $catalog
+            ->when($activeCategoryName, fn($col) => $col->filter(fn($p) => ($p['category'] ?? null) === $activeCategoryName))
+            ->take(30)
+            ->values()
+            ->map(fn($p, $i) => [
+                '@type' => 'ListItem',
+                'position' => $i + 1,
+                'url' => config('seo.site_url') . '/product/' . $p['slug'],
+                'name' => $p['name'],
+            ])
+            ->all();
+    @endphp
     @include('partials.seo', [
         'title' => $pageTitle,
         'description' => $activeCategoryName
-            ? 'Browse ' . $activeCategoryName . ' at American Loader: high quality machinery, attachments, fast shipping and warranty protection.'
+            ? 'Browse ' . $activeCategoryName . ' for sale at American Loader. Premium equipment with fast US shipping and warranty protection.'
             : 'Browse American Loader equipment: TYPHON wheel loaders, skid steer loaders, STORM mini excavators, forklifts, road rollers, scissor lifts, and attachments.',
         'keywords' => config('seo.keywords'),
         'imageAlt' => ($activeCategoryName ?? 'TYPHON wheel loaders') . ', skid steer loaders, and STORM mini excavators',
@@ -32,6 +45,11 @@
             'name' => ($activeCategoryName ? $activeCategoryName . ' for Sale' : 'American Loader Heavy Equipment for Sale'),
             'description' => 'Catalog of ' . ($activeCategoryName ?? 'TYPHON wheel loaders, skid steer loaders, STORM mini excavators') . ', forklifts, road rollers, scissor lifts, and machine attachments.',
             'url' => $canonicalUrl,
+            'mainEntity' => [
+                '@type' => 'ItemList',
+                'name' => ($activeCategoryName ?? 'Heavy Equipment') . ' Products',
+                'itemListElement' => $itemListElements,
+            ],
         ],
     ])
     <script src="https://cdn.tailwindcss.com"></script>

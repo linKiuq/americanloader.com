@@ -143,6 +143,12 @@
 <meta property="og:image" content="{{ $seoImage }}">
 <meta property="og:image:alt" content="{{ $seoImageAlt }}">
 <meta property="og:locale" content="en_US">
+@if ($seoType === 'product')
+<meta property="product:brand" content="TYPHON">
+<meta property="product:availability" content="in stock">
+<meta property="product:condition" content="new">
+<meta property="product:price:currency" content="USD">
+@endif
 @if ($seoPublishedTime)
 <meta property="article:published_time" content="{{ $seoPublishedTime }}">
 @endif
