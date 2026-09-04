@@ -27,7 +27,7 @@ class BlogAdminTest extends TestCase
 
         $published = BlogPost::create([
             'title' => 'Telescopic Wheel Loader - Field Demo',
-            'slug' => 'wheel-loader-demo',
+            'slug' => 'telescopic-wheel-loader-guide',
             'excerpt' => 'A published equipment guide.',
             'content' => "## Field Notes\n\nPublished CMS body.",
             'category_id' => $category->id,
@@ -48,7 +48,7 @@ class BlogAdminTest extends TestCase
             ->assertSee('Telescopic Wheel Loader - Field Demo')
             ->assertDontSee('Internal Draft Article');
 
-        $this->get(route('blog.show', 'wheel-loader-demo'))
+        $this->get(route('blog.show', 'telescopic-wheel-loader-guide'))
             ->assertOk()
             ->assertSee('Telescopic Wheel Loader - Field Demo')
             ->assertSee('Field Notes')
